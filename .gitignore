@@ -1,0 +1,29 @@
+# Build / Output
+target/
+bin/
+*.class
+
+# Logs
+logs/
+*.log
+
+# Reports
+report.html
+/reports/
+
+# Eclipse / IntelliJ
+.project
+.classpath
+.settings/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+
+# Sensitive config files
+config/email.properties
+config/config.json
+.env
+*.jks
+keystore.jks

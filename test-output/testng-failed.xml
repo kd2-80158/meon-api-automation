@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.api.tests.aadhaar.GenerateClientToken">
+        <methods>
+          <include name="verifyResponseWithLongCompanyName"/>
+          <include name="verifyResponseWithLongSecretToken"/>
+          <include name="verifyIncorrectContentHeader"/>
+          <include name="verifyResponseWithMissingCompanyName"/>
+          <include name="verifyResponseWithMissingSecretToken"/>
+          <include name="verifyResponseWithNumericValuesOfFields"/>
+          <include name="verifyResponseWithSQLInjection"/>
+          <include name="verifyResponseWithMissingBothCompanyNameAndSecretToken"/>
+          <include name="setup"/>
+          <include name="verifyResponseWithInvalidSecretToken"/>
+          <include name="verifyResponseWithInvalidCompany"/>
+          <include name="verifyResponseWhenGETMethodInsteadOfPOST"/>
+        </methods>
+      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
