@@ -1,0 +1,23 @@
+
+{
+	"baseURL": {
+		"eSign": {
+			"url": "https://esignuat.meon.co.in",
+			"MAX_ATTEMPT": 3
+		},
+		"aadhaar": {
+			"url": "https://digilocker.meon.co.in",
+			"company_name": "${COMPANY_NAME}",
+			"secret_token": "${SECRET_TOKEN}",
+			"MAX_ATTEMPT": 3
+		},
+		"facefinder": {
+			"url": "https://face-finder.meon.co.in",
+			"MAX_ATTEMPT": 3
+		},
+		"pennydrop": {
+			"url": "https://pennydrop.meon.co.in",
+			"MAX_ATTEMPT": 3
+		}
+	}
+}
