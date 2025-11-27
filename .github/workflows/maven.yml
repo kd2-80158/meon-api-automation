@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Set Java version ONCE here
-      JAVA_VERSION: "17"
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      # Set Java version ONCE here (explicit Java 11)
+      JAVA_VERSION: "11"
+      JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
 
     steps:
       - name: Checkout
@@ -26,18 +26,22 @@ jobs:
           cache: maven
 
       - name: Create config/email.properties from secrets (runtime only)
-        if: ${{ secrets.SMTP_USERNAME && secrets.SMTP_PASSWORD }}
+        if: ${{ secrets.SMTP_USERNAME && secrets.SMTP_PASSWORD && secrets.SMTP_HOST }}
         run: |
           mkdir -p config
-          cat > config/email.properties <<EOF
-          smtp.host=${{ secrets.SMTP_HOST }}
-          smtp.port=${{ secrets.SMTP_PORT }}
-          smtp.username=${{ secrets.SMTP_USERNAME }}
-          smtp.password=${{ secrets.SMTP_PASSWORD }}
-          smtp.from=${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}
-          smtp.tls=${{ secrets.SMTP_TLS || 'true' }}
-          mail.recipients=${{ secrets.MAIL_RECIPIENTS || '' }}
-          EOF
+          printf "smtp.host=%s\n" "${{ secrets.SMTP_HOST }}" > config/email.properties
+          printf "smtp.port=%s\n" "${{ secrets.SMTP_PORT }}" >> config/email.properties
+          printf "smtp.username=%s\n" "${{ secrets.SMTP_USERNAME }}" >> config/email.properties
+          printf "smtp.password=%s\n" "${{ secrets.SMTP_PASSWORD }}" >> config/email.properties
+          # use SMTP_FROM if provided, otherwise fall back to SMTP_USERNAME
+          if [ -n "${{ secrets.SMTP_FROM }}" ]; then
+            printf "smtp.from=%s\n" "${{ secrets.SMTP_FROM }}" >> config/email.properties
+          else
+            printf "smtp.from=%s\n" "${{ secrets.SMTP_USERNAME }}" >> config/email.properties
+          fi
+          printf "smtp.tls=%s\n" "${{ secrets.SMTP_TLS || 'true' }}" >> config/email.properties
+          printf "mail.recipients=%s\n" "${{ secrets.MAIL_RECIPIENTS }}" >> config/email.properties
+          echo "Wrote config/email.properties (sensitive values omitted in logs)"
 
       - name: Ensure logs dir exists
         run: mkdir -p logs
@@ -66,7 +70,7 @@ jobs:
             target/surefire-reports/**
 
       - name: Send email with report and automation log
-        if: ${{ secrets.SMTP_USERNAME && secrets.SMTP_PASSWORD }}
+        if: ${{ secrets.SMTP_USERNAME && secrets.SMTP_PASSWORD && secrets.SMTP_HOST }}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.SMTP_HOST }}
@@ -84,5 +88,5 @@ jobs:
           attachments: logs/report.html,logs/automation.log
 
       - name: Notify when email skipped
-        if: ${{ !secrets.SMTP_USERNAME || !secrets.SMTP_PASSWORD }}
+        if: ${{ !secrets.SMTP_USERNAME || !secrets.SMTP_PASSWORD || !secrets.SMTP_HOST }}
         run: echo "SMTP credentials missing — skipping email step."
