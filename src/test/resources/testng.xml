@@ -2,7 +2,7 @@
 <suite name="API Test Suite">
     <test name="API Test">
         <classes>
-            <class name="com.api.tests.aadhaar"/>
+            <class name="com.api.tests.aadhaar.GenerateClientToken"/>
         </classes>
     </test>
 </suite>
