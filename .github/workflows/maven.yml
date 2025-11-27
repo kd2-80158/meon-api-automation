@@ -8,62 +8,81 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     env:
-      JAVA_HOME: /usr/lib/jvm/java-${{ secrets.JAVA_VERSION }}-openjdk-amd64
+      # Set Java version ONCE here
+      JAVA_VERSION: "17"
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: ${{ secrets.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+
+      - name: Create config/email.properties from secrets (runtime only)
+        if: ${{ secrets.SMTP_USERNAME && secrets.SMTP_PASSWORD }}
+        run: |
+          mkdir -p config
+          cat > config/email.properties <<EOF
+          smtp.host=${{ secrets.SMTP_HOST }}
+          smtp.port=${{ secrets.SMTP_PORT }}
+          smtp.username=${{ secrets.SMTP_USERNAME }}
+          smtp.password=${{ secrets.SMTP_PASSWORD }}
+          smtp.from=${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}
+          smtp.tls=${{ secrets.SMTP_TLS || 'true' }}
+          mail.recipients=${{ secrets.MAIL_RECIPIENTS || '' }}
+          EOF
+
+      - name: Ensure logs dir exists
+        run: mkdir -p logs
 
       - name: Build & run tests
         run: |
-          # ensure logs dir exists
-          mkdir -p logs
-          # run maven tests
           mvn -B -DskipTests=false test
 
-      - name: Ensure report and log exist
+      - name: Give reports a moment to flush
+        run: sleep 1
+
+      - name: Ensure report and log exist (show sizes)
         run: |
           echo "Listing logs folder:"
           ls -la logs || true
-          # Fail if report missing? we'll continue but record artifacts
-          if [ ! -f logs/report.html ]; then
-            echo "WARNING: logs/report.html missing"
-          fi
-          if [ ! -f logs/automation.log ]; then
-            echo "WARNING: logs/automation.log missing"
-          fi
+          if [ -f logs/report.html ]; then ls -la logs/report.html; else echo "MISSING: logs/report.html"; fi
+          if [ -f logs/automation.log ]; then ls -la logs/automation.log; else echo "MISSING: logs/automation.log"; fi
 
-      - name: Upload report artifact (optional)
+      - name: Upload report artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: |
             logs/report.html
             logs/automation.log
+            target/surefire-reports/**
 
       - name: Send email with report and automation log
+        if: ${{ secrets.SMTP_USERNAME && secrets.SMTP_PASSWORD }}
         uses: dawidd6/action-send-mail@v3
         with:
-          # from/to
           server_address: ${{ secrets.SMTP_HOST }}
           server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: "Test report — ${{ github.repository }} — ${{ github.ref_name }}"
           body: |
-            Hi team,
-
-            Tests finished for repo: ${{ github.repository }} on ${{ github.ref_name }}.
-
-            Summary attached: logs/report.html and logs/automation.log
+            <p>Hi team,</p>
+            <p>Tests finished for repo: <b>${{ github.repository }}</b> on <b>${{ github.ref_name }}</b>.</p>
+            <p>Attached: logs/report.html and logs/automation.log.</p>
           content_type: text/html
           to: ${{ secrets.MAIL_RECIPIENTS }}
-          from: ${{ secrets.SMTP_FROM }}
-          # attach files (they must exist in the workspace)
+          from: ${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}
           attachments: logs/report.html,logs/automation.log
+
+      - name: Notify when email skipped
+        if: ${{ !secrets.SMTP_USERNAME || !secrets.SMTP_PASSWORD }}
+        run: echo "SMTP credentials missing — skipping email step."
