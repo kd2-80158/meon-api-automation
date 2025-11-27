@@ -11,14 +11,6 @@ jobs:
 
     env:
       JAVA_VERSION: "11"
-      # map secrets → env so parser won't break
-      SMTP_HOST: ${{ secrets.SMTP_HOST }}
-      SMTP_PORT: ${{ secrets.SMTP_PORT }}
-      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-      SMTP_FROM: ${{ secrets.SMTP_FROM }}
-      SMTP_TLS: ${{ secrets.SMTP_TLS }}
-      MAIL_RECIPIENTS: ${{ secrets.MAIL_RECIPIENTS }}
 
     steps:
       - name: Checkout
@@ -31,57 +23,82 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           cache: maven
 
-      - name: Create config/email.properties from secrets
-        if: ${{ env.SMTP_HOST != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' }}
+      ##################################################################
+      # CREATE email.properties FROM GITHUB SECRETS
+      ##################################################################
+      - name: Create config/email.properties
         run: |
           mkdir -p config
-          cat > config/email.properties <<EOF
-          smtp.host=${SMTP_HOST}
-          smtp.port=${SMTP_PORT}
-          smtp.username=${SMTP_USERNAME}
-          smtp.password=${SMTP_PASSWORD}
-          smtp.from=${SMTP_FROM:-${SMTP_USERNAME}}
-          smtp.tls=${SMTP_TLS:-true}
-          mail.recipients=${MAIL_RECIPIENTS}
-          EOF
+          echo "smtp.host=${{ secrets.SMTP_HOST }}" > config/email.properties
+          echo "smtp.port=${{ secrets.SMTP_PORT }}" >> config/email.properties
+          echo "smtp.username=${{ secrets.SMTP_USERNAME }}" >> config/email.properties
+          echo "smtp.password=${{ secrets.SMTP_PASSWORD }}" >> config/email.properties
+          echo "smtp.from=${{ secrets.SMTP_FROM }}" >> config/email.properties
+          echo "smtp.tls=${{ secrets.SMTP_TLS }}" >> config/email.properties
+          echo "mail.recipients=${{ secrets.MAIL_RECIPIENTS }}" >> config/email.properties
 
+      ##################################################################
+      # INJECT COMPANY_NAME + SECRET_TOKEN INTO config.json
+      ##################################################################
+      - name: Inject secrets into config.json
+        run: |
+          sed -i "s|\${COMPANY_NAME}|${{ secrets.COMPANY_NAME }}|g" config/config.json
+          sed -i "s|\${SECRET_TOKEN}|${{ secrets.SECRET_TOKEN }}|g" config/config.json
+
+      ##################################################################
+      # CREATE logs directory
+      ##################################################################
       - name: Ensure logs dir exists
         run: mkdir -p logs
 
-      - name: Build & run tests
-        run: mvn -B test
+      ##################################################################
+      # RUN MAVEN TESTS
+      ##################################################################
+      - name: Build & Run Tests
+        run: mvn -B -DskipTests=false test
 
-      - name: Wait flush
-        run: sleep 1
+      ##################################################################
+      # CHECK FILES
+      ##################################################################
+      - name: Verify logs and reports
+        run: |
+          echo "Contents of logs/"
+          ls -la logs || true
 
-      - name: Upload report artifacts
+          echo "Checking report.html"
+          [ -f logs/report.html ] && echo "Report OK" || echo "Missing report.html"
+
+          echo "Checking automation.log"
+          [ -f logs/automation.log ] && echo "Log OK" || echo "Missing automation.log"
+
+      ##################################################################
+      # UPLOAD ARTIFACT (OPTIONAL)
+      ##################################################################
+      - name: Upload test report artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: api-test-report
+          name: test-report
           path: |
             logs/report.html
             logs/automation.log
             target/surefire-reports/**
 
-      - name: Send email with report and logs
-        if: ${{ env.SMTP_HOST != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' }}
+      ##################################################################
+      # SEND EMAIL WITH REPORT & LOG FILE
+      ##################################################################
+      - name: Send Email With Test Report
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ env.SMTP_HOST }}
-          server_port: ${{ env.SMTP_PORT }}
-          username: ${{ env.SMTP_USERNAME }}
-          password: ${{ env.SMTP_PASSWORD }}
-          subject: "API Automation Report — ${{ github.repository }}"
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Test Report — ${{ github.repository }} — ${{ github.ref_name }}"
           body: |
             <p>Hi team,</p>
-            <p>API Tests completed for <b>${{ github.repository }}</b>.</p>
-            <p>Attached: report.html & automation.log</p>
+            <p>Automated API Tests completed for <b>${{ github.repository }}</b>.</p>
+            <p>Attached: logs/report.html and logs/automation.log</p>
           content_type: text/html
-          to: ${{ env.MAIL_RECIPIENTS }}
-          from: ${{ env.SMTP_FROM || env.SMTP_USERNAME }}
+          to: ${{ secrets.MAIL_RECIPIENTS }}
+          from: ${{ secrets.SMTP_FROM }}
           attachments: logs/report.html,logs/automation.log
-
-      - name: Email skipped
-        if: ${{ env.SMTP_HOST == '' || env.SMTP_USERNAME == '' || env.SMTP_PASSWORD == '' }}
-        run: |
-          echo "Email step skipped — SMTP secrets missing."
