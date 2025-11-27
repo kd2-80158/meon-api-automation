@@ -11,6 +11,14 @@ jobs:
 
     env:
       JAVA_VERSION: "11"
+      # map secrets → env so parser won't break
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      SMTP_TLS: ${{ secrets.SMTP_TLS }}
+      MAIL_RECIPIENTS: ${{ secrets.MAIL_RECIPIENTS }}
 
     steps:
       - name: Checkout
@@ -23,17 +31,19 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           cache: maven
 
-      - name: Create config/email.properties from secrets (runtime only)
-        if: ${{ secrets.SMTP_USERNAME != '' && secrets.SMTP_PASSWORD != '' && secrets.SMTP_HOST != '' }}
+      - name: Create config/email.properties from secrets
+        if: ${{ env.SMTP_HOST != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' }}
         run: |
           mkdir -p config
-          echo "smtp.host=${{ secrets.SMTP_HOST }}" > config/email.properties
-          echo "smtp.port=${{ secrets.SMTP_PORT }}" >> config/email.properties
-          echo "smtp.username=${{ secrets.SMTP_USERNAME }}" >> config/email.properties
-          echo "smtp.password=${{ secrets.SMTP_PASSWORD }}" >> config/email.properties
-          echo "smtp.from=${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}" >> config/email.properties
-          echo "smtp.tls=${{ secrets.SMTP_TLS || 'true' }}" >> config/email.properties
-          echo "mail.recipients=${{ secrets.MAIL_RECIPIENTS }}" >> config/email.properties
+          cat > config/email.properties <<EOF
+          smtp.host=${SMTP_HOST}
+          smtp.port=${SMTP_PORT}
+          smtp.username=${SMTP_USERNAME}
+          smtp.password=${SMTP_PASSWORD}
+          smtp.from=${SMTP_FROM:-${SMTP_USERNAME}}
+          smtp.tls=${SMTP_TLS:-true}
+          mail.recipients=${MAIL_RECIPIENTS}
+          EOF
 
       - name: Ensure logs dir exists
         run: mkdir -p logs
@@ -41,35 +51,37 @@ jobs:
       - name: Build & run tests
         run: mvn -B test
 
-      - name: Wait for flush
+      - name: Wait flush
         run: sleep 1
 
-      - name: Upload test artifacts
+      - name: Upload report artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: test-report
+          name: api-test-report
           path: |
             logs/report.html
             logs/automation.log
             target/surefire-reports/**
 
-      - name: Send email with report and log
-        if: ${{ secrets.SMTP_USERNAME != '' && secrets.SMTP_PASSWORD != '' && secrets.SMTP_HOST != '' }}
+      - name: Send email with report and logs
+        if: ${{ env.SMTP_HOST != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' }}
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ secrets.SMTP_HOST }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "Test report — ${{ github.repository }} — ${{ github.ref_name }}"
+          server_address: ${{ env.SMTP_HOST }}
+          server_port: ${{ env.SMTP_PORT }}
+          username: ${{ env.SMTP_USERNAME }}
+          password: ${{ env.SMTP_PASSWORD }}
+          subject: "API Automation Report — ${{ github.repository }}"
           body: |
             <p>Hi team,</p>
-            <p>Attached logs/report.html and logs/automation.log</p>
+            <p>API Tests completed for <b>${{ github.repository }}</b>.</p>
+            <p>Attached: report.html & automation.log</p>
           content_type: text/html
-          to: ${{ secrets.MAIL_RECIPIENTS }}
-          from: ${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}
+          to: ${{ env.MAIL_RECIPIENTS }}
+          from: ${{ env.SMTP_FROM || env.SMTP_USERNAME }}
           attachments: logs/report.html,logs/automation.log
 
-      - name: Email Skipped Notice
-        if: ${{ secrets.SMTP_USERNAME == '' || secrets.SMTP_PASSWORD == '' || secrets.SMTP_HOST == '' }}
-        run: echo "Email step skipped — SMTP secrets missing."
+      - name: Email skipped
+        if: ${{ env.SMTP_HOST == '' || env.SMTP_USERNAME == '' || env.SMTP_PASSWORD == '' }}
+        run: |
+          echo "Email step skipped — SMTP secrets missing."
