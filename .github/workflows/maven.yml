@@ -83,6 +83,42 @@ jobs:
             logs/automation.log
             target/surefire-reports/**
 
+      - name: Push report to dashboard
+        if: always()    # <-- even if tests failed
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
+          # Clone the repo using the GitHub token
+          git fetch origin
+          
+          # Checkout gh-pages or create it if missing
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout -b gh-pages
+          fi
+
+          mkdir -p dashboard/data dashboard/reports dashboard/logs
+
+          # Copy CI outputs into dashboard
+          cp logs/report.html dashboard/reports/ || true
+          cp logs/automation.log dashboard/logs/ || true
+
+          # If you generate summary JSON, else create dummy
+          if [ -f target/surefire-reports/summary.json ]; then
+            cp target/surefire-reports/summary.json dashboard/data/latest.json
+          else
+            echo '{ "summary": "no summary generated" }' > dashboard/data/latest.json
+          fi
+
+          # Commit & push without triggering CI again
+          git add dashboard/
+          git commit -m "Update dashboard [skip ci]" || true
+          git push origin gh-pages
+
+
+
       ##################################################################
       # SEND EMAIL WITH REPORT & LOG FILE
       ##################################################################
