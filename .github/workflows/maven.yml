@@ -8,6 +8,10 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # Grants permission to push files/commits (the core fix)
+      pages: write      # Required for deploying to GitHub Pages
+      id-token: write
 
     env:
       JAVA_VERSION: "11"
