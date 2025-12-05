@@ -4,11 +4,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.logging.log4j.Logger;
+import org.testng.IResultMap;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
+import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 
 import com.api.utility.EmailUtility;
@@ -30,24 +33,43 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
+        // Skip config methods
+        if (!result.getMethod().isTest()) {
+            return;
+        }
+
         logger.info("Starting test: " + result.getMethod().getMethodName());
         logger.info("Description: " + result.getMethod().getDescription());
-        logger.info("Groups: " + Arrays.toString(result.getMethod().getGroups()));
-        // create Extent test
-        ExtentReporterUtility.createExtentTest(result.getMethod().getMethodName());
+        // Use fully qualified unique id to avoid collisions across classes with same method names
+        String uniqueId = uniqueIdFor(result.getMethod());
+        ExtentReporterUtility.createExtentTest(uniqueId, result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
+        if (!result.getMethod().isTest()) {
+            return; // do not log config methods
+        }
+
         logger.info(result.getMethod().getMethodName() + " PASSED");
+        // Ensure we have a test for this result (defensive - create if missing)
+        String uniqueId = uniqueIdFor(result.getMethod());
+        ExtentReporterUtility.createExtentTest(uniqueId, result.getMethod().getMethodName());
         ExtentReporterUtility.getTest().log(Status.PASS, result.getMethod().getMethodName() + " PASSED");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
+        if (!result.getMethod().isTest()) {
+            return;
+        }
         String testName = result.getMethod().getMethodName();
 
         logger.error(testName + " FAILED");
+
+        // Defensive: ensure an ExtentTest exists for this test
+        String uniqueId = uniqueIdFor(result.getMethod());
+        ExtentReporterUtility.createExtentTest(uniqueId, testName);
 
         ExtentReporterUtility.getTest().log(Status.FAIL, testName + " FAILED");
 
@@ -59,17 +81,59 @@ public class TestListener implements ITestListener {
             // Log full stacktrace inside <pre>
             StringBuilder sb = new StringBuilder();
             for (StackTraceElement element : t.getStackTrace()) {
-                sb.append(element.toString()).append("\n");
+                sb.append(element.toString()).append("");
             }
-            ExtentReporterUtility.getTest().log(Status.FAIL,
-                    "<pre>" + sb.toString() + "</pre>");
+            ExtentReporterUtility.getTest().log(Status.FAIL, "<pre>" + sb.toString() + "</pre>");
         }
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
+        if (!result.getMethod().isTest()) {
+            return;
+        }
+
         logger.warn(result.getMethod().getMethodName() + " SKIPPED");
-        ExtentReporterUtility.getTest().log(Status.SKIP, result.getMethod().getMethodName() + " SKIPPED");
+        String uniqueId = uniqueIdFor(result.getMethod());
+        ExtentReporterUtility.createExtentTest(uniqueId, result.getMethod().getMethodName());
+        ExtentReporterUtility.getTest().log(Status.SKIP,
+                result.getMethod().getMethodName() + " SKIPPED");
+    }
+
+    /**
+     * Build a unique id for a test method: fullyQualifiedClassName#methodName
+     */
+    private String uniqueIdFor(ITestNGMethod m) {
+        if (m == null) return null;
+        String cname;
+        try {
+            if (m.getTestClass() != null && m.getTestClass().getName() != null) {
+                cname = m.getTestClass().getName();
+            } else {
+                // fallback
+                cname = m.getRealClass() != null ? m.getRealClass().getName() : "unknown";
+            }
+        } catch (Exception e) {
+            cname = "unknown";
+        }
+        return cname + "#" + m.getMethodName();
+    }
+
+    /**
+     * Convert an IResultMap (passed/failed/skipped) to a set of unique test ids,
+     * and only keep ones that are actual test methods (not config methods).
+     */
+    private Set<String> uniqueTestIdsFrom(IResultMap results) {
+        Set<String> ids = new HashSet<>();
+        if (results == null) return ids;
+        for (ITestResult r : results.getAllResults()) {
+            ITestNGMethod m = r.getMethod();
+            if (m != null && m.isTest()) {
+                String id = uniqueIdFor(m);
+                if (id != null) ids.add(id);
+            }
+        }
+        return ids;
     }
 
     @Override
@@ -79,7 +143,11 @@ public class TestListener implements ITestListener {
         ExtentReporterUtility.flushReport();
 
         // small wait to allow file system to flush (helps avoid zero-length/partial file)
-        try { Thread.sleep(300); } catch (InterruptedException ie) { Thread.currentThread().interrupt(); }
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
 
         // get report path and send email with attachment
         String reportPath = ExtentReporterUtility.getReportPath();
@@ -111,22 +179,35 @@ public class TestListener implements ITestListener {
             logger.warn("Failed to read report HTML: " + e.getMessage());
         }
 
-        int total = context.getAllTestMethods().length;
-        int passed = context.getPassedTests().size();
-        int failed = context.getFailedTests().size();
-        int skipped = context.getSkippedTests().size();
+        // --- NEW: compute UNIQUE test method counts from result maps ---
+        IResultMap passedMap = context.getPassedTests();
+        IResultMap failedMap = context.getFailedTests();
+        IResultMap skippedMap = context.getSkippedTests();
 
-        String subject = ExtentReporterUtility.getSimpleSummary(context.getName(), total, passed, failed, skipped);
+        Set<String> passedIds = uniqueTestIdsFrom(passedMap);
+        Set<String> failedIds = uniqueTestIdsFrom(failedMap);
+        Set<String> skippedIds = uniqueTestIdsFrom(skippedMap);
 
-        String body = "<p>Hi team,</p>"
-                + "<p>Execution finished. Summary:</p>"
-                + "<pre>" + subject + "</pre>"
+        // total unique test methods = union of the three sets
+        Set<String> allUnique = new HashSet<>();
+        allUnique.addAll(passedIds);
+        allUnique.addAll(failedIds);
+        allUnique.addAll(skippedIds);
+
+        int totalUnique = allUnique.size();
+        int passedUnique = passedIds.size();
+        int failedUnique = failedIds.size();
+        int skippedUnique = skippedIds.size();
+
+        String subject = ExtentReporterUtility.getSimpleSummary(context.getName(), totalUnique, passedUnique, failedUnique, skippedUnique);
+
+        String body = "<p>Hi team,</p>" + "<p>Execution finished. Summary:</p>" + "<pre>" + subject + "</pre>"
                 + "<p>Attached: <b>" + p.getFileName().toString() + "</b></p>"
                 + (reportHtml.isBlank() ? "<p>(report preview not available)</p>" : "<hr/>" + reportHtml);
 
         // send email with the report.html as attachment (no zip)
         try {
-        	
+
             EmailUtility.sendReportEmail(subject, body, p.toAbsolutePath().toString(),
                     EmailUtility.loadRecipientsFromPropsOrDefault());
             logger.info("Email sent with attachment: " + p.toAbsolutePath());
@@ -138,12 +219,27 @@ public class TestListener implements ITestListener {
     }
 
     private void sendSummaryOnly(ITestContext context) {
-        int total = context.getAllTestMethods().length;
-        int passed = context.getPassedTests().size();
-        int failed = context.getFailedTests().size();
-        int skipped = context.getSkippedTests().size();
-        String subject = ExtentReporterUtility.getSimpleSummary(context.getName(), total, passed, failed, skipped);
-        String body = "<p>Hi team,</p><p>Execution finished. Summary:</p><pre>" + subject + "</pre><p>Report file not available.</p>";
+        IResultMap passedMap = context.getPassedTests();
+        IResultMap failedMap = context.getFailedTests();
+        IResultMap skippedMap = context.getSkippedTests();
+
+        Set<String> passedIds = uniqueTestIdsFrom(passedMap);
+        Set<String> failedIds = uniqueTestIdsFrom(failedMap);
+        Set<String> skippedIds = uniqueTestIdsFrom(skippedMap);
+
+        Set<String> allUnique = new HashSet<>();
+        allUnique.addAll(passedIds);
+        allUnique.addAll(failedIds);
+        allUnique.addAll(skippedIds);
+
+        int totalUnique = allUnique.size();
+        int passedUnique = passedIds.size();
+        int failedUnique = failedIds.size();
+        int skippedUnique = skippedIds.size();
+
+        String subject = ExtentReporterUtility.getSimpleSummary(context.getName(), totalUnique, passedUnique, failedUnique, skippedUnique);
+        String body = "<p>Hi team,</p><p>Execution finished. Summary:</p><pre>" + subject
+                + "</pre><p>Report file not available.</p>";
         try {
             EmailUtility.sendReportEmail(subject, body, null, EmailUtility.loadRecipientsFromPropsOrDefault());
             logger.info("Summary-only email sent");

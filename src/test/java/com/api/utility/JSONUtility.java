@@ -34,4 +34,9 @@ public class JSONUtility {
     public static BaseURL getAadhaar() {
         return getProduct("aadhaar");
     }
+    
+    public static BaseURL getEsign()
+    {
+    	return getProduct("eSign");
+    }
 }
