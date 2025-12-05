@@ -27,3 +27,4 @@ config/config.json
 .env
 *.jks
 keystore.jks
+/bin/

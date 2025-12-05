@@ -3,22 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.api.tests.aadhaar.GenerateClientToken">
+      <class name="com.api.tests.esign.FetchDocumentEsign">
         <methods>
-          <include name="verifyResponseWithLongCompanyName"/>
-          <include name="verifyResponseWithLongSecretToken"/>
-          <include name="verifyIncorrectContentHeader"/>
-          <include name="verifyResponseWithMissingCompanyName"/>
-          <include name="verifyResponseWithMissingSecretToken"/>
-          <include name="verifyResponseWithNumericValuesOfFields"/>
-          <include name="verifyResponseWithSQLInjection"/>
-          <include name="verifyResponseWithMissingBothCompanyNameAndSecretToken"/>
           <include name="setup"/>
-          <include name="verifyResponseWithInvalidSecretToken"/>
-          <include name="verifyResponseWithInvalidCompany"/>
-          <include name="verifyResponseWhenGETMethodInsteadOfPOST"/>
+          <include name="initSoftAssert"/>
+          <include name="verifyResponseWithValidCredentialsEsign"/>
         </methods>
-      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
+      </class> <!-- com.api.tests.esign.FetchDocumentEsign -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
