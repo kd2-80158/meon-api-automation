@@ -8,436 +8,167 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num attn">11</td><td class="num">9,592</td><td></td><td></td></tr>
+<tr><th colspan="8">API Test Suite</th></tr>
+<tr><td><a href="#t0">API Test</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num attn">26</td><td class="num">106,032</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="11">com.api.tests.aadhaar.GenerateClientToken</td><td><a href="#m0">verifyIncorrectContentHeader</a></td><td rowspan="1">1764227866878</td><td rowspan="1">479</td></tr><tr class="failedeven"><td><a href="#m1">verifyResponseWhenGETMethodInsteadOfPOST</a></td><td rowspan="1">1764227868909</td><td rowspan="1">290</td></tr><tr class="failedeven"><td><a href="#m2">verifyResponseWithInvalidCompany</a></td><td rowspan="1">1764227866596</td><td rowspan="1">264</td></tr><tr class="failedeven"><td><a href="#m3">verifyResponseWithInvalidSecretToken</a></td><td rowspan="1">1764227866351</td><td rowspan="1">225</td></tr><tr class="failedeven"><td><a href="#m4">verifyResponseWithLongCompanyName</a></td><td rowspan="1">1764227867378</td><td rowspan="1">243</td></tr><tr class="failedeven"><td><a href="#m5">verifyResponseWithLongSecretToken</a></td><td rowspan="1">1764227867629</td><td rowspan="1">317</td></tr><tr class="failedeven"><td><a href="#m6">verifyResponseWithMissingBothCompanyNameAndSecretToken</a></td><td rowspan="1">1764227866106</td><td rowspan="1">235</td></tr><tr class="failedeven"><td><a href="#m7">verifyResponseWithMissingCompanyName</a></td><td rowspan="1">1764227865857</td><td rowspan="1">234</td></tr><tr class="failedeven"><td><a href="#m8">verifyResponseWithMissingSecretToken</a></td><td rowspan="1">1764227865483</td><td rowspan="1">355</td></tr><tr class="failedeven"><td><a href="#m9">verifyResponseWithNumericValuesOfFields</a></td><td rowspan="1">1764227868639</td><td rowspan="1">262</td></tr><tr class="failedeven"><td><a href="#m10">verifyResponseWithSQLInjection</a></td><td rowspan="1">1764227867957</td><td rowspan="1">252</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="3">com.api.tests.aadhaar.GenerateClientToken</td><td><a href="#m11">getTokenWithValidCredentials</a></td><td rowspan="1">1764227861581</td><td rowspan="1">3864</td></tr><tr class="passedeven"><td><a href="#m12">verifyResponeWithNoRequestBody</a></td><td rowspan="1">1764227868451</td><td rowspan="1">182</td></tr><tr class="passedeven"><td><a href="#m13">verifyResponseTimeSLA</a></td><td rowspan="1">1764227868219</td><td rowspan="1">224</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">API Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">API Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.api.tests.esign.FetchDocumentEsign</td><td><a href="#m0">verifyResponseWithValidCredentialsEsign</a></td><td rowspan="1">1764923662696</td><td rowspan="1">41715</td></tr><tr class="failedodd"><td rowspan="9">com.api.tests.esign.GenerateClientSignatureEsign</td><td><a href="#m1">verifyResponseWhenRequestBodyJSONMalformedEsign</a></td><td rowspan="1">1764923606206</td><td rowspan="1">204</td></tr><tr class="failedodd"><td><a href="#m2">verifyResponseWithMissingBothUsernameAndPasswordEsign</a></td><td rowspan="1">1764923605405</td><td rowspan="1">192</td></tr><tr class="failedodd"><td><a href="#m3">verifyResponseWithMissingContentTypeEsign</a></td><td rowspan="1">1764923606413</td><td rowspan="1">198</td></tr><tr class="failedodd"><td><a href="#m4">verifyResponseWithMissingPasswordEsign</a></td><td rowspan="1">1764923605196</td><td rowspan="1">205</td></tr><tr class="failedodd"><td><a href="#m5">verifyResponseWithMissingUsernameEsign</a></td><td rowspan="1">1764923604926</td><td rowspan="1">264</td></tr><tr class="failedodd"><td><a href="#m6">verifyResponseWithNumericValuesOfFieldsEsign</a></td><td rowspan="1">1764923606614</td><td rowspan="1">162</td></tr><tr class="failedodd"><td><a href="#m7">verifyResponseWithSqlInjectionEsign</a></td><td rowspan="1">1764923605777</td><td rowspan="1">205</td></tr><tr class="failedodd"><td><a href="#m8">verifyResponseWithWrongBothUsernameAndPasswordEsign</a></td><td rowspan="1">1764923605601</td><td rowspan="1">172</td></tr><tr class="failedodd"><td><a href="#m9">verifyResponseWithXSSPayloadEsign</a></td><td rowspan="1">1764923605994</td><td rowspan="1">208</td></tr><tr class="failedeven"><td rowspan="16">com.api.tests.esign.GenerateTokenEsign</td><td><a href="#m10">verifyResponseForRedirectionOfCancelAndRedirectUrlEsign</a></td><td rowspan="1">1764923632649</td><td rowspan="1">18861</td></tr><tr class="failedeven"><td><a href="#m11">verifyResponseWithInvalidAadhaarNumberFormatEsign</a></td><td rowspan="1">1764923657512</td><td rowspan="1">2309</td></tr><tr class="failedeven"><td><a href="#m12">verifyResponseWithInvalidBase64DocumentDataEsign</a></td><td rowspan="1">1764923620270</td><td rowspan="1">808</td></tr><tr class="failedeven"><td><a href="#m13">verifyResponseWithInvalidDocumentData</a></td><td rowspan="1">1764923661911</td><td rowspan="1">763</td></tr><tr class="failedeven"><td><a href="#m14">verifyResponseWithInvalidEmailFormatEsign</a></td><td rowspan="1">1764923621799</td><td rowspan="1">3589</td></tr><tr class="failedeven"><td><a href="#m15">verifyResponseWithInvalidMobileFormatEsign</a></td><td rowspan="1">1764923626099</td><td rowspan="1">2466</td></tr><tr class="failedeven"><td><a href="#m16">verifyResponseWithInvalidSignatureHeaderEsign</a></td><td rowspan="1">1764923617500</td><td rowspan="1">411</td></tr><tr class="failedeven"><td><a href="#m17">verifyResponseWithMissingContentTypeHeaderEsign</a></td><td rowspan="1">1764923614126</td><td rowspan="1">1226</td></tr><tr class="failedeven"><td><a href="#m18">verifyResponseWithMissingDocumentDataEsign</a></td><td rowspan="1">1764923618627</td><td rowspan="1">854</td></tr><tr class="failedeven"><td><a href="#m19">verifyResponseWithMissingGenderFieldWhenTrueEsign</a></td><td rowspan="1">1764923660508</td><td rowspan="1">733</td></tr><tr class="failedeven"><td><a href="#m20">verifyResponseWithMissingPageNumberCordinatesEsign</a></td><td rowspan="1">1764923629245</td><td rowspan="1">967</td></tr><tr class="failedeven"><td><a href="#m21">verifyResponseWithMissingSignatureHeaderEsign</a></td><td rowspan="1">1764923616265</td><td rowspan="1">467</td></tr><tr class="failedeven"><td><a href="#m22">verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign</a></td><td rowspan="1">1764923630863</td><td rowspan="1">1064</td></tr><tr class="failedeven"><td><a href="#m23">verifyResponseWithNonNumericDateToExpireFieldEsign</a></td><td rowspan="1">1764923652467</td><td rowspan="1">1107</td></tr><tr class="failedeven"><td><a href="#m24">verifyResponseWithOutOfRangePercentageNameMatchEsign</a></td><td rowspan="1">1764923654244</td><td rowspan="1">1009</td></tr><tr class="failedeven"><td><a href="#m25">verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign</a></td><td rowspan="1">1764923655933</td><td rowspan="1">932</td></tr><tr><th colspan="4">API Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.api.tests.esign.GenerateClientSignatureEsign</td><td><a href="#m26">verifyResponseWithValidCredentialsEsign</a></td><td rowspan="1">1764923601589</td><td rowspan="1">3315</td></tr><tr class="passedodd"><td rowspan="2">com.api.tests.esign.GenerateTokenEsign</td><td><a href="#m27">verifyResponseWithRemovingOptionalFieldsEsign</a></td><td rowspan="1">1764923611970</td><td rowspan="1">1165</td></tr><tr class="passedodd"><td><a href="#m28">verifyResponseWithValidCredentialsEsign</a></td><td rowspan="1">1764923607480</td><td rowspan="1">3692</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.api.tests.aadhaar.GenerateClientToken#verifyIncorrectContentHeader</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Server returned HTML error page for incorrect Content-Type. Response body:
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;title&gt;415 Unsupported Media Type&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Unsupported Media Type&lt;/h1&gt;
-    &lt;p&gt;Did not attempt to load JSON data because the request Content-Type was not &apos;application/json&apos;.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-	at org.testng.Assert.fail(Assert.java:111)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyIncorrectContentHeader(GenerateClientToken.java:132)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+<h2>API Test</h2><h3 id="m0">com.api.tests.esign.FetchDocumentEsign#verifyResponseWithValidCredentialsEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //button[contains(normalize-space(text()),&apos;Verify OTP&apos;)] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.37.0&apos;, revision: &apos;3c1da1e342&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;15.6&apos;, java.version: &apos;11.0.20&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 145.0.2, moz:accessibilityChecks: false, moz:buildID: 20251124145406, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 24.6.0, moz:processID: 7028, moz:profile: /var/folders/bd/cxwv7fcd26v..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Macintosh; Int...}
+Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.api.base.AuthService.getEsign(AuthService.java:199)
+	at com.api.tests.esign.FetchDocumentEsign.verifyResponseWithValidCredentialsEsign(FetchDocumentEsign.java:55)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWhenGETMethodInsteadOfPOST</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Server returned HTML error page for incorrect Content-Type. Response body:
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;title&gt;405 Method Not Allowed&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Method Not Allowed&lt;/h1&gt;
-    &lt;p&gt;The method is not allowed for the requested URL.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-	at org.testng.Assert.fail(Assert.java:111)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOST(GenerateClientToken.java:260)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWhenRequestBodyJSONMalformedEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWhenRequestBodyJSONMalformedEsign(GenerateClientSignatureEsign.java:153)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithInvalidCompany</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [401] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidCompany(GenerateClientToken.java:113)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithMissingBothUsernameAndPasswordEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:89)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithInvalidSecretToken</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [401] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidSecretToken(GenerateClientToken.java:97)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithMissingContentTypeEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Error message mismatch expected [Invalid or missing Content-Type. Expected application/json] but found [Malformed JSON]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingContentTypeEsign(GenerateClientSignatureEsign.java:180)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithLongCompanyName</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [400] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongCompanyName(GenerateClientToken.java:148)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithMissingPasswordEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Message mismatch expected [Password required] but found [Username required],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingPasswordEsign(GenerateClientSignatureEsign.java:74)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithLongSecretToken</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [401] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongSecretToken(GenerateClientToken.java:163)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithMissingUsernameEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingUsernameEsign(GenerateClientSignatureEsign.java:62)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithMissingBothCompanyNameAndSecretToken</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [400] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretToken(GenerateClientToken.java:81)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithNumericValuesOfFieldsEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Error message should be present expected object to not be null,
+	expected [User does not exist.] but found [null],
+	Status should be 400 Bad Request expected [400] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithNumericValuesOfFieldsEsign(GenerateClientSignatureEsign.java:197)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m7">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithMissingCompanyName</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [400] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingCompanyName(GenerateClientToken.java:68)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithSqlInjectionEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [401] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithSqlInjectionEsign(GenerateClientSignatureEsign.java:116)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m8">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithMissingSecretToken</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [400] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingSecretToken(GenerateClientToken.java:54)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithWrongBothUsernameAndPasswordEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [401] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithWrongBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:103)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m9">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithNumericValuesOfFields</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Status should be 400 Bad Request expected [400] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithNumericValuesOfFields(GenerateClientToken.java:222)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithXSSPayloadEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [401] but found [200]
+	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithXSSPayloadEsign(GenerateClientSignatureEsign.java:130)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m10">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithSQLInjection</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [401] but found [200]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-	at org.testng.Assert.assertEquals(Assert.java:132)
-	at org.testng.Assert.assertEquals(Assert.java:1419)
-	at org.testng.Assert.assertEquals(Assert.java:1383)
-	at org.testng.Assert.assertEquals(Assert.java:1429)
-	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithSQLInjection(GenerateClientToken.java:178)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">com.api.tests.esign.GenerateTokenEsign#verifyResponseForRedirectionOfCancelAndRedirectUrlEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Cancel redirect URL mismatch. Expected contains: https://meon.co.in but got: https://esignuat.meon.co.in/EsignServices/default_page/demo3mvP/f39256a0-611b-43b8-a812-7f43184073d1?success=no&amp;amp;error=Request%20Cancelled&amp;amp;nsdl_status=no expected [true] but found [false]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseForRedirectionOfCancelAndRedirectUrlEsign(GenerateTokenEsign.java:436)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m11">com.api.tests.aadhaar.GenerateClientToken#getTokenWithValidCredentials</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m12">com.api.tests.aadhaar.GenerateClientToken#verifyResponeWithNoRequestBody</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m13">com.api.tests.aadhaar.GenerateClientToken#verifyResponseTimeSLA</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithInvalidAadhaarNumberFormatEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Expected success=false expected [false] but found [true],
+	Message mismatch expected [invalid aadhaar format] but found [link generated],
+	Token is generated as validation is not yet implemented expected [] but found [33260bcc-f81b-431d-87af-360ab52c1594],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidAadhaarNumberFormatEsign(GenerateTokenEsign.java:562)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithInvalidBase64DocumentDataEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (25) cannot be 1 more than a multiple of 4],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidBase64DocumentDataEsign(GenerateTokenEsign.java:297)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithInvalidDocumentData</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (21) cannot be 1 more than a multiple of 4],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidDocumentData(GenerateTokenEsign.java:613)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithInvalidEmailFormatEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Expected success=false expected [false] but found [true],
+	Message mismatch expected [invalid email format] but found [link generated],
+	Token is not generated expected [] but found [76bf42f4-6cc9-4baf-b262-20ef052442d1],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidEmailFormatEsign(GenerateTokenEsign.java:322)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithInvalidMobileFormatEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Expected success=false expected [false] but found [true],
+	Message mismatch expected [invalid mobile format] but found [link generated],
+	Token is not generated expected [] but found [8a69dcea-02a6-4c6b-a655-825202eea6d3],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidMobileFormatEsign(GenerateTokenEsign.java:347)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithInvalidSignatureHeaderEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Message mismatch expected [Invalid crypto padding] but found [Not enough segments],
+	HTTP status mismatch expected [401] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidSignatureHeaderEsign(GenerateTokenEsign.java:247)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m17">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithMissingContentTypeHeaderEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingContentTypeHeaderEsign(GenerateTokenEsign.java:149)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m18">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithMissingDocumentDataEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingDocumentDataEsign(GenerateTokenEsign.java:271)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m19">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithMissingGenderFieldWhenTrueEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Message mismatch expected [invalid gender value] but found [Something went wrong],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingGenderFieldWhenTrueEsign(GenerateTokenEsign.java:586)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m20">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithMissingPageNumberCordinatesEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingPageNumberCordinatesEsign(GenerateTokenEsign.java:376)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m21">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithMissingSignatureHeaderEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [401] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingSignatureHeaderEsign(GenerateTokenEsign.java:197)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m22">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign(GenerateTokenEsign.java:405)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m23">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithNonNumericDateToExpireFieldEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericDateToExpireFieldEsign(GenerateTokenEsign.java:461)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m24">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithOutOfRangePercentageNameMatchEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithOutOfRangePercentageNameMatchEsign(GenerateTokenEsign.java:487)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m25">com.api.tests.esign.GenerateTokenEsign#verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Message mismatch expected [percentage_name_match should be a float value] but found [Something went wrong],
+	HTTP status mismatch expected [400] but found [200]
+	at com.api.tests.esign.GenerateTokenEsign.verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign(GenerateTokenEsign.java:536)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m26">com.api.tests.esign.GenerateClientSignatureEsign#verifyResponseWithValidCredentialsEsign</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m27">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithRemovingOptionalFieldsEsign</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m28">com.api.tests.esign.GenerateTokenEsign#verifyResponseWithValidCredentialsEsign</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

@@ -1,39 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="14" passed="3" failed="11" skipped="0">
+<testng-results ignored="0" total="29" passed="3" failed="26" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-27T12:47:39 IST" name="Default suite" finished-at="2025-11-27T12:47:49 IST" duration-ms="9592">
+  <suite started-at="2025-12-05T14:03:18 IST" name="API Test Suite" finished-at="2025-12-05T14:05:04 IST" duration-ms="106032">
     <groups>
     </groups>
-    <test started-at="2025-11-27T12:47:39 IST" name="Default test" finished-at="2025-11-27T12:47:49 IST" duration-ms="9592">
-      <class name="com.api.tests.aadhaar.GenerateClientToken">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:40 IST" name="setup" finished-at="2025-11-27T12:47:41 IST" duration-ms="1524" status="PASS">
+    <test started-at="2025-12-05T14:03:18 IST" name="API Test" finished-at="2025-12-05T14:05:04 IST" duration-ms="106032">
+      <class name="com.api.tests.esign.GenerateTokenEsign">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:26 IST" name="setup" finished-at="2025-12-05T14:03:27 IST" duration-ms="699" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="getTokenWithValidCredentials()[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:41 IST" name="getTokenWithValidCredentials" description="tc_01 - Verify that the API returns the appropriate response when valid credentials are provided." finished-at="2025-11-27T12:47:45 IST" duration-ms="3864" status="PASS">
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:26 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:26 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getTokenWithValidCredentials -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:45 IST" name="setup" finished-at="2025-11-27T12:47:45 IST" duration-ms="5" status="PASS">
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithValidCredentialsEsign()[pri:1, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:27 IST" name="verifyResponseWithValidCredentialsEsign" description="tc_01 - Verify successful upload when all mandatory fields and valid headers are provided." finished-at="2025-12-05T14:03:31 IST" duration-ms="3692" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithValidCredentialsEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:31 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:31 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:31 IST" name="setup" finished-at="2025-12-05T14:03:31 IST" duration-ms="790" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingSecretToken()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:45 IST" name="verifyResponseWithMissingSecretToken" description="tc_02 - Verify that the API returns the appropriate response when the secret_token field is missing." finished-at="2025-11-27T12:47:45 IST" duration-ms="355" status="FAIL">
+        <test-method signature="verifyResponseWithRemovingOptionalFieldsEsign()[pri:2, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:31 IST" name="verifyResponseWithRemovingOptionalFieldsEsign" description="tc_02 - Verify upload succeeds when optional fields are absent (not relevant here but treat optional fields)." finished-at="2025-12-05T14:03:33 IST" duration-ms="1165" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithRemovingOptionalFieldsEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:33 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:33 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:33 IST" name="setup" finished-at="2025-12-05T14:03:34 IST" duration-ms="983" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithMissingContentTypeHeaderEsign()[pri:3, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:34 IST" name="verifyResponseWithMissingContentTypeHeaderEsign" description="tc_03 - Verify API returns error when Content-Type header missing." finished-at="2025-12-05T14:03:35 IST" duration-ms="1226" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [400] but found [200]]]>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [400] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingSecretToken(GenerateClientToken.java:54)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingContentTypeHeaderEsign(GenerateTokenEsign.java:149)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -67,26 +84,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingSecretToken -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:45 IST" name="setup" finished-at="2025-11-27T12:47:45 IST" duration-ms="9" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingContentTypeHeaderEsign -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:35 IST" name="setup" finished-at="2025-12-05T14:03:36 IST" duration-ms="903" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingCompanyName()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:45 IST" name="verifyResponseWithMissingCompanyName" description="tc_03 - Verify that the API returns the appropriate response when the company_name field is missing." finished-at="2025-11-27T12:47:46 IST" duration-ms="234" status="FAIL">
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:35 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:35 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithMissingSignatureHeaderEsign()[pri:4, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:36 IST" name="verifyResponseWithMissingSignatureHeaderEsign" description="tc_04 - Verify API returns error when signature header missing." finished-at="2025-12-05T14:03:36 IST" duration-ms="467" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [400] but found [200]]]>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [401] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [400] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingCompanyName(GenerateClientToken.java:68)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [401] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingSignatureHeaderEsign(GenerateTokenEsign.java:197)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -120,26 +138,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingCompanyName -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="setup" finished-at="2025-11-27T12:47:46 IST" duration-ms="5" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingSignatureHeaderEsign -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:36 IST" name="setup" finished-at="2025-12-05T14:03:37 IST" duration-ms="760" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingBothCompanyNameAndSecretToken()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="verifyResponseWithMissingBothCompanyNameAndSecretToken" description="tc_04 - Verify that the API returns the appropriate response when both fields are empty strings." finished-at="2025-11-27T12:47:46 IST" duration-ms="235" status="FAIL">
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:36 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:36 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithInvalidSignatureHeaderEsign()[pri:5, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:37 IST" name="verifyResponseWithInvalidSignatureHeaderEsign" description="tc_05 - Verify API returns error when signature is invalid or tampered." finished-at="2025-12-05T14:03:37 IST" duration-ms="411" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [400] but found [200]]]>
+              <![CDATA[The following asserts failed:
+Message mismatch expected [Invalid crypto padding] but found [Not enough segments],
+HTTP status mismatch expected [401] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [400] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretToken(GenerateClientToken.java:81)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Message mismatch expected [Invalid crypto padding] but found [Not enough segments],
+HTTP status mismatch expected [401] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidSignatureHeaderEsign(GenerateTokenEsign.java:247)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -173,26 +194,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingBothCompanyNameAndSecretToken -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="setup" finished-at="2025-11-27T12:47:46 IST" duration-ms="2" status="PASS">
+        </test-method> <!-- verifyResponseWithInvalidSignatureHeaderEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:37 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:37 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:37 IST" name="setup" finished-at="2025-12-05T14:03:38 IST" duration-ms="712" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithInvalidSecretToken()[pri:5, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="verifyResponseWithInvalidSecretToken" description="tc_05 - Verify that the API returns the appropriate response when an invalid secret_token is provided." finished-at="2025-11-27T12:47:46 IST" duration-ms="225" status="FAIL">
+        <test-method signature="verifyResponseWithMissingDocumentDataEsign()[pri:6, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:38 IST" name="verifyResponseWithMissingDocumentDataEsign" description="tc_06 - Verify API returns error when document_data is missing." finished-at="2025-12-05T14:03:39 IST" duration-ms="854" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [401] but found [200]]]>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [401] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidSecretToken(GenerateClientToken.java:97)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingDocumentDataEsign(GenerateTokenEsign.java:271)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -226,26 +248,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidSecretToken -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="setup" finished-at="2025-11-27T12:47:46 IST" duration-ms="4" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingDocumentDataEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:39 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:39 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:39 IST" name="setup" finished-at="2025-12-05T14:03:40 IST" duration-ms="784" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithInvalidCompany()[pri:6, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="verifyResponseWithInvalidCompany" description="tc_06 - Verify that the API returns the appropriate response when company_name does not match secret_token." finished-at="2025-11-27T12:47:46 IST" duration-ms="264" status="FAIL">
+        <test-method signature="verifyResponseWithInvalidBase64DocumentDataEsign()[pri:7, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:40 IST" name="verifyResponseWithInvalidBase64DocumentDataEsign" description="tc_07 - Verify API returns error when document_data is not valid base64." finished-at="2025-12-05T14:03:41 IST" duration-ms="808" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [401] but found [200]]]>
+              <![CDATA[The following asserts failed:
+Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (25) cannot be 1 more than a multiple of 4],
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [401] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidCompany(GenerateClientToken.java:113)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (25) cannot be 1 more than a multiple of 4],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidBase64DocumentDataEsign(GenerateTokenEsign.java:297)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -279,38 +304,33 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidCompany -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="setup" finished-at="2025-11-27T12:47:46 IST" duration-ms="3" status="PASS">
+        </test-method> <!-- verifyResponseWithInvalidBase64DocumentDataEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:41 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:41 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:41 IST" name="setup" finished-at="2025-12-05T14:03:41 IST" duration-ms="718" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyIncorrectContentHeader()[pri:7, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:46 IST" name="verifyIncorrectContentHeader" description="tc_07 - Verify that the API returns the appropriate response when Content-Type header is incorrect." finished-at="2025-11-27T12:47:47 IST" duration-ms="479" status="FAIL">
+        <test-method signature="verifyResponseWithInvalidEmailFormatEsign()[pri:8, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:41 IST" name="verifyResponseWithInvalidEmailFormatEsign" description="tc_09 - Verify API validates email format and returns error on invalid email." finished-at="2025-12-05T14:03:45 IST" duration-ms="3589" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Server returned HTML error page for incorrect Content-Type. Response body:
-<html lang="en">
-  <head>
-    <title>415 Unsupported Media Type</title>
-  </head>
-  <body>
-    <h1>Unsupported Media Type</h1>
-    <p>Did not attempt to load JSON data because the request Content-Type was not 'application/json'.</p>
-  </body>
-</html>]]>
+              <![CDATA[The following asserts failed:
+Expected success=false expected [false] but found [true],
+Message mismatch expected [invalid email format] but found [link generated],
+Token is not generated expected [] but found [76bf42f4-6cc9-4baf-b262-20ef052442d1],
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Server returned HTML error page for incorrect Content-Type. Response body:
-<html lang="en">
-  <head>
-    <title>415 Unsupported Media Type</title>
-  </head>
-  <body>
-    <h1>Unsupported Media Type</h1>
-    <p>Did not attempt to load JSON data because the request Content-Type was not 'application/json'.</p>
-  </body>
-</html>
-at org.testng.Assert.fail(Assert.java:111)
-at com.api.tests.aadhaar.GenerateClientToken.verifyIncorrectContentHeader(GenerateClientToken.java:132)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Expected success=false expected [false] but found [true],
+Message mismatch expected [invalid email format] but found [link generated],
+Token is not generated expected [] but found [76bf42f4-6cc9-4baf-b262-20ef052442d1],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidEmailFormatEsign(GenerateTokenEsign.java:322)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -344,26 +364,33 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIncorrectContentHeader -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:47 IST" name="setup" finished-at="2025-11-27T12:47:47 IST" duration-ms="4" status="PASS">
+        </test-method> <!-- verifyResponseWithInvalidEmailFormatEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:45 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:45 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:45 IST" name="setup" finished-at="2025-12-05T14:03:46 IST" duration-ms="703" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithLongCompanyName()[pri:8, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:47 IST" name="verifyResponseWithLongCompanyName" description="tc_09 - Verify that the API returns the appropriate response when company_name contains extremely long values." finished-at="2025-11-27T12:47:47 IST" duration-ms="243" status="FAIL">
+        <test-method signature="verifyResponseWithInvalidMobileFormatEsign()[pri:9, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:46 IST" name="verifyResponseWithInvalidMobileFormatEsign" description="tc_10 - Verify API validates mobile number format and returns error on invalid mobile." finished-at="2025-12-05T14:03:48 IST" duration-ms="2466" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [400] but found [200]]]>
+              <![CDATA[The following asserts failed:
+Expected success=false expected [false] but found [true],
+Message mismatch expected [invalid mobile format] but found [link generated],
+Token is not generated expected [] but found [8a69dcea-02a6-4c6b-a655-825202eea6d3],
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [400] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongCompanyName(GenerateClientToken.java:148)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Expected success=false expected [false] but found [true],
+Message mismatch expected [invalid mobile format] but found [link generated],
+Token is not generated expected [] but found [8a69dcea-02a6-4c6b-a655-825202eea6d3],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidMobileFormatEsign(GenerateTokenEsign.java:347)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -397,26 +424,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithLongCompanyName -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:47 IST" name="setup" finished-at="2025-11-27T12:47:47 IST" duration-ms="5" status="PASS">
+        </test-method> <!-- verifyResponseWithInvalidMobileFormatEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:48 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:48 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:48 IST" name="setup" finished-at="2025-12-05T14:03:49 IST" duration-ms="668" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithLongSecretToken()[pri:9, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:47 IST" name="verifyResponseWithLongSecretToken" description="tc_10 - Verify that the API returns the appropriate response when secret_token contains extremely long values." finished-at="2025-11-27T12:47:47 IST" duration-ms="317" status="FAIL">
+        <test-method signature="verifyResponseWithMissingPageNumberCordinatesEsign()[pri:10, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:49 IST" name="verifyResponseWithMissingPageNumberCordinatesEsign" description="tc_11 - Verify API validates coordinate objects and returns error when coordinates missing page_number." finished-at="2025-12-05T14:03:50 IST" duration-ms="967" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [401] but found [200]]]>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [401] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongSecretToken(GenerateClientToken.java:163)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingPageNumberCordinatesEsign(GenerateTokenEsign.java:376)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -450,26 +478,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithLongSecretToken -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:47 IST" name="setup" finished-at="2025-11-27T12:47:47 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingPageNumberCordinatesEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:50 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:50 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:50 IST" name="setup" finished-at="2025-12-05T14:03:50 IST" duration-ms="647" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithSQLInjection()[pri:10, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:47 IST" name="verifyResponseWithSQLInjection" description="tc_11 - Verify that the API returns the appropriate response when SQL injection patterns are used." finished-at="2025-11-27T12:47:48 IST" duration-ms="252" status="FAIL">
+        <test-method signature="verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign()[pri:11, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:50 IST" name="verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign" description="tc_12 - Verify API returns error when coordinate values are non-numeric or negative." finished-at="2025-12-05T14:03:51 IST" duration-ms="1064" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [401] but found [200]]]>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [401] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at org.testng.Assert.assertEquals(Assert.java:1429)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithSQLInjection(GenerateClientToken.java:178)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign(GenerateTokenEsign.java:405)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -503,41 +532,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithSQLInjection -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="setup" finished-at="2025-11-27T12:47:48 IST" duration-ms="5" status="PASS">
+        </test-method> <!-- verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:51 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:51 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:51 IST" name="setup" finished-at="2025-12-05T14:03:52 IST" duration-ms="718" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseTimeSLA()[pri:11, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="verifyResponseTimeSLA" description="tc_15 - Verify that the API returns the appropriate response based on response time SLA." finished-at="2025-11-27T12:47:48 IST" duration-ms="224" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseTimeSLA -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="setup" finished-at="2025-11-27T12:47:48 IST" duration-ms="5" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponeWithNoRequestBody()[pri:12, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="verifyResponeWithNoRequestBody" description="tc_17 - Verify that the API returns the appropriate response when request body is missing." finished-at="2025-11-27T12:47:48 IST" duration-ms="182" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponeWithNoRequestBody -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="setup" finished-at="2025-11-27T12:47:48 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithNumericValuesOfFields()[pri:13, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="verifyResponseWithNumericValuesOfFields" description="tc_18 - Verify that the API returns the appropriate response when numeric values are sent instead of strings." finished-at="2025-11-27T12:47:48 IST" duration-ms="262" status="FAIL">
+        <test-method signature="verifyResponseForRedirectionOfCancelAndRedirectUrlEsign()[pri:12, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:03:52 IST" name="verifyResponseForRedirectionOfCancelAndRedirectUrlEsign" description="tc_15 - Verify API handles redirect_url and cancel_redirect_url properly in response/flow." finished-at="2025-12-05T14:04:11 IST" duration-ms="18861" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Status should be 400 Bad Request expected [400] but found [200]]]>
+              <![CDATA[The following asserts failed:
+Cancel redirect URL mismatch. Expected contains: https://meon.co.in but got: https://esignuat.meon.co.in/EsignServices/default_page/demo3mvP/f39256a0-611b-43b8-a812-7f43184073d1?success=no&amp;error=Request%20Cancelled&amp;nsdl_status=no expected [true] but found [false]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Status should be 400 Bad Request expected [400] but found [200]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithNumericValuesOfFields(GenerateClientToken.java:222)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Cancel redirect URL mismatch. Expected contains: https://meon.co.in but got: https://esignuat.meon.co.in/EsignServices/default_page/demo3mvP/f39256a0-611b-43b8-a812-7f43184073d1?success=no&amp;error=Request%20Cancelled&amp;nsdl_status=no expected [true] but found [false]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseForRedirectionOfCancelAndRedirectUrlEsign(GenerateTokenEsign.java:436)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -571,38 +586,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithNumericValuesOfFields -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="setup" finished-at="2025-11-27T12:47:48 IST" duration-ms="2" status="PASS">
+        </test-method> <!-- verifyResponseForRedirectionOfCancelAndRedirectUrlEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:11 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:11 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:11 IST" name="setup" finished-at="2025-12-05T14:04:12 IST" duration-ms="940" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWhenGETMethodInsteadOfPOST()[pri:15, instance:com.api.tests.aadhaar.GenerateClientToken@3e27aa33]" started-at="2025-11-27T12:47:48 IST" name="verifyResponseWhenGETMethodInsteadOfPOST" description="tc_23 - Verify API returns correct error when HTTP method GET is used instead of POST" finished-at="2025-11-27T12:47:49 IST" duration-ms="290" status="FAIL">
+        <test-method signature="verifyResponseWithNonNumericDateToExpireFieldEsign()[pri:13, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:12 IST" name="verifyResponseWithNonNumericDateToExpireFieldEsign" description="tc_16 - Verify API returns error when days_to_expire is non-numeric or out of range." finished-at="2025-12-05T14:04:13 IST" duration-ms="1107" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Server returned HTML error page for incorrect Content-Type. Response body:
-<html lang="en">
-  <head>
-    <title>405 Method Not Allowed</title>
-  </head>
-  <body>
-    <h1>Method Not Allowed</h1>
-    <p>The method is not allowed for the requested URL.</p>
-  </body>
-</html>]]>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Server returned HTML error page for incorrect Content-Type. Response body:
-<html lang="en">
-  <head>
-    <title>405 Method Not Allowed</title>
-  </head>
-  <body>
-    <h1>Method Not Allowed</h1>
-    <p>The method is not allowed for the requested URL.</p>
-  </body>
-</html>
-at org.testng.Assert.fail(Assert.java:111)
-at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOST(GenerateClientToken.java:260)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericDateToExpireFieldEsign(GenerateTokenEsign.java:461)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -636,8 +640,819 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWhenGETMethodInsteadOfPOST -->
-      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- verifyResponseWithNonNumericDateToExpireFieldEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:13 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:13 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:13 IST" name="setup" finished-at="2025-12-05T14:04:14 IST" duration-ms="660" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithOutOfRangePercentageNameMatchEsign()[pri:14, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:14 IST" name="verifyResponseWithOutOfRangePercentageNameMatchEsign" description="tc_18 - Verify API enforces percentage_name_match numeric range 0-100." finished-at="2025-12-05T14:04:15 IST" duration-ms="1009" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithOutOfRangePercentageNameMatchEsign(GenerateTokenEsign.java:487)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithOutOfRangePercentageNameMatchEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:15 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:15 IST" name="setup" finished-at="2025-12-05T14:04:15 IST" duration-ms="674" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign()[pri:15, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:15 IST" name="verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign" description="tc_19 - Verify API percentage_name_match provide valid response during float value." finished-at="2025-12-05T14:04:16 IST" duration-ms="932" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Message mismatch expected [percentage_name_match should be a float value] but found [Something went wrong],
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Message mismatch expected [percentage_name_match should be a float value] but found [Something went wrong],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign(GenerateTokenEsign.java:536)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:16 IST" name="setup" finished-at="2025-12-05T14:04:17 IST" duration-ms="643" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:16 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:16 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithInvalidAadhaarNumberFormatEsign()[pri:16, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:17 IST" name="verifyResponseWithInvalidAadhaarNumberFormatEsign" description="tc_20 - Verify API validates aadhaar_number format when need_aadhaar_match is true." finished-at="2025-12-05T14:04:19 IST" duration-ms="2309" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Expected success=false expected [false] but found [true],
+Message mismatch expected [invalid aadhaar format] but found [link generated],
+Token is generated as validation is not yet implemented expected [] but found [33260bcc-f81b-431d-87af-360ab52c1594],
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Expected success=false expected [false] but found [true],
+Message mismatch expected [invalid aadhaar format] but found [link generated],
+Token is generated as validation is not yet implemented expected [] but found [33260bcc-f81b-431d-87af-360ab52c1594],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidAadhaarNumberFormatEsign(GenerateTokenEsign.java:562)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithInvalidAadhaarNumberFormatEsign -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:19 IST" name="setup" finished-at="2025-12-05T14:04:20 IST" duration-ms="684" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:19 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:19 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithMissingGenderFieldWhenTrueEsign()[pri:17, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:20 IST" name="verifyResponseWithMissingGenderFieldWhenTrueEsign" description="tc_21 - Verify API enforces gender values only allowed set (e.g., M/F/Other) when need_gender_match is true." finished-at="2025-12-05T14:04:21 IST" duration-ms="733" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Message mismatch expected [invalid gender value] but found [Something went wrong],
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Message mismatch expected [invalid gender value] but found [Something went wrong],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingGenderFieldWhenTrueEsign(GenerateTokenEsign.java:586)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithMissingGenderFieldWhenTrueEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:21 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:21 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:21 IST" name="setup" finished-at="2025-12-05T14:04:21 IST" duration-ms="667" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithInvalidDocumentData()[pri:18, instance:com.api.tests.esign.GenerateTokenEsign@304bb45b]" started-at="2025-12-05T14:04:21 IST" name="verifyResponseWithInvalidDocumentData" description="tc_22 - Verify API rejects requests when document_data decoded PDF is corrupted or unreadable." finished-at="2025-12-05T14:04:22 IST" duration-ms="763" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (21) cannot be 1 more than a multiple of 4],
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (21) cannot be 1 more than a multiple of 4],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidDocumentData(GenerateTokenEsign.java:613)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithInvalidDocumentData -->
+      </class> <!-- com.api.tests.esign.GenerateTokenEsign -->
+      <class name="com.api.tests.esign.FetchDocumentEsign">
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.FetchDocumentEsign@3de8f619]" started-at="2025-12-05T14:04:22 IST" name="initSoftAssert" finished-at="2025-12-05T14:04:22 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.FetchDocumentEsign@3de8f619]" started-at="2025-12-05T14:04:22 IST" name="setup" finished-at="2025-12-05T14:04:22 IST" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithValidCredentialsEsign()[pri:1, instance:com.api.tests.esign.FetchDocumentEsign@3de8f619]" started-at="2025-12-05T14:04:22 IST" name="verifyResponseWithValidCredentialsEsign" description="tc_01 - Verify that the API returns PDF URL when valid token and mobile are provided." finished-at="2025-12-05T14:05:04 IST" duration-ms="41715" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //button[contains(normalize-space(text()),'Verify OTP')] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.37.0', revision: '3c1da1e342'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.6', java.version: '11.0.20'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 145.0.2, moz:accessibilityChecks: false, moz:buildID: 20251124145406, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 24.6.0, moz:processID: 7028, moz:profile: /var/folders/bd/cxwv7fcd26v..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Macintosh; Int...}
+Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //button[contains(normalize-space(text()),'Verify OTP')] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.37.0', revision: '3c1da1e342'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.6', java.version: '11.0.20'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 145.0.2, moz:accessibilityChecks: false, moz:buildID: 20251124145406, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 24.6.0, moz:processID: 7028, moz:profile: /var/folders/bd/cxwv7fcd26v..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Macintosh; Int...}
+Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at com.api.base.AuthService.getEsign(AuthService.java:199)
+at com.api.tests.esign.FetchDocumentEsign.verifyResponseWithValidCredentialsEsign(FetchDocumentEsign.java:55)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithValidCredentialsEsign -->
+      </class> <!-- com.api.tests.esign.FetchDocumentEsign -->
+      <class name="com.api.tests.esign.GenerateClientSignatureEsign">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:18 IST" name="setup" finished-at="2025-12-05T14:03:21 IST" duration-ms="2860" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:21 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:21 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithValidCredentialsEsign()[pri:1, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:21 IST" name="verifyResponseWithValidCredentialsEsign" description="tc_01 - Verify that the API returns the appropriate response when valid username and password are provided." finished-at="2025-12-05T14:03:24 IST" duration-ms="3315" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithValidCredentialsEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:24 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:24 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithMissingUsernameEsign()[pri:2, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:24 IST" name="verifyResponseWithMissingUsernameEsign" description="tc_02 - Verify that the API returns the appropriate response when username is missing." finished-at="2025-12-05T14:03:25 IST" duration-ms="264" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingUsernameEsign(GenerateClientSignatureEsign.java:62)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithMissingUsernameEsign -->
+        <test-method signature="verifyResponseWithMissingPasswordEsign()[pri:3, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="verifyResponseWithMissingPasswordEsign" description="tc_03 - Verify that the API returns the appropriate response when password is missing." finished-at="2025-12-05T14:03:25 IST" duration-ms="205" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Message mismatch expected [Password required] but found [Username required],
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Message mismatch expected [Password required] but found [Username required],
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingPasswordEsign(GenerateClientSignatureEsign.java:74)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithMissingPasswordEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:25 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:25 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithMissingBothUsernameAndPasswordEsign()[pri:4, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="verifyResponseWithMissingBothUsernameAndPasswordEsign" description="tc_04 - Verify that the API returns the appropriate response when both username and password are empty strings." finished-at="2025-12-05T14:03:25 IST" duration-ms="192" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:89)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithMissingBothUsernameAndPasswordEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:25 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithWrongBothUsernameAndPasswordEsign()[pri:5, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="verifyResponseWithWrongBothUsernameAndPasswordEsign" description="tc_05 - Verify that the API returns the appropriate response when invalid credentials are provided." finished-at="2025-12-05T14:03:25 IST" duration-ms="172" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [401] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [401] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithWrongBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:103)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithWrongBothUsernameAndPasswordEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:25 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithSqlInjectionEsign()[pri:6, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="verifyResponseWithSqlInjectionEsign" description="tc_06 - Verify that the API returns the appropriate response when username contains SQL injection payload." finished-at="2025-12-05T14:03:25 IST" duration-ms="205" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [401] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [401] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithSqlInjectionEsign(GenerateClientSignatureEsign.java:116)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithSqlInjectionEsign -->
+        <test-method signature="verifyResponseWithXSSPayloadEsign()[pri:7, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="verifyResponseWithXSSPayloadEsign" description="tc_07 - Verify that the API returns the appropriate response when username contains XSS payload." finished-at="2025-12-05T14:03:26 IST" duration-ms="208" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+HTTP status mismatch expected [401] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+HTTP status mismatch expected [401] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithXSSPayloadEsign(GenerateClientSignatureEsign.java:130)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithXSSPayloadEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:25 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:25 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWhenRequestBodyJSONMalformedEsign()[pri:8, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:26 IST" name="verifyResponseWhenRequestBodyJSONMalformedEsign" description="tc_08 - Verify that the API returns a JSON error when malformed JSON is submitted." finished-at="2025-12-05T14:03:26 IST" duration-ms="204" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWhenRequestBodyJSONMalformedEsign(GenerateClientSignatureEsign.java:153)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenRequestBodyJSONMalformedEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:26 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithMissingContentTypeEsign()[pri:9, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:26 IST" name="verifyResponseWithMissingContentTypeEsign" description="tc_09 - Verify that the API rejects the request when Content-Type header is missing." finished-at="2025-12-05T14:03:26 IST" duration-ms="198" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Error message mismatch expected [Invalid or missing Content-Type. Expected application/json] but found [Malformed JSON]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Error message mismatch expected [Invalid or missing Content-Type. Expected application/json] but found [Malformed JSON]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingContentTypeEsign(GenerateClientSignatureEsign.java:180)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithMissingContentTypeEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:26 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+        <test-method signature="verifyResponseWithNumericValuesOfFieldsEsign()[pri:10, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:26 IST" name="verifyResponseWithNumericValuesOfFieldsEsign" description="tc_10 - Verify that the API returns the appropriate response when numeric values are provided instead of strings." finished-at="2025-12-05T14:03:26 IST" duration-ms="162" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Error message should be present expected object to not be null,
+expected [User does not exist.] but found [null],
+Status should be 400 Bad Request expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Error message should be present expected object to not be null,
+expected [User does not exist.] but found [null],
+Status should be 400 Bad Request expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithNumericValuesOfFieldsEsign(GenerateClientSignatureEsign.java:197)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithNumericValuesOfFieldsEsign -->
+        <test-method is-config="true" signature="initSoftAssert()[pri:0, instance:com.api.tests.esign.GenerateClientSignatureEsign@548a24a]" started-at="2025-12-05T14:03:26 IST" name="initSoftAssert" finished-at="2025-12-05T14:03:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSoftAssert -->
+      </class> <!-- com.api.tests.esign.GenerateClientSignatureEsign -->
+    </test> <!-- API Test -->
+  </suite> <!-- API Test Suite -->
 </testng-results>

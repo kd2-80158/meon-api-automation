@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="API Test Suite">
-    <test name="API Test">
+<suite name="API Test Suite" parallel="false">
+    <test name="API Test" >
         <classes>
-            <class name="com.api.tests.aadhaar.GenerateClientToken"/>
+ <!--            <class name="com.api.tests.aadhaar.GenerateClientToken"/>
+            <class name="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+            <class name="com.api.tests.aadhaar.RetrieveAadhaarData"/> -->
+            <class name="com.api.tests.esign.GenerateClientSignatureEsign"/>
+            <class name="com.api.tests.esign.GenerateTokenEsign"/>
+            <class name="com.api.tests.esign.FetchDocumentEsign"/>
         </classes>
     </test>
 </suite>
