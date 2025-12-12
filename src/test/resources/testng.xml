@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="API Test Suite" parallel="false">
-    <test name="API Test" >
-        <classes>
- <!--            <class name="com.api.tests.aadhaar.GenerateClientToken"/>
-            <class name="com.api.tests.aadhaar.GenerateDigilockerLink"/>
-            <class name="com.api.tests.aadhaar.RetrieveAadhaarData"/> -->
-            <class name="com.api.tests.esign.GenerateClientSignatureEsign"/>
-            <class name="com.api.tests.esign.GenerateTokenEsign"/>
-            <class name="com.api.tests.esign.FetchDocumentEsign"/>
-        </classes>
-    </test>
+	<test name="API Test">
+		<classes>
+<!-- 			<class name="com.api.tests.aadhaar.GenerateClientToken" />
+			<class name="com.api.tests.aadhaar.GenerateDigilockerLink" />
+			<class name="com.api.tests.aadhaar.RetrieveAadhaarData" />
+			<class name="com.api.tests.esign.GenerateClientSignatureEsign" />
+			<class name="com.api.tests.esign.GenerateTokenEsign" />
+			<class name="com.api.tests.esign.FetchDocumentEsign" />
+			<class name="com.api.tests.kyc.GenerateAdminToken_KYC" />
+			<class name="com.api.tests.kyc.GetUserData_KYC" />
+			<class name="com.api.tests.kyc.GetSsoRoute_KYC" /> -->
+			<class name="com.api.tests.reversepennydrop.GenerateToken_RPD" />
+			<class name="com.api.tests.reversepennydrop.InitiateRequest_RPD" />
+			<class name="com.api.tests.reversepennydrop.GenerateExportToken_RPD" />
+			<class name="com.api.tests.reversepennydrop.GetExportData_RPD" />
+		</classes>
+	</test>
 </suite>

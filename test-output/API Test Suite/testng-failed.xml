@@ -3,50 +3,29 @@
 <suite name="Failed suite [API Test Suite]">
   <test thread-count="5" name="API Test(failed)">
     <classes>
-      <class name="com.api.tests.esign.GenerateTokenEsign">
+      <class name="com.api.tests.reversepennydrop.InitiateRequest_RPD">
         <methods>
-          <include name="verifyResponseWithMissingDocumentDataEsign"/>
-          <include name="verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign"/>
-          <include name="verifyResponseForRedirectionOfCancelAndRedirectUrlEsign"/>
-          <include name="verifyResponseWithNonNumericDateToExpireFieldEsign"/>
-          <include name="verifyResponseWithMissingContentTypeHeaderEsign"/>
+          <include name="verifyResponseWithNonJsonContentType_RPD"/>
+          <include name="verifyResponseWithInvalidVersion_RPD"/>
           <include name="setup"/>
-          <include name="verifyResponseWithInvalidDocumentData"/>
-          <include name="verifyResponseWithInvalidSignatureHeaderEsign"/>
-          <include name="verifyResponseWithInvalidEmailFormatEsign"/>
-          <include name="initSoftAssert"/>
-          <include name="verifyResponseWithMissingPageNumberCordinatesEsign"/>
-          <include name="verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign"/>
-          <include name="verifyResponseWithOutOfRangePercentageNameMatchEsign"/>
-          <include name="verifyResponseWithMissingSignatureHeaderEsign"/>
-          <include name="verifyResponseWithInvalidAadhaarNumberFormatEsign"/>
-          <include name="verifyResponseWithMissingGenderFieldWhenTrueEsign"/>
-          <include name="verifyResponseWithInvalidMobileFormatEsign"/>
-          <include name="verifyResponseWithInvalidBase64DocumentDataEsign"/>
+          <include name="verifyResponseWithMissingRedirectUrl_RPD"/>
+          <include name="setupSoftAssert"/>
         </methods>
-      </class> <!-- com.api.tests.esign.GenerateTokenEsign -->
-      <class name="com.api.tests.esign.FetchDocumentEsign">
+      </class> <!-- com.api.tests.reversepennydrop.InitiateRequest_RPD -->
+      <class name="com.api.tests.reversepennydrop.GetExportData_RPD">
+        <methods>
+          <include name="verifyResponseWithValidToken_RPD"/>
+          <include name="setup"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.reversepennydrop.GetExportData_RPD -->
+      <class name="com.api.tests.reversepennydrop.GenerateExportToken_RPD">
         <methods>
           <include name="setup"/>
-          <include name="initSoftAssert"/>
-          <include name="verifyResponseWithValidCredentialsEsign"/>
+          <include name="verifyResponseWithNonJSONContentType_RPD"/>
+          <include name="setupSoftAssert"/>
         </methods>
-      </class> <!-- com.api.tests.esign.FetchDocumentEsign -->
-      <class name="com.api.tests.esign.GenerateClientSignatureEsign">
-        <methods>
-          <include name="verifyResponseWithWrongBothUsernameAndPasswordEsign"/>
-          <include name="verifyResponseWithNumericValuesOfFieldsEsign"/>
-          <include name="initSoftAssert"/>
-          <include name="verifyResponseWithMissingContentTypeEsign"/>
-          <include name="setup"/>
-          <include name="verifyResponseWithMissingUsernameEsign"/>
-          <include name="verifyResponseWithMissingPasswordEsign"/>
-          <include name="verifyResponseWithSqlInjectionEsign"/>
-          <include name="verifyResponseWhenRequestBodyJSONMalformedEsign"/>
-          <include name="verifyResponseWithMissingBothUsernameAndPasswordEsign"/>
-          <include name="verifyResponseWithXSSPayloadEsign"/>
-        </methods>
-      </class> <!-- com.api.tests.esign.GenerateClientSignatureEsign -->
+      </class> <!-- com.api.tests.reversepennydrop.GenerateExportToken_RPD -->
     </classes>
   </test> <!-- API Test(failed) -->
 </suite> <!-- Failed suite [API Test Suite] -->

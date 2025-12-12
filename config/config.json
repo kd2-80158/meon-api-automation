@@ -36,7 +36,7 @@
 			"debit": false,
 			"percentage_name_match": 80,
 			"need_aadhaar_match": true,
-			"aadhaar_number": "3744",
+			"aadhaar_number": "7118",
 			"need_gender_match": true,
 			"gender": "M",
 			"sms_notification": true,
@@ -60,9 +60,40 @@
 			"url": "https://face-finder.meon.co.in",
 			"MAX_ATTEMPT": 3
 		},
+		"kyc": {
+			"url": "https://live.meon.co.in",
+			"email": "demogaming@meon.co.in",
+			"password": "APItest123",
+			"work_flow_key": "2232061880",
+			"page": "1",
+			"per_page": "10",
+			"search": "8810619472",
+			"company": "demogaming",
+			"company_sso": "dosthadda",
+			"workflowName": "individual",
+			"secret_key": "mjcWV2EgigFGpRFiq56cko9AG3UwM4QP",
+			"unique_keys": {
+				"mobile": "8810619472"
+			}
+		},
 		"pennydrop": {
 			"url": "https://pennydrop.meon.co.in",
-			"MAX_ATTEMPT": 3
+			"live": {
+				"username": "meontechnology_live",
+				"password": "5M5qg1"
+			},
+			"name": "Saurabh Chhimwal",
+			"mobile": "9990785954",
+			"ifsc": "SBIN0014141",
+			"accountnumber": "38056684427",
+			"accounttype": "Savings"
+		},
+		"rpd": {
+		    "url":"https://rpd.meon.co.in",
+			"client_id": "15CLCI3P6VGZ2",
+			"client_secret": "15CXBUQwEzurjJFRZl1DJpgWf9xC6aoWamCbdVjuQv2",
+			"redirect_url": "https://www.google.com/",
+			"version": "v1"
 		}
 	}
 }

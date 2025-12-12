@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.api.tests.esign.FetchDocumentEsign">
+      <class name="com.api.tests.reversepennydrop.GetExportData_RPD">
         <methods>
+          <include name="verifyResponseWithValidToken_RPD"/>
           <include name="setup"/>
-          <include name="initSoftAssert"/>
-          <include name="verifyResponseWithValidCredentialsEsign"/>
+          <include name="setupSoftAssert"/>
         </methods>
-      </class> <!-- com.api.tests.esign.FetchDocumentEsign -->
+      </class> <!-- com.api.tests.reversepennydrop.GetExportData_RPD -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

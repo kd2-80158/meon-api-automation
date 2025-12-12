@@ -11,10 +11,6 @@ public class JSONUtility {
 
     private static final String CONFIG_PATH = System.getProperty("user.dir") + "/config/config.json";
 
-    /**
-     * Get any product config like:
-     * eSign, aadhaar, facefinder, pennydrop
-     */
     public static BaseURL getProduct(String productName) {
         try {
             Gson gson = new Gson();
@@ -28,15 +24,27 @@ public class JSONUtility {
         }
     }
 
-    /**
-     * Convenience method for aadhaar only.
-     */
     public static BaseURL getAadhaar() {
         return getProduct("aadhaar");
+    }
+    
+    public static BaseURL getKYC() {
+        return getProduct("kyc");
     }
     
     public static BaseURL getEsign()
     {
     	return getProduct("eSign");
+    }
+    
+    public static BaseURL getPennyDrop()
+    {
+    	System.out.println(">>> READING CONFIG FROM: " + CONFIG_PATH);
+    	return getProduct("pennydrop");
+    }
+    
+    public static BaseURL getReversePennyDrop()
+    {
+    	return getProduct("rpd");
     }
 }

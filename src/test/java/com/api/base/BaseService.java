@@ -4,14 +4,20 @@ import static io.restassured.RestAssured.given;
 
 import java.awt.Desktop;
 import java.net.URI;
+import java.time.Duration;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Listeners;
 
 import com.api.filters.LoggingFilter;
@@ -24,162 +30,120 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-@Listeners({com.api.listeners.TestListener.class})
+@Listeners({ com.api.listeners.TestListener.class })
 public class BaseService { // wrapper for RestAssured
+	protected static String BASE_URL;
+	Logger logger = LoggerUtility.getLogger(this.getClass());
+	private RequestSpecification rs;
+	static {
+		RestAssured.filters(new LoggingFilter());
+	}
 
-    // base uri (not final so it can be loaded dynamically)
-    protected static String BASE_URL;
-    Logger logger = LoggerUtility.getLogger(this.getClass());
-    // instance variable
-    private RequestSpecification rs;
+	/**
+	 * Constructor that accepts product name (e.g. "eSign", "aadhaar", "facefinder",
+	 * "pennydrop") It will load the URL from your config.json via JSONUtility and
+	 * initialize RequestSpecification.
+	 */
+	public BaseService(String product) {
+		try {
+			System.out.println("Printing product: " + product);
+			if (product == null || product.trim().isEmpty()) {
+				System.out.println("Inside IF-block product: " + product);
+				throw new IllegalArgumentException("Product must be provided (e.g., 'aadhaar' or 'eSign').");
+			}
+			String key = product.trim();
+			System.out.println("Printing product: " + key);
+			setBaseURL(key); // builds rs with url, auth, tokens, content-type, accept
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to initialize BaseService for product: " + product, e);
+		}
+	}
 
-    // static initialization for filters (runs once)
-    static {
-        RestAssured.filters(new LoggingFilter());
-    }
-    /**
-     * Constructor that accepts product name (e.g. "eSign", "aadhaar", "facefinder", "pennydrop")
-     * It will load the URL from your config.json via JSONUtility and initialize RequestSpecification.
-     */
-    public BaseService(String product) {
-        try {
-            if (product == null || product.trim().isEmpty()) {
-                throw new IllegalArgumentException("Product must be provided (e.g., 'aadhaar' or 'eSign').");
-            }
+	private void setBaseURL(String product) {
+		if (product == null || product.trim().isEmpty()) {
+			throw new IllegalArgumentException("product must be provided");
+		}
+		String key = product.trim();
 
-            String key = product.trim();
-            setBaseURL(key); // builds rs with url, auth, tokens, content-type, accept
+		BaseURL config = JSONUtility.getProduct(key);
+		if (config == null || config.getUrl() == null || config.getUrl().trim().isEmpty()) {
+			throw new IllegalStateException("URL not found for product: " + key);
+		}
 
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to initialize BaseService for product: " + product, e);
-        }
-    }
-    
-    public boolean openUrlAndWaitWithTimeout(String url, Logger logger, int timeoutSeconds) {
-        // timeoutSeconds <= 0 means wait indefinitely
-        ExecutorService ex = Executors.newSingleThreadExecutor();
-        try {
-            // open URL in default browser if possible
-            try {
-                if (Desktop.isDesktopSupported()) {
-                    Desktop.getDesktop().browse(new URI(url));
-                    logger.info("Opened browser for URL: " + url);
-                } else {
-                    logger.info("Desktop not supported — please open URL manually: " + url);
-                    System.out.println("Open manually: " + url);
-                }
-            } catch (Exception e) {
-                logger.warn("Could not open browser automatically. Please open URL manually: " + url + " - " + e.getMessage());
-                System.out.println("Open manually: " + url);
-            }
+		String url = config.getUrl().trim();
+		RequestSpecification spec = given().baseUri(url).contentType(ContentType.JSON).accept(ContentType.JSON);
 
-            logger.info("After completing the Digilocker steps in browser, press ENTER to continue (timeout " 
-                        + (timeoutSeconds <= 0 ? "infinite" : timeoutSeconds + "s") + ")...");
-            System.out.println("\n⚠️  Waiting for user to finish Digilocker flow... Press ENTER to continue.");
+		// Attach token headers if present
+		if (config.getSecret_token() != null && !config.getSecret_token().isEmpty()) {
+			spec = spec.header("X-Secret-Token", config.getSecret_token());
+		}
+		if (config.getClient_token() != null && !config.getClient_token().isEmpty()) {
+			spec = spec.header("X-Client-Token", config.getClient_token());
+		}
 
-            Callable<Boolean> readTask = () -> {
-                try {
-                    if (System.console() != null) {
-                        System.console().readLine();
-                        return true;
-                    } 
-                } catch (Exception e) {
-                    return false;
-                }
-				return false;
-            };
+		this.rs = spec;
+		BASE_URL = url;
+	}
 
-            Future<Boolean> f = ex.submit(readTask);
-            try {
-                if (timeoutSeconds <= 0) {
-                    // wait indefinitely
-                    return f.get();
-                } else {
-                    Boolean pressed = f.get(timeoutSeconds, TimeUnit.SECONDS);
-                    return pressed != null && pressed;
-                }
-            } catch (ExecutionException ee) {
-                logger.error("Error while waiting for user input: " + ee.getMessage(), ee);
-                return false;
-            } catch (InterruptedException ie) {
-                Thread.currentThread().interrupt();
-                logger.warn("Waiting thread interrupted.");
-                return false;
-            } catch (java.util.concurrent.TimeoutException te) {
-                // user did not press Enter within timeout
-                f.cancel(true);
-                logger.warn("Timeout waiting for user input (" + timeoutSeconds + "s).");
-                return false;
-            }
-        } finally {
-            ex.shutdownNow();
-        }
-    }
-    
-    private void setBaseURL(String product) {
-        if (product == null || product.trim().isEmpty()) {
-            throw new IllegalArgumentException("product must be provided");
-        }
-        String key = product.trim();
+	// Without AUTH
+	protected Response postRequestAadhaar(Object tokenRequest, String endpoint) {
+		return rs.body(tokenRequest).post(endpoint);
+	}
 
-        BaseURL config = JSONUtility.getProduct(key);
-        if (config == null || config.getUrl() == null || config.getUrl().trim().isEmpty()) {
-            throw new IllegalStateException("URL not found for product: " + key);
-        }
+	protected Response postRequestEsign(Object tokenRequest, String endpoint) {
+		return rs.body(tokenRequest).post(endpoint);
+	}
 
-        String url = config.getUrl().trim();
+	protected Response postRequestKYC(Object tokenRequest, String endpoint) {
+		return rs.body(tokenRequest).post(endpoint);
+	}
+	
+	protected Response postRequestReversePennyDrop(Object tokenRequest, String endpoint)
+	{
+		return rs.body(tokenRequest).post(endpoint);
+	}
+	
+	protected Response postRequestReversePennyDropWithAuth(Object tokenRequest, String endpoint, String token)
+	{
+		logger.info("token in Base service:" + token);
+		return rs.header("token", token).body(tokenRequest).post(endpoint);
+	}
 
-        // Build a fresh RequestSpecification for this product (do NOT rely on global RestAssured.baseURI)
-        RequestSpecification spec = given()
-                .baseUri(url)
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON);
+	// With AUTH
+	protected Response postRequestEsignAuth(Object tokenRequest, String endpoint, String signature) {
+		logger.info("token in Base service:" + signature);
+		return rs.header("signature", signature).body(tokenRequest).post(endpoint);
+	}
 
-        // ---- REMOVE automatic basic auth ----
-        // if (config.getUsername() != null && config.getPassword() != null) {
-        //     spec = spec.auth().preemptive().basic(config.getUsername(), config.getPassword());
-        // }
+	// fixed: now actually performs GET (was calling post previously)
+	protected Response getRequest(Object tokenRequest, String endpoint) {
+		return rs.contentType(ContentType.JSON).body(tokenRequest).get(endpoint);
+	}
 
-        // Attach token headers if present
-        if (config.getSecret_token() != null && !config.getSecret_token().isEmpty()) {
-            spec = spec.header("X-Secret-Token", config.getSecret_token());
-        }
-        if (config.getClient_token() != null && !config.getClient_token().isEmpty()) {
-            spec = spec.header("X-Client-Token", config.getClient_token());
-        }
+	protected Response postRequestWithAuth(Object requestPayload, String endpoint, String authToken) {
+		return rs.contentType(ContentType.JSON).header("signature", authToken).body(requestPayload).post(endpoint);
+	}
 
-        this.rs = spec;
-        BASE_URL = url;
-    }
+	protected Response postRequestWithAuthKYC(Object requestPayload, String endpoint, String bearerToken) {
+		return rs.contentType(ContentType.JSON).header("Authorization", "Bearer" + " " + bearerToken)
+				.body(requestPayload).post(endpoint);
+	}
 
-    protected Response postRequestAadhaar(Object tokenRequest, String endpoint) {
-        return rs.body(tokenRequest).post(endpoint);
-    }
-    protected Response postRequestEsign(Object tokenRequest, String endpoint) {
-        return rs.body(tokenRequest).post(endpoint);
-    }
-    
 
-    protected Response postRequestEsignAuth(Object tokenRequest, String endpoint,String signature) {
-        logger.info("token in Base service:"+signature);
-        return rs.header("signature",signature).body(tokenRequest).post(endpoint);
-    }
-    
-    
-    // fixed: now actually performs GET (was calling post previously)
-    protected Response getRequest(Object tokenRequest, String endpoint) {
-        return rs.contentType(ContentType.JSON).body(tokenRequest).get(endpoint);
-    }
+	protected Response postRequestWithAuthPD(Object requestPayload, String endpoint, String bearerToken) {
+		return rs.contentType(ContentType.JSON).header("Authorization", "Bearer" + " " + bearerToken)
+				.body(requestPayload).post(endpoint);
+	}
 
-    protected Response postRequestWithAuth(Object requestPayload, String endpoint, String authToken) {
-        return rs.contentType(ContentType.JSON).header("signature", authToken).body(requestPayload).post(endpoint);
-    }
+	protected Response putRequestWithAuth(Object requestPayLoad, String endpoint, String authToken) {
+		return rs.contentType(ContentType.JSON).header("token", authToken).body(requestPayLoad).put(endpoint);
+	}
 
-    protected Response putRequestWithAuth(Object requestPayLoad, String endpoint, String authToken) {
-        return rs.contentType(ContentType.JSON).header("token", authToken).body(requestPayLoad).put(endpoint);
-    }
+	protected Response getRequestWithAuth(String endpoint, String authToken) {
+		return rs.contentType(ContentType.JSON).header("token", authToken).get(endpoint);
+	}
 
-    protected Response getRequestWithAuth(String endpoint, String authToken) {
-        return rs.contentType(ContentType.JSON).header("token", authToken).get(endpoint);
-    }
+	protected Response postRequestPennyDrop(Object tokenRequest, String endpoint) {
+		return rs.contentType(ContentType.JSON).body(tokenRequest).post(endpoint);
+	}
 }

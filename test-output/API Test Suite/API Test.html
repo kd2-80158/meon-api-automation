@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>API Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>3/26/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>13/5/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Dec 05 14:03:18 IST 2025</td>
+<td>Started on:</td><td>Fri Dec 12 15:17:11 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>106 seconds (106032 ms)</td>
+<tr><td>Total time:</td><td>66 seconds (66259 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,17 +76,19 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingUsernameEsign()'><b>verifyResponseWithMissingUsernameEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_02 - Verify that the API returns the appropriate response when username is missing.</td>
+<td title='com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithMissingRedirectUrl_RPD()'><b>verifyResponseWithMissingRedirectUrl_RPD</b><br>Test class: com.api.tests.reversepennydrop.InitiateRequest_RPD<br>Test method: tc_02 - Verify error when redirect_url is missing from body.</td>
 <td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingUsernameEsign(GenerateClientSignatureEsign.java:62)
+	[CRITICAL] Message expected [Please pass &quot;redirect_url&quot; for successfull redirection] but found [Invalid token],
+	expected [400] but found [401]
+	at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithMissingRedirectUrl_RPD(InitiateRequest_RPD.java:118)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace212158113", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace212158113'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace188909616", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace188909616'><pre>java.lang.AssertionError: The following asserts failed:
+	[CRITICAL] Message expected [Please pass &quot;redirect_url&quot; for successfull redirection] but found [Invalid token],
+	expected [400] but found [401]
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingUsernameEsign(GenerateClientSignatureEsign.java:62)
+	at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithMissingRedirectUrl_RPD(InitiateRequest_RPD.java:118)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -117,21 +119,21 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
 <td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
+<td>com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619</td></tr>
 <tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign()'><b>verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_19 - Verify API percentage_name_match provide valid response during float value.</td>
+<td title='com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithNonJsonContentType_RPD()'><b>verifyResponseWithNonJsonContentType_RPD</b><br>Test class: com.api.tests.reversepennydrop.InitiateRequest_RPD<br>Test method: tc_10 - Verify Content-Type enforcement (non-JSON rejected).</td>
 <td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [percentage_name_match should be a float value] but found [Something went wrong],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign(GenerateTokenEsign.java:536)
+	expected [400] but found [401],
+	expected [Unsupported media type &quot;text/plain&quot; in request.] but found [Invalid token]
+	at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithNonJsonContentType_RPD(InitiateRequest_RPD.java:162)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1877161893", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1877161893'><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [percentage_name_match should be a float value] but found [Something went wrong],
-	HTTP status mismatch expected [400] but found [200]
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1855172839", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1855172839'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [401],
+	expected [Unsupported media type &quot;text/plain&quot; in request.] but found [Invalid token]
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign(GenerateTokenEsign.java:536)
+	at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithNonJsonContentType_RPD(InitiateRequest_RPD.java:162)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -162,60 +164,19 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
 <td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
+<td>com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619</td></tr>
 <tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithOutOfRangePercentageNameMatchEsign()'><b>verifyResponseWithOutOfRangePercentageNameMatchEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_18 - Verify API enforces percentage_name_match numeric range 0-100.</td>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithNonJSONContentType_RPD()'><b>verifyResponseWithNonJSONContentType_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_08 - Verify content-type enforcement (non-JSON rejected).</td>
 <td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithOutOfRangePercentageNameMatchEsign(GenerateTokenEsign.java:487)
+	expected [Unsupported media type &quot;text/plain&quot; in request.] but found [Unsupported media type \&quot;text/plain\&quot; in request.]
+	at com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithNonJSONContentType_RPD(GenerateExportToken_RPD.java:193)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1056671292", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1056671292'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1563929103", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1563929103'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Unsupported media type &quot;text/plain&quot; in request.] but found [Unsupported media type \&quot;text/plain\&quot; in request.]
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithOutOfRangePercentageNameMatchEsign(GenerateTokenEsign.java:487)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>1</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWhenRequestBodyJSONMalformedEsign()'><b>verifyResponseWhenRequestBodyJSONMalformedEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_08 - Verify that the API returns a JSON error when malformed JSON is submitted.</td>
-<td><div><pre>java.lang.NullPointerException
-	at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWhenRequestBodyJSONMalformedEsign(GenerateClientSignatureEsign.java:153)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace78629607", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace78629607'><pre>java.lang.NullPointerException
-	at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWhenRequestBodyJSONMalformedEsign(GenerateClientSignatureEsign.java:153)
+	at com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithNonJSONContentType_RPD(GenerateExportToken_RPD.java:193)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -246,166 +207,19 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
 <td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
 <tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidMobileFormatEsign()'><b>verifyResponseWithInvalidMobileFormatEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_10 - Verify API validates mobile number format and returns error on invalid mobile.</td>
+<td title='com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithInvalidVersion_RPD()'><b>verifyResponseWithInvalidVersion_RPD</b><br>Test class: com.api.tests.reversepennydrop.InitiateRequest_RPD<br>Test method: tc_08 - Verify version value validation (unsupported version).</td>
 <td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Expected success=false expected [false] but found [true],
-	Message mismatch expected [invalid mobile format] but found [link generated],
-	Token is not generated expected [] but found [8a69dcea-02a6-4c6b-a655-825202eea6d3],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidMobileFormatEsign(GenerateTokenEsign.java:347)
+	[HIGH] Status code should be 400 Bad Request &quot;msg&quot;: &quot;Unsupported version&quot;, expected [400] but found [401]
+	at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithInvalidVersion_RPD(InitiateRequest_RPD.java:138)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1206968440", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1206968440'><pre>java.lang.AssertionError: The following asserts failed:
-	Expected success=false expected [false] but found [true],
-	Message mismatch expected [invalid mobile format] but found [link generated],
-	Token is not generated expected [] but found [8a69dcea-02a6-4c6b-a655-825202eea6d3],
-	HTTP status mismatch expected [400] but found [200]
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2116802022", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2116802022'><pre>java.lang.AssertionError: The following asserts failed:
+	[HIGH] Status code should be 400 Bad Request &quot;msg&quot;: &quot;Unsupported version&quot;, expected [400] but found [401]
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidMobileFormatEsign(GenerateTokenEsign.java:347)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>2</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.FetchDocumentEsign.verifyResponseWithValidCredentialsEsign()'><b>verifyResponseWithValidCredentialsEsign</b><br>Test class: com.api.tests.esign.FetchDocumentEsign<br>Test method: tc_01 - Verify that the API returns PDF URL when valid token and mobile are provided.</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //button[contains(normalize-space(text()),&apos;Verify OTP&apos;)] (tried for 30 second(s) with 500 milliseconds interval)
-Build info: version: &apos;4.37.0&apos;, revision: &apos;3c1da1e342&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;15.6&apos;, java.version: &apos;11.0.20&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 145.0.2, moz:accessibilityChecks: false, moz:buildID: 20251124145406, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 24.6.0, moz:processID: 7028, moz:profile: /var/folders/bd/cxwv7fcd26v..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Macintosh; Int...}
-Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at com.api.base.AuthService.getEsign(AuthService.java:199)
-	at com.api.tests.esign.FetchDocumentEsign.verifyResponseWithValidCredentialsEsign(FetchDocumentEsign.java:55)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1560339214", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1560339214'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //button[contains(normalize-space(text()),&apos;Verify OTP&apos;)] (tried for 30 second(s) with 500 milliseconds interval)
-Build info: version: &apos;4.37.0&apos;, revision: &apos;3c1da1e342&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;15.6&apos;, java.version: &apos;11.0.20&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 145.0.2, moz:accessibilityChecks: false, moz:buildID: 20251124145406, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 24.6.0, moz:processID: 7028, moz:profile: /var/folders/bd/cxwv7fcd26v..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Macintosh; Int...}
-Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at com.api.base.AuthService.getEsign(AuthService.java:199)
-	at com.api.tests.esign.FetchDocumentEsign.verifyResponseWithValidCredentialsEsign(FetchDocumentEsign.java:55)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>41</td>
-<td>com.api.tests.esign.FetchDocumentEsign@3de8f619</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign()'><b>verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_12 - Verify API returns error when coordinate values are non-numeric or negative.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign(GenerateTokenEsign.java:405)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2017848970", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2017848970'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign(GenerateTokenEsign.java:405)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>1</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingPageNumberCordinatesEsign()'><b>verifyResponseWithMissingPageNumberCordinatesEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_11 - Verify API validates coordinate objects and returns error when coordinates missing page_number.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingPageNumberCordinatesEsign(GenerateTokenEsign.java:376)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1129119773", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1129119773'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingPageNumberCordinatesEsign(GenerateTokenEsign.java:376)
+	at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithInvalidVersion_RPD(InitiateRequest_RPD.java:138)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -436,19 +250,19 @@ Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
 <td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
+<td>com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619</td></tr>
 <tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithXSSPayloadEsign()'><b>verifyResponseWithXSSPayloadEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_07 - Verify that the API returns the appropriate response when username contains XSS payload.</td>
+<td title='com.api.tests.reversepennydrop.GetExportData_RPD.verifyResponseWithValidToken_RPD()'><b>verifyResponseWithValidToken_RPD</b><br>Test class: com.api.tests.reversepennydrop.GetExportData_RPD<br>Test method: tc_01 - Verify successful data export with valid token and default params.</td>
 <td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithXSSPayloadEsign(GenerateClientSignatureEsign.java:130)
+	UTR mismatch expected [reverse_penny_drop_yrJNKfKwdlhdzymwruIz] but found [reverse_penny_drop_RRwZozhVfXCyshLrfdDa]
+	at com.api.tests.reversepennydrop.GetExportData_RPD.verifyResponseWithValidToken_RPD(GetExportData_RPD.java:146)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1959690207", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1959690207'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1321368652", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1321368652'><pre>java.lang.AssertionError: The following asserts failed:
+	UTR mismatch expected [reverse_penny_drop_yrJNKfKwdlhdzymwruIz] but found [reverse_penny_drop_RRwZozhVfXCyshLrfdDa]
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithXSSPayloadEsign(GenerateClientSignatureEsign.java:130)
+	at com.api.tests.reversepennydrop.GetExportData_RPD.verifyResponseWithValidToken_RPD(GetExportData_RPD.java:146)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -478,765 +292,8 @@ Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithSqlInjectionEsign()'><b>verifyResponseWithSqlInjectionEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_06 - Verify that the API returns the appropriate response when username contains SQL injection payload.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithSqlInjectionEsign(GenerateClientSignatureEsign.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1101149296", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1101149296'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithSqlInjectionEsign(GenerateClientSignatureEsign.java:116)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseForRedirectionOfCancelAndRedirectUrlEsign()'><b>verifyResponseForRedirectionOfCancelAndRedirectUrlEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_15 - Verify API handles redirect_url and cancel_redirect_url properly in response/flow.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Cancel redirect URL mismatch. Expected contains: https://meon.co.in but got: https://esignuat.meon.co.in/EsignServices/default_page/demo3mvP/f39256a0-611b-43b8-a812-7f43184073d1?success=no&amp;amp;error=Request%20Cancelled&amp;amp;nsdl_status=no expected [true] but found [false]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseForRedirectionOfCancelAndRedirectUrlEsign(GenerateTokenEsign.java:436)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1939972532", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1939972532'><pre>java.lang.AssertionError: The following asserts failed:
-	Cancel redirect URL mismatch. Expected contains: https://meon.co.in but got: https://esignuat.meon.co.in/EsignServices/default_page/demo3mvP/f39256a0-611b-43b8-a812-7f43184073d1?success=no&amp;amp;error=Request%20Cancelled&amp;amp;nsdl_status=no expected [true] but found [false]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseForRedirectionOfCancelAndRedirectUrlEsign(GenerateTokenEsign.java:436)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>18</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingPasswordEsign()'><b>verifyResponseWithMissingPasswordEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_03 - Verify that the API returns the appropriate response when password is missing.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [Password required] but found [Username required],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingPasswordEsign(GenerateClientSignatureEsign.java:74)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1971558037", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1971558037'><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [Password required] but found [Username required],
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingPasswordEsign(GenerateClientSignatureEsign.java:74)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingSignatureHeaderEsign()'><b>verifyResponseWithMissingSignatureHeaderEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_04 - Verify API returns error when signature header missing.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingSignatureHeaderEsign(GenerateTokenEsign.java:197)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1471364137", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1471364137'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingSignatureHeaderEsign(GenerateTokenEsign.java:197)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithWrongBothUsernameAndPasswordEsign()'><b>verifyResponseWithWrongBothUsernameAndPasswordEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_05 - Verify that the API returns the appropriate response when invalid credentials are provided.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithWrongBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:103)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1141393171", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1141393171'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [401] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithWrongBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:103)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingDocumentDataEsign()'><b>verifyResponseWithMissingDocumentDataEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_06 - Verify API returns error when document_data is missing.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingDocumentDataEsign(GenerateTokenEsign.java:271)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace494893410", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace494893410'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingDocumentDataEsign(GenerateTokenEsign.java:271)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidAadhaarNumberFormatEsign()'><b>verifyResponseWithInvalidAadhaarNumberFormatEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_20 - Verify API validates aadhaar_number format when need_aadhaar_match is true.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Expected success=false expected [false] but found [true],
-	Message mismatch expected [invalid aadhaar format] but found [link generated],
-	Token is generated as validation is not yet implemented expected [] but found [33260bcc-f81b-431d-87af-360ab52c1594],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidAadhaarNumberFormatEsign(GenerateTokenEsign.java:562)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace197690005", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace197690005'><pre>java.lang.AssertionError: The following asserts failed:
-	Expected success=false expected [false] but found [true],
-	Message mismatch expected [invalid aadhaar format] but found [link generated],
-	Token is generated as validation is not yet implemented expected [] but found [33260bcc-f81b-431d-87af-360ab52c1594],
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidAadhaarNumberFormatEsign(GenerateTokenEsign.java:562)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>2</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidSignatureHeaderEsign()'><b>verifyResponseWithInvalidSignatureHeaderEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_05 - Verify API returns error when signature is invalid or tampered.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [Invalid crypto padding] but found [Not enough segments],
-	HTTP status mismatch expected [401] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidSignatureHeaderEsign(GenerateTokenEsign.java:247)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace6635131", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace6635131'><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [Invalid crypto padding] but found [Not enough segments],
-	HTTP status mismatch expected [401] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidSignatureHeaderEsign(GenerateTokenEsign.java:247)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithNumericValuesOfFieldsEsign()'><b>verifyResponseWithNumericValuesOfFieldsEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_10 - Verify that the API returns the appropriate response when numeric values are provided instead of strings.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Error message should be present expected object to not be null,
-	expected [User does not exist.] but found [null],
-	Status should be 400 Bad Request expected [400] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithNumericValuesOfFieldsEsign(GenerateClientSignatureEsign.java:197)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace167989916", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace167989916'><pre>java.lang.AssertionError: The following asserts failed:
-	Error message should be present expected object to not be null,
-	expected [User does not exist.] but found [null],
-	Status should be 400 Bad Request expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithNumericValuesOfFieldsEsign(GenerateClientSignatureEsign.java:197)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidBase64DocumentDataEsign()'><b>verifyResponseWithInvalidBase64DocumentDataEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_07 - Verify API returns error when document_data is not valid base64.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (25) cannot be 1 more than a multiple of 4],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidBase64DocumentDataEsign(GenerateTokenEsign.java:297)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace307441207", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace307441207'><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (25) cannot be 1 more than a multiple of 4],
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidBase64DocumentDataEsign(GenerateTokenEsign.java:297)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericDateToExpireFieldEsign()'><b>verifyResponseWithNonNumericDateToExpireFieldEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_16 - Verify API returns error when days_to_expire is non-numeric or out of range.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericDateToExpireFieldEsign(GenerateTokenEsign.java:461)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace385589213", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace385589213'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithNonNumericDateToExpireFieldEsign(GenerateTokenEsign.java:461)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>1</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingContentTypeHeaderEsign()'><b>verifyResponseWithMissingContentTypeHeaderEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_03 - Verify API returns error when Content-Type header missing.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingContentTypeHeaderEsign(GenerateTokenEsign.java:149)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1895167389", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1895167389'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingContentTypeHeaderEsign(GenerateTokenEsign.java:149)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>1</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidEmailFormatEsign()'><b>verifyResponseWithInvalidEmailFormatEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_09 - Verify API validates email format and returns error on invalid email.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Expected success=false expected [false] but found [true],
-	Message mismatch expected [invalid email format] but found [link generated],
-	Token is not generated expected [] but found [76bf42f4-6cc9-4baf-b262-20ef052442d1],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidEmailFormatEsign(GenerateTokenEsign.java:322)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace474324008", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace474324008'><pre>java.lang.AssertionError: The following asserts failed:
-	Expected success=false expected [false] but found [true],
-	Message mismatch expected [invalid email format] but found [link generated],
-	Token is not generated expected [] but found [76bf42f4-6cc9-4baf-b262-20ef052442d1],
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidEmailFormatEsign(GenerateTokenEsign.java:322)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>3</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidDocumentData()'><b>verifyResponseWithInvalidDocumentData</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_22 - Verify API rejects requests when document_data decoded PDF is corrupted or unreadable.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (21) cannot be 1 more than a multiple of 4],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidDocumentData(GenerateTokenEsign.java:613)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace839190056", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace839190056'><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [unable to convert base64 to pdf Incorrect padding] but found [unable to convert base64 to pdf Invalid base64-encoded string: number of data characters (21) cannot be 1 more than a multiple of 4],
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithInvalidDocumentData(GenerateTokenEsign.java:613)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingContentTypeEsign()'><b>verifyResponseWithMissingContentTypeEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_09 - Verify that the API rejects the request when Content-Type header is missing.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Error message mismatch expected [Invalid or missing Content-Type. Expected application/json] but found [Malformed JSON]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingContentTypeEsign(GenerateClientSignatureEsign.java:180)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace828979846", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace828979846'><pre>java.lang.AssertionError: The following asserts failed:
-	Error message mismatch expected [Invalid or missing Content-Type. Expected application/json] but found [Malformed JSON]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingContentTypeEsign(GenerateClientSignatureEsign.java:180)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingGenderFieldWhenTrueEsign()'><b>verifyResponseWithMissingGenderFieldWhenTrueEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_21 - Verify API enforces gender values only allowed set (e.g., M/F/Other) when need_gender_match is true.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [invalid gender value] but found [Something went wrong],
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingGenderFieldWhenTrueEsign(GenerateTokenEsign.java:586)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace419414024", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace419414024'><pre>java.lang.AssertionError: The following asserts failed:
-	Message mismatch expected [invalid gender value] but found [Something went wrong],
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateTokenEsign.verifyResponseWithMissingGenderFieldWhenTrueEsign(GenerateTokenEsign.java:586)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
-<tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingBothUsernameAndPasswordEsign()'><b>verifyResponseWithMissingBothUsernameAndPasswordEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_04 - Verify that the API returns the appropriate response when both username and password are empty strings.</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:89)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace712949255", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace712949255'><pre>java.lang.AssertionError: The following asserts failed:
-	HTTP status mismatch expected [400] but found [200]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithMissingBothUsernameAndPasswordEsign(GenerateClientSignatureEsign.java:89)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
+<td>11</td>
+<td>com.api.tests.reversepennydrop.GetExportData_RPD@4e5ed836</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -1247,20 +304,70 @@ Session ID: f3475fd6-1eda-48ca-8b16-62a78f027d21
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithValidCredentialsEsign()'><b>verifyResponseWithValidCredentialsEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_01 - Verify successful upload when all mandatory fields and valid headers are provided.</td>
+<td title='com.api.tests.reversepennydrop.GenerateToken_RPD.verifyResponseWithWrongClientIdField_RPD()'><b>verifyResponseWithWrongClientIdField_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateToken_RPD<br>Test method: tc_04 - Verify authentication fails with wrong client_id.</td>
 <td></td>
-<td>3</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8</td></tr>
 <tr>
-<td title='com.api.tests.esign.GenerateClientSignatureEsign.verifyResponseWithValidCredentialsEsign()'><b>verifyResponseWithValidCredentialsEsign</b><br>Test class: com.api.tests.esign.GenerateClientSignatureEsign<br>Test method: tc_01 - Verify that the API returns the appropriate response when valid username and password are provided.</td>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithInvalidCharacters_RPD()'><b>verifyResponseWithInvalidCharacters_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_10 - Verify invalid characters in client_id/client_secret rejected.</td>
 <td></td>
-<td>3</td>
-<td>com.api.tests.esign.GenerateClientSignatureEsign@548a24a</td></tr>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
 <tr>
-<td title='com.api.tests.esign.GenerateTokenEsign.verifyResponseWithRemovingOptionalFieldsEsign()'><b>verifyResponseWithRemovingOptionalFieldsEsign</b><br>Test class: com.api.tests.esign.GenerateTokenEsign<br>Test method: tc_02 - Verify upload succeeds when optional fields are absent (not relevant here but treat optional fields).</td>
+<td title='com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithValidCredentials()'><b>verifyResponseWithValidCredentials</b><br>Test class: com.api.tests.reversepennydrop.InitiateRequest_RPD<br>Test method: tc_01 - Verify request initiates successfully with valid token and valid body</td>
 <td></td>
-<td>1</td>
-<td>com.api.tests.esign.GenerateTokenEsign@304bb45b</td></tr>
+<td>40</td>
+<td>com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithMissingCLientId_RPD()'><b>verifyResponseWithMissingCLientId_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_03 - Verify error when client_id is missing (transaction_id present).</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateToken_RPD.verifyResponseWithWrongClientSecretField_RPD()'><b>verifyResponseWithWrongClientSecretField_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateToken_RPD<br>Test method: tc_05 - Verify authentication fails with wrong client_secret.</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithInvalidCLientSecret_RPD()'><b>verifyResponseWithInvalidCLientSecret_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_06 - Verify authentication fails with invalid client_secret.</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithMissingCLientSecret_RPD()'><b>verifyResponseWithMissingCLientSecret_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_04 - Verify error when client_secret is missing (transaction_id present).</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateToken_RPD.verifyResponseWithValidCredentials_RPD()'><b>verifyResponseWithValidCredentials_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateToken_RPD<br>Test method: tc_01 - Verify token generated successfully with valid client_id and client_secret.</td>
+<td></td>
+<td>2</td>
+<td>com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithInvalidCLientId_RPD()'><b>verifyResponseWithInvalidCLientId_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_05 - Verify authentication fails with invalid client_secret.</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateToken_RPD.verifyResponseWithMissingClientIdField_RPD()'><b>verifyResponseWithMissingClientIdField_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateToken_RPD<br>Test method: tc_02 - Verify error when client_id is missing.</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithInvalidJSON_RPD()'><b>verifyResponseWithInvalidJSON_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_07 - Verify invalid JSON returns parse error.</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateToken_RPD.verifyResponseWithMissingClientSecretField_RPD()'><b>verifyResponseWithMissingClientSecretField_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateToken_RPD<br>Test method: tc_03 - Verify error when client_secret is missing.</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8</td></tr>
+<tr>
+<td title='com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithValidCredentials_RPD()'><b>verifyResponseWithValidCredentials_RPD</b><br>Test class: com.api.tests.reversepennydrop.GenerateExportToken_RPD<br>Test method: tc_01 - Verify token generated successfully with valid client_id, client_secret and transaction_id</td>
+<td></td>
+<td>0</td>
+<td>com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72</td></tr>
 </table><p>
 </body>
 </html>

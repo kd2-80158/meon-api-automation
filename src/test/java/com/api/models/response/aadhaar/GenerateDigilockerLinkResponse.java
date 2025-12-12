@@ -2,18 +2,12 @@ package com.api.models.response.aadhaar;
 
 public class GenerateDigilockerLinkResponse {
 
-	//
-//    "code": 200,
-//    "msg": "URL Generated Successfully",
-//    "status": "success",
-//    "success": true,
-//    "url": "https://api.digitallocker.gov.in/public/oauth2/1/authorize?dl_flow=signup&response_type=code&client_id=QI36C81C9D&
 	private int code;
 	private String msq;
 	private String status;
 	private boolean success;
 	private String url;
-	
+
 	public GenerateDigilockerLinkResponse() {
 	}
 
