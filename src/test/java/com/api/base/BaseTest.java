@@ -1,18 +1,15 @@
 package com.api.base;
 
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.asserts.SoftAssert;
 
-import com.api.utility.SessionUtility;
+import com.api.utility.SeveritySoftAssert;
 
-@Listeners({com.api.listeners.TestListener.class})
 public class BaseTest {
-	
-	protected SoftAssert softAssert;
+    protected SeveritySoftAssert softAssert;
 
-	@BeforeMethod(alwaysRun = true)
-	public void initSoftAssert() {
-		softAssert = new SoftAssert();
-	}
+    @BeforeMethod
+    public void setupSoftAssert() {
+        softAssert = new SeveritySoftAssert();         // If using plain Selenium
+ 
+    }
 }

@@ -22,6 +22,14 @@ import com.api.models.request.aadhaar.RetrieveAadhaarDataRequest;
 import com.api.models.request.esign.FetchDocumentEsignRequest;
 import com.api.models.request.esign.GenerateClientTokenEsignRequest;
 import com.api.models.request.esign.GenerateTokenEsignRequest;
+import com.api.models.request.kyc.GenerateAdminTokenKYCRequest;
+import com.api.models.request.kyc.GetSsoRouteKYCRequest;
+import com.api.models.request.kyc.GetUserDataKYCRequest;
+import com.api.models.request.pennydrop.BankVerificationPennyDropRequest;
+import com.api.models.request.pennydrop.GenerateTokenPennyDropRequest;
+import com.api.models.request.reversepennydrop.GenerateExportTokenRPDRequest;
+import com.api.models.request.reversepennydrop.GenerateTokenRPDRequest;
+import com.api.models.request.reversepennydrop.InitiateRequestRPDRequest;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.google.gson.Gson;
@@ -46,7 +54,17 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_ESIGN = "/EsignServices/auth";
 	public static final String BASE_PATH_TOKEN_ESIGN = "/EsignServices/uploadPDF";
 	public static final String BASE_PATH_FETCH_DOCUMENT_ESIGN = "/EsignServices/get_pdf_url";
-
+	public static final String BASE_URI_KYC = "https://live.meon.co.in";
+	public static final String BASE_PATH_KYC_ADMIN_TOKEN = "/generate_admin_token";
+	public static final String BASE_PATH_KYC_GET_DATA = "/get_user_data_new";
+	public static final String BASE_PATH_KYC_SSO_ROUTE = "/get_sso_route";
+	public static final String BASE_PATH_PENNYDROP_TOKEN = "/generate_token";
+	public static final String BASE_PATH_PENNYDROP_BANK_VERIFICATION = "/api/pennydrop";
+	public static final String BASE_PATH_REVERSEPENNYDROP_TOKEN = "/api/generate-token";
+	public static final String BASE_PATH_REVERSEPENNYDROP_INITIATE_REQUEST = "/api/initiate-request";
+	public static final String BASE_PATH_REVERSEPENNYDROP_EXPORT_TOKEN = "/api/generate-token";
+	public static final String BASE_PATH_REVERSEPENNYDROP_GET_DATA = "/api/export-data";
+	
 	public AuthService(String product) {
 		super(product); // <-- initializes BASE_URL + rs properly
 		softAssert = new SoftAssert();
@@ -262,10 +280,55 @@ public class AuthService extends BaseService {
 		return postRequestEsignAuth(fetchDocumentEsignRequest, BASE_PATH_FETCH_DOCUMENT_ESIGN, signature);
 
 	}
-	
+
 	public Response fetchDocument(FetchDocumentEsignRequest fetchDocumentEsignRequest) {
 		return postRequestEsign(fetchDocumentEsignRequest, BASE_PATH_FETCH_DOCUMENT_ESIGN);
 
 	}
+
+	public Response generateAdminToken(GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest) {
+		return postRequestKYC(generateAdminTokenKYCRequest, BASE_PATH_KYC_ADMIN_TOKEN);
+
+	}
+
+	public Response fetchDocumentWithAuthKYC(GetUserDataKYCRequest getUserDataKYCRequest, String bearerToken) {
+		return postRequestWithAuthKYC(getUserDataKYCRequest, BASE_PATH_KYC_GET_DATA, bearerToken);
+
+	}
+	
+	public Response bankVerification(BankVerificationPennyDropRequest request)
+	{
+		return postRequestPennyDrop(request,BASE_PATH_PENNYDROP_BANK_VERIFICATION);
+	}
+	
+	public Response bankVerificationWithAuth(BankVerificationPennyDropRequest request, String bearerToken)
+	{
+		return postRequestWithAuthPD(request,BASE_PATH_PENNYDROP_BANK_VERIFICATION,bearerToken);
+	}
+
+	public Response getSsoRoute(GetSsoRouteKYCRequest getSsoRouteKYCRequest) {
+		return postRequestKYC(getSsoRouteKYCRequest, BASE_PATH_KYC_SSO_ROUTE);
+	}
+
+	public Response generateTokenPennyDrop(GenerateTokenPennyDropRequest request) {
+		return postRequestPennyDrop(request, BASE_PATH_PENNYDROP_TOKEN);
+		
+	}
+
+	public Response generateTokenRPD(GenerateTokenRPDRequest request) {
+		return postRequestReversePennyDrop(request,BASE_PATH_REVERSEPENNYDROP_TOKEN);
+	}
+
+	public Response initiateRequest(InitiateRequestRPDRequest request, String authRPD) {
+		logger.info("Inside Initiate Request - token is: "+authRPD);
+		return postRequestReversePennyDropWithAuth(request,BASE_PATH_REVERSEPENNYDROP_INITIATE_REQUEST,authRPD);
+	}
+
+	public Response generateExportTokenRPD(GenerateExportTokenRPDRequest request) {
+		return postRequestReversePennyDrop(request,BASE_PATH_REVERSEPENNYDROP_EXPORT_TOKEN);
+		
+	}
+
+
 
 }
