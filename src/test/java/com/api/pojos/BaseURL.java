@@ -3,14 +3,16 @@ package com.api.pojos;
 import java.util.List;
 
 import com.api.models.request.esign.GenerateTokenEsignRequest.Coordinate;
+import com.api.models.request.kyc.GetSsoRouteKYCRequest.UniqueKeys;
 
 public class BaseURL {
 
-    private String url;
-    private Integer MAX_ATTEMPT;
+	// aadhaar
+	private String url;
+	private Integer MAX_ATTEMPT;
 
-    private String company_name;
-    private String secret_token;
+	private String company_name;
+	private String secret_token;
 	private String client_token;
 	private String redirect_url;
 	private String[] documents;
@@ -27,7 +29,7 @@ public class BaseURL {
 	private String days_to_expire;
 	private List<Coordinate> coordinate;
 	private String webhook;
-	//esign
+	// esign
 	private String cancel_redirect_url;
 	private String esign_type;
 	private boolean remove_preview_pdf;
@@ -40,7 +42,150 @@ public class BaseURL {
 	private String gender;
 	private String document_data;
 	private boolean sms_notification;
+	private String workflowName;
+	private String secret_key;
+	private UniqueKeys unique_keys;
+	private String company_sso;
 	private boolean email_notification;
+
+	// kyc
+	private String work_flow_key;
+	private String page;
+	private String per_page;
+	private String search;
+	private String company;
+
+	// pennydrop
+	private PennyDropConfig.Live live;
+	private String ifsc;
+	private String accountnumber;
+	private String accounttype;
+
+	// reversepennydrop
+	private String client_id;
+	private String client_secret;
+	private String version;
+
+	public String getClient_id() {
+		return client_id;
+	}
+
+	public void setClient_id(String client_id) {
+		this.client_id = client_id;
+	}
+
+	public String getClient_secret() {
+		return client_secret;
+	}
+
+	public void setClient_secret(String client_secret) {
+		this.client_secret = client_secret;
+	}
+
+	public String getIfsc() {
+		return ifsc;
+	}
+
+	public void setIfsc(String ifsc) {
+		this.ifsc = ifsc;
+	}
+
+	public String getAccountnumber() {
+		return accountnumber;
+	}
+
+	public void setAccountnumber(String accountnumber) {
+		this.accountnumber = accountnumber;
+	}
+
+	public String getAccounttype() {
+		return accounttype;
+	}
+
+	public void setAccounttype(String accounttype) {
+		this.accounttype = accounttype;
+	}
+
+	public PennyDropConfig.Live getLive() {
+		return live;
+	}
+
+	public void setLive(PennyDropConfig.Live live) {
+		this.live = live;
+	}
+
+	public String getCompany_sso() {
+		return company_sso;
+	}
+
+	public void setCompany_sso(String company_sso) {
+		this.company_sso = company_sso;
+	}
+
+	public String getWorkflowName() {
+		return workflowName;
+	}
+
+	public void setWorkflowName(String workflowName) {
+		this.workflowName = workflowName;
+	}
+
+	public String getSecret_key() {
+		return secret_key;
+	}
+
+	public void setSecret_key(String secret_key) {
+		this.secret_key = secret_key;
+	}
+
+	public UniqueKeys getUnique_keys() {
+		return unique_keys;
+	}
+
+	public void setUnique_keys(UniqueKeys unique_keys) {
+		this.unique_keys = unique_keys;
+	}
+
+	public String getWork_flow_key() {
+		return work_flow_key;
+	}
+
+	public void setWork_flow_key(String work_flow_key) {
+		this.work_flow_key = work_flow_key;
+	}
+
+	public String getPage() {
+		return page;
+	}
+
+	public void setPage(String page) {
+		this.page = page;
+	}
+
+	public String getPer_page() {
+		return per_page;
+	}
+
+	public void setPer_page(String per_page) {
+		this.per_page = per_page;
+	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -117,7 +262,7 @@ public class BaseURL {
 		return document_data;
 	}
 
-    public boolean isSms_notification() {
+	public boolean isSms_notification() {
 		return sms_notification;
 	}
 
@@ -154,20 +299,20 @@ public class BaseURL {
 	}
 
 	public String getUrl() {
-        return url;
-    }
+		return url;
+	}
 
-    public Integer getMAX_ATTEMPT() {
-        return MAX_ATTEMPT;
-    }
+	public Integer getMAX_ATTEMPT() {
+		return MAX_ATTEMPT;
+	}
 
-    public String getCompany_name() {
-        return company_name;
-    }
+	public String getCompany_name() {
+		return company_name;
+	}
 
-    public String getSecret_token() {
-        return secret_token;
-    }
+	public String getSecret_token() {
+		return secret_token;
+	}
 
 	public String getState() {
 		return state;
@@ -176,6 +321,13 @@ public class BaseURL {
 	public void setState(String state) {
 		this.state = state;
 	}
-    
-}
 
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+}
