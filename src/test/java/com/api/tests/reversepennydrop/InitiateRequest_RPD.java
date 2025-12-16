@@ -63,7 +63,7 @@ public class InitiateRequest_RPD extends BaseTest {
 		return authRPD;
 	}
 
-	@Test(description = "tc_01 - Verify request initiates successfully with valid token and valid body", priority = 1, alwaysRun = true)
+	@Test(description = "tc_01 - Verify request initiates successfully with valid token and valid body", priority = 1, alwaysRun = true,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithValidCredentials() {
 		getToken();
 		String redirect_url = JSONUtility.getReversePennyDrop().getRedirect_url();
@@ -102,7 +102,7 @@ public class InitiateRequest_RPD extends BaseTest {
 		softAssert.assertTrue(res.isSuccess());
 	}
 	
-	@Test(description = "tc_02 - Verify error when redirect_url is missing from body.", priority = 2)
+	@Test(description = "tc_02 - Verify error when redirect_url is missing from body.", priority = 2,groups= {"smoke","regression"})
 	public void verifyResponseWithMissingRedirectUrl_RPD() {
 		getToken();
 		String version = JSONUtility.getReversePennyDrop().getVersion();
@@ -118,7 +118,7 @@ public class InitiateRequest_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_08 - Verify version value validation (unsupported version).", priority = 3)
+	@Test(description = "tc_08 - Verify version value validation (unsupported version).", priority = 3,groups= {"sanity","regression"})
 	public void verifyResponseWithInvalidVersion_RPD() {
 		getToken();
 		String redirect_url = JSONUtility.getReversePennyDrop().getRedirect_url();
@@ -138,7 +138,7 @@ public class InitiateRequest_RPD extends BaseTest {
 	    softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_10 - Verify Content-Type enforcement (non-JSON rejected).",priority=4)
+	@Test(description = "tc_10 - Verify Content-Type enforcement (non-JSON rejected).",priority=4,groups= {"sanity","regression"})
 	public void verifyResponseWithNonJsonContentType_RPD()
 	{
 		String redirect_url = JSONUtility.getReversePennyDrop().getRedirect_url();

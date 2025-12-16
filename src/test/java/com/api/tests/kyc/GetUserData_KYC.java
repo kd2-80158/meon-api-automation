@@ -54,7 +54,7 @@ public class GetUserData_KYC extends BaseTest {
 		}
 	}
 
-	@Test(description = "tc_01 - Verify successful data retrieval with valid auth and required fields.", priority = 1)
+	@Test(description = "tc_01 - Verify successful data retrieval with valid auth and required fields.", priority = 1,groups= {"smoke","regression"})
 	public void verifyResponseWithValidAuthAndRequiredFields_GetDataKYC() {
 		getAuthHeader();
 		GetUserDataKYCRequest getUserDataKYCRequest = new GetUserDataKYCRequest(JSONUtility.getKYC().getWork_flow_key(),
@@ -69,7 +69,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_03 - Verify invalid/expired token returns 401.", priority = 2)
+	@Test(description = "tc_03 - Verify invalid/expired token returns 401.", priority = 2,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithInvalidAuthAndRequiredFields_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -84,7 +84,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_04 - Verify error when required field work_flow_key is missing..", priority = 3)
+	@Test(description = "tc_04 - Verify error when required field work_flow_key is missing..", priority = 3,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingWorkFlowKeyField_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -107,7 +107,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_05 - Verify error when required field company is missing.", priority = 4)
+	@Test(description = "tc_05 - Verify error when required field company is missing.", priority = 4,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingCompanyField_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -131,7 +131,7 @@ public class GetUserData_KYC extends BaseTest {
 
 	}
 
-	@Test(description = "tc_06 - Verify validation when work_flow_key is empty string.", priority = 5)
+	@Test(description = "tc_06 - Verify validation when work_flow_key is empty string.", priority = 5,groups= {"regression"})
 	public void verifyResponseWithEmptyWorkFlowKeyField_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -155,7 +155,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_07 - Verify error when required pagination field per_page is missing", priority = 6)
+	@Test(description = "tc_07 - Verify error when required pagination field per_page is missing", priority = 6,groups= {"regression"})
 	public void verifyResponseWithEmptyCompanyField_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -179,7 +179,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_08 - Verify error when required pagination field per_page is missing.", priority = 7)
+	@Test(description = "tc_08 - Verify error when required pagination field per_page is missing.", priority = 7,groups= {"regression"})
 	public void verifyResponseWithMissingPerPageField_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -212,7 +212,7 @@ public class GetUserData_KYC extends BaseTest {
 
 	}
 
-	@Test(description = "tc_10 - Verify server handles non-numeric page/per_page gracefully (validation).", priority = 8)
+	@Test(description = "tc_10 - Verify server handles non-numeric page/per_page gracefully (validation).", priority = 8,groups= {"regression"})
 	public void verifyResponseWithNonNumericPageAndPerPageFields_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -247,7 +247,7 @@ public class GetUserData_KYC extends BaseTest {
 
 	}
 	
-	@Test(description = "tc_11 - Verify API returns validation error when page and per_page are set to '0'.", priority = 9)
+	@Test(description = "tc_11 - Verify API returns validation error when page and per_page are set to '0'.", priority = 9,groups= {"regression"})
 	public void verifyResponseWhenPageAndPerPageFieldsAreSetToZero_GetDataKYC() {
 		if (!status)
 			getAuthHeader();
@@ -282,7 +282,7 @@ public class GetUserData_KYC extends BaseTest {
 
 	}
 	
-	@Test(description="tc_14 - Verify malformed JSON returns parse error.",priority=10)
+	@Test(description="tc_14 - Verify malformed JSON returns parse error.",priority=10,groups= {"regression"})
 	public void verifyResponseWithMalformedJSON_GetDataKYC()
 	{
 		if(!status)
@@ -317,7 +317,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();	
 	}
 	
-	@Test(description="tc_15 - Verify Content-Type enforcement (non-JSON rejected).",priority=11)
+	@Test(description="tc_15 - Verify Content-Type enforcement (non-JSON rejected).",priority=11,groups= {"smoke","regression"})
 	public void verifyResponseWithNonJsonContentType_GetDataKYC()
 	{
 		if(!status)
@@ -351,7 +351,7 @@ public class GetUserData_KYC extends BaseTest {
 		softAssert.assertAll();	
 	}
 	
-	@Test(description="tc_16 - Verify GET method not allowed (method enforcement).",priority=12)
+	@Test(description="tc_16 - Verify GET method not allowed (method enforcement).",priority=12,groups= {"smoke","regression"})
 	public void verifyResponseWithWrongHTTPMethod_GetDataKYC()
 	{
 		if(!status)

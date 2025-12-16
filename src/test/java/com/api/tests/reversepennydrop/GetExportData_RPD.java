@@ -88,8 +88,8 @@ public class GetExportData_RPD extends BaseTest {
 		return this.token;
 	}
 
-	@Test(description = "tc_01 - Verify successful data export with valid token and default params.", priority = 1, alwaysRun = true)
-	public void verifyResponseWithValidToken_RPD() {
+	@Test(description = "tc_01 - Verify successful data export with valid token and default params.", priority = 1, alwaysRun = true,groups={"smoke","regression"})
+	public void verifyResponseWithValidToken_RPD() throws InterruptedException {
 
 		if (this.token == null) {
 			getToken();
@@ -103,14 +103,19 @@ public class GetExportData_RPD extends BaseTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		String msg = response.jsonPath().get("msg");
 		String responseBody = response.asString();
+        waitAndGetResponseHeaders(responseBody);
+		
 		logger.info("response body: " + responseBody);
 		logger.info("Message: "+msg);
 		softAssert.assertEquals(msg, "Penny drop was successful.");
-//		if(response.getStatusCode()>=400)
-//			return;
+		if(response.getStatusCode()>=400)
+			return;
+		Thread.sleep(10000);
+	}
+
+	private void waitAndGetResponseHeaders(String responseBody) {
 		GetExportDataRPDResponse res = gson.fromJson(responseBody, GetExportDataRPDResponse.class);
 
 		softAssert.assertEquals(res.getMsg(), "Penny drop was successful.", "Message mismatch");
@@ -144,6 +149,7 @@ public class GetExportData_RPD extends BaseTest {
 		softAssert.assertEquals(res.getData().getCustomer_details().getRegistered_name(), "SAURABH  CHHIMWAL",
 				"Registered name mismatch");
 		softAssert.assertAll();
+		
 	}
 
 }

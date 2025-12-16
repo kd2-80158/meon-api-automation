@@ -37,7 +37,7 @@ public class GenerateToken_PennyDrop extends BaseTest {
 		this.password = JSONUtility.getPennyDrop().getLive().getPassword();
 	}
 
-	@Test(description = "tc_01 - Verify token is generated successfully with valid credentials.", priority = 1,alwaysRun = true)
+	@Test(description = "tc_01 - Verify token is generated successfully with valid credentials.", priority = 1,alwaysRun = true,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithValidCredentials_PD() {
 
 		Live live = new Live();
@@ -55,7 +55,7 @@ public class GenerateToken_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_07 - Verify request fails with invalid JSON format.",priority=2)
+	@Test(description = "tc_07 - Verify request fails with invalid JSON format.",priority=2,groups= {"smoke","regression"})
 	public void verifyResponseWithMalformedJSON_PD()
 	{
 		response = rs.baseUri(JSONUtility.getPennyDrop().getUrl())
@@ -77,7 +77,7 @@ public class GenerateToken_PennyDrop extends BaseTest {
         softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_08 - Verify API rejects non-JSON content type..",priority=3)
+	@Test(description = "tc_08 - Verify API rejects non-JSON content type..",priority=3,groups= {"sanity","regression"})
 	public void verifyResponseWithNonJSONContentType_PD()
 	{
 		response = rs.baseUri(JSONUtility.getPennyDrop().getUrl())
@@ -99,7 +99,7 @@ public class GenerateToken_PennyDrop extends BaseTest {
         softAssert.assertAll();
 	}
 
-	@Test(description = "tc_12 - Verify GET method not allowed for this API.",priority=4)
+	@Test(description = "tc_12 - Verify GET method not allowed for this API.",priority=4,groups= {"sanity","regression"})
 	public void verifyResponseWithNonSupportedHTTPMethod_PD()
 	{
 		response = rs.baseUri(JSONUtility.getPennyDrop().getUrl())

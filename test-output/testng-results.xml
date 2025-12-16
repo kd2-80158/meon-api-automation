@@ -1,46 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="18" passed="13" failed="5" skipped="0">
+<testng-results ignored="0" total="15" passed="2" failed="13" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-12T15:17:11 IST" name="API Test Suite" finished-at="2025-12-12T15:18:17 IST" duration-ms="66259">
+  <suite started-at="2025-12-16T16:05:30 IST" name="Default suite" finished-at="2025-12-16T16:05:42 IST" duration-ms="11415">
     <groups>
+      <group name="regression">
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithMissingSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithMissingCompanyNameAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithLongCompanyNameAadhaar()[pri:8, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithLongCompanyNameAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithInvalidSecretTokenAadhaar()[pri:5, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithInvalidSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithInvalidCompanyAadhaar()[pri:6, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithInvalidCompanyAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyIncorrectContentHeaderAadhaar()[pri:7, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyIncorrectContentHeaderAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithLongSecretTokenAadhaar()[pri:9, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithLongSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithSQLInjectionAadhaar()[pri:10, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithSQLInjectionAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseTimeSLAAadhaar()[pri:11, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseTimeSLAAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponeWithNoRequestBodyAadhaar()[pri:12, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponeWithNoRequestBodyAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithNumericValuesOfFieldsAadhaar()[pri:13, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithNumericValuesOfFieldsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOSTAadhaar()[pri:15, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWhenRequestBodyJSONMalformedAadhaar()[pri:16, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWhenRequestBodyJSONMalformedAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithMissingSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+      </group> <!-- smoke -->
+      <group name="sanity">
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithMissingCompanyNameAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+      </group> <!-- sanity -->
+      <group name="e2e">
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+      </group> <!-- e2e -->
     </groups>
-    <test started-at="2025-12-12T15:17:11 IST" name="API Test" finished-at="2025-12-12T15:18:17 IST" duration-ms="66259">
-      <class name="com.api.tests.reversepennydrop.InitiateRequest_RPD">
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:17:19 IST" name="setupSoftAssert" finished-at="2025-12-12T15:17:19 IST" duration-ms="2" status="PASS">
+    <test started-at="2025-12-16T16:05:30 IST" name="Default test" finished-at="2025-12-16T16:05:42 IST" duration-ms="11415">
+      <class name="com.api.tests.aadhaar.GenerateClientToken">
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:30 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:30 IST" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:17:19 IST" name="setup" finished-at="2025-12-12T15:17:19 IST" duration-ms="6" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:30 IST" name="setup" finished-at="2025-12-16T16:05:33 IST" duration-ms="2407" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidCredentials()[pri:1, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:17:19 IST" name="verifyResponseWithValidCredentials" description="tc_01 - Verify request initiates successfully with valid token and valid body" finished-at="2025-12-12T15:18:00 IST" duration-ms="40786" status="PASS">
+        <test-method signature="getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:33 IST" name="getTokenWithValidCredentialsAadhaar" description="tc_01 - Valid credentials return success" finished-at="2025-12-16T16:05:36 IST" duration-ms="2740" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@118ffcfd]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithValidCredentials -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:00 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:00 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- getTokenWithValidCredentialsAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:36 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:00 IST" name="setup" finished-at="2025-12-12T15:18:00 IST" duration-ms="33" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="setup" finished-at="2025-12-16T16:05:36 IST" duration-ms="10" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingRedirectUrl_RPD()[pri:2, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:00 IST" name="verifyResponseWithMissingRedirectUrl_RPD" description="tc_02 - Verify error when redirect_url is missing from body." finished-at="2025-12-12T15:18:01 IST" duration-ms="446" status="FAIL">
+        <test-method signature="verifyResponseWithMissingSecretTokenAadhaar()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="verifyResponseWithMissingSecretTokenAadhaar" description="tc_02 - Missing secret_token returns error" finished-at="2025-12-16T16:05:36 IST" depends-on-methods="com.api.tests.aadhaar.GenerateClientToken.getTokenWithValidCredentialsAadhaar" duration-ms="344" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-[CRITICAL] Message expected [Please pass "redirect_url" for successfull redirection] but found [Invalid token],
-expected [400] but found [401]]]>
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-[CRITICAL] Message expected [Please pass "redirect_url" for successfull redirection] but found [Invalid token],
-expected [400] but found [401]
+expected [400] but found [200]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithMissingRedirectUrl_RPD(InitiateRequest_RPD.java:118)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar(GenerateClientToken.java:86)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -74,27 +108,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingRedirectUrl_RPD -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:01 IST" name="setup" finished-at="2025-12-12T15:18:01 IST" duration-ms="12" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:01 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:01 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingSecretTokenAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:36 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method signature="verifyResponseWithInvalidVersion_RPD()[pri:3, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:01 IST" name="verifyResponseWithInvalidVersion_RPD" description="tc_08 - Verify version value validation (unsupported version)." finished-at="2025-12-12T15:18:01 IST" duration-ms="457" status="FAIL">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="setup" finished-at="2025-12-16T16:05:36 IST" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithMissingCompanyNameAadhaar()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="verifyResponseWithMissingCompanyNameAadhaar" description="tc_03 - Missing company_name returns error" finished-at="2025-12-16T16:05:36 IST" duration-ms="275" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-[HIGH] Status code should be 400 Bad Request "msg": "Unsupported version", expected [400] but found [401]]]>
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-[HIGH] Status code should be 400 Bad Request "msg": "Unsupported version", expected [400] but found [401]
+expected [400] but found [200]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithInvalidVersion_RPD(InitiateRequest_RPD.java:138)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar(GenerateClientToken.java:107)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -128,29 +162,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidVersion_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:01 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:01 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:01 IST" name="setup" finished-at="2025-12-12T15:18:01 IST" duration-ms="22" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingCompanyNameAadhaar -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="setup" finished-at="2025-12-16T16:05:36 IST" duration-ms="10" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithNonJsonContentType_RPD()[pri:4, instance:com.api.tests.reversepennydrop.InitiateRequest_RPD@3de8f619]" started-at="2025-12-12T15:18:01 IST" name="verifyResponseWithNonJsonContentType_RPD" description="tc_10 - Verify Content-Type enforcement (non-JSON rejected)." finished-at="2025-12-12T15:18:02 IST" duration-ms="424" status="FAIL">
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:36 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:36 IST" name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar" description="tc_04 - Missing both fields returns error" finished-at="2025-12-16T16:05:37 IST" duration-ms="219" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-expected [400] but found [401],
-expected [Unsupported media type "text/plain" in request.] but found [Invalid token]]]>
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-expected [400] but found [401],
-expected [Unsupported media type "text/plain" in request.] but found [Invalid token]
+expected [400] but found [200]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.api.tests.reversepennydrop.InitiateRequest_RPD.verifyResponseWithNonJsonContentType_RPD(InitiateRequest_RPD.java:162)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar(GenerateClientToken.java:127)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -184,101 +216,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithNonJsonContentType_RPD -->
-      </class> <!-- com.api.tests.reversepennydrop.InitiateRequest_RPD -->
-      <class name="com.api.tests.reversepennydrop.GenerateExportToken_RPD">
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:02 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:37 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="setup" finished-at="2025-12-12T15:18:02 IST" duration-ms="14" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setup" finished-at="2025-12-16T16:05:37 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidCredentials_RPD()[pri:1, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="verifyResponseWithValidCredentials_RPD" description="tc_01 - Verify token generated successfully with valid client_id, client_secret and transaction_id" finished-at="2025-12-12T15:18:02 IST" duration-ms="394" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithValidCredentials_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:02 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="setup" finished-at="2025-12-12T15:18:02 IST" duration-ms="7" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingCLientId_RPD()[pri:2, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="verifyResponseWithMissingCLientId_RPD" description="tc_03 - Verify error when client_id is missing (transaction_id present)." finished-at="2025-12-12T15:18:02 IST" duration-ms="330" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingCLientId_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:02 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="setup" finished-at="2025-12-12T15:18:02 IST" duration-ms="9" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingCLientSecret_RPD()[pri:3, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:02 IST" name="verifyResponseWithMissingCLientSecret_RPD" description="tc_04 - Verify error when client_secret is missing (transaction_id present)." finished-at="2025-12-12T15:18:03 IST" duration-ms="345" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingCLientSecret_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:03 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:03 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:03 IST" name="setup" finished-at="2025-12-12T15:18:03 IST" duration-ms="81" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithInvalidCLientId_RPD()[pri:4, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:03 IST" name="verifyResponseWithInvalidCLientId_RPD" description="tc_05 - Verify authentication fails with invalid client_secret." finished-at="2025-12-12T15:18:03 IST" duration-ms="397" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidCLientId_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:03 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:03 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:03 IST" name="setup" finished-at="2025-12-12T15:18:03 IST" duration-ms="5" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithInvalidCLientSecret_RPD()[pri:5, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:03 IST" name="verifyResponseWithInvalidCLientSecret_RPD" description="tc_06 - Verify authentication fails with invalid client_secret." finished-at="2025-12-12T15:18:04 IST" duration-ms="403" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidCLientSecret_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:04 IST" duration-ms="4" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="setup" finished-at="2025-12-12T15:18:04 IST" duration-ms="14" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithInvalidJSON_RPD()[pri:6, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="verifyResponseWithInvalidJSON_RPD" description="tc_07 - Verify invalid JSON returns parse error." finished-at="2025-12-12T15:18:04 IST" duration-ms="421" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidJSON_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:04 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="setup" finished-at="2025-12-12T15:18:04 IST" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithNonJSONContentType_RPD()[pri:7, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="verifyResponseWithNonJSONContentType_RPD" description="tc_08 - Verify content-type enforcement (non-JSON rejected)." finished-at="2025-12-12T15:18:04 IST" duration-ms="444" status="FAIL">
+        <test-method signature="verifyResponseWithInvalidSecretTokenAadhaar()[pri:5, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="verifyResponseWithInvalidSecretTokenAadhaar" description="tc_05 - Invalid secret_token returns unauthorized" finished-at="2025-12-16T16:05:37 IST" duration-ms="215" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-expected [Unsupported media type "text/plain" in request.] but found [Unsupported media type \"text/plain\" in request.]]]>
+expected [401] but found [200]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-expected [Unsupported media type "text/plain" in request.] but found [Unsupported media type \"text/plain\" in request.]
+expected [401] but found [200]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.api.tests.reversepennydrop.GenerateExportToken_RPD.verifyResponseWithNonJSONContentType_RPD(GenerateExportToken_RPD.java:193)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidSecretTokenAadhaar(GenerateClientToken.java:151)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -312,103 +270,27 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithNonJSONContentType_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:04 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- verifyResponseWithInvalidSecretTokenAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:37 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:04 IST" name="setup" finished-at="2025-12-12T15:18:05 IST" duration-ms="14" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setup" finished-at="2025-12-16T16:05:37 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithInvalidCharacters_RPD()[pri:8, instance:com.api.tests.reversepennydrop.GenerateExportToken_RPD@2ab4bc72]" started-at="2025-12-12T15:18:05 IST" name="verifyResponseWithInvalidCharacters_RPD" description="tc_10 - Verify invalid characters in client_id/client_secret rejected." finished-at="2025-12-12T15:18:05 IST" duration-ms="400" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithInvalidCharacters_RPD -->
-      </class> <!-- com.api.tests.reversepennydrop.GenerateExportToken_RPD -->
-      <class name="com.api.tests.reversepennydrop.GenerateToken_RPD">
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:11 IST" name="setupSoftAssert" finished-at="2025-12-12T15:17:11 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:11 IST" name="setup" finished-at="2025-12-12T15:17:15 IST" duration-ms="4070" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidCredentials_RPD()[pri:1, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:15 IST" name="verifyResponseWithValidCredentials_RPD" description="tc_01 - Verify token generated successfully with valid client_id and client_secret." finished-at="2025-12-12T15:17:18 IST" duration-ms="2547" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithValidCredentials_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="setupSoftAssert" finished-at="2025-12-12T15:17:18 IST" duration-ms="2" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="setup" finished-at="2025-12-12T15:17:18 IST" duration-ms="30" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingClientIdField_RPD()[pri:2, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="verifyResponseWithMissingClientIdField_RPD" description="tc_02 - Verify error when client_id is missing." finished-at="2025-12-12T15:17:18 IST" duration-ms="380" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingClientIdField_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="setupSoftAssert" finished-at="2025-12-12T15:17:18 IST" duration-ms="2" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="setup" finished-at="2025-12-12T15:17:18 IST" duration-ms="25" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithMissingClientSecretField_RPD()[pri:3, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="verifyResponseWithMissingClientSecretField_RPD" description="tc_03 - Verify error when client_secret is missing." finished-at="2025-12-12T15:17:18 IST" duration-ms="431" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithMissingClientSecretField_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="setupSoftAssert" finished-at="2025-12-12T15:17:18 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="setup" finished-at="2025-12-12T15:17:18 IST" duration-ms="9" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithWrongClientIdField_RPD()[pri:4, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:18 IST" name="verifyResponseWithWrongClientIdField_RPD" description="tc_04 - Verify authentication fails with wrong client_id." finished-at="2025-12-12T15:17:19 IST" duration-ms="360" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithWrongClientIdField_RPD -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:19 IST" name="setupSoftAssert" finished-at="2025-12-12T15:17:19 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:19 IST" name="setup" finished-at="2025-12-12T15:17:19 IST" duration-ms="9" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithWrongClientSecretField_RPD()[pri:4, instance:com.api.tests.reversepennydrop.GenerateToken_RPD@3ba987b8]" started-at="2025-12-12T15:17:19 IST" name="verifyResponseWithWrongClientSecretField_RPD" description="tc_05 - Verify authentication fails with wrong client_secret." finished-at="2025-12-12T15:17:19 IST" duration-ms="433" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyResponseWithWrongClientSecretField_RPD -->
-      </class> <!-- com.api.tests.reversepennydrop.GenerateToken_RPD -->
-      <class name="com.api.tests.reversepennydrop.GetExportData_RPD">
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.reversepennydrop.GetExportData_RPD@4e5ed836]" started-at="2025-12-12T15:18:05 IST" name="setupSoftAssert" finished-at="2025-12-12T15:18:05 IST" duration-ms="3" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.reversepennydrop.GetExportData_RPD@4e5ed836]" started-at="2025-12-12T15:18:05 IST" name="setup" finished-at="2025-12-12T15:18:05 IST" duration-ms="12" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidToken_RPD()[pri:1, instance:com.api.tests.reversepennydrop.GetExportData_RPD@4e5ed836]" started-at="2025-12-12T15:18:05 IST" name="verifyResponseWithValidToken_RPD" description="tc_01 - Verify successful data export with valid token and default params." finished-at="2025-12-12T15:18:17 IST" duration-ms="11822" status="FAIL">
+        <test-method signature="verifyResponseWithInvalidCompanyAadhaar()[pri:6, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="verifyResponseWithInvalidCompanyAadhaar" description="tc_06 - Invalid company_name returns unauthorized" finished-at="2025-12-16T16:05:37 IST" duration-ms="221" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-UTR mismatch expected [reverse_penny_drop_yrJNKfKwdlhdzymwruIz] but found [reverse_penny_drop_RRwZozhVfXCyshLrfdDa]]]>
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-UTR mismatch expected [reverse_penny_drop_yrJNKfKwdlhdzymwruIz] but found [reverse_penny_drop_RRwZozhVfXCyshLrfdDa]
+expected [400] but found [200]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.api.tests.reversepennydrop.GetExportData_RPD.verifyResponseWithValidToken_RPD(GetExportData_RPD.java:146)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidCompanyAadhaar(GenerateClientToken.java:174)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -442,8 +324,498 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithValidToken_RPD -->
-      </class> <!-- com.api.tests.reversepennydrop.GetExportData_RPD -->
-    </test> <!-- API Test -->
-  </suite> <!-- API Test Suite -->
+        </test-method> <!-- verifyResponseWithInvalidCompanyAadhaar -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setup" finished-at="2025-12-16T16:05:37 IST" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:37 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyIncorrectContentHeaderAadhaar()[pri:7, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="verifyIncorrectContentHeaderAadhaar" description="tc_07 - Wrong Content-Type returns 415" finished-at="2025-12-16T16:05:37 IST" duration-ms="399" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Server returned HTML error page:
+<html lang="en">
+  <head>
+    <title>415 Unsupported Media Type</title>
+  </head>
+  <body>
+    <h1>Unsupported Media Type</h1>
+    <p>Did not attempt to load JSON data because the request Content-Type was not 'application/json'.</p>
+  </body>
+</html>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Server returned HTML error page:
+<html lang="en">
+  <head>
+    <title>415 Unsupported Media Type</title>
+  </head>
+  <body>
+    <h1>Unsupported Media Type</h1>
+    <p>Did not attempt to load JSON data because the request Content-Type was not 'application/json'.</p>
+  </body>
+</html>
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyIncorrectContentHeaderAadhaar(GenerateClientToken.java:195)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyIncorrectContentHeaderAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:37 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="setup" finished-at="2025-12-16T16:05:37 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithLongCompanyNameAadhaar()[pri:8, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:37 IST" name="verifyResponseWithLongCompanyNameAadhaar" description="tc_09 - Extremely long company_name returns error" finished-at="2025-12-16T16:05:38 IST" duration-ms="365" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongCompanyNameAadhaar(GenerateClientToken.java:219)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithLongCompanyNameAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:38 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:38 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:38 IST" name="setup" finished-at="2025-12-16T16:05:38 IST" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithLongSecretTokenAadhaar()[pri:9, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:38 IST" name="verifyResponseWithLongSecretTokenAadhaar" description="tc_10 - Extremely long secret_token returns unauthorized" finished-at="2025-12-16T16:05:40 IST" duration-ms="2091" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongSecretTokenAadhaar(GenerateClientToken.java:244)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithLongSecretTokenAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:40 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:40 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:40 IST" name="setup" finished-at="2025-12-16T16:05:40 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithSQLInjectionAadhaar()[pri:10, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:40 IST" name="verifyResponseWithSQLInjectionAadhaar" description="tc_11 - SQL Injection attempt should fail gracefully" finished-at="2025-12-16T16:05:40 IST" duration-ms="225" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithSQLInjectionAadhaar(GenerateClientToken.java:269)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithSQLInjectionAadhaar -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:40 IST" name="setup" finished-at="2025-12-16T16:05:40 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:40 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:40 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseTimeSLAAadhaar()[pri:11, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:40 IST" name="verifyResponseTimeSLAAadhaar" description="tc_15 - Validate Response Time SLA" finished-at="2025-12-16T16:05:41 IST" duration-ms="319" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseTimeSLAAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:41 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setup" finished-at="2025-12-16T16:05:41 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponeWithNoRequestBodyAadhaar()[pri:12, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="verifyResponeWithNoRequestBodyAadhaar" description="tc_17 - Missing request body returns error" finished-at="2025-12-16T16:05:41 IST" duration-ms="363" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [502]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [502]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponeWithNoRequestBodyAadhaar(GenerateClientToken.java:304)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponeWithNoRequestBodyAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:41 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setup" finished-at="2025-12-16T16:05:41 IST" duration-ms="17" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithNumericValuesOfFieldsAadhaar()[pri:13, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="verifyResponseWithNumericValuesOfFieldsAadhaar" description="tc_18 - Numeric values instead of strings return error" finished-at="2025-12-16T16:05:41 IST" duration-ms="222" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithNumericValuesOfFieldsAadhaar(GenerateClientToken.java:329)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithNumericValuesOfFieldsAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:41 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setup" finished-at="2025-12-16T16:05:41 IST" duration-ms="9" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar()[pri:15, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar" description="tc_23 - GET instead of POST should return 405" finished-at="2025-12-16T16:05:41 IST" duration-ms="234" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Server returned HTML:
+<html lang="en">
+  <head>
+    <title>405 Method Not Allowed</title>
+  </head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>The method is not allowed for the requested URL.</p>
+  </body>
+</html>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Server returned HTML:
+<html lang="en">
+  <head>
+    <title>405 Method Not Allowed</title>
+  </head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>The method is not allowed for the requested URL.</p>
+  </body>
+</html>
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOSTAadhaar(GenerateClientToken.java:350)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenGETMethodInsteadOfPOSTAadhaar -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setupSoftAssert" finished-at="2025-12-16T16:05:41 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="setup" finished-at="2025-12-16T16:05:41 IST" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWhenRequestBodyJSONMalformedAadhaar()[pri:16, instance:com.api.tests.aadhaar.GenerateClientToken@4a83a74a]" started-at="2025-12-16T16:05:41 IST" name="verifyResponseWhenRequestBodyJSONMalformedAadhaar" description="tc_24 - Malformed JSON should return clean error" finished-at="2025-12-16T16:05:42 IST" duration-ms="151" status="FAIL">
+          <exception class="io.restassured.path.json.exception.JsonPathException">
+            <message>
+              <![CDATA[Failed to parse the JSON document]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenRequestBodyJSONMalformedAadhaar(GenerateClientToken.java:372)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading '<', no possible valid JSON value or punctuation could be recognized.
+at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+... 33 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.restassured.path.json.exception.JsonPathException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenRequestBodyJSONMalformedAadhaar -->
+      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

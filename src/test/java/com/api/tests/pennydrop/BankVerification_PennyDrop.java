@@ -56,7 +56,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		return token;
 	}
 
-	@Test(description = "tc_01 - Verify successful pennydrop creation with valid data and valid token.", priority = 1, alwaysRun = true)
+	@Test(description = "tc_01 - Verify successful pennydrop creation with valid data and valid token.", priority = 1, alwaysRun = true,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithValidCredentialsAndToken_PD() {
 		getBearerToken();
 		String name = JSONUtility.getPennyDrop().getName();
@@ -81,7 +81,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_02 - Verify API rejects request with missing Authorization header.", priority = 2)
+	@Test(description = "tc_02 - Verify API rejects request with missing Authorization header.", priority = 2,groups= {"smoke","regression"})
 	public void verifyResponseWithMissingAuthHeader_PD() {
 		getBearerToken();
 		String name = JSONUtility.getPennyDrop().getName();
@@ -99,7 +99,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_03 - Verify API rejects invalid/expired token.", priority = 3)
+	@Test(description = "tc_03 - Verify API rejects invalid/expired token.", priority = 3,groups= {"sanity","regression"})
 	public void verifyResponseWithInvalidToken_PD() {
 		String name = JSONUtility.getPennyDrop().getName();
 		String mobile = JSONUtility.getPennyDrop().getMobile();
@@ -117,7 +117,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_04 - Verify validation fails when required field 'name' is missing.", priority = 4)
+	@Test(description = "tc_04 - Verify validation fails when required field 'name' is missing.", priority = 4,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingNameField_PD() {
 		getBearerToken();
 		String mobile = JSONUtility.getPennyDrop().getMobile();
@@ -136,7 +136,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_05 - Verify validation fails when 'mobile' is missing.", priority = 5)
+	@Test(description = "tc_05 - Verify validation fails when 'mobile' is missing.", priority = 5,groups= {"regression"})
 	public void verifyResponseWithMissingMobileField_PD() {
 		getBearerToken();
 		String name = JSONUtility.getPennyDrop().getName();
@@ -155,7 +155,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_06 - Verify mobile number format validation.", priority = 6)
+	@Test(description = "tc_06 - Verify mobile number format validation.", priority = 6,groups= {"regression"})
 	public void verifyResponseWithInvalidMobileField_PD() {
 		getBearerToken();
 		String mobile = "12345";
@@ -176,7 +176,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_07 - Verify IFSC format validation.", priority = 7)
+	@Test(description = "tc_07 - Verify IFSC format validation.", priority = 7,groups= {"regression"})
 	public void verifyResponseWithInvalidIFSCField_PD() {
 		getBearerToken();
 		String ifsc = "invalidifsc";
@@ -196,7 +196,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_10 - Verify API rejects malformed JSON.", priority=8)
+	@Test(description = "tc_10 - Verify API rejects malformed JSON.", priority=8,groups= {"regression"})
 	public void verifyResponseWithMalformedJSON_PD()
 	{
 		String name = JSONUtility.getPennyDrop().getName();
@@ -215,7 +215,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_13 - Verify SQL injection or malicious input is sanitized.", priority = 9)
+	@Test(description = "tc_13 - Verify SQL injection or malicious input is sanitized.", priority = 9,groups= {"regression"})
 	public void verifyResponseWithSqlInjection_PD() {
 		getBearerToken();
 		String ifsc = JSONUtility.getPennyDrop().getIfsc();
@@ -235,7 +235,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_17 - Verify response time within SLA for normal request.", priority = 10)
+	@Test(description = "tc_17 - Verify response time within SLA for normal request.", priority = 10,groups= {"regression"})
 	public void verifyResponseWithResponseTime_PD() {
 		getBearerToken();
 		String name = JSONUtility.getPennyDrop().getName();

@@ -32,7 +32,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 		rs = RestAssured.given();
 	}
 	
-	@Test(description="tc_01 - Verify admin token generated successfully with valid email & password.",priority=1)
+	@Test(description="tc_01 - Verify admin token generated successfully with valid email & password.",priority=1,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithValidCredentials_KYC()
 	{
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(JSONUtility.getKYC().getEmail(), JSONUtility.getKYC().getPassword());
@@ -47,7 +47,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	    softAssert.assertAll();
 	}
 	
-	@Test(description="tc_02 - Verify authentication fails with incorrect password.",priority=2)
+	@Test(description="tc_02 - Verify authentication fails with incorrect password.",priority=2, groups = {"smoke","sanity","regression"})
 	public void verifyResponseWithIncorrectPasswordField_KYC()
 	{
 		String incorrectPassword = "wrongPassword";
@@ -63,7 +63,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	    softAssert.assertAll();
 	}
 	
-	@Test(description="tc_03 - Verify authentication fails with non-existent email.",priority=3)
+	@Test(description="tc_03 - Verify authentication fails with non-existent email.",priority=3,groups= {"sanity","regression"})
 	public void verifyResponseWithNonExistentEmailField_KYC()
 	{
 		String invalidEmail = "sam.meon.co.in";
@@ -79,7 +79,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	    softAssert.assertAll();
 	}
 	
-	@Test(description="tc_04 - Verify error when email field missing.",priority=4)
+	@Test(description="tc_04 - Verify error when email field missing.",priority=4, groups= {"regression"})
 	public void verifyResponseWithMissingEmailField_KYC()
 	{
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(JSONUtility.getKYC().getPassword());
@@ -94,7 +94,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	    softAssert.assertAll();
 	}
 	
-	@Test(description="tc_05 - Verify error when password field missing.",priority=5)
+	@Test(description="tc_05 - Verify error when password field missing.",priority=5,groups= {"regression"})
 	public void verifyResponseWithMissingPasswordField_KYC()
 	{
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(JSONUtility.getKYC().getEmail());
@@ -109,7 +109,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	    softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_09 - Verify API returns error for malformed JSON body.", priority = 6)
+	@Test(description = "tc_09 - Verify API returns error for malformed JSON body.", priority = 6,groups= {"regression"})
 	public void verifyResponseWhenRequestBodyJSONMalformed_KYC() {
 
 		String email = JSONUtility.getKYC().getEmail();
@@ -135,7 +135,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_10 - Verify Content-Type validation (non-JSON).", priority = 7)
+	@Test(description = "tc_10 - Verify Content-Type validation (non-JSON).", priority = 7,groups= {"regression"})
 	public void verifyResponseWhenNonJsonContentType_KYC() {
 
 		String email = JSONUtility.getKYC().getEmail();
@@ -160,7 +160,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_14 - Verify GET/PUT/DELETE methods are not allowed.", priority = 8)
+	@Test(description = "tc_14 - Verify GET/PUT/DELETE methods are not allowed.", priority = 8,groups= {"regression"})
 	public void verifyResponseWithWrongHTTPMethod_KYC() {
 
 		String email = JSONUtility.getKYC().getEmail();

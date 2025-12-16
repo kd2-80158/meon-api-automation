@@ -37,7 +37,7 @@ public class GenerateToken_RPD extends BaseTest {
 		gson = new Gson();
 	}
 
-	@Test(description = "tc_01 - Verify token generated successfully with valid client_id and client_secret.", priority = 1)
+	@Test(description = "tc_01 - Verify token generated successfully with valid client_id and client_secret.", priority = 1,alwaysRun=true,groups= {"e2e","smoke","sanity","regression"})
 	public void verifyResponseWithValidCredentials_RPD() {
 		String client_id = JSONUtility.getReversePennyDrop().getClient_id();
 		String client_secret = JSONUtility.getReversePennyDrop().getClient_secret();
@@ -55,7 +55,7 @@ public class GenerateToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_02 - Verify error when client_id is missing.", priority = 2)
+	@Test(description = "tc_02 - Verify error when client_id is missing.", priority = 2,groups= {"smoke","regression"})
 	public void verifyResponseWithMissingClientIdField_RPD() {
 		String client_secret = JSONUtility.getReversePennyDrop().getClient_secret();
 		GenerateTokenRPDRequest request = new GenerateTokenRPDRequest(client_secret);
@@ -69,7 +69,7 @@ public class GenerateToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_03 - Verify error when client_secret is missing.", priority = 3)
+	@Test(description = "tc_03 - Verify error when client_secret is missing.", priority = 3,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingClientSecretField_RPD() {
 		String client_id = JSONUtility.getReversePennyDrop().getClient_id();
 		GenerateTokenRPDRequest request = new GenerateTokenRPDRequest(client_id);
@@ -83,7 +83,7 @@ public class GenerateToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_04 - Verify authentication fails with wrong client_id.", priority = 4)
+	@Test(description = "tc_04 - Verify authentication fails with wrong client_id.", priority = 4,groups= {"smoke","regression"})
 	public void verifyResponseWithWrongClientIdField_RPD() {
 		String client_id = "wrongClientId";
 		String client_secret = JSONUtility.getReversePennyDrop().getClient_secret();
@@ -98,7 +98,7 @@ public class GenerateToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_05 - Verify authentication fails with wrong client_secret.", priority = 4)
+	@Test(description = "tc_05 - Verify authentication fails with wrong client_secret.", priority = 4,groups= {"regression"})
 	public void verifyResponseWithWrongClientSecretField_RPD() {
 		String client_id = JSONUtility.getReversePennyDrop().getClient_id();
 		String client_secret = "wrongClientSecret";
