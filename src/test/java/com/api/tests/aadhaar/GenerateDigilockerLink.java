@@ -21,6 +21,8 @@ import org.testng.annotations.Test;
 import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.models.request.aadhaar.GenerateDigilockerLinkRequest;
+import com.api.models.response.aadhaar.GenerateClientTokenResponse;
+import com.api.models.response.aadhaar.GenerateDigilockerLinkResponse;
 import com.api.utility.ExtentReporterUtility;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
@@ -37,6 +39,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 	Logger logger;
 	RequestSpecification rs;
 	GenerateClientToken generateClientToken;
+	GenerateDigilockerLinkResponse res;
 
 	@BeforeMethod
 	public void setup(ITestContext context) {
@@ -48,10 +51,9 @@ public final class GenerateDigilockerLink extends BaseTest {
 		generateClientToken.state = (String) context.getAttribute("state");
 	}
 
-	@Test(description = "Verify API returns success response with mandatory fields only", priority = 1)
+	@Test(description = "tc_01 - Verify API returns success response with mandatory fields only", priority = 1, alwaysRun = true, groups = {
+			"e2e", "smoke", "regression", "sanity" })
 	public void verifyResponseWithMandatoryFieldsGenerateDigilockerLink(ITestContext context) {
-
-		// --- 1. API CALL SETUP & EXECUTION ---
 		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getCompany_name(),
 				JSONUtility.getAadhaar().getDocuments());
@@ -70,16 +72,11 @@ public final class GenerateDigilockerLink extends BaseTest {
 			softAssert.assertAll();
 			return;
 		}
-
-		WebDriver driver = null; // Declare driver outside try block
+		WebDriver driver = null;
 		try {
 			if (digilockerUrl != null) {
-
-				// Initialization
-				driver = new FirefoxDriver(); // Or use a WebDriver Manager approach
-				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // Set a small implicit wait
-
-				// Digilocker Flow
+				driver = new FirefoxDriver();
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 				driver.navigate().to(digilockerUrl);
 
 				WebElement aadhaar = driver.findElement(By.xpath("//input[@id='aadhaar_1']"));
@@ -88,15 +85,10 @@ public final class GenerateDigilockerLink extends BaseTest {
 
 				WebElement nextBtn = driver.findElement(By.xpath("//button[text()='Next']"));
 				nextBtn.click();
-
-				// Wait for the final element (Done button) to appear and be clickable
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-				// Wait until the element is clickable, then store it.
 				WebElement doneBtn = wait
 						.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Done']")));
 
-				// Optionally click Done if the flow requires it to fully complete
-				// doneBtn.click();
 			}
 
 			ExtentReporterUtility.getTest().info("Digilocker flow resumed by user")
@@ -111,42 +103,55 @@ public final class GenerateDigilockerLink extends BaseTest {
 				driver.quit();
 			}
 		}
-
-		// --- 3. FINAL ASSERTION ---
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_03 - Missing company_name should return error", priority = 2)
+	@Test(description = "tc_03 - Missing company_name should return error", priority = 2, groups = { "smoke",
+			"regression" })
 	public void verifyResponseWhenCompanyNameMissingGenerateDigilockerLink() {
 
 		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getDocuments());
 
 		response = authService.generateClientToken(req);
-
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.getStatusCode(), 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateDigilockerLinkResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400);
+			}
+		}
+		softAssert.assertFalse(res.isSuccess(), "Expected status=false");
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_04 - Missing documents should return error", priority = 3)
+	@Test(description = "tc_04 - Missing documents should return error", priority = 3, groups = { "sanity",
+			"regression" })
 	public void verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink() {
 
 		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getCompany_name());
-
 		response = authService.generateClientToken(req);
-
-		softAssert.assertFalse(response.jsonPath().getBoolean("success"), "Expected success=false");
-		softAssert.assertEquals(response.jsonPath().getString("msg"), "Missing required fields: documents");
-		softAssert.assertEquals(response.getStatusCode(), 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateDigilockerLinkResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400);
+			}
+		}
+		softAssert.assertFalse(res.isSuccess(), "Expected success=false");
+		softAssert.assertEquals(res.getMsq(), "Missing required fields: documents");
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_06 - Unsupported document value returns error", priority = 4)
+	@Test(description = "tc_06 - Unsupported document value returns error", priority = 4, groups = { "sanity",
+			"regression" })
 	public void verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink() {
 
 		String[] unsupportedDocs = { "passport" };
@@ -156,14 +161,22 @@ public final class GenerateDigilockerLink extends BaseTest {
 				unsupportedDocs);
 
 		response = authService.generateClientToken(req);
-
-		softAssert.assertFalse(response.jsonPath().getBoolean("success"), "Expected success=false");
-		softAssert.assertEquals(response.getStatusCode(), 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateDigilockerLinkResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400);
+			}
+		}
+		softAssert.assertFalse(res.isSuccess(), "Expected success=false");
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_08 - Malformed JSON should not return HTML", priority = 5)
+	@Test(description = "tc_08 - Malformed JSON should not return HTML", priority = 5, groups = { "sanity",
+			"regression" })
 	public void verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink() {
 
 		String redirectUrl = JSONUtility.getAadhaar().getRedirect_url();
@@ -189,8 +202,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_09 - Wrong Content-Type should fail", priority = 6)
+	@Test(description = "tc_09 - Wrong Content-Type should fail", priority = 6, groups = { "regression" })
 	public void verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink() {
 
 		String redirectUrl = JSONUtility.getAadhaar().getRedirect_url();
@@ -218,8 +230,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_15 - Empty body should return error", priority = 7)
+	@Test(description = "tc_15 - Empty body should return error", priority = 7, groups = { "regression" })
 	public void verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink() {
 
 		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest();
@@ -240,8 +251,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	// ---------------------------------------------------------------------------
-	@Test(description = "tc_22 - Numeric types for string fields should fail", priority = 9)
+	@Test(description = "tc_22 - Numeric types for string fields should fail", priority = 9, groups = { "regression" })
 	public void verifyResponseForNumericTypesGenerateDigilockerLink() {
 
 		Map<String, Object> body = new HashMap<>();

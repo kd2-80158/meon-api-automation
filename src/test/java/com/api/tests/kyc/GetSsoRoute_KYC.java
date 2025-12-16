@@ -31,7 +31,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		rs = RestAssured.given();
 	}
 
-	@Test(description = "tc_01 - Verify successful SSO route retrieval with valid mandatory fields.", priority = 1)
+	@Test(description = "tc_01 - Verify successful SSO route retrieval with valid mandatory fields.", priority = 1,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithValidMandatoryFields_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getCompany_sso(),
 				JSONUtility.getKYC().getWorkflowName(), JSONUtility.getKYC().getSecret_key(),
@@ -46,7 +46,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_02 - Verify error when company is missing (required field).", priority = 2)
+	@Test(description = "tc_02 - Verify error when company is missing (required field).", priority = 2,groups= {"smoke","regression"})
 	public void verifyResponseWithMissingCompanyfield_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getWorkflowName(),
 				JSONUtility.getKYC().getSecret_key(), JSONUtility.getKYC().getUnique_keys());
@@ -65,7 +65,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_03 - Verify error when workflowName is missing (required).", priority = 3)
+	@Test(description = "tc_03 - Verify error when workflowName is missing (required).", priority = 3,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingWorkflowfield_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getCompany_sso(),
 				JSONUtility.getKYC().getSecret_key(), JSONUtility.getKYC().getUnique_keys());
@@ -84,7 +84,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_04 - Verify error when secret_key is missing (required).", priority = 4)
+	@Test(description = "tc_04 - Verify error when secret_key is missing (required).", priority = 4,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingSecretKeyfield_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getCompany_sso(),
 				JSONUtility.getKYC().getWorkflowName(), JSONUtility.getKYC().getUnique_keys());
@@ -103,7 +103,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_05 - Verify error when unique_keys is missing (required).", priority = 5)
+	@Test(description = "tc_05 - Verify error when unique_keys is missing (required).", priority = 5,groups= {"regression"})
 	public void verifyResponseWithMissingUniqueKeysfield_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getCompany_sso(),
 				JSONUtility.getKYC().getWorkflowName(), JSONUtility.getKYC().getSecret_key());
@@ -122,7 +122,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_13 - Verify method not allowed for GET/PUT.", priority = 6)
+	@Test(description = "tc_13 - Verify method not allowed for GET/PUT.", priority = 6,groups= {"regression"})
 	public void verifyResponseWithWrongHTTPMethod_GetDataKYC() {
 
 		String company = JSONUtility.getKYC().getWork_flow_key();
@@ -151,7 +151,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_14 - Verify malformed JSON returns parse error.", priority = 7)
+	@Test(description = "tc_14 - Verify malformed JSON returns parse error.", priority = 7,groups= {"regression"})
 	public void verifyResponseWithMalformedJSON_GetDataKYC() {
 
 		String company = JSONUtility.getKYC().getWork_flow_key();

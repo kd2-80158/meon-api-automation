@@ -14,6 +14,7 @@ public class GenerateTokenEsignResponse {
 	private boolean pdf_reviewer;
 	private boolean success;
 	private String message;
+	private int code;
 	
 	public GenerateTokenEsignResponse() {
 		super();
@@ -67,6 +68,14 @@ public class GenerateTokenEsignResponse {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	@Override

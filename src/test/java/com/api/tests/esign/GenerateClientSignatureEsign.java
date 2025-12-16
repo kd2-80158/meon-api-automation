@@ -37,7 +37,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		rs = RestAssured.given();
 	}
 	
-	@Test(description = "tc_01 - Verify that the API returns the appropriate response when valid username and password are provided.",priority=1)
+	@Test(description = "tc_01 - Verify that the API returns the appropriate response when valid username and password are provided.",priority=1,alwaysRun=true,groups= {"e2e","smoke","sanity","regression"})
 	public void verifyResponseWithValidCredentialsEsign()
 	{
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(JSONUtility.getEsign().getUsername(), JSONUtility.getEsign().getPassword());
@@ -50,7 +50,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_02 - Verify that the API returns the appropriate response when username is missing.",priority=2)
+	@Test(description = "tc_02 - Verify that the API returns the appropriate response when username is missing.",priority=2,groups= {"smoke","regression"})
 	public void verifyResponseWithMissingUsernameEsign()
 	{
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(JSONUtility.getEsign().getPassword());
@@ -62,7 +62,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_03 - Verify that the API returns the appropriate response when password is missing.",priority=3)
+	@Test(description = "tc_03 - Verify that the API returns the appropriate response when password is missing.",priority=3,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingPasswordEsign()
 	{
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(JSONUtility.getEsign().getUsername());
@@ -75,7 +75,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 
 	}
 	
-	@Test(description = "tc_04 - Verify that the API returns the appropriate response when both username and password are empty strings.",priority=4)
+	@Test(description = "tc_04 - Verify that the API returns the appropriate response when both username and password are empty strings.",priority=4,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingBothUsernameAndPasswordEsign()
 	{
 		String emptyUsername = "";
@@ -89,7 +89,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_05 - Verify that the API returns the appropriate response when invalid credentials are provided.",priority=5)
+	@Test(description = "tc_05 - Verify that the API returns the appropriate response when invalid credentials are provided.",priority=5,groups= {"regression"})
 	public void verifyResponseWithWrongBothUsernameAndPasswordEsign()
 	{
 		String emptyUsername = "WrongUser";
@@ -103,7 +103,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_06 - Verify that the API returns the appropriate response when username contains SQL injection payload.",priority=6)
+	@Test(description = "tc_06 - Verify that the API returns the appropriate response when username contains SQL injection payload.",priority=6,groups= {"regression"})
 	public void verifyResponseWithSqlInjectionEsign()
 	{
 		String username = "demo3mvP'; DROP TABLE auth_user; --";
@@ -117,7 +117,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 
 	}
 	
-	@Test(description = "tc_07 - Verify that the API returns the appropriate response when username contains XSS payload.",priority=7)
+	@Test(description = "tc_07 - Verify that the API returns the appropriate response when username contains XSS payload.",priority=7,groups= {"regression"})
 	public void verifyResponseWithXSSPayloadEsign()
 	{
 		String username = "<script>alert(1)</script>";
@@ -155,7 +155,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_09 - Verify that the API rejects the request when Content-Type header is missing.", priority = 9)
+	@Test(description = "tc_09 - Verify that the API rejects the request when Content-Type header is missing.", priority = 9,groups= {"regression"})
 	public void verifyResponseWithMissingContentTypeEsign() 
 	{
 		String username = JSONUtility.getEsign().getUsername();
@@ -180,7 +180,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		softAssert.assertAll();
 		}
 	
-	@Test(description = "tc_10 - Verify that the API returns the appropriate response when numeric values are provided instead of strings.", priority = 10)
+	@Test(description = "tc_10 - Verify that the API returns the appropriate response when numeric values are provided instead of strings.", priority = 10,groups= {"regression"})
 	public void verifyResponseWithNumericValuesOfFieldsEsign() {
 		Map<String, Object> body = new HashMap<>();
 		body.put("username", 12345);
