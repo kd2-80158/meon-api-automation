@@ -7,7 +7,8 @@ public class RetrieveAadhaarDataResponse {
 	private String msg;
 	private boolean success;
 	private AadhaarData data;
-	
+	private int code;
+
 	public RetrieveAadhaarDataResponse() {
 	}
 	
@@ -35,6 +36,14 @@ public class RetrieveAadhaarDataResponse {
 	}
 	public void setData(AadhaarData data) {
 		this.data = data;
+	}
+	
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	@Override

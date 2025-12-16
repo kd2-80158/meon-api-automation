@@ -74,7 +74,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		return transaction_id;
 	}
 
-	@Test(description = "tc_01 - Verify token generated successfully with valid client_id, client_secret and transaction_id", priority = 1, alwaysRun = true)
+	@Test(description = "tc_01 - Verify token generated successfully with valid client_id, client_secret and transaction_id", priority = 1, alwaysRun = true,groups= {"e2e","smoke","regression"})
 	public void verifyResponseWithValidCredentials_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -92,7 +92,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_03 - Verify error when client_id is missing (transaction_id present).", priority = 2)
+	@Test(description = "tc_03 - Verify error when client_id is missing (transaction_id present).", priority = 2,groups= {"smoke","regression"})
 	public void verifyResponseWithMissingCLientId_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -108,7 +108,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_04 - Verify error when client_secret is missing (transaction_id present).", priority = 3)
+	@Test(description = "tc_04 - Verify error when client_secret is missing (transaction_id present).", priority = 3,groups= {"sanity","regression"})
 	public void verifyResponseWithMissingCLientSecret_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -124,7 +124,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_05 - Verify authentication fails with invalid client_secret.", priority = 4)
+	@Test(description = "tc_05 - Verify authentication fails with invalid client_secret.", priority = 4,groups= {"sanity","regression"})
 	public void verifyResponseWithInvalidCLientId_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -140,7 +140,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_06 - Verify authentication fails with invalid client_secret.", priority = 5)
+	@Test(description = "tc_06 - Verify authentication fails with invalid client_secret.", priority = 5,groups= {"regression"})
 	public void verifyResponseWithInvalidCLientSecret_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -156,7 +156,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_07 - Verify invalid JSON returns parse error.", priority = 6)
+	@Test(description = "tc_07 - Verify invalid JSON returns parse error.", priority = 6,groups= {"regression"})
 	public void verifyResponseWithInvalidJSON_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -174,7 +174,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_08 - Verify content-type enforcement (non-JSON rejected).", priority = 7)
+	@Test(description = "tc_08 - Verify content-type enforcement (non-JSON rejected).", priority = 7,groups= {"regression"})
 	public void verifyResponseWithNonJSONContentType_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
@@ -193,7 +193,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 		softAssert.assertAll();
 	}
 	
-	@Test(description = "tc_10 - Verify invalid characters in client_id/client_secret rejected.", priority = 8)
+	@Test(description = "tc_10 - Verify invalid characters in client_id/client_secret rejected.", priority = 8,groups= {"regression"})
 	public void verifyResponseWithInvalidCharacters_RPD() {
 		if (transaction_id == null)
 			getTransactionID();
