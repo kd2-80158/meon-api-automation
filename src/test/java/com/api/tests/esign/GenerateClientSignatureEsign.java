@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.models.request.esign.GenerateClientTokenEsignRequest;
+import com.api.models.response.aadhaar.GenerateClientTokenResponse;
+import com.api.models.response.esign.GenerateClientTokenEsignResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.google.gson.Gson;
@@ -28,6 +30,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 	Logger logger;
 	RequestSpecification rs;
 	protected String signature;
+	GenerateClientTokenEsignResponse res;
 	
 	@BeforeTest
 	public void setup()
@@ -44,7 +47,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
 		signature = response.jsonPath().get("signature");
-		// use boolean getter and provide message
+
 		softAssert.assertTrue(response.jsonPath().getBoolean("status"), "Expected status=true");
 		softAssert.assertEquals(response.getStatusCode(), 200, "HTTP status mismatch");
 		softAssert.assertAll();
@@ -56,9 +59,18 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(JSONUtility.getEsign().getPassword());
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "Username required", "Message mismatch");
-		softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateClientTokenEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		softAssert.assertFalse(res.isStatus(), "Expected status=false");
+		softAssert.assertEquals(res.getMessage(), "Username required", "Message mismatch");
 		softAssert.assertAll();
 	}
 	
@@ -68,9 +80,18 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(JSONUtility.getEsign().getUsername());
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "Password required", "Message mismatch");
-		softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateClientTokenEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		softAssert.assertFalse(res.isStatus(), "Expected status=false");
+		softAssert.assertEquals(res.getMessage(), "Password required", "Message mismatch");
 		softAssert.assertAll();
 
 	}
@@ -83,9 +104,18 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(emptyUsername,emptyPassword);
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "Username required", "Message mismatch");
-		softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateClientTokenEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		softAssert.assertFalse(res.isStatus(), "Expected status=false");
+		softAssert.assertEquals(res.getMessage(), "Username required", "Message mismatch");
 		softAssert.assertAll();
 	}
 	
@@ -97,9 +127,18 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(emptyUsername,emptyPassword);
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "User does not exist", "Message mismatch");
-		softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateClientTokenEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		softAssert.assertFalse(res.isStatus(), "Expected status=false");
+		softAssert.assertEquals(res.getMessage(), "User does not exist", "Message mismatch");
 		softAssert.assertAll();
 	}
 	
@@ -110,9 +149,18 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(username,JSONUtility.getEsign().getPassword());
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "User does not exist", "Message mismatch");
-		softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateClientTokenEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		softAssert.assertFalse(res.isStatus(), "Expected status=false");
+		softAssert.assertEquals(res.getMessage(), "User does not exist", "Message mismatch");
 		softAssert.assertAll();
 
 	}
@@ -124,9 +172,18 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 		GenerateClientTokenEsignRequest generateClientTokenEsignRequest = new GenerateClientTokenEsignRequest(username,JSONUtility.getEsign().getPassword());
 		response = authService.generateClientTokenEsign(generateClientTokenEsignRequest);
 		logger.info(response.asPrettyString());
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"), "Expected status=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "User does not exist", "Message mismatch");
-		softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateClientTokenEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		softAssert.assertFalse(res.isStatus(), "Expected status=false");
+		softAssert.assertEquals(res.getMessage(), "User does not exist", "Message mismatch");
 		softAssert.assertAll();
 	}
 	

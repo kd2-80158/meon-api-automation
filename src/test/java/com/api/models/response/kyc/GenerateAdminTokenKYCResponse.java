@@ -12,6 +12,8 @@ public class GenerateAdminTokenKYCResponse {
 	private String refresh_token;
 	private boolean success;
 	private int token_revoke_time;
+	private int code;
+	private String msg;
 
 	public GenerateAdminTokenKYCResponse() {
 		super();
@@ -111,6 +113,22 @@ public class GenerateAdminTokenKYCResponse {
 
 	public void setToken_revoke_time(int token_revoke_time) {
 		this.token_revoke_time = token_revoke_time;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	@Override

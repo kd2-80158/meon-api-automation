@@ -58,7 +58,9 @@
 		},
 		"facefinder": {
 			"url": "https://face-finder.meon.co.in",
-			"MAX_ATTEMPT": 3
+			"MAX_ATTEMPT": 3,
+			"client_id": "231IPWH0OCDQS1",
+			"client_secret": "231hKDcbtjjhDjb84ngBbQIeHJyOlF3zDA5viX0dj8b1"
 		},
 		"kyc": {
 			"url": "https://live.meon.co.in",
@@ -89,11 +91,26 @@
 			"accounttype": "Savings"
 		},
 		"rpd": {
-		    "url":"https://rpd.meon.co.in",
+			"url": "https://rpd.meon.co.in",
 			"client_id": "15CLCI3P6VGZ2",
 			"client_secret": "15CXBUQwEzurjJFRZl1DJpgWf9xC6aoWamCbdVjuQv2",
 			"redirect_url": "https://www.google.com/",
 			"version": "v1"
+		},
+		"ocr": {
+			"url": "https://ocr.meon.co.in",
+			"company_id": "19",
+			"email": "meon@meon.co.in",
+			"password": "meon@123",
+			"pan": "AZIPC1120C",
+			"name": "SAURABH CHHIMWAL",
+			"fathername": "HARISH CHANDRA CHHIMWAL",
+			"dob": "28/06/1995",
+			"sources": "kyc",
+			"adhar": "431829337118",
+			"req_id": "E-Aadhar11",
+			"company": "meon",
+			"address": "Ward No 7, Kaladhungi, Nainital, Uttarakhand"
 		}
 	}
 }

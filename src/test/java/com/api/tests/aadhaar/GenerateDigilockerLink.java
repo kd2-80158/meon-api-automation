@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,12 +21,14 @@ import org.testng.annotations.Test;
 
 import com.api.base.AuthService;
 import com.api.base.BaseTest;
+import com.api.models.request.aadhaar.GenerateClientTokenRequest;
 import com.api.models.request.aadhaar.GenerateDigilockerLinkRequest;
 import com.api.models.response.aadhaar.GenerateClientTokenResponse;
 import com.api.models.response.aadhaar.GenerateDigilockerLinkResponse;
 import com.api.utility.ExtentReporterUtility;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
+import com.api.utility.SessionUtility;
 import com.google.gson.Gson;
 
 import io.restassured.response.Response;
@@ -40,6 +43,9 @@ public final class GenerateDigilockerLink extends BaseTest {
 	RequestSpecification rs;
 	GenerateClientToken generateClientToken;
 	GenerateDigilockerLinkResponse res;
+	String clientToken;
+	String state;
+	WebDriverWait wait;
 
 	@BeforeMethod
 	public void setup(ITestContext context) {
@@ -49,17 +55,31 @@ public final class GenerateDigilockerLink extends BaseTest {
 		generateClientToken = new GenerateClientToken();
 		generateClientToken.clientToken = (String) context.getAttribute("clientToken");
 		generateClientToken.state = (String) context.getAttribute("state");
+		this.clientToken = SessionUtility.get("clientToken");
+		this.state = SessionUtility.get("state");
+	}
+
+	public String getClientToken() {
+		GenerateClientTokenRequest request = new GenerateClientTokenRequest(JSONUtility.getAadhaar().getCompany_name(),
+				JSONUtility.getAadhaar().getSecret_token());
+		response = authService.generateClientToken(request);
+		clientToken = response.jsonPath().getString("client_token");
+		SessionUtility.put("clientToken", this.clientToken);
+		return clientToken;
 	}
 
 	@Test(description = "tc_01 - Verify API returns success response with mandatory fields only", priority = 1, alwaysRun = true, groups = {
 			"e2e", "smoke", "regression", "sanity" })
 	public void verifyResponseWithMandatoryFieldsGenerateDigilockerLink(ITestContext context) {
-		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
+
+		if (clientToken == null)
+			getClientToken();
+
+		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(this.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getCompany_name(),
 				JSONUtility.getAadhaar().getDocuments());
 
 		response = authService.generateClientToken(req);
-
 		softAssert.assertEquals(response.jsonPath().getString("status"), "success", "Status mismatch");
 		softAssert.assertEquals(response.getStatusCode(), 200, "Status code mismatch");
 
@@ -67,33 +87,35 @@ public final class GenerateDigilockerLink extends BaseTest {
 		logger.info("Generated Digilocker URL: " + digilockerUrl);
 
 		softAssert.assertNotNull(digilockerUrl, "Digilocker URL should not be null");
-
 		if (digilockerUrl == null || digilockerUrl.trim().isEmpty()) {
 			softAssert.assertAll();
 			return;
 		}
+
 		WebDriver driver = null;
 		try {
-			if (digilockerUrl != null) {
-				driver = new FirefoxDriver();
-				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-				driver.navigate().to(digilockerUrl);
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.navigate().to(digilockerUrl);
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+			WebElement aadhaar = wait
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='aadhaar_1']")));
+			aadhaar.clear();
+			aadhaar.sendKeys("431829337118");
 
-				WebElement aadhaar = driver.findElement(By.xpath("//input[@id='aadhaar_1']"));
-				aadhaar.clear();
-				aadhaar.sendKeys("431829337118");
-
-				WebElement nextBtn = driver.findElement(By.xpath("//button[text()='Next']"));
-				nextBtn.click();
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-				WebElement doneBtn = wait
-						.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Done']")));
-
+			WebElement nextBtn = driver.findElement(By.xpath("//button[text()='Next']"));
+			nextBtn.click();
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='otp_button']")));
+			try {
+				WebElement notFound = wait
+						.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()='Not Found']")));
+				if (notFound.isDisplayed()) {
+					ExtentReporterUtility.getTest().info("Digilocker flow resumed by user").pass("Completed");
+					logger.info("User completed Digilocker flow.");
+				}
+			} catch (TimeoutException e) {
+				logger.warn("Not Found header not seen, flow might have proceeded differently.");
 			}
-
-			ExtentReporterUtility.getTest().info("Digilocker flow resumed by user")
-					.pass("Digilocker flow completed within timeout");
-			logger.info("User completed Digilocker flow — continuing execution...");
 
 		} catch (Exception e) {
 			logger.error("WebDriver flow failed: " + e.getMessage());
@@ -110,7 +132,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 			"regression" })
 	public void verifyResponseWhenCompanyNameMissingGenerateDigilockerLink() {
 
-		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
+		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(this.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getDocuments());
 
 		response = authService.generateClientToken(req);
@@ -132,7 +154,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 			"regression" })
 	public void verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink() {
 
-		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
+		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(this.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getCompany_name());
 		response = authService.generateClientToken(req);
 		String responseBody = response.asString();
@@ -156,7 +178,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 
 		String[] unsupportedDocs = { "passport" };
 
-		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
+		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(this.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), JSONUtility.getAadhaar().getCompany_name(),
 				unsupportedDocs);
 
@@ -261,7 +283,7 @@ public final class GenerateDigilockerLink extends BaseTest {
 
 		response = authService.generateClientTokenAadhaarWithRawJson(rawJson);
 
-		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(generateClientToken.clientToken,
+		GenerateDigilockerLinkRequest req = new GenerateDigilockerLinkRequest(this.clientToken,
 				JSONUtility.getAadhaar().getRedirect_url(), rawJson, JSONUtility.getAadhaar().getDocuments());
 
 		Response response = authService.generateClientToken(req);

@@ -17,6 +17,7 @@ import com.api.models.request.aadhaar.GenerateClientTokenRequest;
 import com.api.models.response.aadhaar.GenerateClientTokenResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
+import com.api.utility.SessionUtility;
 import com.google.gson.Gson;
 
 import io.restassured.response.Response;
@@ -56,7 +57,9 @@ public final class GenerateClientToken extends BaseTest {
 		state = response.jsonPath().getString("state");
 
 		context.setAttribute("clientToken", clientToken);
+		SessionUtility.put("clientToken", clientToken);
 		context.setAttribute("state", state);
+		SessionUtility.put("state", state);
 		softAssert.assertTrue(response.jsonPath().getBoolean("status"), "Expected status=true");
 		softAssert.assertEquals(response.getStatusCode(), 200, "HTTP 200 expected");
 		softAssert.assertAll();

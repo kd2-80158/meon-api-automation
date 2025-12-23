@@ -93,7 +93,6 @@ public class GetExportData_RPD extends BaseTest {
 
 		if (this.token == null) {
 			getToken();
-			logger.info("Inside test class - Token is: " + this.token);
 		}
 
 		try {

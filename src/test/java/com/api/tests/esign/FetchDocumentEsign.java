@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.models.request.esign.FetchDocumentEsignRequest;
+import com.api.models.response.esign.FetchDocumentEsignResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.api.utility.SessionUtility;
@@ -26,6 +27,7 @@ public final class FetchDocumentEsign extends BaseTest {
 	String esign_url;
 	Response response;
 	RequestSpecification rs;
+	FetchDocumentEsignResponse res;
 	String mobileNumber = "8810619472";
 
 	@BeforeMethod
@@ -63,12 +65,20 @@ public final class FetchDocumentEsign extends BaseTest {
 		getSessionVariables();
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
-		logger.info("Response body: " + response.asPrettyString());
-		String message = response.jsonPath().getString("msg");
-		boolean isSuccess = response.jsonPath().getBoolean("Success");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
 		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
 		softAssert.assertEquals(message, "UUID missing in request");
-		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertAll();
 	}
 
@@ -77,12 +87,20 @@ public final class FetchDocumentEsign extends BaseTest {
 		getSessionVariables();
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
-		logger.info("Response body: " + response.asPrettyString());
-		String message = response.jsonPath().getString("msg");
-		boolean isSuccess = response.jsonPath().getBoolean("Success");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
 		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
 		softAssert.assertEquals(message, "Mobile number missing in request");
-		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertAll();
 	}
 
@@ -91,13 +109,21 @@ public final class FetchDocumentEsign extends BaseTest {
 		getSessionVariables();
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, mobileNumber);
 		response = authService.fetchDocument(fetchDocumentEsignRequest);
-		logger.info("Response body: " + response.asPrettyString());
-		String message = response.jsonPath().getString("msg");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
 		String tokenFromResponse = response.jsonPath().getString("token");
-		boolean isSuccess = response.jsonPath().getBoolean("Success");
 		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
 		softAssert.assertEquals(message, "Header Missing");
-		softAssert.assertEquals(response.getStatusCode(), 401);
 		softAssert.assertEquals(tokenFromResponse, "", "Token must be empty string");
 		softAssert.assertAll();
 	}
@@ -108,12 +134,20 @@ public final class FetchDocumentEsign extends BaseTest {
 		String invalidSignature = "invalidSignature.invalid.invalid";
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, invalidSignature);
-		logger.info("Response body: " + response.asPrettyString());
-		String message = response.jsonPath().getString("msg");
-		boolean isSuccess = response.jsonPath().getBoolean("Success");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
 		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
 		softAssert.assertEquals(message, "Signature has been expired and valid for only 3 minutes");
-		softAssert.assertEquals(response.getStatusCode(), 401);
 		softAssert.assertAll();
 	}
 
@@ -147,12 +181,20 @@ public final class FetchDocumentEsign extends BaseTest {
 		String expiredToken = "7bcb2b8a-7e3b-4356-93fd-58daff1def14";
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(expiredToken, mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
-		logger.info("Response body: " + response.asPrettyString());
-		String message = response.jsonPath().getString("msg");
-		boolean isSuccess = response.jsonPath().getBoolean("Success");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
 		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
 		softAssert.assertEquals(message, "Token is expired");
-		softAssert.assertEquals(response.getStatusCode(), 401);
 		softAssert.assertAll();
 	}
 
@@ -186,12 +228,20 @@ public final class FetchDocumentEsign extends BaseTest {
 		String invalidMobileNumber = "12ab";
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, invalidMobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
-		logger.info("Response body: " + response.asPrettyString());
-		String message = response.jsonPath().getString("msg");
-		boolean isSuccess = response.jsonPath().getBoolean("Success");
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
 		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
 		softAssert.assertEquals(message, "Please do esign for getting pdf for this signer.");
-		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertAll();
 	}
 

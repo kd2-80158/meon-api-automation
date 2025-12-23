@@ -32,6 +32,7 @@ public class SeveritySoftAssert extends SoftAssert {
     public void assertFail(Severity severity,String message) {
         super.assertFalse(true,"[" + severity + "] " + message);
     }
+
     
 }
 

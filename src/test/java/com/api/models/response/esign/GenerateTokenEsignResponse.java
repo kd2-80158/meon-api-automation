@@ -1,13 +1,6 @@
 package com.api.models.response.esign;
 
 public class GenerateTokenEsignResponse {
-	
-//	//{
-//    "token": "babedd02-a327-4b21-9dc7-32cea4ce5c00",
-//    "esign_url": "https://esignuat.meon.co.in/EsignServices/eSign/babedd02-a327-4b21-9dc7-32cea4ce5c00",
-//    "pdf_reviewer": null,
-//    "success": true,
-//    "message": "link generated"
 
 	private String token;
 	private String esign_url;
@@ -82,10 +75,6 @@ public class GenerateTokenEsignResponse {
 	public String toString() {
 		return "GenerateTokenEsignResponse [token=" + token + ", esign_url=" + esign_url + ", pdf_reviewer="
 				+ pdf_reviewer + ", success=" + success + ", message=" + message + "]";
-	}
-	
-	
-	
-	
+	}	
 
 }
