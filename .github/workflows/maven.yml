@@ -8,18 +8,25 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: write   # Grants permission to push files/commits (the core fix)
-      pages: write      # Required for deploying to GitHub Pages
+      contents: write
+      pages: write
       id-token: write
 
     env:
       JAVA_VERSION: "11"
 
     steps:
+      ############################################################
+      # CHECKOUT CODE
+      ############################################################
       - name: Checkout
         uses: actions/checkout@v4
 
+      ############################################################
+      # SETUP JAVA
+      ############################################################
       - name: Set up JDK ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v4
         with:
@@ -27,9 +34,9 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           cache: maven
 
-      ##################################################################
-      # CREATE email.properties FROM GITHUB SECRETS
-      ##################################################################
+      ############################################################
+      # CREATE email.properties FROM SECRETS
+      ############################################################
       - name: Create config/email.properties
         run: |
           mkdir -p config
@@ -41,29 +48,73 @@ jobs:
           echo "smtp.tls=${{ secrets.SMTP_TLS }}" >> config/email.properties
           echo "mail.recipients=${{ secrets.MAIL_RECIPIENTS }}" >> config/email.properties
 
-      ##################################################################
-      # INJECT COMPANY_NAME + SECRET_TOKEN INTO config.json
-      ##################################################################
-      - name: Inject secrets into config.json
+      ############################################################
+      # CREATE config.json FROM CONFIG_JSON SECRET
+      ############################################################
+      - name: Create config.json from CONFIG_JSON secret
         run: |
-          sed -i "s|\${COMPANY_NAME}|${{ secrets.COMPANY_NAME }}|g" config/config.json
-          sed -i "s|\${SECRET_TOKEN}|${{ secrets.SECRET_TOKEN }}|g" config/config.json
+          mkdir -p config
+          echo '${{ secrets.CONFIG_JSON }}' > config/config.json
 
-      ##################################################################
-      # CREATE logs directory
-      ##################################################################
+      ############################################################
+      # INJECT LARGE ESIGN document_data (3 BASE64 CHUNKS)
+      ############################################################
+      - name: Inject eSign document_data
+        env:
+          ESIGN_DOC_1: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_1 }}
+          ESIGN_DOC_2: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_2 }}
+          ESIGN_DOC_3: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_3 }}
+        run: |
+          python3 - << 'EOF'
+import json, os
+
+with open("config/config.json") as f:
+    data = json.load(f)
+
+document_data = (
+    os.environ["ESIGN_DOC_1"] +
+    os.environ["ESIGN_DOC_2"] +
+    os.environ["ESIGN_DOC_3"]
+)
+
+data["baseURL"]["eSign"]["document_data"] = document_data
+
+with open("config/config.json", "w") as f:
+    json.dump(data, f)
+
+print("document_data injected successfully, length =", len(document_data))
+EOF
+
+      ############################################################
+      # VALIDATE CONFIG (FAIL FAST)
+      ############################################################
+      - name: Validate config.json
+        run: |
+          python3 - << 'EOF'
+import json
+with open("config/config.json") as f:
+    d = json.load(f)
+
+assert "document_data" in d["baseURL"]["eSign"]
+assert len(d["baseURL"]["eSign"]["document_data"]) > 1000
+print("config.json validation OK")
+EOF
+
+      ############################################################
+      # CREATE LOGS DIRECTORY
+      ############################################################
       - name: Ensure logs dir exists
         run: mkdir -p logs
 
-      ##################################################################
+      ############################################################
       # RUN MAVEN TESTS
-      ##################################################################
+      ############################################################
       - name: Build & Run Tests
         run: mvn -B -DskipTests=false test
 
-      ##################################################################
-      # CHECK FILES
-      ##################################################################
+      ############################################################
+      # VERIFY REPORT FILES
+      ############################################################
       - name: Verify logs and reports
         run: |
           echo "Contents of logs/"
@@ -75,9 +126,9 @@ jobs:
           echo "Checking automation.log"
           [ -f logs/automation.log ] && echo "Log OK" || echo "Missing automation.log"
 
-      ##################################################################
-      # UPLOAD ARTIFACT (OPTIONAL)
-      ##################################################################
+      ############################################################
+      # UPLOAD ARTIFACTS
+      ############################################################
       - name: Upload test report artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -87,16 +138,17 @@ jobs:
             logs/automation.log
             target/surefire-reports/**
 
+      ############################################################
+      # PUSH REPORT TO DASHBOARD (gh-pages)
+      ############################################################
       - name: Push report to dashboard
-        if: always()    # <-- even if tests failed
+        if: always()
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
-          # Clone the repo using the GitHub token
           git fetch origin
-          
-          # Checkout gh-pages or create it if missing
+
           if git show-ref --verify --quiet refs/heads/gh-pages; then
             git checkout gh-pages
           else
@@ -105,27 +157,22 @@ jobs:
 
           mkdir -p dashboard/data dashboard/reports dashboard/logs
 
-          # Copy CI outputs into dashboard
           cp logs/report.html dashboard/reports/ || true
           cp logs/automation.log dashboard/logs/ || true
 
-          # If you generate summary JSON, else create dummy
           if [ -f target/surefire-reports/summary.json ]; then
             cp target/surefire-reports/summary.json dashboard/data/latest.json
           else
             echo '{ "summary": "no summary generated" }' > dashboard/data/latest.json
           fi
 
-          # Commit & push without triggering CI again
           git add dashboard/
           git commit -m "Update dashboard [skip ci]" || true
           git push origin gh-pages
 
-
-
-      ##################################################################
-      # SEND EMAIL WITH REPORT & LOG FILE
-      ##################################################################
+      ############################################################
+      # SEND EMAIL WITH REPORT
+      ############################################################
       - name: Send Email With Test Report
         uses: dawidd6/action-send-mail@v3
         with:
