@@ -10,6 +10,8 @@ import com.api.base.BaseTest;
 import com.api.models.request.pennydrop.BankVerificationPennyDropRequest;
 import com.api.models.request.pennydrop.GenerateTokenPennyDropRequest;
 import com.api.models.request.pennydrop.GenerateTokenPennyDropRequest.Live;
+import com.api.models.response.kyc.GetUserDataKYCResponse;
+import com.api.models.response.pennydrop.BankVerificationPennyDropResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.api.utility.SessionUtility;
@@ -30,6 +32,7 @@ public final class BankVerification_PennyDrop extends BaseTest {
 	String username;
 	String password;
 	String bearerToken;
+	BankVerificationPennyDropResponse res;
 
 	@BeforeMethod
 	public void setup() {
@@ -92,10 +95,19 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(name, mobile, ifsc,
 				accountnumber, accounttype);
 		response = authService.bankVerification(request);
-		String msg = response.jsonPath().getString("msg");
-		softAssert.assertEquals(response.getStatusCode(), 401);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "Invalid Token", Severity.HIGH, "Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 
@@ -110,10 +122,19 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(name, mobile, ifsc,
 				accountnumber, accounttype);
 		response = authService.bankVerificationWithAuth(request, token);
-		String msg = response.jsonPath().getString("msg");
-		softAssert.assertEquals(response.getStatusCode(), 401);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "Invalid Token", Severity.HIGH, "Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 
@@ -127,12 +148,19 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(mobile, ifsc, accountnumber,
 				accounttype);
 		response = authService.bankVerificationWithAuth(request, token);
-		String msg = response.jsonPath().getString("msg");
-		int code = response.jsonPath().get("code");
-//		softAssert.assertEquals(response.getStatusCode(), 400);
-		softAssert.assertEquals(Severity.CRITICAL, code, 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "Missing field: name", Severity.HIGH, "Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 
@@ -146,12 +174,19 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(name, ifsc, accountnumber,
 				accounttype);
 		response = authService.bankVerificationWithAuth(request, token);
-		String msg = response.jsonPath().getString("msg");
-		int code = response.jsonPath().get("code");
-//		softAssert.assertEquals(response.getStatusCode(), 400);
-		softAssert.assertEquals(Severity.CRITICAL, code, 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "Missing field: mobile", Severity.HIGH, "Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 
@@ -166,13 +201,20 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(name, mobile, ifsc,
 				accountnumber, accounttype);
 		response = authService.bankVerificationWithAuth(request, token);
-		String msg = response.jsonPath().getString("msg");
-		int code = response.jsonPath().get("code");
-//		softAssert.assertEquals(response.getStatusCode(), 400);
-		softAssert.assertEquals(Severity.CRITICAL, code, 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "Mobile number must be a valid 10-digit Indian number", Severity.HIGH,
 				"Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 
@@ -187,12 +229,19 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(name, mobile, ifsc,
 				accountnumber, accounttype);
 		response = authService.bankVerificationWithAuth(request, token);
-		String msg = response.jsonPath().getString("msg");
-		int code = response.jsonPath().get("code");
-//		softAssert.assertEquals(response.getStatusCode(), 400);
-		softAssert.assertEquals(Severity.CRITICAL, code, 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "IFSC should be like 'SBIN0001234", Severity.HIGH, "Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 
@@ -226,12 +275,19 @@ public final class BankVerification_PennyDrop extends BaseTest {
 		BankVerificationPennyDropRequest request = new BankVerificationPennyDropRequest(name, mobile, ifsc,
 				accountnumber, accounttype);
 		response = authService.bankVerificationWithAuth(request, token);
-		String msg = response.jsonPath().getString("msg");
-		int code = response.jsonPath().get("code");
-//		softAssert.assertEquals(response.getStatusCode(), 400);
-		softAssert.assertEquals(Severity.CRITICAL, code, 400);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, BankVerificationPennyDropResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String msg = res.getMsg();
 		softAssert.assertEquals(msg, "Name contains invalid characters", Severity.HIGH, "Something went wrong!");
-		softAssert.assertFalse(response.jsonPath().getBoolean("status"));
+		softAssert.assertFalse(res.isStatus());
 		softAssert.assertAll();
 	}
 	

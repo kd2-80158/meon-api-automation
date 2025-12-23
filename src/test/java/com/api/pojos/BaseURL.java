@@ -65,6 +65,49 @@ public class BaseURL {
 	private String client_id;
 	private String client_secret;
 	private String version;
+	
+	//ocr
+	private String company_id;
+	private String pan;
+	private String fathername;
+	private String dob;
+	private String sources;
+	private String req_id;
+	private String address;
+	private String adhar;
+	
+
+	public String getPan() {
+		return pan;
+	}
+
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
+
+	public String getFathername() {
+		return fathername;
+	}
+
+	public void setFathername(String fathername) {
+		this.fathername = fathername;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public String getSources() {
+		return sources;
+	}
+
+	public void setSources(String sources) {
+		this.sources = sources;
+	}
 
 	public String getClient_id() {
 		return client_id;
@@ -328,6 +371,38 @@ public class BaseURL {
 
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	public String getCompany_id() {
+		return company_id;
+	}
+
+	public void setCompany_id(String company_id) {
+		this.company_id = company_id;
+	}
+
+	public String getReq_id() {
+		return req_id;
+	}
+
+	public void setReq_id(String req_id) {
+		this.req_id = req_id;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAdhar() {
+		return adhar;
+	}
+
+	public void setAdhar(String adhar) {
+		this.adhar = adhar;
 	}
 
 }

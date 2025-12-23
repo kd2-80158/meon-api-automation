@@ -2,6 +2,10 @@ package com.api.models.response.kyc;
 import com.google.gson.annotations.SerializedName;
 
 public class GetUserDataKYCResponse {
+	
+	    
+	    private int code;
+	    private String msg;
 
         @SerializedName("PDF-_id")
 	    private String PDF__id;
@@ -438,6 +442,30 @@ public class GetUserDataKYCResponse {
 		public void setWorkflow_key(String workflow_key) {
 			this.workflow_key = workflow_key;
 		}
+		public int getCode() {
+			return code;
+		}
+
+
+
+		public void setCode(int code) {
+			this.code = code;
+		}
+
+
+
+		public String getMsg() {
+			return msg;
+		}
+
+
+
+		public void setMsg(String msg) {
+			this.msg = msg;
+		}
+
+
+
 		@Override
 		public String toString() {
 			return "GetUserDataResponse [PDF__id=" + PDF__id + ", aadhar_address=" + aadhar_address

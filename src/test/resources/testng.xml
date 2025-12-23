@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="API Test Suite" parallel="false">
-	<test name="API Test - Regression Test">
+	<parameter name="testType" value="Regression" />
+	<test name="API Test - Dynamic Test">
 		<classes>
-            <class name="com.api.tests.aadhaar.GenerateClientToken" />
+			<class name="com.api.tests.aadhaar.GenerateClientToken" />
 			<class name="com.api.tests.aadhaar.GenerateDigilockerLink" />
 			<class name="com.api.tests.aadhaar.RetrieveAadhaarData" />
 			<class name="com.api.tests.esign.GenerateClientSignatureEsign" />

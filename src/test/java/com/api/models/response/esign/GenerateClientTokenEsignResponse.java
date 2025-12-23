@@ -5,6 +5,7 @@ public class GenerateClientTokenEsignResponse {
 	private String signature;
 	private String message;
 	private boolean status;
+	private int code;
 	
 	public GenerateClientTokenEsignResponse() {
 	}
@@ -33,6 +34,14 @@ public class GenerateClientTokenEsignResponse {
 		this.signature = signature;
 		this.message = message;
 		this.status = status;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	@Override

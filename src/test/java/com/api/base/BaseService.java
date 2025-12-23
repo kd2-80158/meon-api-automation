@@ -98,6 +98,14 @@ public class BaseService { // wrapper for RestAssured
 		return rs.body(tokenRequest).post(endpoint);
 	}
 	
+	protected Response postRequestFaceFinder(Object tokenRequest, String endpoint) {
+		return rs.body(tokenRequest).post(endpoint);
+	}
+	
+	protected Response postRequestOCR(Object tokenRequest, String endpoint) {
+		return rs.body(tokenRequest).post(endpoint);
+	}
+	
 	protected Response postRequestReversePennyDrop(Object tokenRequest, String endpoint)
 	{
 		return rs.body(tokenRequest).post(endpoint);
@@ -108,6 +116,11 @@ public class BaseService { // wrapper for RestAssured
 		logger.info("token in Base service:" + token);
 		return rs.header("token", token).body(tokenRequest).post(endpoint);
 	}
+	
+    protected Response postRequestFaceFinderWithAuth(Object tokenRequest, String endpoint, String token)
+    {
+    	return rs.header("token",token).body(tokenRequest).post(endpoint);
+    }
 
 	// With AUTH
 	protected Response postRequestEsignAuth(Object tokenRequest, String endpoint, String signature) {

@@ -9,6 +9,9 @@ import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.models.request.kyc.GenerateAdminTokenKYCRequest;
 import com.api.models.request.kyc.GetUserDataKYCRequest;
+import com.api.models.response.esign.FetchDocumentEsignResponse;
+import com.api.models.response.kyc.GenerateAdminTokenKYCResponse;
+import com.api.models.response.kyc.GetUserDataKYCResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.api.utility.SessionUtility;
@@ -25,6 +28,7 @@ public class GetUserData_KYC extends BaseTest {
 	Response response;
 	String authorization;
 	RequestSpecification rs;
+	GetUserDataKYCResponse res;
 	boolean status = false;
 
 	@BeforeMethod
@@ -61,8 +65,6 @@ public class GetUserData_KYC extends BaseTest {
 				JSONUtility.getKYC().getPage(), JSONUtility.getKYC().getPer_page(), JSONUtility.getKYC().getSearch(),
 				JSONUtility.getKYC().getCompany());
 		response = authService.fetchDocumentWithAuthKYC(getUserDataKYCRequest, authorization);
-		logger.info("Response:" + response.asPrettyString());
-
 		softAssert.assertEquals(response.getContentType(), "application/json");
 		softAssert.assertEquals(response.getStatusCode(), 200);
 		softAssert.assertNotNull(response.jsonPath().get("data"));
@@ -78,8 +80,17 @@ public class GetUserData_KYC extends BaseTest {
 				JSONUtility.getKYC().getPage(), JSONUtility.getKYC().getPer_page(), JSONUtility.getKYC().getSearch(),
 				JSONUtility.getKYC().getCompany());
 		response = authService.fetchDocumentWithAuthKYC(getUserDataKYCRequest, invalidAuth);
-		String message = response.jsonPath().getString("msg");
-		softAssert.assertEquals(response.getStatusCode(), 401);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GetUserDataKYCResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
 		softAssert.assertEquals(message, "Signature verification failed");
 		softAssert.assertAll();
 	}

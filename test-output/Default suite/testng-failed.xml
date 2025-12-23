@@ -3,26 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.api.tests.aadhaar.GenerateClientToken">
+      <class name="com.api.tests.ocr.ExtractDataAadhaar_OCR">
         <methods>
-          <include name="verifyResponseWithMissingSecretTokenAadhaar"/>
-          <include name="verifyIncorrectContentHeaderAadhaar"/>
-          <include name="verifyResponseWhenRequestBodyJSONMalformedAadhaar"/>
-          <include name="verifyResponseWithSQLInjectionAadhaar"/>
-          <include name="verifyResponeWithNoRequestBodyAadhaar"/>
-          <include name="setupSoftAssert"/>
-          <include name="verifyResponseWithInvalidCompanyAadhaar"/>
-          <include name="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar"/>
-          <include name="verifyResponseWithInvalidSecretTokenAadhaar"/>
-          <include name="verifyResponseWithNumericValuesOfFieldsAadhaar"/>
-          <include name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar"/>
-          <include name="getTokenWithValidCredentialsAadhaar"/>
-          <include name="verifyResponseWithLongCompanyNameAadhaar"/>
-          <include name="verifyResponseWithLongSecretTokenAadhaar"/>
-          <include name="verifyResponseWithMissingCompanyNameAadhaar"/>
           <include name="setup"/>
+          <include name="verifyResponseWithValidInputsAadhaar_OCR" invocation-numbers="0 1 2"/>
+          <include name="setupSoftAssert"/>
         </methods>
-      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
+      </class> <!-- com.api.tests.ocr.ExtractDataAadhaar_OCR -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

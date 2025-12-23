@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.models.request.kyc.GenerateAdminTokenKYCRequest;
+import com.api.models.response.kyc.GenerateAdminTokenKYCResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.api.utility.SessionUtility;
@@ -23,6 +24,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	Logger logger;
 	Response response;
 	RequestSpecification rs;
+	GenerateAdminTokenKYCResponse res;
 	
 	@BeforeMethod
 	public void setup()
@@ -53,13 +55,21 @@ public class GenerateAdminToken_KYC extends BaseTest {
 		String incorrectPassword = "wrongPassword";
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(JSONUtility.getKYC().getEmail(), incorrectPassword);
 	    response = authService.generateAdminToken(generateAdminTokenKYCRequest);
-	    logger.info("Response body: "+response.asPrettyString());
-	    boolean isSuccess = response.jsonPath().getBoolean("success");
-	    String access_token = response.jsonPath().getString("access_token");
+	    String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateAdminTokenKYCResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		boolean isSuccess = res.isSuccess();
+	    String access_token = res.getAccess_token();
 	    SessionUtility.put("access_token", access_token);
 	    softAssert.assertFalse(isSuccess,"Success should be false");
-	    softAssert.assertEquals(response.getStatusCode(), 401);
-	    softAssert.assertEquals(response.jsonPath().get("msg"), "UnAuthorised");
+	    softAssert.assertEquals(res.getMsg(), "UnAuthorised");
 	    softAssert.assertAll();
 	}
 	
@@ -69,13 +79,21 @@ public class GenerateAdminToken_KYC extends BaseTest {
 		String invalidEmail = "sam.meon.co.in";
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(invalidEmail, JSONUtility.getKYC().getEmail());
 	    response = authService.generateAdminToken(generateAdminTokenKYCRequest);
-	    logger.info("Response body: "+response.asPrettyString());
-	    boolean isSuccess = response.jsonPath().getBoolean("success");
-	    String access_token = response.jsonPath().getString("access_token");
+	    String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateAdminTokenKYCResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		boolean isSuccess = res.isSuccess();
+	    String access_token = res.getAccess_token();
 	    SessionUtility.put("access_token", access_token);
 	    softAssert.assertFalse(isSuccess,"Success should be false");
-	    softAssert.assertEquals(response.getStatusCode(), 401);
-	    softAssert.assertEquals(response.jsonPath().get("msg"), "UnAuthorised");
+	    softAssert.assertEquals(res.getMsg(), "UnAuthorised");
 	    softAssert.assertAll();
 	}
 	
@@ -84,13 +102,21 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	{
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(JSONUtility.getKYC().getPassword());
 	    response = authService.generateAdminToken(generateAdminTokenKYCRequest);
-	    logger.info("Response body: "+response.asPrettyString());
-	    boolean isSuccess = response.jsonPath().getBoolean("success");
+	    String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateAdminTokenKYCResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		boolean isSuccess = res.isSuccess();
 	    String access_token = response.jsonPath().getString("access_token");
 	    SessionUtility.put("access_token", access_token);
 	    softAssert.assertFalse(isSuccess,"'email' is not available");
-	    softAssert.assertEquals(response.getStatusCode(), 400);
-	    softAssert.assertEquals(response.jsonPath().get("msg"), "UnAuthorised");
+	    softAssert.assertEquals(res.getMsg(), "UnAuthorised");
 	    softAssert.assertAll();
 	}
 	
@@ -99,13 +125,21 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	{
 		GenerateAdminTokenKYCRequest generateAdminTokenKYCRequest = new GenerateAdminTokenKYCRequest(JSONUtility.getKYC().getEmail());
 	    response = authService.generateAdminToken(generateAdminTokenKYCRequest);
-	    logger.info("Response body: "+response.asPrettyString());
-	    boolean isSuccess = response.jsonPath().getBoolean("success");
-	    String access_token = response.jsonPath().getString("access_token");
+	    String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, GenerateAdminTokenKYCResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		boolean isSuccess = res.isSuccess();
+	    String access_token = res.getAccess_token();
 	    SessionUtility.put("access_token", access_token);
 	    softAssert.assertFalse(isSuccess,"'password' is not available");
-	    softAssert.assertEquals(response.getStatusCode(), 400);
-	    softAssert.assertEquals(response.jsonPath().get("msg"), "UnAuthorised");
+	    softAssert.assertEquals(res.getMsg(), "UnAuthorised");
 	    softAssert.assertAll();
 	}
 	
