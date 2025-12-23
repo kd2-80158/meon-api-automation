@@ -3,6 +3,7 @@ package com.api.base;
 import static io.restassured.RestAssured.given;
 
 import java.time.Duration;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.logging.log4j.Logger;
@@ -22,9 +23,13 @@ import com.api.models.request.aadhaar.RetrieveAadhaarDataRequest;
 import com.api.models.request.esign.FetchDocumentEsignRequest;
 import com.api.models.request.esign.GenerateClientTokenEsignRequest;
 import com.api.models.request.esign.GenerateTokenEsignRequest;
+import com.api.models.request.facefinder.GenerateTokenFaceFinderRequest;
+import com.api.models.request.facefinder.GenerateTokenForExportDataFaceFinderRequest;
+import com.api.models.request.facefinder.InitiateCaptureRequestFaceFinderRequest;
 import com.api.models.request.kyc.GenerateAdminTokenKYCRequest;
 import com.api.models.request.kyc.GetSsoRouteKYCRequest;
 import com.api.models.request.kyc.GetUserDataKYCRequest;
+import com.api.models.request.ocr.GenerateTokenOCRRequest;
 import com.api.models.request.pennydrop.BankVerificationPennyDropRequest;
 import com.api.models.request.pennydrop.GenerateTokenPennyDropRequest;
 import com.api.models.request.reversepennydrop.GenerateExportTokenRPDRequest;
@@ -64,9 +69,16 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_REVERSEPENNYDROP_INITIATE_REQUEST = "/api/initiate-request";
 	public static final String BASE_PATH_REVERSEPENNYDROP_EXPORT_TOKEN = "/api/generate-token";
 	public static final String BASE_PATH_REVERSEPENNYDROP_GET_DATA = "/api/export-data";
+	public static final String BASE_PATH_FACE_FINDER_GENERATE_TOKEN = "/backend/generate_token_for_ipv_credentials";
+	public static final String BASE_PATH_FACE_FINDER_INITIATE_REQUEST = "/backend/initiate_request";
+	public static final String BASE_PATH_FACE_FINDER_GENERATE_TOKEN_FOR_EXPORT = "/backend/generate_token_for_ipv_credentials";
+	public static final String BASE_PATH_OCR_GENERATE_TOKEN = "/get_token";
+	public static final String BASE_PATH_OCR_EXTRACT_DATA_INVOICE = "/extract_invoice_data";
+	public static final String BASE_PATH_OCR_EXTRACT_DATA_PAN_CARD = "/extract_pan_details";
+	public static final String BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD = "/extract_adhar_data"; //data or details
 	
 	public AuthService(String product) {
-		super(product); // <-- initializes BASE_URL + rs properly
+		super(product);
 		softAssert = new SoftAssert();
 	}
 
@@ -123,8 +135,11 @@ public class AuthService extends BaseService {
 	}
 
 	public Response generateClientTokenAadhaarWithRawJson(String rawJson) {
-		return given().baseUri(BASE_URL) // or baseURL.getUrl() depending on your class
-				.contentType("application/json").body(rawJson).when().post(BASE_PATH);
+		return given().baseUri(BASE_URL).contentType("application/json").body(rawJson).when().post(BASE_PATH);
+	}
+
+	public Response generateTokenFaceFinderWithRawJson(String rawJson) {
+		return given().baseUri(BASE_URL).contentType("application/json").body(rawJson).when().post(BASE_PATH_FACE_FINDER_GENERATE_TOKEN);
 	}
 
 	public Response retrieveDataAadhaarWithRawJson(String rawJson) {
@@ -295,15 +310,13 @@ public class AuthService extends BaseService {
 		return postRequestWithAuthKYC(getUserDataKYCRequest, BASE_PATH_KYC_GET_DATA, bearerToken);
 
 	}
-	
-	public Response bankVerification(BankVerificationPennyDropRequest request)
-	{
-		return postRequestPennyDrop(request,BASE_PATH_PENNYDROP_BANK_VERIFICATION);
+
+	public Response bankVerification(BankVerificationPennyDropRequest request) {
+		return postRequestPennyDrop(request, BASE_PATH_PENNYDROP_BANK_VERIFICATION);
 	}
-	
-	public Response bankVerificationWithAuth(BankVerificationPennyDropRequest request, String bearerToken)
-	{
-		return postRequestWithAuthPD(request,BASE_PATH_PENNYDROP_BANK_VERIFICATION,bearerToken);
+
+	public Response bankVerificationWithAuth(BankVerificationPennyDropRequest request, String bearerToken) {
+		return postRequestWithAuthPD(request, BASE_PATH_PENNYDROP_BANK_VERIFICATION, bearerToken);
 	}
 
 	public Response getSsoRoute(GetSsoRouteKYCRequest getSsoRouteKYCRequest) {
@@ -312,23 +325,43 @@ public class AuthService extends BaseService {
 
 	public Response generateTokenPennyDrop(GenerateTokenPennyDropRequest request) {
 		return postRequestPennyDrop(request, BASE_PATH_PENNYDROP_TOKEN);
-		
+
 	}
 
 	public Response generateTokenRPD(GenerateTokenRPDRequest request) {
-		return postRequestReversePennyDrop(request,BASE_PATH_REVERSEPENNYDROP_TOKEN);
+		return postRequestReversePennyDrop(request, BASE_PATH_REVERSEPENNYDROP_TOKEN);
 	}
 
 	public Response initiateRequest(InitiateRequestRPDRequest request, String authRPD) {
-		logger.info("Inside Initiate Request - token is: "+authRPD);
-		return postRequestReversePennyDropWithAuth(request,BASE_PATH_REVERSEPENNYDROP_INITIATE_REQUEST,authRPD);
+		logger.info("Inside Initiate Request - token is: " + authRPD);
+		return postRequestReversePennyDropWithAuth(request, BASE_PATH_REVERSEPENNYDROP_INITIATE_REQUEST, authRPD);
 	}
 
 	public Response generateExportTokenRPD(GenerateExportTokenRPDRequest request) {
-		return postRequestReversePennyDrop(request,BASE_PATH_REVERSEPENNYDROP_EXPORT_TOKEN);
-		
+		return postRequestReversePennyDrop(request, BASE_PATH_REVERSEPENNYDROP_EXPORT_TOKEN);
+
 	}
 
+	public Response generateTokenFaceFinder(GenerateTokenFaceFinderRequest request) {
 
+		return postRequestFaceFinder(request, BASE_PATH_FACE_FINDER_GENERATE_TOKEN);
+	}
+
+	public Response initiateRequestWithAuth(InitiateCaptureRequestFaceFinderRequest request, String token) {
+		return postRequestFaceFinderWithAuth(request,BASE_PATH_FACE_FINDER_INITIATE_REQUEST,token);
+	}
+
+	public Response generateTokenForExportDataWithAuth(GenerateTokenForExportDataFaceFinderRequest request,String token) {
+		return postRequestFaceFinderWithAuth(request,BASE_PATH_FACE_FINDER_GENERATE_TOKEN_FOR_EXPORT,token);
+	}
+
+	public Response generateTokenForExportData(GenerateTokenForExportDataFaceFinderRequest request) {
+		return postRequestFaceFinder(request, BASE_PATH_FACE_FINDER_GENERATE_TOKEN_FOR_EXPORT);
+	}
+
+	public Response generateTokenOCR(GenerateTokenOCRRequest request) {
+		return postRequestOCR(request,BASE_PATH_OCR_GENERATE_TOKEN);
+	}
+	
 
 }

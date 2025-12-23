@@ -47,4 +47,14 @@ public class JSONUtility {
     {
     	return getProduct("rpd");
     }
+    
+    public static BaseURL getFaceFinder()
+    {
+    	return getProduct("facefinder");
+    }
+    
+    public static BaseURL getOcr()
+    {
+    	return getProduct("ocr");
+    }
 }

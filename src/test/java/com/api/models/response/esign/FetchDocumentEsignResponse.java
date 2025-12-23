@@ -6,6 +6,8 @@ public class FetchDocumentEsignResponse {
 	private String name_mismatch_error;
 	private String aadhaar_mismatch_error;
 	private String gender_mismatch_error;
+	private int code;
+	private String msg;
 	
 	public FetchDocumentEsignResponse() {
 		super();
@@ -59,6 +61,22 @@ public class FetchDocumentEsignResponse {
 
 	public void setGender_mismatch_error(String gender_mismatch_error) {
 		this.gender_mismatch_error = gender_mismatch_error;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	@Override

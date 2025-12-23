@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [API Test Suite]">
-  <test thread-count="5" name="API Test(failed)">
+  <parameter name="testType" value="Regression"/>
+  <test thread-count="5" name="API Test - Dynamic Test(failed)">
     <classes>
+      <class name="com.api.tests.pennydrop.GenerateToken_PennyDrop">
+        <methods>
+          <include name="setup"/>
+          <include name="verifyResponseWithMalformedJSON_PD"/>
+          <include name="verifyResponseWithNonJSONContentType_PD"/>
+          <include name="setupSoftAssert"/>
+          <include name="verifyResponseWithNonSupportedHTTPMethod_PD"/>
+        </methods>
+      </class> <!-- com.api.tests.pennydrop.GenerateToken_PennyDrop -->
+      <class name="com.api.tests.aadhaar.GenerateDigilockerLink">
+        <methods>
+          <include name="verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink"/>
+          <include name="verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink"/>
+          <include name="verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink"/>
+          <include name="verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink"/>
+          <include name="verifyResponseForNumericTypesGenerateDigilockerLink"/>
+          <include name="setup"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.aadhaar.GenerateDigilockerLink -->
+      <class name="com.api.tests.esign.GenerateTokenEsign">
+        <methods>
+          <include name="verifyResponseWithRemovingOptionalFieldsEsign"/>
+          <include name="verifyResponseWithMissingDocumentDataEsign"/>
+          <include name="verifyValidResponseWithFloatingValueOfPercentageNameMatchEsign"/>
+          <include name="setup"/>
+          <include name="verifyResponseWithMissingContentTypeHeaderEsign"/>
+          <include name="verifyResponseWithInvalidDocumentData"/>
+          <include name="setupSoftAssert"/>
+          <include name="verifyResponseWithInvalidSignatureHeaderEsign"/>
+          <include name="verifyResponseWithInvalidEmailFormatEsign"/>
+          <include name="verifyResponseWithMissingPageNumberCordinatesEsign"/>
+          <include name="verifyResponseWithNonNumericAndNegativeCordinatesValuesEsign"/>
+          <include name="verifyResponseWithOutOfRangePercentageNameMatchEsign"/>
+          <include name="verifyResponseWithMissingSignatureHeaderEsign"/>
+          <include name="verifyResponseWithInvalidAadhaarNumberFormatEsign"/>
+          <include name="verifyResponseWithMissingGenderFieldWhenTrueEsign"/>
+          <include name="verifyResponseWithInvalidMobileFormatEsign"/>
+          <include name="verifyResponseWithInvalidBase64DocumentDataEsign"/>
+        </methods>
+      </class> <!-- com.api.tests.esign.GenerateTokenEsign -->
       <class name="com.api.tests.reversepennydrop.InitiateRequest_RPD">
         <methods>
           <include name="verifyResponseWithNonJsonContentType_RPD"/>
@@ -12,13 +54,37 @@
           <include name="setupSoftAssert"/>
         </methods>
       </class> <!-- com.api.tests.reversepennydrop.InitiateRequest_RPD -->
-      <class name="com.api.tests.reversepennydrop.GetExportData_RPD">
+      <class name="com.api.tests.esign.FetchDocumentEsign">
         <methods>
-          <include name="verifyResponseWithValidToken_RPD"/>
+          <include name="verifyResponseWithInvalidTokenField_FetchDocumentEsign"/>
+          <include name="verifyResponseWhenRequestBodyJSONMalformedEsign_FetchDocumentEsign"/>
+          <include name="verifyResponseWithMissingSignatureHeader_FetchDocumentEsign"/>
+          <include name="verifyResponseWhenTokenExpired_FetchDocumentEsign"/>
           <include name="setup"/>
+          <include name="verifyResponseWithValidCredentialsEsign"/>
+          <include name="verifyResponseWithInvalidMobileField_FetchDocumentEsign"/>
+          <include name="verifyResponseWithMissingMobileNumberField_FetchDocumentEsign"/>
+          <include name="verifyResponseWithMissingContentTypeHeader_FetchDocumentEsign"/>
+          <include name="setupSoftAssert"/>
+          <include name="verifyResponseWithInvalidSignature_FetchDocumentEsign"/>
+          <include name="verifyResponseWithMissingTokenField_FetchDocumentEsign"/>
+        </methods>
+      </class> <!-- com.api.tests.esign.FetchDocumentEsign -->
+      <class name="com.api.tests.aadhaar.RetrieveAadhaarData">
+        <methods>
+          <include name="verifyResponseWithXSSPayloadRetrieveAadhaarData"/>
+          <include name="verifyResponseWhenRequestBodyJSONMalformedRetrieveAadhaarData"/>
+          <include name="verifyResponseWithWrongContentHeaderRetrieveAadhaarData"/>
+          <include name="verifyResponseWithMissingStateRetrieveAadhaarData"/>
+          <include name="verifyResponseWithInvalidClientTokenRetrieveAadhaarData"/>
+          <include name="verifyResponseWithInvalidStateRetrieveAadhaarData"/>
+          <include name="verifyResponseWithNumericValuesOfFieldsRetrieveAadhaarData"/>
+          <include name="setup"/>
+          <include name="verifyResponseWithSqlInjectionRetrieveAadhaarData"/>
+          <include name="verifyResponseWithValidCredentialsRetrieveAadhaarData"/>
           <include name="setupSoftAssert"/>
         </methods>
-      </class> <!-- com.api.tests.reversepennydrop.GetExportData_RPD -->
+      </class> <!-- com.api.tests.aadhaar.RetrieveAadhaarData -->
       <class name="com.api.tests.reversepennydrop.GenerateExportToken_RPD">
         <methods>
           <include name="setup"/>
@@ -26,6 +92,100 @@
           <include name="setupSoftAssert"/>
         </methods>
       </class> <!-- com.api.tests.reversepennydrop.GenerateExportToken_RPD -->
+      <class name="com.api.tests.pennydrop.BankVerification_PennyDrop">
+        <methods>
+          <include name="verifyResponseWithInvalidIFSCField_PD"/>
+          <include name="verifyResponseWithSqlInjection_PD"/>
+          <include name="verifyResponseWithMissingAuthHeader_PD"/>
+          <include name="verifyResponseWithMissingMobileField_PD"/>
+          <include name="setup"/>
+          <include name="verifyResponseWithMalformedJSON_PD"/>
+          <include name="verifyResponseWithResponseTime_PD"/>
+          <include name="verifyResponseWithValidCredentialsAndToken_PD"/>
+          <include name="verifyResponseWithInvalidToken_PD"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.pennydrop.BankVerification_PennyDrop -->
+      <class name="com.api.tests.kyc.GenerateAdminToken_KYC">
+        <methods>
+          <include name="verifyResponseWithMissingEmailField_KYC"/>
+          <include name="verifyResponseWithMissingPasswordField_KYC"/>
+          <include name="verifyResponseWithIncorrectPasswordField_KYC"/>
+          <include name="verifyResponseWithNonExistentEmailField_KYC"/>
+          <include name="verifyResponseWhenNonJsonContentType_KYC"/>
+          <include name="setup"/>
+          <include name="verifyResponseWhenRequestBodyJSONMalformed_KYC"/>
+          <include name="verifyResponseWithWrongHTTPMethod_KYC"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.kyc.GenerateAdminToken_KYC -->
+      <class name="com.api.tests.kyc.GetUserData_KYC">
+        <methods>
+          <include name="verifyResponseWithEmptyCompanyField_GetDataKYC"/>
+          <include name="setup"/>
+          <include name="verifyResponseWithWrongHTTPMethod_GetDataKYC"/>
+          <include name="verifyResponseWithMissingCompanyField_GetDataKYC"/>
+          <include name="verifyResponseWithNonNumericPageAndPerPageFields_GetDataKYC"/>
+          <include name="verifyResponseWithNonJsonContentType_GetDataKYC"/>
+          <include name="verifyResponseWithInvalidAuthAndRequiredFields_GetDataKYC"/>
+          <include name="verifyResponseWhenPageAndPerPageFieldsAreSetToZero_GetDataKYC"/>
+          <include name="verifyResponseWithEmptyWorkFlowKeyField_GetDataKYC"/>
+          <include name="verifyResponseWithMissingPerPageField_GetDataKYC"/>
+          <include name="verifyResponseWithMalformedJSON_GetDataKYC"/>
+          <include name="verifyResponseWithMissingWorkFlowKeyField_GetDataKYC"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.kyc.GetUserData_KYC -->
+      <class name="com.api.tests.kyc.GetSsoRoute_KYC">
+        <methods>
+          <include name="verifyResponseWithMalformedJSON_GetDataKYC"/>
+          <include name="verifyResponseWithWrongHTTPMethod_GetDataKYC"/>
+          <include name="setup"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.kyc.GetSsoRoute_KYC -->
+      <class name="com.api.tests.esign.GenerateClientSignatureEsign">
+        <methods>
+          <include name="verifyResponseWithWrongBothUsernameAndPasswordEsign"/>
+          <include name="verifyResponseWithMissingContentTypeEsign"/>
+          <include name="verifyResponseWithNumericValuesOfFieldsEsign"/>
+          <include name="setup"/>
+          <include name="verifyResponseWithMissingUsernameEsign"/>
+          <include name="verifyResponseWithMissingPasswordEsign"/>
+          <include name="verifyResponseWithSqlInjectionEsign"/>
+          <include name="verifyResponseWhenRequestBodyJSONMalformedEsign"/>
+          <include name="verifyResponseWithMissingBothUsernameAndPasswordEsign"/>
+          <include name="setupSoftAssert"/>
+          <include name="verifyResponseWithXSSPayloadEsign"/>
+        </methods>
+      </class> <!-- com.api.tests.esign.GenerateClientSignatureEsign -->
+      <class name="com.api.tests.reversepennydrop.GetExportData_RPD">
+        <methods>
+          <include name="verifyResponseWithValidToken_RPD"/>
+          <include name="setup"/>
+          <include name="setupSoftAssert"/>
+        </methods>
+      </class> <!-- com.api.tests.reversepennydrop.GetExportData_RPD -->
+      <class name="com.api.tests.aadhaar.GenerateClientToken">
+        <methods>
+          <include name="verifyResponseWithMissingSecretTokenAadhaar"/>
+          <include name="verifyResponseWhenRequestBodyJSONMalformedAadhaar"/>
+          <include name="verifyIncorrectContentHeaderAadhaar"/>
+          <include name="verifyResponseWithSQLInjectionAadhaar"/>
+          <include name="verifyResponeWithNoRequestBodyAadhaar"/>
+          <include name="setupSoftAssert"/>
+          <include name="verifyResponseWithInvalidCompanyAadhaar"/>
+          <include name="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar"/>
+          <include name="verifyResponseWithInvalidSecretTokenAadhaar"/>
+          <include name="verifyResponseWithNumericValuesOfFieldsAadhaar"/>
+          <include name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar"/>
+          <include name="getTokenWithValidCredentialsAadhaar"/>
+          <include name="verifyResponseWithLongCompanyNameAadhaar"/>
+          <include name="verifyResponseWithLongSecretTokenAadhaar"/>
+          <include name="verifyResponseWithMissingCompanyNameAadhaar"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
     </classes>
-  </test> <!-- API Test(failed) -->
+  </test> <!-- API Test - Dynamic Test(failed) -->
 </suite> <!-- Failed suite [API Test Suite] -->
