@@ -27,7 +27,7 @@ jobs:
       ############################################################
       # SETUP JAVA
       ############################################################
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -37,7 +37,7 @@ jobs:
       ############################################################
       # CREATE email.properties FROM SECRETS
       ############################################################
-      - name: Create config/email.properties
+      - name: Create email.properties
         run: |
           mkdir -p config
           echo "smtp.host=${{ secrets.SMTP_HOST }}" > config/email.properties
@@ -51,13 +51,13 @@ jobs:
       ############################################################
       # CREATE config.json FROM CONFIG_JSON SECRET
       ############################################################
-      - name: Create config.json from CONFIG_JSON secret
+      - name: Create config.json
         run: |
           mkdir -p config
           echo '${{ secrets.CONFIG_JSON }}' > config/config.json
 
       ############################################################
-      # INJECT LARGE ESIGN document_data (3 BASE64 CHUNKS)
+      # INJECT ESIGN document_data (3 BASE64 CHUNKS)
       ############################################################
       - name: Inject eSign document_data
         env:
@@ -65,45 +65,47 @@ jobs:
           ESIGN_DOC_2: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_2 }}
           ESIGN_DOC_3: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_3 }}
         run: |
-          python3 - << 'EOF'
+          python3 -c "
 import json, os
 
-with open("config/config.json") as f:
+with open('config/config.json') as f:
     data = json.load(f)
 
 document_data = (
-    os.environ["ESIGN_DOC_1"] +
-    os.environ["ESIGN_DOC_2"] +
-    os.environ["ESIGN_DOC_3"]
+    os.environ['ESIGN_DOC_1']
+  + os.environ['ESIGN_DOC_2']
+  + os.environ['ESIGN_DOC_3']
 )
 
-data["baseURL"]["eSign"]["document_data"] = document_data
+data['baseURL']['eSign']['document_data'] = document_data
 
-with open("config/config.json", "w") as f:
+with open('config/config.json', 'w') as f:
     json.dump(data, f)
 
-print("document_data injected successfully, length =", len(document_data))
-EOF
+print('document_data injected, length:', len(document_data))
+"
 
       ############################################################
       # VALIDATE CONFIG (FAIL FAST)
       ############################################################
       - name: Validate config.json
         run: |
-          python3 - << 'EOF'
+          python3 -c "
 import json
-with open("config/config.json") as f:
+with open('config/config.json') as f:
     d = json.load(f)
 
-assert "document_data" in d["baseURL"]["eSign"]
-assert len(d["baseURL"]["eSign"]["document_data"]) > 1000
-print("config.json validation OK")
-EOF
+assert 'baseURL' in d
+assert 'eSign' in d['baseURL']
+assert 'document_data' in d['baseURL']['eSign']
+assert len(d['baseURL']['eSign']['document_data']) > 1000
+print('config.json validation OK')
+"
 
       ############################################################
       # CREATE LOGS DIRECTORY
       ############################################################
-      - name: Ensure logs dir exists
+      - name: Ensure logs directory
         run: mkdir -p logs
 
       ############################################################
@@ -113,23 +115,23 @@ EOF
         run: mvn -B -DskipTests=false test
 
       ############################################################
-      # VERIFY REPORT FILES
+      # VERIFY LOGS & REPORTS
       ############################################################
       - name: Verify logs and reports
         run: |
-          echo "Contents of logs/"
+          echo "Logs directory:."
           ls -la logs || true
 
-          echo "Checking report.html"
-          [ -f logs/report.html ] && echo "Report OK" || echo "Missing report.html"
+          echo "Checking report.html."
+          [ -f logs/report.html ] && echo "report.html OK" || echo "report.html missing"
 
-          echo "Checking automation.log"
-          [ -f logs/automation.log ] && echo "Log OK" || echo "Missing automation.log"
+          echo "Checking automation.log."
+          [ -f logs/automation.log ] && echo "automation.log OK" || echo "automation.log missing"
 
       ############################################################
       # UPLOAD ARTIFACTS
       ############################################################
-      - name: Upload test report artifacts
+      - name: Upload test artifacts
         uses: actions/upload-artifact@v4
         with:
           name: test-report
@@ -139,7 +141,7 @@ EOF
             target/surefire-reports/**
 
       ############################################################
-      # PUSH REPORT TO DASHBOARD (gh-pages)
+      # PUSH REPORT TO gh-pages DASHBOARD
       ############################################################
       - name: Push report to dashboard
         if: always()
