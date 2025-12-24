@@ -50,35 +50,39 @@ jobs:
           ESIGN_DOC_2: ${{ secrets.ESIGN_DOCUMENT_DATA_PART2 }}
           ESIGN_DOC_3: ${{ secrets.ESIGN_DOCUMENT_DATA_PART3 }}
         run: |
-          python3 -c "
-import json, os
+          python3 <<'EOF'
+          import json, os
 
-with open('config/config.json', 'r') as f:
-    data = json.load(f)
+          with open('config/config.json', 'r') as f:
+              data = json.load(f)
 
-# defensive creation (safe even if keys already exist)
-data.setdefault('baseURL', {})
-data['baseURL'].setdefault('eSign', {})
+          if 'baseURL' not in data or 'eSign' not in data['baseURL']:
+              raise RuntimeError('Invalid config.json structure')
 
-# replace document_data value
-data['baseURL']['eSign']['document_data'] = (
-    os.environ['ESIGN_DOC_1'] +
-    os.environ['ESIGN_DOC_2'] +
-    os.environ['ESIGN_DOC_3']
-)
+          data['baseURL']['eSign']['document_data'] = (
+              os.environ['ESIGN_DOC_1'] +
+              os.environ['ESIGN_DOC_2'] +
+              os.environ['ESIGN_DOC_3']
+          )
 
-with open('config/config.json', 'w') as f:
-    json.dump(data, f, ensure_ascii=False)
+          with open('config/config.json', 'w') as f:
+              json.dump(data, f, ensure_ascii=False)
 
-print(
-    'document_data injected successfully, length =',
-    len(data['baseURL']['eSign']['document_data'])
-)
-"
+          print(
+              'document_data injected, length =',
+              len(data['baseURL']['eSign']['document_data'])
+          )
+          EOF
 
       - name: Validate config.json
         run: |
-          python3 -c "import json; d=json.load(open('config/config.json')); assert 'document_data' in d['baseURL']['eSign']; assert len(d['baseURL']['eSign']['document_data']) > 1000; print('config validation OK')"
+          python3 <<'EOF'
+          import json
+          d = json.load(open('config/config.json'))
+          assert 'document_data' in d['baseURL']['eSign']
+          assert len(d['baseURL']['eSign']['document_data']) > 1000
+          print('config validation OK')
+          EOF
 
       - name: Ensure logs directory
         run: mkdir -p logs
