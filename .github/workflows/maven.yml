@@ -42,19 +42,43 @@ jobs:
       - name: Create config.json
         run: |
           mkdir -p config
-          echo '${{ secrets.CONFIG_JSON }}' > config/config.json
+          printf '%s' "${{ secrets.CONFIG_JSON }}" > config/config.json
 
       - name: Inject eSign document_data
         env:
-          ESIGN_DOC_1: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_1 }}
-          ESIGN_DOC_2: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_2 }}
-          ESIGN_DOC_3: ${{ secrets.ESIGN_DOCUMENT_DATA_BASE64_3 }}
+          ESIGN_DOC_1: ${{ secrets.ESIGN_DOCUMENT_DATA_PART1 }}
+          ESIGN_DOC_2: ${{ secrets.ESIGN_DOCUMENT_DATA_PART2 }}
+          ESIGN_DOC_3: ${{ secrets.ESIGN_DOCUMENT_DATA_PART3 }}
         run: |
-          python3 -c "import json,os; f=open('config/config.json'); d=json.load(f); f.close(); d['baseURL']['eSign']['document_data']=os.environ['ESIGN_DOC_1']+os.environ['ESIGN_DOC_2']+os.environ['ESIGN_DOC_3']; f=open('config/config.json','w'); json.dump(d,f); f.close(); print('document_data injected')"
+          python3 -c "
+import json, os
+
+with open('config/config.json', 'r') as f:
+    data = json.load(f)
+
+# defensive creation (safe even if keys already exist)
+data.setdefault('baseURL', {})
+data['baseURL'].setdefault('eSign', {})
+
+# replace document_data value
+data['baseURL']['eSign']['document_data'] = (
+    os.environ['ESIGN_DOC_1'] +
+    os.environ['ESIGN_DOC_2'] +
+    os.environ['ESIGN_DOC_3']
+)
+
+with open('config/config.json', 'w') as f:
+    json.dump(data, f, ensure_ascii=False)
+
+print(
+    'document_data injected successfully, length =',
+    len(data['baseURL']['eSign']['document_data'])
+)
+"
 
       - name: Validate config.json
         run: |
-          python3 -c "import json; d=json.load(open('config/config.json')); assert 'document_data' in d['baseURL']['eSign']; assert len(d['baseURL']['eSign']['document_data'])>1000; print('config validation OK')"
+          python3 -c "import json; d=json.load(open('config/config.json')); assert 'document_data' in d['baseURL']['eSign']; assert len(d['baseURL']['eSign']['document_data']) > 1000; print('config validation OK')"
 
       - name: Ensure logs directory
         run: mkdir -p logs
