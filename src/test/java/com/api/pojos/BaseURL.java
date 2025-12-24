@@ -75,7 +75,8 @@ public class BaseURL {
 	private String req_id;
 	private String address;
 	private String adhar;
-	
+	//facefinder
+	private String image_to_be_match;
 
 	public String getPan() {
 		return pan;
@@ -403,6 +404,14 @@ public class BaseURL {
 
 	public void setAdhar(String adhar) {
 		this.adhar = adhar;
+	}
+
+	public String getImage_to_be_match() {
+		return image_to_be_match;
+	}
+
+	public void setImage_to_be_match(String image_to_be_match) {
+		this.image_to_be_match = image_to_be_match;
 	}
 
 }
