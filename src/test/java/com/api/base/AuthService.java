@@ -75,7 +75,7 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_OCR_GENERATE_TOKEN = "/get_token";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_INVOICE = "/extract_invoice_data";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_PAN_CARD = "/extract_pan_details";
-	public static final String BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD = "/extract_adhar_data"; //data or details
+	public static final String BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD = "/extract_adhar_details"; //data or details
 	
 	public AuthService(String product) {
 		super(product);

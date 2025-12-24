@@ -70,7 +70,6 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		if (!aadhaarImage.exists() || aadhaarImage.length() == 0) {
 			throw new RuntimeException("Invalid Aadhaar file: " + aadhaarImage.getName());
 		}
-
 		logger.info("===== Running OCR test for file: {} =====", aadhaarImage.getName());
 
 		response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
@@ -83,8 +82,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 				.multiPart("req_id", JSONUtility.getOcr().getReq_id())
 				.multiPart("company", JSONUtility.getOcr().getCompany())
 				.multiPart("address", JSONUtility.getOcr().getAddress())
-				.multiPart("adharfile", aadhaarImage)
-				.when()
+				.multiPart("adharfile", aadhaarImage).when()
 				.post(AuthService.BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD);
 		String responseBody = response.asString();
 		logger.info("Response body for {} : {}", aadhaarImage.getName(), responseBody);
@@ -113,6 +111,15 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 				"Father name is empty for file: " + aadhaarImage.getName());
 		softAssert.assertTrue(res.getExtracted_data().getOcr_address().length() > 0, Severity.HIGH,
 				"Address is empty for file: " + aadhaarImage.getName());
+		
+		if(res.getMatching_results()!=null) {
+		double nameMatch = res.getMatching_results().getName_match_percentage();
+		double aadhaarMatch = res.getMatching_results().getAdharno_number_match_percentage();
+		double addressMatch = res.getMatching_results().getOcr_address_match_percentage();
+
+		logger.info("OCR Quality | File: {} | Name: {}% | Aadhaar: {}% | Address: {}%", aadhaarImage.getName(),
+				nameMatch, aadhaarMatch, addressMatch);
+		}
 		softAssert.assertAll();
 	}
 
@@ -155,6 +162,8 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		if (this.tokenOCR == null)
 			getToken();
 		String aadhaar = "4318-2933-7118";
+		aadhaarImage = new File(
+				System.getProperty("user.dir") + "/src/test/resources/testdata/AadhaarDigitalSaurabh.jpeg");
 		response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
 				.header("Authorization", "Bearer " + this.tokenOCR).multiPart("adharno", aadhaar)
 				.multiPart("name", JSONUtility.getOcr().getName())
@@ -489,7 +498,8 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
 				.header("Authorization", "Bearer " + this.tokenOCR)
 				.multiPart("fathername", JSONUtility.getOcr().getFathername())
-				.multiPart("adharno", JSONUtility.getOcr().getAdhar()).multiPart("name", JSONUtility.getOcr().getName())
+				.multiPart("adharno", JSONUtility.getOcr().getAdhar())
+				.multiPart("name", JSONUtility.getOcr().getName())
 				.multiPart("dob", "").multiPart("sources", JSONUtility.getOcr().getSources())
 				.multiPart("req_id", JSONUtility.getOcr().getReq_id())
 				.multiPart("company", JSONUtility.getOcr().getCompany())
