@@ -20,7 +20,6 @@ public class TestExecutionContext {
 	public static TestExecutionContext get() {
 		return CONTEXT.get();
 	}
-
 	public static void clear() {
 		CONTEXT.remove();
 	}
