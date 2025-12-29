@@ -244,6 +244,51 @@ public final class FetchDocumentEsign extends BaseTest {
 		softAssert.assertEquals(message, "Please do esign for getting pdf for this signer.");
 		softAssert.assertAll();
 	}
+	
+	@Test(description = "tc_10 - Verify API returns error when token and mobile do not match (mismatch scenario).", priority = 10)
+	public void verifyResponseWhenMobileAndTokenMismatch_FetchDocumentEsign() {
+		getSessionVariables();
+		String differentMobileNumber = "8810619472";
+		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, differentMobileNumber);
+		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 400);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(message, "Please do esign for getting pdf for this signer.");
+		softAssert.assertAll();
+	}
+	
+	@Test(description = "tc_12 - Verify API returns short-lived signed URL with expiry and expiry enforcement.", priority = 11)
+	public void verifyResponseWithTokenExpiry_FetchDocumentEsign() {
+		getSessionVariables();
+		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token+1, mobileNumber);
+		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
+		String responseBody = response.asString();
+		if (response.getStatusCode() == 200) {
+			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+			if (res.getCode() > 0) {
+				logger.info("Status code present: " + res.getCode());
+				softAssert.assertEquals(res.getCode(), 401);
+			} else {
+				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+			}
+		}
+		String message = res.getMsg();
+		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(message, "Signature has been expired and valid for only 3 minutes.");
+		softAssert.assertAll();
+	}
 
 	@Test(description = "tc_14 - Verify API returns error when Content-Type header is missing.", priority = 10)
 	public void verifyResponseWithMissingContentTypeHeader_FetchDocumentEsign() {

@@ -9,11 +9,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-
     env:
       JAVA_VERSION: "11"
 
@@ -21,14 +16,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "11"
+          java-version: ${{ env.JAVA_VERSION }}
           cache: maven
 
-      - name: Create email.properties
+      ##################################################################
+      # CREATE email.properties FROM GITHUB SECRETS
+      ##################################################################
+      - name: Create config/email.properties
         run: |
           mkdir -p config
           echo "smtp.host=${{ secrets.SMTP_HOST }}" > config/email.properties
@@ -39,190 +37,44 @@ jobs:
           echo "smtp.tls=${{ secrets.SMTP_TLS }}" >> config/email.properties
           echo "mail.recipients=${{ secrets.MAIL_RECIPIENTS }}" >> config/email.properties
 
-      - name: Create and validate config.json
-        env:
-          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
+      ##################################################################
+      # INJECT COMPANY_NAME + SECRET_TOKEN INTO config.json
+      ##################################################################
+      - name: Inject secrets into config.json
         run: |
-          mkdir -p config
-          
-          # Write the JSON from environment variable
-          echo "$CONFIG_JSON" > config/config.json
-          
-          # Validate JSON syntax
-          if ! python3 -c "import json; json.load(open('config/config.json'))" 2>/dev/null; then
-            echo "❌ ERROR: CONFIG_JSON secret contains invalid JSON"
-            echo ""
-            echo "Please check your CONFIG_JSON secret in GitHub Settings > Secrets"
-            echo "Common issues:"
-            echo "  - Trailing commas in arrays or objects"
-            echo "  - Single quotes instead of double quotes"
-            echo "  - Missing closing brackets or braces"
-            echo "  - Comments (JSON doesn't support comments)"
-            echo ""
-            echo "JSON structure check (line count):"
-            wc -l config/config.json
-            echo ""
-            echo "Attempting to identify the error:"
-            python3 -c "import json; json.load(open('config/config.json'))" 2>&1 || true
-            exit 1
-          fi
-          
-          echo "✅ config.json created and validated"
+          sed -i "s|\${COMPANY_NAME}|${{ secrets.COMPANY_NAME }}|g" config/config.json
+          sed -i "s|\${SECRET_TOKEN}|${{ secrets.SECRET_TOKEN }}|g" config/config.json
 
-      - name: Inject eSign document_data and FaceFinder image
-        env:
-          ESIGN_DOC_1: ${{ secrets.ESIGN_DOCUMENT_DATA_PART1 }}
-          ESIGN_DOC_2: ${{ secrets.ESIGN_DOCUMENT_DATA_PART2 }}
-          ESIGN_DOC_3: ${{ secrets.ESIGN_DOCUMENT_DATA_PART3 }}
-          FACEFINDER_IMG_1: ${{ secrets.FACEFINDER_IMAGE_TO_BE_MATCH_PART1 }}
-          FACEFINDER_IMG_2: ${{ secrets.FACEFINDER_IMAGE_TO_BE_MATCH_PART2 }}
-          FACEFINDER_IMG_3: ${{ secrets.FACEFINDER_IMAGE_TO_BE_MATCH_PART3 }}
-        run: |
-          python3 <<'EOF'
-          import json
-          import os
-          import sys
-
-          try:
-              with open('config/config.json', 'r') as f:
-                  data = json.load(f)
-          except json.JSONDecodeError as e:
-              print(f'❌ Failed to parse config.json: {e}')
-              sys.exit(1)
-
-          # Validate structure
-          if 'baseURL' not in data:
-              print('❌ Missing "baseURL" key in config.json')
-              print('Available keys:', list(data.keys()))
-              sys.exit(1)
-          
-          # Inject eSign document_data
-          if 'eSign' in data['baseURL']:
-              doc_1 = os.environ.get('ESIGN_DOC_1', '')
-              doc_2 = os.environ.get('ESIGN_DOC_2', '')
-              doc_3 = os.environ.get('ESIGN_DOC_3', '')
-              
-              data['baseURL']['eSign']['document_data'] = doc_1 + doc_2 + doc_3
-              
-              doc_length = len(data['baseURL']['eSign']['document_data'])
-              print(f'✅ eSign document_data injected successfully')
-              print(f'   Length: {doc_length} characters')
-              
-              if doc_length < 100:
-                  print('⚠️  WARNING: eSign document_data seems very short')
-          else:
-              print('⚠️  eSign not found in baseURL, skipping eSign injection')
-          
-          # Inject FaceFinder image_to_be_match
-          if 'FaceFinder' in data['baseURL']:
-              img_1 = os.environ.get('FACEFINDER_IMG_1', '')
-              img_2 = os.environ.get('FACEFINDER_IMG_2', '')
-              img_3 = os.environ.get('FACEFINDER_IMG_3', '')
-              
-              data['baseURL']['FaceFinder']['image_to_be_match'] = img_1 + img_2 + img_3
-              
-              img_length = len(data['baseURL']['FaceFinder']['image_to_be_match'])
-              print(f'✅ FaceFinder image_to_be_match injected successfully')
-              print(f'   Length: {img_length} characters')
-              
-              if img_length < 100:
-                  print('⚠️  WARNING: FaceFinder image_to_be_match seems very short')
-          else:
-              print('⚠️  FaceFinder not found in baseURL, skipping FaceFinder injection')
-
-          # Write back
-          with open('config/config.json', 'w') as f:
-              json.dump(data, f, ensure_ascii=False, indent=2)
-
-          print('\n✅ All injections completed')
-          
-          EOF
-
-      - name: Validate final config.json
-        run: |
-          python3 <<'EOF'
-          import json
-          import sys
-
-          try:
-              with open('config/config.json', 'r') as f:
-                  data = json.load(f)
-          except Exception as e:
-              print(f'❌ Failed to load config.json: {e}')
-              sys.exit(1)
-
-          # Validate required fields
-          errors = []
-          warnings = []
-          
-          if 'baseURL' not in data:
-              errors.append('Missing "baseURL"')
-          else:
-              # Validate eSign
-              if 'eSign' in data['baseURL']:
-                  if 'document_data' not in data['baseURL']['eSign']:
-                      errors.append('Missing "baseURL.eSign.document_data"')
-                  else:
-                      doc_len = len(data['baseURL']['eSign']['document_data'])
-                      if doc_len < 1000:
-                          errors.append(f'eSign document_data too short: {doc_len} chars (expected >1000)')
-                      else:
-                          print(f'✅ eSign document_data: {doc_len} characters')
-              else:
-                  warnings.append('eSign not found in baseURL')
-              
-              # Validate FaceFinder
-              if 'FaceFinder' in data['baseURL']:
-                  if 'image_to_be_match' not in data['baseURL']['FaceFinder']:
-                      errors.append('Missing "baseURL.FaceFinder.image_to_be_match"')
-                  else:
-                      img_len = len(data['baseURL']['FaceFinder']['image_to_be_match'])
-                      if img_len < 100:
-                          errors.append(f'FaceFinder image_to_be_match too short: {img_len} chars (expected >100)')
-                      else:
-                          print(f'✅ FaceFinder image_to_be_match: {img_len} characters')
-              else:
-                  warnings.append('FaceFinder not found in baseURL')
-
-          if warnings:
-              print('\n⚠️  Warnings:')
-              for warn in warnings:
-                  print(f'   - {warn}')
-
-          if errors:
-              print('\n❌ Config validation failed:')
-              for err in errors:
-                  print(f'   - {err}')
-              sys.exit(1)
-
-          print('\n✅ Config validation passed')
-          EOF
-
-      - name: Ensure logs directory
+      ##################################################################
+      # CREATE logs directory
+      ##################################################################
+      - name: Ensure logs dir exists
         run: mkdir -p logs
 
+      ##################################################################
+      # RUN MAVEN TESTS
+      ##################################################################
       - name: Build & Run Tests
         run: mvn -B -DskipTests=false test
 
+      ##################################################################
+      # CHECK FILES
+      ##################################################################
       - name: Verify logs and reports
         run: |
-          echo "Checking for generated files..."
-          ls -la logs/ || echo "⚠️  logs/ directory not found"
-          
-          if [ -f logs/report.html ]; then
-            echo "✅ report.html found ($(stat -c%s logs/report.html 2>/dev/null || stat -f%z logs/report.html 2>/dev/null) bytes)"
-          else
-            echo "⚠️  report.html missing"
-          fi
-          
-          if [ -f logs/automation.log ]; then
-            echo "✅ automation.log found ($(stat -c%s logs/automation.log 2>/dev/null || stat -f%z logs/automation.log 2>/dev/null) bytes)"
-          else
-            echo "⚠️  automation.log missing"
-          fi
+          echo "Contents of logs/"
+          ls -la logs || true
 
-      - name: Upload test artifacts
-        if: always()
+          echo "Checking report.html"
+          [ -f logs/report.html ] && echo "Report OK" || echo "Missing report.html"
+
+          echo "Checking automation.log"
+          [ -f logs/automation.log ] && echo "Log OK" || echo "Missing automation.log"
+
+      ##################################################################
+      # UPLOAD ARTIFACT (OPTIONAL)
+      ##################################################################
+      - name: Upload test report artifacts
         uses: actions/upload-artifact@v4
         with:
           name: test-report
@@ -230,52 +82,47 @@ jobs:
             logs/report.html
             logs/automation.log
             target/surefire-reports/**
-          if-no-files-found: warn
 
       - name: Push report to dashboard
-        if: always()
+        if: always()    # <-- even if tests failed
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+
+          # Clone the repo using the GitHub token
           git fetch origin
           
-          # Check if gh-pages exists
-          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+          # Checkout gh-pages or create it if missing
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
             git checkout gh-pages
           else
-            git checkout --orphan gh-pages
-            git rm -rf . || true
-          fi
-          
-          # Create dashboard structure
-          mkdir -p dashboard/data dashboard/reports dashboard/logs
-          
-          # Copy files if they exist
-          [ -f logs/report.html ] && cp logs/report.html dashboard/reports/ || echo "No report.html to copy"
-          [ -f logs/automation.log ] && cp logs/automation.log dashboard/logs/ || echo "No automation.log to copy"
-          
-          # Create summary JSON
-          cat > dashboard/data/latest.json << 'EOFJSON'
-          {
-            "timestamp": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'",
-            "run_id": "${{ github.run_id }}",
-            "run_number": "${{ github.run_number }}",
-            "ref": "${{ github.ref_name }}",
-            "sha": "${{ github.sha }}"
-          }
-          EOFJSON
-          
-          # Commit and push
-          git add dashboard/
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update dashboard [skip ci] - Run #${{ github.run_number }}"
-            git push origin gh-pages
+            git checkout -b gh-pages
           fi
 
+          mkdir -p dashboard/data dashboard/reports dashboard/logs
+
+          # Copy CI outputs into dashboard
+          cp logs/report.html dashboard/reports/ || true
+          cp logs/automation.log dashboard/logs/ || true
+
+          # If you generate summary JSON, else create dummy
+          if [ -f target/surefire-reports/summary.json ]; then
+            cp target/surefire-reports/summary.json dashboard/data/latest.json
+          else
+            echo '{ "summary": "no summary generated" }' > dashboard/data/latest.json
+          fi
+
+          # Commit & push without triggering CI again
+          git add dashboard/
+          git commit -m "Update dashboard [skip ci]" || true
+          git push origin gh-pages
+
+
+
+      ##################################################################
+      # SEND EMAIL WITH REPORT & LOG FILE
+      ##################################################################
       - name: Send Email With Test Report
-        if: always()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.SMTP_HOST }}
@@ -285,14 +132,9 @@ jobs:
           subject: "Test Report — ${{ github.repository }} — ${{ github.ref_name }}"
           body: |
             <p>Hi team,</p>
-            <p>Automated API Tests completed for run #${{ github.run_number }}.</p>
-            <p><strong>Repository:</strong> ${{ github.repository }}</p>
-            <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
-            <p><strong>Commit:</strong> ${{ github.sha }}</p>
-            <p><strong>Run ID:</strong> ${{ github.run_id }}</p>
-            <p>See attached reports for details.</p>
+            <p>Automated API Tests completed for <b>${{ github.repository }}</b>.</p>
+            <p>Attached: logs/report.html and logs/automation.log</p>
           content_type: text/html
           to: ${{ secrets.MAIL_RECIPIENTS }}
           from: ${{ secrets.SMTP_FROM }}
           attachments: logs/report.html,logs/automation.log
-          ignore_missing_attachments: true

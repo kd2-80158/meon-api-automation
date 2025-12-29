@@ -1,15 +1,18 @@
 package com.api.base;
 
-import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 
+import com.api.reporting.TestExecutionContext;
 import com.api.utility.SeveritySoftAssert;
 import com.google.gson.Gson;
+
+import io.restassured.response.Response;
 
 public class BaseTest {
 	protected SeveritySoftAssert softAssert;
 	protected Gson gson;
+	protected Response response;
 
 //	@BeforeSuite(alwaysRun = true)
 //	public void renameSuiteAndTest(ITestContext context) {
@@ -29,5 +32,13 @@ public class BaseTest {
 		softAssert = new SeveritySoftAssert();
 		gson = new Gson();
 
+	}
+	
+	@AfterMethod(alwaysRun = true)
+	public void afterEachTest() {
+	    if (response != null) {
+	        TestExecutionContext.get()
+	            .setHttpStatus(response.getStatusCode());
+	    }
 	}
 }

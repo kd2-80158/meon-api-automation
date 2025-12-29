@@ -117,4 +117,23 @@ public class GenerateTokenForExportData_FaceFinder extends BaseTest {
 		softAssert.assertEquals(res.getMsg(), "Missing token");
 		softAssert.assertAll();
 	}
+	
+	@Test(description = "tc_06 - Verify unauthorized when token header is invalid.", priority = 4, groups = {
+			"sanity", "regression" })
+	public void verifyResponseWithInvalidToken_FaceFinder() {
+		if (transaction_id == null)
+			getTransactionId();
+		String client_id = JSONUtility.getFaceFinder().getClient_id();
+		String client_secret = JSONUtility.getFaceFinder().getClient_secret();
+		String invalidToken = "invalidToken";
+		GenerateTokenForExportDataFaceFinderRequest request = new GenerateTokenForExportDataFaceFinderRequest(client_id,
+				client_secret,this.transaction_id);
+		response = authService.generateTokenForExportDataWithAuth(request,invalidToken);
+		String responseBody = response.asString();
+		GenerateTokenForExportDataFaceFinderResponse res = gson.fromJson(responseBody, GenerateTokenForExportDataFaceFinderResponse.class);
+		softAssert.assertEquals(res.getCode(), 40);
+		softAssert.assertFalse(res.isSuccess());
+		softAssert.assertEquals(res.getMsg(), "Missing token");
+		softAssert.assertAll();
+	}
 }

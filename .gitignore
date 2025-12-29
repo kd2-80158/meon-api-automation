@@ -10,15 +10,21 @@ logs/
 # Reports
 report.html
 /reports/
+# TestNG / Reports
+test-output/
+*.html
+*.xml
+logs/
+reports/
 
-# Eclipse / IntelliJ
-.project
-.classpath
-.settings/
-.idea/
-*.iml
+ Eclipse / IntelliJ
+project
+classpath
+settings/
+idea/
+.iml
 
-# OS files
+ OS files
 .DS_Store
 
 # Sensitive config files
@@ -28,3 +34,5 @@ config/config.json
 *.jks
 keystore.jks
 /bin/
+src/test/resources/testdata/passport/modeldata.zip
+src/test/resources/testdata/**/*.zip
