@@ -1,0 +1,33 @@
+.insights {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.pass { background: #2ecc71; }
+.fail { background: #e74c3c; }
+.time { background: #3498db; }
+.total { background: #34495e; }
+
+.modules {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.module-card {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f4f6f8;
+  min-width: 180px;
+}
