@@ -28,3 +28,5 @@ config/config.json
 *.jks
 keystore.jks
 /bin/
+src/test/resources/testdata/passport/modeldata.zip
+src/test/resources/testdata/**/*.zip
