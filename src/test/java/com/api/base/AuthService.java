@@ -72,10 +72,13 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_FACE_FINDER_GENERATE_TOKEN = "/backend/generate_token_for_ipv_credentials";
 	public static final String BASE_PATH_FACE_FINDER_INITIATE_REQUEST = "/backend/initiate_request";
 	public static final String BASE_PATH_FACE_FINDER_GENERATE_TOKEN_FOR_EXPORT = "/backend/generate_token_for_ipv_credentials";
+	public static final String BASE_PATH_FACE_FINDER_EXPORT_DATA = "/backend/export_data";
 	public static final String BASE_PATH_OCR_GENERATE_TOKEN = "/get_token";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_INVOICE = "/extract_invoice_data";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_PAN_CARD = "/extract_pan_details";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD = "/extract_adhar_details"; //data or details
+	public static final String BASE_PATH_OCR_EXTRACT_DATA_PASSPORT = "/api/extract-passport-info";
+	
 	
 	public AuthService(String product) {
 		super(product);

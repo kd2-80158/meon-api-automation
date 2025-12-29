@@ -15,6 +15,7 @@ import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.models.request.aadhaar.GenerateClientTokenRequest;
 import com.api.models.response.aadhaar.GenerateClientTokenResponse;
+import com.api.reporting.TestExecutionContext;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.api.utility.SessionUtility;
@@ -75,6 +76,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -95,6 +97,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			GenerateClientTokenResponse res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -115,6 +118,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -139,6 +143,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 401);
@@ -162,6 +167,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -181,7 +187,7 @@ public final class GenerateClientToken extends BaseTest {
 				JSONUtility.getAadhaar().getSecret_token());
 
 		response = authService.generateClientTokenWithPlainText(request);
-
+		TestExecutionContext.get().setApiCode(response.getStatusCode());
 		softAssert.assertEquals(response.getStatusCode(), 415, "Expected 415 Unsupported Media Type");
 
 		String responseBody = response.getBody().asPrettyString();
@@ -207,6 +213,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -232,6 +239,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -257,6 +265,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -277,7 +286,7 @@ public final class GenerateClientToken extends BaseTest {
 
 		response = authService.generateClientToken(request);
 		logger.info(response.asPrettyString());
-
+		TestExecutionContext.get().setApiCode(response.getStatusCode());
 		softAssert.assertEquals(response.getStatusCode(), 200);
 		softAssert.assertTrue(response.jsonPath().getBoolean("status"));
 
@@ -294,7 +303,7 @@ public final class GenerateClientToken extends BaseTest {
 		response = rs.baseUri(AuthService.BASE_URI_AADHAAR).contentType("application/json").body("").when()
 				.post(AuthService.BASE_PATH);
 		softAssert.assertEquals(response.getStatusCode(), 400);
-
+		TestExecutionContext.get().setApiCode(response.getStatusCode());
 		String responseBody = response.getBody().asPrettyString();
 		logger.info("Response body: " + responseBody);
 		boolean isHtml = (responseBody != null && responseBody.trim().startsWith("<!doctype html"));
@@ -317,6 +326,7 @@ public final class GenerateClientToken extends BaseTest {
 		String responseBody = response.asString();
 		if (response.getStatusCode() == 200) {
 			res = gson.fromJson(responseBody, GenerateClientTokenResponse.class);
+			TestExecutionContext.get().setApiCode(res.getCode());
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -336,7 +346,7 @@ public final class GenerateClientToken extends BaseTest {
 				JSONUtility.getAadhaar().getSecret_token());
 
 		response = authService.generateClientTokenWithGetMethod(request);
-
+		TestExecutionContext.get().setApiCode(response.getStatusCode());
 		softAssert.assertEquals(response.getStatusCode(), 405);
 
 		String responseBody = response.getBody().asPrettyString();
@@ -362,7 +372,7 @@ public final class GenerateClientToken extends BaseTest {
 
 		String body = response.body().asPrettyString();
 		String contentType = response.getHeader("Content-Type");
-
+		TestExecutionContext.get().setApiCode(response.getStatusCode());
 		boolean isHtml = (body != null && body.trim().startsWith("<!doctype html"))
 				|| (contentType != null && contentType.contains("html"));
 

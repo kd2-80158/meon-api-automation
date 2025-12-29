@@ -55,7 +55,7 @@ public class GenerateToken_PennyDrop extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_07 - Verify request fails with invalid JSON format.",priority=2,groups= {"smoke","regression"})
+	@Test(description = "tc_07 - Verify request fails with invalid JSON format.",priority=2,groups= {"smoke","sanity","regression"})
 	public void verifyResponseWithMalformedJSON_PD()
 	{
 		response = rs.baseUri(JSONUtility.getPennyDrop().getUrl())

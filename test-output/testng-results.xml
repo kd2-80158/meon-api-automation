@@ -1,51 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="0" failed="3" skipped="0">
+<testng-results ignored="0" total="23" passed="5" failed="18" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-24T10:45:48 IST" name="Default suite" finished-at="2025-12-24T10:46:21 IST" duration-ms="32631">
+  <suite started-at="2025-12-27T00:35:01 IST" name="API Test Suite" finished-at="2025-12-27T00:36:55 IST" duration-ms="113654">
     <groups>
       <group name="regression">
-        <method signature="ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" name="verifyResponseWithValidPDFandAuth" class="com.api.tests.ocr.ExtractDataInvoice_OCR"/>
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWithMandatoryFieldsGenerateDigilockerLink(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWithMandatoryFieldsGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithMissingSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenCompanyNameMissingGenerateDigilockerLink()[pri:2, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenCompanyNameMissingGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithMissingCompanyNameAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink()[pri:3, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink()[pri:4, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink()[pri:5, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink()[pri:6, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink()[pri:7, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithLongCompanyNameAadhaar()[pri:8, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithLongCompanyNameAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseForNumericTypesGenerateDigilockerLink()[pri:9, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseForNumericTypesGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithInvalidSecretTokenAadhaar()[pri:5, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithInvalidSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithInvalidCompanyAadhaar()[pri:6, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithInvalidCompanyAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyIncorrectContentHeaderAadhaar()[pri:7, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyIncorrectContentHeaderAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithLongSecretTokenAadhaar()[pri:9, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithLongSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithSQLInjectionAadhaar()[pri:10, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithSQLInjectionAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseTimeSLAAadhaar()[pri:11, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseTimeSLAAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponeWithNoRequestBodyAadhaar()[pri:12, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponeWithNoRequestBodyAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWithNumericValuesOfFieldsAadhaar()[pri:13, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithNumericValuesOfFieldsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOSTAadhaar()[pri:15, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateClientToken.verifyResponseWhenRequestBodyJSONMalformedAadhaar()[pri:16, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWhenRequestBodyJSONMalformedAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
       </group> <!-- regression -->
       <group name="smoke">
-        <method signature="ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" name="verifyResponseWithValidPDFandAuth" class="com.api.tests.ocr.ExtractDataInvoice_OCR"/>
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWithMandatoryFieldsGenerateDigilockerLink(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWithMandatoryFieldsGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithMissingSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenCompanyNameMissingGenerateDigilockerLink()[pri:2, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenCompanyNameMissingGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
       </group> <!-- smoke -->
       <group name="sanity">
-        <method signature="ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" name="verifyResponseWithValidPDFandAuth" class="com.api.tests.ocr.ExtractDataInvoice_OCR"/>
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWithMandatoryFieldsGenerateDigilockerLink(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWithMandatoryFieldsGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithMissingCompanyNameAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink()[pri:3, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink()[pri:4, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink()[pri:5, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
+        <method signature="GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
       </group> <!-- sanity -->
       <group name="e2e">
-        <method signature="ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" name="verifyResponseWithValidPDFandAuth" class="com.api.tests.ocr.ExtractDataInvoice_OCR"/>
+        <method signature="GenerateClientToken.getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" name="getTokenWithValidCredentialsAadhaar" class="com.api.tests.aadhaar.GenerateClientToken"/>
+        <method signature="GenerateDigilockerLink.verifyResponseWithMandatoryFieldsGenerateDigilockerLink(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" name="verifyResponseWithMandatoryFieldsGenerateDigilockerLink" class="com.api.tests.aadhaar.GenerateDigilockerLink"/>
       </group> <!-- e2e -->
     </groups>
-    <test started-at="2025-12-24T10:45:48 IST" name="Default test" finished-at="2025-12-24T10:46:21 IST" duration-ms="32631">
-      <class name="com.api.tests.ocr.ExtractDataInvoice_OCR">
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:45:49 IST" name="setupSoftAssert" finished-at="2025-12-24T10:45:49 IST" duration-ms="26" status="PASS">
+    <test started-at="2025-12-27T00:35:01 IST" name="API Test - Dynamic Test" finished-at="2025-12-27T00:36:55 IST" duration-ms="113654">
+      <class name="com.api.tests.aadhaar.GenerateClientToken">
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:02 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:02 IST" duration-ms="23" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:45:49 IST" name="setup" finished-at="2025-12-24T10:45:51 IST" duration-ms="2719" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:02 IST" name="setup" finished-at="2025-12-27T00:35:04 IST" duration-ms="2801" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:45:51 IST" name="verifyResponseWithValidPDFandAuth" description="tc_01 - Verify successful invoice extraction with valid PDF and auth." data-provider="invoiceFiles" finished-at="2025-12-24T10:46:11 IST" duration-ms="19742" status="FAIL">
+        <test-method signature="getTokenWithValidCredentialsAadhaar(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:04 IST" name="getTokenWithValidCredentialsAadhaar" description="tc_01 - Valid credentials return success" finished-at="2025-12-27T00:35:07 IST" duration-ms="2854" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[/Users/saurabhchhimwal/eclipse-workspace/meonapiautomation/src/test/resources/testdata/invoice/InvoiceTrial.pdf]]>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
               </value>
             </param>
           </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getTokenWithValidCredentialsAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:07 IST" name="afterEachTest" finished-at="2025-12-27T00:35:07 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:07 IST" name="setup" finished-at="2025-12-27T00:35:07 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:07 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:07 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWithMissingSecretTokenAadhaar()[pri:2, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:07 IST" name="verifyResponseWithMissingSecretTokenAadhaar" description="tc_02 - Missing secret_token returns error" finished-at="2025-12-27T00:35:08 IST" depends-on-methods="com.api.tests.aadhaar.GenerateClientToken.getTokenWithValidCredentialsAadhaar" duration-ms="211" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-expected object to not be null]]>
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-expected object to not be null
+expected [400] but found [200]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.api.tests.ocr.ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(ExtractDataInvoice_OCR.java:87)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar(GenerateClientToken.java:88)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -79,40 +127,31 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithValidPDFandAuth -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:46:11 IST" name="setupSoftAssert" finished-at="2025-12-24T10:46:11 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingSecretTokenAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="afterEachTest" finished-at="2025-12-27T00:35:08 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:46:11 IST" name="setup" finished-at="2025-12-24T10:46:11 IST" duration-ms="8" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setup" finished-at="2025-12-27T00:35:08 IST" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:46:11 IST" name="verifyResponseWithValidPDFandAuth" description="tc_01 - Verify successful invoice extraction with valid PDF and auth." data-provider="invoiceFiles" finished-at="2025-12-24T10:46:16 IST" duration-ms="5133" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[/Users/saurabhchhimwal/eclipse-workspace/meonapiautomation/src/test/resources/testdata/invoice/InvoiceMtech.pdf]]>
-              </value>
-            </param>
-          </params>
-          <exception class="com.google.gson.JsonSyntaxException">
+        <test-method signature="verifyResponseWithMissingCompanyNameAadhaar()[pri:3, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="verifyResponseWithMissingCompanyNameAadhaar" description="tc_03 - Missing company_name returns error" finished-at="2025-12-27T00:35:08 IST" duration-ms="192" status="FAIL">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure]]>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:523)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-at com.google.gson.Gson.fromJson(Gson.java:1359)
-at com.google.gson.Gson.fromJson(Gson.java:1260)
-at com.google.gson.Gson.fromJson(Gson.java:1170)
-at com.google.gson.Gson.fromJson(Gson.java:1107)
-at com.api.tests.ocr.ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(ExtractDataInvoice_OCR.java:75)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar(GenerateClientToken.java:110)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -141,55 +180,36 @@ at org.testng.TestNG.run(TestNG.java:1079)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1831)
-at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:470)
-at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
-at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:64)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-... 36 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- com.google.gson.JsonSyntaxException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithValidPDFandAuth -->
-        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:46:16 IST" name="setupSoftAssert" finished-at="2025-12-24T10:46:16 IST" duration-ms="2" status="PASS">
+        </test-method> <!-- verifyResponseWithMissingCompanyNameAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="afterEachTest" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSoftAssert -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:46:16 IST" name="setup" finished-at="2025-12-24T10:46:16 IST" duration-ms="13" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setup" finished-at="2025-12-27T00:35:08 IST" duration-ms="8" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyResponseWithValidPDFandAuth(java.io.File)[pri:1, instance:com.api.tests.ocr.ExtractDataInvoice_OCR@7bba5817]" started-at="2025-12-24T10:46:16 IST" name="verifyResponseWithValidPDFandAuth" description="tc_01 - Verify successful invoice extraction with valid PDF and auth." data-provider="invoiceFiles" finished-at="2025-12-24T10:46:21 IST" duration-ms="4626" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[/Users/saurabhchhimwal/eclipse-workspace/meonapiautomation/src/test/resources/testdata/invoice/zudioinvoice.pdf]]>
-              </value>
-            </param>
-          </params>
-          <exception class="com.google.gson.JsonSyntaxException">
+        <test-method signature="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar()[pri:4, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar" description="tc_04 - Missing both fields returns error" finished-at="2025-12-27T00:35:08 IST" duration-ms="134" status="FAIL">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure]]>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:523)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-at com.google.gson.Gson.fromJson(Gson.java:1359)
-at com.google.gson.Gson.fromJson(Gson.java:1260)
-at com.google.gson.Gson.fromJson(Gson.java:1170)
-at com.google.gson.Gson.fromJson(Gson.java:1107)
-at com.api.tests.ocr.ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(ExtractDataInvoice_OCR.java:75)
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar(GenerateClientToken.java:131)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -218,23 +238,1082 @@ at org.testng.TestNG.run(TestNG.java:1079)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1831)
-at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:470)
-at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
-at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:64)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-... 36 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- com.google.gson.JsonSyntaxException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyResponseWithValidPDFandAuth -->
-      </class> <!-- com.api.tests.ocr.ExtractDataInvoice_OCR -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="afterEachTest" finished-at="2025-12-27T00:35:08 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setup" finished-at="2025-12-27T00:35:08 IST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithInvalidSecretTokenAadhaar()[pri:5, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="verifyResponseWithInvalidSecretTokenAadhaar" description="tc_05 - Invalid secret_token returns unauthorized" finished-at="2025-12-27T00:35:08 IST" duration-ms="164" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [401] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [401] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidSecretTokenAadhaar(GenerateClientToken.java:156)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithInvalidSecretTokenAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="afterEachTest" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setup" finished-at="2025-12-27T00:35:08 IST" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithInvalidCompanyAadhaar()[pri:6, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="verifyResponseWithInvalidCompanyAadhaar" description="tc_06 - Invalid company_name returns unauthorized" finished-at="2025-12-27T00:35:08 IST" duration-ms="133" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidCompanyAadhaar(GenerateClientToken.java:180)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithInvalidCompanyAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="afterEachTest" finished-at="2025-12-27T00:35:08 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:08 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="setup" finished-at="2025-12-27T00:35:08 IST" duration-ms="9" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyIncorrectContentHeaderAadhaar()[pri:7, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:08 IST" name="verifyIncorrectContentHeaderAadhaar" description="tc_07 - Wrong Content-Type returns 415" finished-at="2025-12-27T00:35:09 IST" duration-ms="341" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Server returned HTML error page:
+<html lang="en">
+  <head>
+    <title>415 Unsupported Media Type</title>
+  </head>
+  <body>
+    <h1>Unsupported Media Type</h1>
+    <p>Did not attempt to load JSON data because the request Content-Type was not 'application/json'.</p>
+  </body>
+</html>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Server returned HTML error page:
+<html lang="en">
+  <head>
+    <title>415 Unsupported Media Type</title>
+  </head>
+  <body>
+    <h1>Unsupported Media Type</h1>
+    <p>Did not attempt to load JSON data because the request Content-Type was not 'application/json'.</p>
+  </body>
+</html>
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyIncorrectContentHeaderAadhaar(GenerateClientToken.java:201)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyIncorrectContentHeaderAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="afterEachTest" finished-at="2025-12-27T00:35:09 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:09 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setup" finished-at="2025-12-27T00:35:09 IST" duration-ms="26" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithLongCompanyNameAadhaar()[pri:8, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="verifyResponseWithLongCompanyNameAadhaar" description="tc_09 - Extremely long company_name returns error" finished-at="2025-12-27T00:35:09 IST" duration-ms="169" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongCompanyNameAadhaar(GenerateClientToken.java:226)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithLongCompanyNameAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="afterEachTest" finished-at="2025-12-27T00:35:09 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setup" finished-at="2025-12-27T00:35:09 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:09 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWithLongSecretTokenAadhaar()[pri:9, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="verifyResponseWithLongSecretTokenAadhaar" description="tc_10 - Extremely long secret_token returns unauthorized" finished-at="2025-12-27T00:35:09 IST" duration-ms="141" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongSecretTokenAadhaar(GenerateClientToken.java:252)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithLongSecretTokenAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="afterEachTest" finished-at="2025-12-27T00:35:09 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:09 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setup" finished-at="2025-12-27T00:35:09 IST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithSQLInjectionAadhaar()[pri:10, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="verifyResponseWithSQLInjectionAadhaar" description="tc_11 - SQL Injection attempt should fail gracefully" finished-at="2025-12-27T00:35:09 IST" duration-ms="139" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithSQLInjectionAadhaar(GenerateClientToken.java:278)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithSQLInjectionAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="afterEachTest" finished-at="2025-12-27T00:35:09 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:09 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setup" finished-at="2025-12-27T00:35:09 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseTimeSLAAadhaar()[pri:11, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="verifyResponseTimeSLAAadhaar" description="tc_15 - Validate Response Time SLA" finished-at="2025-12-27T00:35:09 IST" duration-ms="212" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseTimeSLAAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="afterEachTest" finished-at="2025-12-27T00:35:09 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setup" finished-at="2025-12-27T00:35:09 IST" duration-ms="9" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:09 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponeWithNoRequestBodyAadhaar()[pri:12, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:09 IST" name="verifyResponeWithNoRequestBodyAadhaar" description="tc_17 - Missing request body returns error" finished-at="2025-12-27T00:35:10 IST" duration-ms="448" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [502]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [502]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponeWithNoRequestBodyAadhaar(GenerateClientToken.java:313)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponeWithNoRequestBodyAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="afterEachTest" finished-at="2025-12-27T00:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="setup" finished-at="2025-12-27T00:35:10 IST" duration-ms="66" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWithNumericValuesOfFieldsAadhaar()[pri:13, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="verifyResponseWithNumericValuesOfFieldsAadhaar" description="tc_18 - Numeric values instead of strings return error" finished-at="2025-12-27T00:35:10 IST" duration-ms="159" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithNumericValuesOfFieldsAadhaar(GenerateClientToken.java:339)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithNumericValuesOfFieldsAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="afterEachTest" finished-at="2025-12-27T00:35:10 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:10 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="setup" finished-at="2025-12-27T00:35:10 IST" duration-ms="12" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar()[pri:15, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="verifyResponseWhenGETMethodInsteadOfPOSTAadhaar" description="tc_23 - GET instead of POST should return 405" finished-at="2025-12-27T00:35:10 IST" duration-ms="172" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Server returned HTML:
+<html lang="en">
+  <head>
+    <title>405 Method Not Allowed</title>
+  </head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>The method is not allowed for the requested URL.</p>
+  </body>
+</html>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Server returned HTML:
+<html lang="en">
+  <head>
+    <title>405 Method Not Allowed</title>
+  </head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>The method is not allowed for the requested URL.</p>
+  </body>
+</html>
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOSTAadhaar(GenerateClientToken.java:360)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenGETMethodInsteadOfPOSTAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="afterEachTest" finished-at="2025-12-27T00:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="setup" finished-at="2025-12-27T00:35:10 IST" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWhenRequestBodyJSONMalformedAadhaar()[pri:16, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="verifyResponseWhenRequestBodyJSONMalformedAadhaar" description="tc_24 - Malformed JSON should return clean error" finished-at="2025-12-27T00:35:10 IST" duration-ms="130" status="FAIL">
+          <exception class="io.restassured.path.json.exception.JsonPathException">
+            <message>
+              <![CDATA[Failed to parse the JSON document]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenRequestBodyJSONMalformedAadhaar(GenerateClientToken.java:382)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading '<', no possible valid JSON value or punctuation could be recognized.
+at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+... 33 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.restassured.path.json.exception.JsonPathException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenRequestBodyJSONMalformedAadhaar -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateClientToken@5e2c3d18]" started-at="2025-12-27T00:35:10 IST" name="afterEachTest" finished-at="2025-12-27T00:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+      </class> <!-- com.api.tests.aadhaar.GenerateClientToken -->
+      <class name="com.api.tests.aadhaar.GenerateDigilockerLink">
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:35:10 IST" name="setupSoftAssert" finished-at="2025-12-27T00:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:35:10 IST" name="setup" finished-at="2025-12-27T00:35:10 IST" duration-ms="11" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithMandatoryFieldsGenerateDigilockerLink(org.testng.ITestContext)[pri:1, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:35:10 IST" name="verifyResponseWithMandatoryFieldsGenerateDigilockerLink" description="tc_01 - Verify API returns success response with mandatory fields only" finished-at="2025-12-27T00:36:53 IST" duration-ms="102733" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithMandatoryFieldsGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:53 IST" name="afterEachTest" finished-at="2025-12-27T00:36:53 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:53 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:53 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:53 IST" name="setup" finished-at="2025-12-27T00:36:53 IST" duration-ms="62" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWhenCompanyNameMissingGenerateDigilockerLink()[pri:2, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:53 IST" name="verifyResponseWhenCompanyNameMissingGenerateDigilockerLink" description="tc_03 - Missing company_name should return error" finished-at="2025-12-27T00:36:54 IST" duration-ms="242" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenCompanyNameMissingGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="afterEachTest" finished-at="2025-12-27T00:36:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:54 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setup" finished-at="2025-12-27T00:36:54 IST" duration-ms="11" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink()[pri:3, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink" description="tc_04 - Missing documents should return error" finished-at="2025-12-27T00:36:54 IST" duration-ms="141" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [Missing required fields: documents] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [Missing required fields: documents] but found [null]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink(GenerateDigilockerLink.java:172)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="afterEachTest" finished-at="2025-12-27T00:36:54 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setup" finished-at="2025-12-27T00:36:54 IST" duration-ms="80" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink()[pri:4, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink" description="tc_06 - Unsupported document value returns error" finished-at="2025-12-27T00:36:54 IST" duration-ms="182" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="afterEachTest" finished-at="2025-12-27T00:36:54 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setup" finished-at="2025-12-27T00:36:54 IST" duration-ms="8" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink()[pri:5, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink" description="tc_08 - Malformed JSON should not return HTML" finished-at="2025-12-27T00:36:54 IST" duration-ms="147" status="FAIL">
+          <exception class="io.restassured.path.json.exception.JsonPathException">
+            <message>
+              <![CDATA[Failed to parse the JSON document]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink(GenerateDigilockerLink.java:222)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading '<', no possible valid JSON value or punctuation could be recognized.
+at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+... 33 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.restassured.path.json.exception.JsonPathException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="afterEachTest" finished-at="2025-12-27T00:36:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:54 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setup" finished-at="2025-12-27T00:36:54 IST" duration-ms="14" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink()[pri:6, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink" description="tc_09 - Wrong Content-Type should fail" finished-at="2025-12-27T00:36:54 IST" duration-ms="175" status="FAIL">
+          <exception class="io.restassured.path.json.exception.JsonPathException">
+            <message>
+              <![CDATA[Failed to parse the JSON document]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink(GenerateDigilockerLink.java:250)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading '<', no possible valid JSON value or punctuation could be recognized.
+at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+... 33 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.restassured.path.json.exception.JsonPathException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="afterEachTest" finished-at="2025-12-27T00:36:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setup" finished-at="2025-12-27T00:36:54 IST" duration-ms="10" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method signature="verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink()[pri:7, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:54 IST" name="verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink" description="tc_15 - Empty body should return error" finished-at="2025-12-27T00:36:55 IST" duration-ms="168" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink(GenerateDigilockerLink.java:273)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:55 IST" name="afterEachTest" finished-at="2025-12-27T00:36:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="setupSoftAssert()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:55 IST" name="setupSoftAssert" finished-at="2025-12-27T00:36:55 IST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupSoftAssert -->
+        <test-method is-config="true" signature="setup(org.testng.ITestContext)[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:55 IST" name="setup" finished-at="2025-12-27T00:36:55 IST" duration-ms="6" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74ecacc3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyResponseForNumericTypesGenerateDigilockerLink()[pri:9, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:55 IST" name="verifyResponseForNumericTypesGenerateDigilockerLink" description="tc_22 - Numeric types for string fields should fail" finished-at="2025-12-27T00:36:55 IST" duration-ms="301" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [400] but found [200]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseForNumericTypesGenerateDigilockerLink(GenerateDigilockerLink.java:302)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyResponseForNumericTypesGenerateDigilockerLink -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:com.api.tests.aadhaar.GenerateDigilockerLink@5745ca0e]" started-at="2025-12-27T00:36:55 IST" name="afterEachTest" finished-at="2025-12-27T00:36:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+      </class> <!-- com.api.tests.aadhaar.GenerateDigilockerLink -->
+    </test> <!-- API Test - Dynamic Test -->
+  </suite> <!-- API Test Suite -->
 </testng-results>

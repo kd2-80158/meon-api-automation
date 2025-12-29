@@ -8,144 +8,162 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">3</td><td class="num">32,631</td><td></td><td></td></tr>
+<tr><th colspan="8">API Test Suite</th></tr>
+<tr><td><a href="#t0">API Test - Dynamic Test</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">18</td><td class="num">113,654</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="3">com.api.tests.ocr.ExtractDataInvoice_OCR</td><td><a href="#m0">verifyResponseWithValidPDFandAuth</a></td><td rowspan="3">1766553371573</td><td rowspan="3">5133</td></tr><tr class="failedeven"><td><a href="#m1">verifyResponseWithValidPDFandAuth</a></td></tr><tr class="failedeven"><td><a href="#m2">verifyResponseWithValidPDFandAuth</a></td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">API Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">API Test - Dynamic Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="13">com.api.tests.aadhaar.GenerateClientToken</td><td><a href="#m0">verifyIncorrectContentHeaderAadhaar</a></td><td rowspan="1">1766775908810</td><td rowspan="1">341</td></tr><tr class="failedeven"><td><a href="#m1">verifyResponeWithNoRequestBodyAadhaar</a></td><td rowspan="1">1766775909916</td><td rowspan="1">448</td></tr><tr class="failedeven"><td><a href="#m2">verifyResponseWhenGETMethodInsteadOfPOSTAadhaar</a></td><td rowspan="1">1766775910613</td><td rowspan="1">172</td></tr><tr class="failedeven"><td><a href="#m3">verifyResponseWhenRequestBodyJSONMalformedAadhaar</a></td><td rowspan="1">1766775910807</td><td rowspan="1">130</td></tr><tr class="failedeven"><td><a href="#m4">verifyResponseWithInvalidCompanyAadhaar</a></td><td rowspan="1">1766775908658</td><td rowspan="1">133</td></tr><tr class="failedeven"><td><a href="#m5">verifyResponseWithInvalidSecretTokenAadhaar</a></td><td rowspan="1">1766775908477</td><td rowspan="1">164</td></tr><tr class="failedeven"><td><a href="#m6">verifyResponseWithLongCompanyNameAadhaar</a></td><td rowspan="1">1766775909202</td><td rowspan="1">169</td></tr><tr class="failedeven"><td><a href="#m7">verifyResponseWithLongSecretTokenAadhaar</a></td><td rowspan="1">1766775909382</td><td rowspan="1">141</td></tr><tr class="failedeven"><td><a href="#m8">verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar</a></td><td rowspan="1">1766775908334</td><td rowspan="1">134</td></tr><tr class="failedeven"><td><a href="#m9">verifyResponseWithMissingCompanyNameAadhaar</a></td><td rowspan="1">1766775908128</td><td rowspan="1">192</td></tr><tr class="failedeven"><td><a href="#m10">verifyResponseWithMissingSecretTokenAadhaar</a></td><td rowspan="1">1766775907896</td><td rowspan="1">211</td></tr><tr class="failedeven"><td><a href="#m11">verifyResponseWithNumericValuesOfFieldsAadhaar</a></td><td rowspan="1">1766775910436</td><td rowspan="1">159</td></tr><tr class="failedeven"><td><a href="#m12">verifyResponseWithSQLInjectionAadhaar</a></td><td rowspan="1">1766775909538</td><td rowspan="1">139</td></tr><tr class="failedodd"><td rowspan="5">com.api.tests.aadhaar.GenerateDigilockerLink</td><td><a href="#m13">verifyResponseForNumericTypesGenerateDigilockerLink</a></td><td rowspan="1">1766776015020</td><td rowspan="1">301</td></tr><tr class="failedodd"><td><a href="#m14">verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink</a></td><td rowspan="1">1766776014057</td><td rowspan="1">141</td></tr><tr class="failedodd"><td><a href="#m15">verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink</a></td><td rowspan="1">1766776014838</td><td rowspan="1">168</td></tr><tr class="failedodd"><td><a href="#m16">verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink</a></td><td rowspan="1">1766776014480</td><td rowspan="1">147</td></tr><tr class="failedodd"><td><a href="#m17">verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink</a></td><td rowspan="1">1766776014648</td><td rowspan="1">175</td></tr><tr><th colspan="4">API Test - Dynamic Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">com.api.tests.aadhaar.GenerateClientToken</td><td><a href="#m18">getTokenWithValidCredentialsAadhaar</a></td><td rowspan="1">1766775904983</td><td rowspan="1">2854</td></tr><tr class="passedeven"><td><a href="#m19">verifyResponseTimeSLAAadhaar</a></td><td rowspan="1">1766775909689</td><td rowspan="1">212</td></tr><tr class="passedodd"><td rowspan="3">com.api.tests.aadhaar.GenerateDigilockerLink</td><td><a href="#m20">verifyResponseWhenCompanyNameMissingGenerateDigilockerLink</a></td><td rowspan="1">1766776013800</td><td rowspan="1">242</td></tr><tr class="passedodd"><td><a href="#m21">verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink</a></td><td rowspan="1">1766776014286</td><td rowspan="1">182</td></tr><tr class="passedodd"><td><a href="#m22">verifyResponseWithMandatoryFieldsGenerateDigilockerLink</a></td><td rowspan="1">1766775910954</td><td rowspan="1">102733</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.api.tests.ocr.ExtractDataInvoice_OCR#verifyResponseWithValidPDFandAuth</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>/Users/saurabhchhimwal/eclipse-workspace/meonapiautomation/src/test/resources/testdata/invoice/InvoiceMtech.pdf</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:523)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-	at com.google.gson.Gson.fromJson(Gson.java:1359)
-	at com.google.gson.Gson.fromJson(Gson.java:1260)
-	at com.google.gson.Gson.fromJson(Gson.java:1170)
-	at com.google.gson.Gson.fromJson(Gson.java:1107)
-	at com.api.tests.ocr.ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(ExtractDataInvoice_OCR.java:75)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+<h2>API Test - Dynamic Test</h2><h3 id="m0">com.api.tests.aadhaar.GenerateClientToken#verifyIncorrectContentHeaderAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Server returned HTML error page:
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;415 Unsupported Media Type&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Unsupported Media Type&lt;/h1&gt;
+    &lt;p&gt;Did not attempt to load JSON data because the request Content-Type was not &apos;application/json&apos;.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+	at com.api.tests.aadhaar.GenerateClientToken.verifyIncorrectContentHeaderAadhaar(GenerateClientToken.java:201)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-	at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1831)
-	at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:470)
-	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
-	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:64)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-	... 36 more
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.api.tests.ocr.ExtractDataInvoice_OCR#verifyResponseWithValidPDFandAuth</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>/Users/saurabhchhimwal/eclipse-workspace/meonapiautomation/src/test/resources/testdata/invoice/zudioinvoice.pdf</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:523)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-	at com.google.gson.Gson.fromJson(Gson.java:1359)
-	at com.google.gson.Gson.fromJson(Gson.java:1260)
-	at com.google.gson.Gson.fromJson(Gson.java:1170)
-	at com.google.gson.Gson.fromJson(Gson.java:1107)
-	at com.api.tests.ocr.ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(ExtractDataInvoice_OCR.java:75)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.api.tests.aadhaar.GenerateClientToken#verifyResponeWithNoRequestBodyAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [502]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponeWithNoRequestBodyAadhaar(GenerateClientToken.java:313)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was NUMBER at line 1 column 209 path $.extracted_data.sgst
-See https://github.com/google/gson/blob/main/Troubleshooting.md#unexpected-json-structure
-	at com.google.gson.stream.JsonReader.unexpectedTokenError(JsonReader.java:1831)
-	at com.google.gson.stream.JsonReader.beginArray(JsonReader.java:470)
-	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
-	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:64)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2.readIntoField(ReflectiveTypeAdapterFactory.java:271)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$FieldReflectionAdapter.readField(ReflectiveTypeAdapterFactory.java:561)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:519)
-	... 36 more
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.api.tests.ocr.ExtractDataInvoice_OCR#verifyResponseWithValidPDFandAuth</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>/Users/saurabhchhimwal/eclipse-workspace/meonapiautomation/src/test/resources/testdata/invoice/InvoiceTrial.pdf</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
-	expected object to not be null
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.api.tests.ocr.ExtractDataInvoice_OCR.verifyResponseWithValidPDFandAuth(ExtractDataInvoice_OCR.java:87)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWhenGETMethodInsteadOfPOSTAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Server returned HTML:
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+    &lt;p&gt;The method is not allowed for the requested URL.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenGETMethodInsteadOfPOSTAadhaar(GenerateClientToken.java:360)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWhenRequestBodyJSONMalformedAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+	at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+	at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+	at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+	at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+	at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWhenRequestBodyJSONMalformedAadhaar(GenerateClientToken.java:382)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading &apos;&lt;&apos;, no possible valid JSON value or punctuation could be recognized.
+	at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+	at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+	at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+	at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+	... 33 more
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithInvalidCompanyAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidCompanyAadhaar(GenerateClientToken.java:180)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithInvalidSecretTokenAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [401] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithInvalidSecretTokenAadhaar(GenerateClientToken.java:156)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithLongCompanyNameAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongCompanyNameAadhaar(GenerateClientToken.java:226)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithLongSecretTokenAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithLongSecretTokenAadhaar(GenerateClientToken.java:252)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingBothCompanyNameAndSecretTokenAadhaar(GenerateClientToken.java:131)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithMissingCompanyNameAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingCompanyNameAadhaar(GenerateClientToken.java:110)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithMissingSecretTokenAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithMissingSecretTokenAadhaar(GenerateClientToken.java:88)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithNumericValuesOfFieldsAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithNumericValuesOfFieldsAadhaar(GenerateClientToken.java:339)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">com.api.tests.aadhaar.GenerateClientToken#verifyResponseWithSQLInjectionAadhaar</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateClientToken.verifyResponseWithSQLInjectionAadhaar(GenerateClientToken.java:278)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseForNumericTypesGenerateDigilockerLink</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseForNumericTypesGenerateDigilockerLink(GenerateDigilockerLink.java:302)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [Missing required fields: documents] but found [null]
+	at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWhenDocumentFieldMissingGenerateDigilockerLink(GenerateDigilockerLink.java:172)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	expected [400] but found [200]
+	at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWhenRequestBodyEmptyGenerateDigilockerLink(GenerateDigilockerLink.java:273)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+	at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+	at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+	at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+	at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+	at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+	at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWhenRequestBodyJSONMalformedGenerateDigilockerLink(GenerateDigilockerLink.java:222)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading &apos;&lt;&apos;, no possible valid JSON value or punctuation could be recognized.
+	at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+	at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+	at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+	at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+	... 33 more
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m17">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.restassured.path.json.exception.JsonPathException: Failed to parse the JSON document
+	at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1002)
+	at io.restassured.path.json.JsonPath$4.doParseWith(JsonPath.java:967)
+	at io.restassured.path.json.JsonPath$JsonParser.parseWith(JsonPath.java:1047)
+	at io.restassured.path.json.JsonPath.get(JsonPath.java:202)
+	at io.restassured.path.json.JsonPath.getBoolean(JsonPath.java:214)
+	at com.api.tests.aadhaar.GenerateDigilockerLink.verifyResponseWithWrongContentTypeHeaderGenerateDigilockerLink(GenerateDigilockerLink.java:250)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+Caused by: groovy.json.JsonException: Lexing failed on line: 1, column: 1, while reading &apos;&lt;&apos;, no possible valid JSON value or punctuation could be recognized.
+	at groovy.json.JsonLexer.nextToken(JsonLexer.java:86)
+	at groovy.json.JsonLexer$nextToken.call(Unknown Source)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper.parse(ConfigurableJsonSlurper.groovy:97)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper$parse.callCurrent(Unknown Source)
+	at io.restassured.internal.path.json.ConfigurableJsonSlurper.parseText(ConfigurableJsonSlurper.groovy:83)
+	at io.restassured.path.json.JsonPath$4$1.method(JsonPath.java:965)
+	at io.restassured.path.json.JsonPath$ExceptionCatcher.invoke(JsonPath.java:1000)
+	... 33 more
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m18">com.api.tests.aadhaar.GenerateClientToken#getTokenWithValidCredentialsAadhaar</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>org.testng.TestRunner@74ecacc3</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m19">com.api.tests.aadhaar.GenerateClientToken#verifyResponseTimeSLAAadhaar</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m20">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWhenCompanyNameMissingGenerateDigilockerLink</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m21">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWhenDocumentFieldContainsUnsupportedValueGenerateDigilockerLink</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m22">com.api.tests.aadhaar.GenerateDigilockerLink#verifyResponseWithMandatoryFieldsGenerateDigilockerLink</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>org.testng.TestRunner@74ecacc3</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

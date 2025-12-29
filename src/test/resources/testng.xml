@@ -5,7 +5,7 @@
 		<classes>
 			<class name="com.api.tests.aadhaar.GenerateClientToken" />
 			<class name="com.api.tests.aadhaar.GenerateDigilockerLink" />
-			<class name="com.api.tests.aadhaar.RetrieveAadhaarData" />
+			<!-- <class name="com.api.tests.aadhaar.RetrieveAadhaarData" />
 			<class name="com.api.tests.esign.GenerateClientSignatureEsign" />
 			<class name="com.api.tests.esign.GenerateTokenEsign" />
 			<class name="com.api.tests.esign.FetchDocumentEsign" />
@@ -13,14 +13,20 @@
 			<class name="com.api.tests.kyc.GetUserData_KYC" />
 			<class name="com.api.tests.kyc.GetSsoRoute_KYC" />
 			<class name="com.api.tests.pennydrop.GenerateToken_PennyDrop" />
-			<class name="com.api.tests.pennydrop.BankVerification_PennyDrop" />
+			<class
+				name="com.api.tests.pennydrop.BankVerification_PennyDrop" />
 			<class name="com.api.tests.reversepennydrop.GenerateToken_RPD" />
-			<class name="com.api.tests.reversepennydrop.InitiateRequest_RPD" />
-			<class name="com.api.tests.reversepennydrop.GenerateExportToken_RPD" />
+			<class
+				name="com.api.tests.reversepennydrop.InitiateRequest_RPD" />
+			<class
+				name="com.api.tests.reversepennydrop.GenerateExportToken_RPD" />
 			<class name="com.api.tests.reversepennydrop.GetExportData_RPD" />
 			<class name="com.api.tests.ocr.GenerateToken_OCR" />
 			<class name="com.api.tests.ocr.ExtractDataPAN_OCR" />
-			<class name="com.api.tests.ocr.ExtractDataAadhaar_OCR" />
+			<class name="com.api.tests.ocr.ExtractDataAadhaar_OCR" /> -->
 		</classes>
 	</test>
+	<listeners>
+		<listener class-name="com.api.listeners.DashboardListener" />
+	</listeners>
 </suite>

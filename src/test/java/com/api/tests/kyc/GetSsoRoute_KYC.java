@@ -31,7 +31,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		rs = RestAssured.given();
 	}
 
-	@Test(description = "tc_01 - Verify successful SSO route retrieval with valid mandatory fields.", priority = 1,groups= {"e2e","smoke","regression"})
+	@Test(description = "tc_01 - Verify successful SSO route retrieval with valid mandatory fields.", priority = 1,alwaysRun=true, groups= {"e2e","smoke","sanity","regression"})
 	public void verifyResponseWithValidMandatoryFields_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getCompany_sso(),
 				JSONUtility.getKYC().getWorkflowName(), JSONUtility.getKYC().getSecret_key(),
@@ -46,7 +46,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 		softAssert.assertAll();
 	}
 
-	@Test(description = "tc_02 - Verify error when company is missing (required field).", priority = 2,groups= {"smoke","regression"})
+	@Test(description = "tc_02 - Verify error when company is missing (required field).", priority = 2,groups= {"smoke","sanity","regression"})
 	public void verifyResponseWithMissingCompanyfield_SSORoute() {
 		GetSsoRouteKYCRequest getSsoRouteKYCRequest = new GetSsoRouteKYCRequest(JSONUtility.getKYC().getWorkflowName(),
 				JSONUtility.getKYC().getSecret_key(), JSONUtility.getKYC().getUnique_keys());
