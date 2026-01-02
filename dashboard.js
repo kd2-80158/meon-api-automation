@@ -101,33 +101,42 @@ function renderTable(data) {
 		tr.className = status;
 
 		tr.innerHTML = `
-		  <td title="${tc.testName || ''}">
-		    ${tc.testCaseId || "-"}
-		  </td>
+			<td title="${tc.testName || ""}">
+				${tc.testCaseId || tc.testName || "-"}
+			</td>
 
-		  <td>
-		    <span class="badge ${status}">${status}</span>
-		  </td>
+			<td>
+				<span class="badge ${status}">${status}</span>
+			</td>
 
-		  <td>${tc.apiModule?.split(".").pop() || "-"}</td>
+			<td>${tc.apiModule?.split(".").pop() || "-"}</td>
 
-		  <td>${tc.httpStatus && tc.httpStatus !== 0 ? tc.httpStatus : "API"}</td>
+			<td>${tc.httpStatus && tc.httpStatus !== 0 ? tc.httpStatus : "API"}</td>
 
-		  <td>${execTime} ms</td>
+			<td>${execTime} ms</td>
 
-		  <td><span class="perf ${perf}">${perf}</span></td>
+			<td><span class="perf ${perf}">${perf}</span></td>
 
-		  <td>${tc.executionType || "-"}</td>
+			<!-- ✅ ERROR / REASON -->
+			<td>
+				${tc.error
+					? `<details>
+						<summary>View Error</summary>
+						<pre class="error-box">${escapeHtml(tc.error)}</pre>
+					  </details>`
+					: "—"}
+			</td>
 
-		  <td>${tc.executionSource || "-"}</td>
+			<td>${tc.executionType || "-"}</td>
 
-		  <td>${tc.environment || "-"}</td>
+			<td>${tc.executionSource || "-"}</td>
 
-		  <td title="${tc.className || ''}">
-		    ${tc.className ? tc.className.split(".").pop() : "-"}
-		  </td>
+			<td>${tc.environment || "-"}</td>
+
+			<td title="${tc.className || ""}">
+				${tc.className ? tc.className.split(".").pop() : "-"}
+			</td>
 		`;
-
 
 		tbody.appendChild(tr);
 	});
