@@ -134,14 +134,6 @@ function renderTable(data) {
 			<td title="${tc.className}">
 			  ${tc.className ? tc.className.split(".").pop() : "-"}
 			</td>
-
-			<td>
-			  ${tc.failureType
-			    ? `<span class="failure ${tc.failureType}">${tc.failureType}</span>`
-			    : "—"}
-			</td>
-
-			<td>${tc.retryCount ?? 0}</td>
         `;
 
 		tbody.appendChild(tr);
