@@ -1,4 +1,4 @@
-package com.api.dataprovider;
+package src.test.java.com.api.dataprovider;
 
 import java.io.File;
 
