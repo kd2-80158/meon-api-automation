@@ -136,6 +136,15 @@ function renderTable(data) {
 			<td title="${tc.className || ""}">
 				${tc.className ? tc.className.split(".").pop() : "-"}
 			</td>
+			<td>
+			  <button onclick="runTest(
+			    '${tc.className}',
+			    '${tc.testName}'
+			  )">
+			    ▶ Run
+			  </button>
+			</td>
+
 		`;
 
 		tbody.appendChild(tr);
@@ -157,6 +166,36 @@ function escapeHtml(text) {
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
 }
+
+function runTest(className, testName) {
+	if (!confirm(`Run test?\n${className}#${testName}`)) return;
+
+	fetch(
+		"https://api.github.com/repos/kd2-80158/meon-api-automation/actions/workflows/ci.yml/dispatches",
+		{
+			method: "POST",
+			headers: {
+				"Accept": "application/vnd.github+json",
+				"Authorization": "Bearer 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",
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				ref: "main",
+				inputs: {
+					testClass: className,
+					testMethod: testName,
+					executionSource: "dashboard"
+				}
+			})
+		}
+	)
+	.then(() => alert("✅ Test triggered successfully"))
+	.catch(err => {
+		console.error(err);
+		alert("❌ Failed to trigger test");
+	});
+}
+
 
 /* ================= INIT ================= */
 window.onload = loadDashboard;
