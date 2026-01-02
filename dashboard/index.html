@@ -3,195 +3,255 @@
 <head>
 <meta charset="UTF-8" />
 <title>API Automation Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
 .error-box {
-    white-space: pre-wrap;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 6px;
-    font-size: 12px;
-    max-height: 250px;
-    overflow-y: auto;
+	white-space: pre-wrap;
+	background: #f8f9fa;
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-top: 8px;
+	border-radius: 6px;
+	font-size: 12px;
+	max-height: 250px;
+	overflow-y: auto;
 }
 
 details summary {
-    cursor: pointer;
-    font-weight: bold;
-    color: #dc3545;
+	cursor: pointer;
+	font-weight: bold;
+	color: #dc3545;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f9;
-    margin: 0;
-    padding: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	background: #f4f6f9;
+	margin: 0;
+	padding: 20px;
 }
 
-h1 { margin-bottom: 5px; }
+h1 {
+	margin-bottom: 5px;
+}
 
 /* ===== SUMMARY ===== */
 #summary span {
-    margin-right: 20px;
-    font-weight: bold;
+	margin-right: 20px;
+	font-weight: bold;
 }
 
 /* ===== INSIGHTS ===== */
 .insights {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin: 20px 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 15px;
+	margin: 20px 0;
 }
 
 .card {
-    padding: 16px;
-    border-radius: 10px;
-    font-weight: bold;
-    color: #fff;
-    text-align: center;
+	padding: 16px;
+	border-radius: 10px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
 }
 
-.card span { font-size: 22px; display: block; margin-top: 5px; }
+.card span {
+	font-size: 22px;
+	display: block;
+	margin-top: 5px;
+}
 
-.card.pass { background: #2ecc71; }
-.card.fail { background: #e74c3c; }
-.card.time { background: #3498db; }
-.card.total { background: #34495e; }
+.card.pass {
+	background: #2ecc71;
+}
+
+.card.fail {
+	background: #e74c3c;
+}
+
+.card.time {
+	background: #3498db;
+}
+
+.card.total {
+	background: #34495e;
+}
 
 /* ===== MODULES ===== */
 .modules {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
 }
 
 .module-card {
-    background: #fff;
-    padding: 12px;
-    border-radius: 8px;
-    min-width: 180px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+	background: #fff;
+	padding: 12px;
+	border-radius: 8px;
+	min-width: 180px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== FILTER ===== */
-.filter { margin-bottom: 15px; }
+.filter {
+	margin-bottom: 15px;
+}
 
 .filter button {
-    margin-right: 10px;
-    padding: 6px 14px;
-    border-radius: 4px;
-    border: none;
-    background: #2f3e46;
-    color: white;
-    cursor: pointer;
+	margin-right: 10px;
+	padding: 6px 14px;
+	border-radius: 4px;
+	border: none;
+	background: #2f3e46;
+	color: white;
+	cursor: pointer;
 }
 
 /* ===== TABLE ===== */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
 }
 
 th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    font-size: 14px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	font-size: 14px;
 }
 
 th {
-    background: #2f3e46;
-    color: white;
+	background: #2f3e46;
+	color: white;
 }
 
-tr.PASS { background: #ecf9f1; }
-tr.FAIL { background: #fdecea; }
-tr.SKIPPED { background: #fff6e0; }
+tr.PASS {
+	background: #ecf9f1;
+}
+
+tr.FAIL {
+	background: #fdecea;
+}
+
+tr.SKIPPED {
+	background: #fff6e0;
+}
 
 .badge {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    color: white;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-weight: bold;
+	color: white;
 }
 
-.badge.PASS { background: #28a745; }
-.badge.FAIL { background: #dc3545; }
-.badge.SKIPPED { background: #ffc107; color: #000; }
+.badge.PASS {
+	background: #28a745;
+}
+
+.badge.FAIL {
+	background: #dc3545;
+}
+
+.badge.SKIPPED {
+	background: #ffc107;
+	color: #000;
+}
 
 /* ===== PERFORMANCE ===== */
 .perf {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-weight: bold;
+	font-size: 12px;
 }
 
-.perf.FAST { background: #d4edda; color: #155724; }
-.perf.MEDIUM { background: #fff3cd; color: #856404; }
-.perf.SLOW { background: #f8d7da; color: #721c24; }
+.perf.FAST {
+	background: #d4edda;
+	color: #155724;
+}
+
+.perf.MEDIUM {
+	background: #fff3cd;
+	color: #856404;
+}
+
+.perf.SLOW {
+	background: #f8d7da;
+	color: #721c24;
+}
 
 footer {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #666;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #666;
 }
 </style>
 </head>
 
 <body>
 
-<h1>API Automation Dashboard</h1>
-<p>Real-time execution results</p>
+	<h1>API Automation Dashboard</h1>
+	<p>Real-time execution results</p>
 
-<div id="summary"></div>
+	<div id="summary"></div>
 
-<!-- INSIGHTS -->
-<div class="insights">
-  <div class="card pass">PASS <span id="passCount">0</span></div>
-  <div class="card fail">FAIL <span id="failCount">0</span></div>
-  <div class="card time">AVG ⏱ <span id="avgTime">0</span> ms</div>
-  <div class="card total">TOTAL <span id="totalCount">0</span></div>
-</div>
+	<!-- INSIGHTS -->
+	<div class="insights">
+		<div class="card pass">
+			PASS <span id="passCount">0</span>
+		</div>
+		<div class="card fail">
+			FAIL <span id="failCount">0</span>
+		</div>
+		<div class="card time">
+			AVG ⏱ <span id="avgTime">0</span> ms
+		</div>
+		<div class="card total">
+			TOTAL <span id="totalCount">0</span>
+		</div>
+	</div>
 
-<!-- MODULE HEALTH -->
-<div id="modules" class="modules"></div>
+	<!-- MODULE HEALTH -->
+	<div id="modules" class="modules"></div>
 
-<!-- FILTER -->
-<div class="filter">
-    <button onclick="filterStatus('ALL')">All</button>
-    <button onclick="filterStatus('PASS')">Pass</button>
-    <button onclick="filterStatus('FAIL')">Fail</button>
-    <button onclick="filterStatus('SKIPPED')">Skipped</button>
-</div>
+	<!-- FILTER -->
+	<div class="filter">
+		<button onclick="filterStatus('ALL')">All</button>
+		<button onclick="filterStatus('PASS')">Pass</button>
+		<button onclick="filterStatus('FAIL')">Fail</button>
+		<button onclick="filterStatus('SKIPPED')">Skipped</button>
+	</div>
 
-<!-- TABLE -->
-<table>
-<thead>
-<tr>
-  <th>Test Case</th>
-  <th>Status</th>
-  <th>Module</th>
-  <th>HTTP / API</th>
-  <th>⏱ Time</th>
-  <th>Performance</th>
-  <th>Error / Reason</th>
-  <th>Executed At</th>
-</tr>
-</thead>
+	<!-- TABLE -->
+	<table>
+		<thead>
+			<tr>
+				<th>Test Case</th>
+				<th>Status</th>
+				<th>Module</th>
+				<th>HTTP / API</th>
+				<th>⏱ Time</th>
+				<th>Performance</th>
+				<th>Execution</th>
+				<th>Source</th>
+				<th>Env</th>
+				<th>Class</th>
+				<th>Failure Type</th>
+				<th>Retries</th>
+				<th>Error / Reason</th>
+				<th>Executed At</th>
+			</tr>
 
-<tbody id="tableBody"></tbody>
-</table>
+		</thead>
 
-<footer>
-Generated by API Automation Framework
-</footer>
+		<tbody id="tableBody"></tbody>
+	</table>
 
-<script src="dashboard.js"></script>
+	<footer> Generated by API Automation Framework </footer>
+
+	<script src="dashboard.js"></script>
 </body>
 </html>

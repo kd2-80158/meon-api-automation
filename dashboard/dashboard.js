@@ -127,6 +127,21 @@ function renderTable(data) {
 			</td>
 
             <td>${tc.timestamp ? new Date(tc.timestamp).toLocaleString() : "-"}</td>
+			<td>${tc.executionType || "-"}</td>
+			<td>${tc.executionSource || "-"}</td>
+			<td>${tc.environment || "-"}</td>
+
+			<td title="${tc.className}">
+			  ${tc.className ? tc.className.split(".").pop() : "-"}
+			</td>
+
+			<td>
+			  ${tc.failureType
+			    ? `<span class="failure ${tc.failureType}">${tc.failureType}</span>`
+			    : "—"}
+			</td>
+
+			<td>${tc.retryCount ?? 0}</td>
         `;
 
 		tbody.appendChild(tr);
