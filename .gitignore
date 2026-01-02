@@ -3,6 +3,22 @@ target/
 bin/
 *.class
 
+# Eclipse / IDE
+.metadata/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+
+# Maven
+target/
+
+# Logs
+*.log
+
+
 # Logs
 logs/
 *.log
