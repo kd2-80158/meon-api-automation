@@ -7,9 +7,10 @@
 			<class name="com.api.tests.aadhaar.GenerateDigilockerLink" /> -->
 			<!--  <class name="com.api.tests.aadhaar.RetrieveAadhaarData" /> -->
 			<class name="com.api.tests.esign.GenerateClientSignatureEsign" />
-			<!-- 
+			
 			<class name="com.api.tests.esign.GenerateTokenEsign" />
-			<class name="com.api.tests.esign.FetchDocumentEsign" />
+			<!--<class name="com.api.tests.esign.FetchDocumentEsign" /> -->
+			<!--
 			<class name="com.api.tests.kyc.GenerateAdminToken_KYC" />
 			<class name="com.api.tests.kyc.GetUserData_KYC" />
 			<class name="com.api.tests.kyc.GetSsoRoute_KYC" />

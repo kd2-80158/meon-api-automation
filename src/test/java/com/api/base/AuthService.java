@@ -78,6 +78,7 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_PAN_CARD = "/extract_pan_details";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD = "/extract_adhar_details"; //data or details
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_PASSPORT = "/api/extract-passport-info";
+	public static final String BASE_PATH_OCR_EXTRACT_DATA_VOTERID = "/extract_voterid_data";
 	
 	
 	public AuthService(String product) {
@@ -138,7 +139,7 @@ public class AuthService extends BaseService {
 	}
 
 	public Response generateClientTokenAadhaarWithRawJson(String rawJson) {
-		return given().baseUri(BASE_URL).contentType("application/json").body(rawJson).when().post(BASE_PATH);
+		return given().baseUri(BASE_URL).relaxedHTTPSValidation().contentType("application/json").body(rawJson).when().post(BASE_PATH);
 	}
 
 	public Response generateTokenFaceFinderWithRawJson(String rawJson) {

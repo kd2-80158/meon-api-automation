@@ -87,7 +87,7 @@ public class BaseService { // wrapper for RestAssured
 
 	// Without AUTH
 	protected Response postRequestAadhaar(Object tokenRequest, String endpoint) {
-		return rs.body(tokenRequest).post(endpoint);
+		return rs.relaxedHTTPSValidation().body(tokenRequest).post(endpoint);
 	}
 
 	protected Response postRequestEsign(Object tokenRequest, String endpoint) {
@@ -103,7 +103,7 @@ public class BaseService { // wrapper for RestAssured
 	}
 	
 	protected Response postRequestOCR(Object tokenRequest, String endpoint) {
-		return rs.body(tokenRequest).post(endpoint);
+		return rs.relaxedHTTPSValidation().body(tokenRequest).post(endpoint);
 	}
 	
 	protected Response postRequestReversePennyDrop(Object tokenRequest, String endpoint)

@@ -1,0 +1,8 @@
+products_251,Description_252,Issue_Summary_253,Assignee_254,Attachment_255,Task/Bug_Time_256,Bug_Status_257,deadline_7817,Priority_8648,Product_7978,Permanent_Solution_7979,Severity_8647,Bug_Priority_8648
+Request Demo,"Thank You page lacks essential confirmation details such as reference ID and submitted user information. There are no navigation options like Go Back, Contact Us, or Explore Products, preventing users from verifying their submission or continuing their journey.","Following are some issues: 
+
+1. No visible reference ID for the ticket.
+
+2. No “Go back”, “Contact us”, or “Explore products” button above the fold.
+
+3. User cannot verify what they submitted (email/phone).",Sahil Jaiswal,,12/12/2026,New,09/01/2026,Low,Website,Refer to the issue summary.,High,P1
