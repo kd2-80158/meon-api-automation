@@ -3,11 +3,6 @@ target/
 bin/
 *.class
 
-# dashboard artifacts
-dashboard/*-local.json
-dashboard/*-ci.json
-logs/
-
 # Eclipse / IDE
 .metadata/
 .settings/

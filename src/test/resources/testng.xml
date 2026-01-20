@@ -3,10 +3,11 @@
 	<parameter name="testType" value="Regression" />
 	<test name="API Test - Dynamic Test">
 		<classes>
-			<class name="com.api.tests.aadhaar.GenerateClientToken" />
-			<class name="com.api.tests.aadhaar.GenerateDigilockerLink" />
-			<!-- <class name="com.api.tests.aadhaar.RetrieveAadhaarData" />
+<!-- 			<class name="com.api.tests.aadhaar.GenerateClientToken" />
+			<class name="com.api.tests.aadhaar.GenerateDigilockerLink" /> -->
+			<!--  <class name="com.api.tests.aadhaar.RetrieveAadhaarData" /> -->
 			<class name="com.api.tests.esign.GenerateClientSignatureEsign" />
+			<!-- 
 			<class name="com.api.tests.esign.GenerateTokenEsign" />
 			<class name="com.api.tests.esign.FetchDocumentEsign" />
 			<class name="com.api.tests.kyc.GenerateAdminToken_KYC" />

@@ -244,7 +244,7 @@ public class TestListener implements ITestListener {
             EmailUtility.sendReportEmail(subject, body, null, EmailUtility.loadRecipientsFromPropsOrDefault());
             logger.info("Summary-only email sent");
         } catch (Exception e) {
-            logger.error("Failed to send summary email: " + e.getMessage());
+            logger.error("Failed to send email with report attachment", e);
         }
     }
 }
