@@ -67,6 +67,7 @@ public class BaseURL {
 	private String version;
 	
 	//ocr
+	private String live_url;
 	private String company_id;
 	private String pan;
 	private String fathername;
@@ -414,4 +415,11 @@ public class BaseURL {
 		this.image_to_be_match = image_to_be_match;
 	}
 
+	public String getLive_url() {
+		return live_url;
+	}
+
+	public void setLive_url(String live_url) {
+		this.live_url = live_url;
+	}
 }

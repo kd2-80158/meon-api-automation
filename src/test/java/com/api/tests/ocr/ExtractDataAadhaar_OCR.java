@@ -41,7 +41,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		authService = new AuthService("ocr");
 		logger = LoggerUtility.getLogger(this.getClass());
 		gson = new Gson();
-		rs = RestAssured.given();
+		rs = RestAssured.given().relaxedHTTPSValidation();
 		this.tokenOCR = SessionUtility.get("tokenOCR");
 	}
 

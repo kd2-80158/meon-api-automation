@@ -100,7 +100,8 @@
 			"version": "v1"
 		},
 		"ocr": {
-			"url": "https://ocr.meon.co.in",
+			"url": "https://ocr-test.meon.co.in:444",
+			"live_url" : "https://ocr.meon.co.in",
 			"company_id": "19",
 			"email": "meon@meon.co.in",
 			"password": "meon@123",
@@ -110,7 +111,7 @@
 			"dob": "28/06/1995",
 			"sources": "kyc",
 			"adhar": "431829337118",
-			"req_id": "E-Aadhar11",
+			"req_id": "E-Aadhar12",
 			"company": "meon",
 			"address": "Ward No 7, Kaladhungi, Nainital, Uttarakhand"
 		}
