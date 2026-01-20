@@ -17,29 +17,40 @@ public class TestExecutionContext {
 	private Integer httpStatus;
 	private Integer apiCode;
 
+	// execution metadata
+	private String executionType;
+	private String executionSource;
+	private String executedBy;
+	private String environment;
+	private String buildId;
+
+	// classification
+	private String failureType;
+	private int retryCount;
+
 	public static TestExecutionContext get() {
 		return CONTEXT.get();
 	}
+
 	public static void clear() {
 		CONTEXT.remove();
 	}
-	
+
 	public Integer getHttpStatus() {
-	    return httpStatus;
+		return httpStatus;
 	}
 
 	public void setHttpStatus(Integer httpStatus) {
-	    this.httpStatus = httpStatus;
+		this.httpStatus = httpStatus;
 	}
 
 	public Integer getApiCode() {
-	    return apiCode;
+		return apiCode;
 	}
 
 	public void setApiCode(Integer apiCode) {
-	    this.apiCode = apiCode;
+		this.apiCode = apiCode;
 	}
-
 
 	// ===== setters =====
 	public void setTestCaseId(String testCaseId) {
@@ -115,7 +126,6 @@ public class TestExecutionContext {
 		return apiModule;
 	}
 
-
 	public long getStartTime() {
 		return startTime;
 	}
@@ -127,4 +137,61 @@ public class TestExecutionContext {
 	public String getError() {
 		return error;
 	}
+
+	public String getExecutionType() {
+		return executionType;
+	}
+
+	public void setExecutionType(String executionType) {
+		this.executionType = executionType;
+	}
+
+	public String getExecutionSource() {
+		return executionSource;
+	}
+
+	public void setExecutionSource(String executionSource) {
+		this.executionSource = executionSource;
+	}
+
+	public String getExecutedBy() {
+		return executedBy;
+	}
+
+	public void setExecutedBy(String executedBy) {
+		this.executedBy = executedBy;
+	}
+
+	public String getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(String environment) {
+		this.environment = environment;
+	}
+
+	public String getBuildId() {
+		return buildId;
+	}
+
+	public void setBuildId(String buildId) {
+		this.buildId = buildId;
+	}
+
+	public String getFailureType() {
+		return failureType;
+	}
+
+	public void setFailureType(String failureType) {
+		this.failureType = failureType;
+	}
+
+	public int getRetryCount() {
+		return retryCount;
+	}
+
+	public void setRetryCount(int retryCount) {
+		this.retryCount = retryCount;
+	}
+
 }

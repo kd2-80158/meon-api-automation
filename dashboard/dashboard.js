@@ -2,21 +2,27 @@ let allResults = [];
 
 /* ================= LOAD DASHBOARD ================= */
 function loadDashboard() {
-	fetch("/logs/dashboard-results.json")
-		.then(res => res.json())
-		.then(data => {
-			allResults = data || [];
-			renderSummary(allResults);
-			renderInsights(allResults);
-			renderModules(allResults);
-			renderTable(allResults);
-		})
-		.catch(err => {
-			console.error("Failed to load dashboard-results.json", err);
-			document.getElementById("summary").innerText =
-				"Unable to load dashboard-results.json";
-		});
+    fetch("dashboard-results.json")   // ✅ correct path
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+            return res.json();
+        })
+        .then(data => {
+            allResults = data || [];
+            renderSummary(allResults);
+            renderInsights(allResults);
+            renderModules(allResults);
+            renderTable(allResults);
+        })
+        .catch(err => {
+            console.error("Failed to load dashboard-results.json", err);
+            document.getElementById("summary").innerText =
+                "Unable to load dashboard-results.json";
+        });
 }
+
 
 /* ================= SUMMARY ================= */
 function renderSummary(data) {

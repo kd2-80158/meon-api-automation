@@ -12,13 +12,18 @@ public class DashboardJsonWriter {
 
 	private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-	private static final String FILE_PATH = "logs/dashboard-results.json";
+	private static String resolveFilePath() {
+	    return ExecutionMeta.isCI()
+	            ? "dashboard/dashboard-results-ci.json"
+	            : "dashboard/dashboard-results-local.json";
+	}
+	static String filePath = resolveFilePath();
 	private static boolean initialized = false;
 
 	public static synchronized void init() {
 		try {
 			new File("logs").mkdirs();
-			try (FileWriter fw = new FileWriter(FILE_PATH, false)) {
+			try (FileWriter fw = new FileWriter(filePath, false)) {
 				fw.write("[\n");
 			}
 			initialized = true;
@@ -50,8 +55,15 @@ public class DashboardJsonWriter {
 			json.put("error", ctx.getError());
 			json.put("executionTimeMs", ctx.getEndTime() - ctx.getStartTime());
 			json.put("timestamp", Instant.now().toString());
+			json.put("executionType", ctx.getExecutionType());
+			json.put("executionSource", ctx.getExecutionSource());
+			json.put("executedBy", ctx.getExecutedBy());
+			json.put("environment", ctx.getEnvironment());
+			json.put("buildId", ctx.getBuildId());
+			json.put("failureType", ctx.getFailureType());
+			json.put("retryCount", ctx.getRetryCount());
 
-			try (FileWriter fw = new FileWriter(FILE_PATH, true)) {
+			try (FileWriter fw = new FileWriter(filePath, true)) {
 				fw.write(gson.toJson(json));
 				fw.write(",\n");
 			}
@@ -73,7 +85,7 @@ public class DashboardJsonWriter {
 		return 0;
 	}
 	public static synchronized void finish() {
-		try (RandomAccessFile raf = new RandomAccessFile(FILE_PATH, "rw")) {
+		try (RandomAccessFile raf = new RandomAccessFile(filePath, "rw")) {
 			long length = raf.length();
 
 			// Remove last comma
