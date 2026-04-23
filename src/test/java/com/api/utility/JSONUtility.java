@@ -57,4 +57,9 @@ public class JSONUtility {
     {
     	return getProduct("ocr");
     }
+    
+    public static BaseURL getMca()
+    {
+    	return getProduct("mca");
+    }
 }

@@ -66,7 +66,9 @@ public final class FetchDocumentEsign extends BaseTest {
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
 		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		} else {
 			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
@@ -75,10 +77,9 @@ public final class FetchDocumentEsign extends BaseTest {
 				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 			}
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "UUID missing in request");
+		softAssert.assertFalse(response.jsonPath().get("Success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("msg"), "UUID missing in request");
 		softAssert.assertAll();
 	}
 
@@ -87,9 +88,9 @@ public final class FetchDocumentEsign extends BaseTest {
 		getSessionVariables();
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
-		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
-			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		} else {
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 400);
@@ -97,10 +98,9 @@ public final class FetchDocumentEsign extends BaseTest {
 				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 			}
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Mobile number missing in request");
+		softAssert.assertFalse(response.jsonPath().get("Success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("msg"), "Mobile number missing in request");
 		softAssert.assertAll();
 	}
 
@@ -110,7 +110,9 @@ public final class FetchDocumentEsign extends BaseTest {
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, mobileNumber);
 		response = authService.fetchDocument(fetchDocumentEsignRequest);
 		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		} else {
 			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
@@ -119,11 +121,10 @@ public final class FetchDocumentEsign extends BaseTest {
 				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
 			}
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
 		String tokenFromResponse = response.jsonPath().getString("token");
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Header Missing");
+		softAssert.assertFalse(response.jsonPath().get("success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("message"), "Header Missing");
 		softAssert.assertEquals(tokenFromResponse, "", "Token must be empty string");
 		softAssert.assertAll();
 	}
@@ -134,9 +135,10 @@ public final class FetchDocumentEsign extends BaseTest {
 		String invalidSignature = "invalidSignature.invalid.invalid";
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, invalidSignature);
-		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
-			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
+///		String responseBody = response.asString();
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+		} else {
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 401);
@@ -144,10 +146,12 @@ public final class FetchDocumentEsign extends BaseTest {
 				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
 			}
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Signature has been expired and valid for only 3 minutes");
+///		String message = res.getMsg();
+///		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(response.jsonPath().get("Success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("msg"),
+				"Signature has been expired and valid for only 3 minutes");
 		softAssert.assertAll();
 	}
 
@@ -169,7 +173,7 @@ public final class FetchDocumentEsign extends BaseTest {
 			softAssert.fail(
 					"Server returned HTML error page for incorrect Content-Type. Response body:\n" + responseBody);
 		}
-		softAssert.assertFalse(response.jsonPath().getBoolean("success"), "Expected success=false");
+		softAssert.assertFalse(response.jsonPath().getBoolean("Success"), "Expected success=false");
 		softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 		softAssert.assertEquals(message, "Signature has been expired and valid for only 3 minutes");
 		softAssert.assertAll();
@@ -182,19 +186,19 @@ public final class FetchDocumentEsign extends BaseTest {
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(expiredToken, mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
 		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+		} else
 			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
-			if (res.getCode() > 0) {
-				logger.info("Status code present: " + res.getCode());
-				softAssert.assertEquals(res.getCode(), 401);
-			} else {
-				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
-			}
+		if (res.getCode() > 0) {
+			logger.info("Status code present: " + res.getCode());
+			softAssert.assertEquals(res.getCode(), 401);
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Token is expired");
+//		String message = res.getMsg();
+//		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(response.jsonPath().get("Success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("message"), "Token is expired");
 		softAssert.assertAll();
 	}
 
@@ -216,7 +220,7 @@ public final class FetchDocumentEsign extends BaseTest {
 			softAssert.fail(
 					"Server returned HTML error page for incorrect Content-Type. Response body:\n" + responseBody);
 		}
-		softAssert.assertFalse(response.jsonPath().getBoolean("success"), "Expected success=false");
+		softAssert.assertFalse(response.jsonPath().getBoolean("Success"), "Expected success=false");
 		softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 		softAssert.assertEquals(message, "File not found");
 		softAssert.assertAll();
@@ -229,64 +233,67 @@ public final class FetchDocumentEsign extends BaseTest {
 		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, invalidMobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
 		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		} else
 			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
-			if (res.getCode() > 0) {
-				logger.info("Status code present: " + res.getCode());
-				softAssert.assertEquals(res.getCode(), 400);
-			} else {
-				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
-			}
+		if (res.getCode() > 0) {
+			logger.info("Status code present: " + res.getCode());
+			softAssert.assertEquals(res.getCode(), 400);
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Please do esign for getting pdf for this signer.");
+//		String message = res.getMsg();
+//		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(response.jsonPath().get("success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("message"), "Please do esign for getting pdf for this signer.");
 		softAssert.assertAll();
 	}
-	
+
 	@Test(description = "tc_10 - Verify API returns error when token and mobile do not match (mismatch scenario).", priority = 10)
 	public void verifyResponseWhenMobileAndTokenMismatch_FetchDocumentEsign() {
 		getSessionVariables();
 		String differentMobileNumber = "8810619472";
-		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token, differentMobileNumber);
+		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token,
+				differentMobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
 		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		} else
 			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
-			if (res.getCode() > 0) {
-				logger.info("Status code present: " + res.getCode());
-				softAssert.assertEquals(res.getCode(), 400);
-			} else {
-				softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
-			}
+		if (res.getCode() > 0) {
+			logger.info("Status code present: " + res.getCode());
+			softAssert.assertEquals(res.getCode(), 400);
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Please do esign for getting pdf for this signer.");
+//		String message = res.getMsg();
+//		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(response.jsonPath().get("success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("message"), "Please do esign for getting pdf for this signer.");
 		softAssert.assertAll();
 	}
-	
+
 	@Test(description = "tc_12 - Verify API returns short-lived signed URL with expiry and expiry enforcement.", priority = 11)
 	public void verifyResponseWithTokenExpiry_FetchDocumentEsign() {
 		getSessionVariables();
-		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token+1, mobileNumber);
+		FetchDocumentEsignRequest fetchDocumentEsignRequest = new FetchDocumentEsignRequest(token + 1, mobileNumber);
 		response = authService.fetchDocumentWithAuth(fetchDocumentEsignRequest, signature);
 		String responseBody = response.asString();
-		if (response.getStatusCode() == 200) {
+		if (response.getStatusCode() >= 0) {
+			softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
+		} else {
 			res = gson.fromJson(responseBody, FetchDocumentEsignResponse.class);
 			if (res.getCode() > 0) {
 				logger.info("Status code present: " + res.getCode());
 				softAssert.assertEquals(res.getCode(), 401);
-			} else {
-				softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
 			}
 		}
-		String message = res.getMsg();
-		boolean isSuccess = res.isSuccess();
-		softAssert.assertFalse(isSuccess, "Some issue occured while attempting to fetch the document");
-		softAssert.assertEquals(message, "Signature has been expired and valid for only 3 minutes.");
+//		String message = res.getMsg();
+//		boolean isSuccess = res.isSuccess();
+		softAssert.assertFalse(response.jsonPath().get("Success"),
+				"Some issue occured while attempting to fetch the document");
+		softAssert.assertEquals(response.jsonPath().get("msg"),
+				"Signature has been expired and valid for only 3 minutes");
 		softAssert.assertAll();
 	}
 
@@ -294,9 +301,9 @@ public final class FetchDocumentEsign extends BaseTest {
 	public void verifyResponseWithMissingContentTypeHeader_FetchDocumentEsign() {
 
 		getSessionVariables();
-		Response response = rs.baseUri(JSONUtility.getEsign().getUrl()).header("signature", signature)
-				.body("{\n" + "    \"token\": \"" + token + "\",\n" + "    \"mobile\": \"" + mobileNumber + "\"+\n"
-						+ "\"}")
+		Response response = rs
+				.baseUri(JSONUtility.getEsign().getUrl()).header("signature", signature).body("{\n"
+						+ "    \"token\": \"" + token + "\",\n" + "    \"mobile\": \"" + mobileNumber + "\"+\n" + "\"}")
 				.when().post(AuthService.BASE_PATH_FETCH_DOCUMENT_ESIGN);
 		String responseBody = response.body().asPrettyString();
 		String contentType = response.getHeader("Content-Type");

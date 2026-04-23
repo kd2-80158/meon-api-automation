@@ -78,6 +78,90 @@ public class BaseURL {
 	private String adhar;
 	//facefinder
 	private String image_to_be_match;
+	//mca
+	private String static_id;
+	private String cin;
+	//set auto reminder
+	private String document_id;
+	private int days_to_expire1;
+	private int everyValue;
+	private String everyUnit;
+	private String time;
+	private boolean enablePersonalizeMsg;
+	private String personalMsg;
+	
+
+	public String getDocument_id() {
+		return document_id;
+	}
+
+	public void setDocument_id(String document_id) {
+		this.document_id = document_id;
+	}
+	
+	public int getDays_to_expire1() {
+		return days_to_expire1;
+	}
+
+	public void setDays_to_expire1(int days_to_expire1) {
+		this.days_to_expire1 = days_to_expire1;
+	}
+
+	public int getEveryValue() {
+		return everyValue;
+	}
+
+	public void setEveryValue(int everyValue) {
+		this.everyValue = everyValue;
+	}
+
+	public String getEveryUnit() {
+		return everyUnit;
+	}
+
+	public void setEveryUnit(String everyUnit) {
+		this.everyUnit = everyUnit;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public boolean isEnablePersonalizeMsg() {
+		return enablePersonalizeMsg;
+	}
+
+	public void setEnablePersonalizeMsg(boolean enablePersonalizeMsg) {
+		this.enablePersonalizeMsg = enablePersonalizeMsg;
+	}
+
+	public String getPersonalMsg() {
+		return personalMsg;
+	}
+
+	public void setPersonalMsg(String personalMsg) {
+		this.personalMsg = personalMsg;
+	}
+
+	public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
+	public String getStatic_id() {
+		return static_id;
+	}
+
+	public void setStatic_id(String static_id) {
+		this.static_id = static_id;
+	}
 
 	public String getPan() {
 		return pan;

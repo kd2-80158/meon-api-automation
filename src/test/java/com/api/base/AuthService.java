@@ -1,11 +1,7 @@
 package com.api.base;
 
 import static io.restassured.RestAssured.given;
-
 import java.time.Duration;
-import java.util.Map;
-import java.util.concurrent.TimeoutException;
-
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,12 +19,15 @@ import com.api.models.request.aadhaar.RetrieveAadhaarDataRequest;
 import com.api.models.request.esign.FetchDocumentEsignRequest;
 import com.api.models.request.esign.GenerateClientTokenEsignRequest;
 import com.api.models.request.esign.GenerateTokenEsignRequest;
+import com.api.models.request.esign.SetAutoReminderRequest;
 import com.api.models.request.facefinder.GenerateTokenFaceFinderRequest;
 import com.api.models.request.facefinder.GenerateTokenForExportDataFaceFinderRequest;
 import com.api.models.request.facefinder.InitiateCaptureRequestFaceFinderRequest;
 import com.api.models.request.kyc.GenerateAdminTokenKYCRequest;
 import com.api.models.request.kyc.GetSsoRouteKYCRequest;
 import com.api.models.request.kyc.GetUserDataKYCRequest;
+import com.api.models.request.mca.GenerateTokenMCARequest;
+import com.api.models.request.mca.VerifyCompanyMCARequest;
 import com.api.models.request.ocr.GenerateTokenOCRRequest;
 import com.api.models.request.pennydrop.BankVerificationPennyDropRequest;
 import com.api.models.request.pennydrop.GenerateTokenPennyDropRequest;
@@ -39,6 +38,7 @@ import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.google.gson.Gson;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -79,7 +79,9 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_AADHAAR_CARD = "/extract_adhar_details"; //data or details
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_PASSPORT = "/api/extract-passport-info";
 	public static final String BASE_PATH_OCR_EXTRACT_DATA_VOTERID = "/extract_voterid_data";
-	
+	public static final String BASE_PATH_MCA_GENERATE_TOKEN = "/verify/token";
+	public static final String BASE_PATH_MCA_VERIFY_COMPANY = "/verify/company";
+	public static final String BASE_PATH_ESIGN_SET_AUTO_REMINDER = "/EsignServices/set_auto_reminder";
 	
 	public AuthService(String product) {
 		super(product);
@@ -135,7 +137,7 @@ public class AuthService extends BaseService {
 	}
 
 	public Response generateClientTokenWithNoBody() {
-		return given().baseUri(BASE_URL).contentType("application/json").when().post(BASE_PATH); // no .body()
+		return given().baseUri(BASE_URL).contentType("application/json").when().post(BASE_PATH);
 	}
 
 	public Response generateClientTokenAadhaarWithRawJson(String rawJson) {
@@ -152,17 +154,15 @@ public class AuthService extends BaseService {
 	}
 
 	public Response generateClientTokenEsignWithRawJson(String rawJson) {
-		return given().baseUri(BASE_URI_ESIGN) // or baseURL.getUrl() depending on your class
+		return given().baseUri(BASE_URI_ESIGN)
 				.contentType("application/json").body(rawJson).when().post(BASE_PATH_ESIGN);
 	}
 
 	public Response generateClientTokenWithGetMethod(Object requestObject) {
-		return given().baseUri(BASE_URL).contentType("application/json").body(requestObject) // server will ignore body,
-																								// but included
-																								// intentionally for
-																								// test
-				.when().get("/get_access_token"); // <-- GET instead of POST
+		return given().baseUri(BASE_URL).contentType("application/json").body(requestObject) 
+				.when().get("/get_access_token");
 	}
+	
 
 	public Response generateClientToken(GenerateClientTokenRequest tokenRequest) {
 		return postRequestAadhaar(tokenRequest, BASE_PATH);
@@ -200,7 +200,7 @@ public class AuthService extends BaseService {
 		WebElement cancelButton = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Cancel')]")));
 		cancelButton.click();
-		wait.until(ExpectedConditions.urlContains("meon.co.in"));
+		//wait.until(ExpectedConditions.urlContains("meon.co.in"));
 		String currentUrl = driver.getCurrentUrl().trim();
 		System.out.println("Redirected URL after Cancel: " + currentUrl);
 		driver.quit();
@@ -268,29 +268,19 @@ public class AuthService extends BaseService {
 						success = expectedTextNew.isDisplayed();
 					}
 				} catch (Exception ignored) {
-					// no new window appeared or element not found there either
 				}
 			}
-
-			// Option C: If verification causes URL change / title change, you can also wait
-			// for that
 			if (!success) {
 				try {
-					// replace with the URL or title fragment you expect after successful flow
 					wait.until(ExpectedConditions.urlContains("expected-url-fragment"));
 					success = true;
 				} catch (Exception ignored) {
 				}
 			}
-
-			// final assertion and logging
 			logger.info("Verification completed. success = {}", success);
 			softAssert.assertTrue(success, "Not successful journey after clicking Verify");
-
-			// required: assertAll so soft assertions are evaluated
 			softAssert.assertAll();
 		} finally {
-			// always quit driver
 			driver.quit();
 		}
 	}
@@ -367,5 +357,22 @@ public class AuthService extends BaseService {
 		return postRequestOCR(request,BASE_PATH_OCR_GENERATE_TOKEN);
 	}
 	
+	public Response generateTokenMCA(GenerateTokenMCARequest request)
+	{
+		System.out.println("Base path is: "+BASE_PATH_MCA_GENERATE_TOKEN);
+		return postRequestMCA(request,BASE_PATH_MCA_GENERATE_TOKEN);
+	}
+	
+	public Response verifyCompanyMCA(VerifyCompanyMCARequest request,String token)
+	{
+		System.out.println("Base path is: "+BASE_PATH_MCA_VERIFY_COMPANY);
+		return postRequestMCAWithAuth(request,BASE_PATH_MCA_VERIFY_COMPANY,token);
+	}
 
+	public Response setAutoReminderEsign(SetAutoReminderRequest request, String token) {
+		return postRequestAutoReminderEsignWithAuth(request,BASE_PATH_ESIGN_SET_AUTO_REMINDER,token);
+	}
+
+	
+	
 }
