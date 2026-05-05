@@ -123,7 +123,7 @@ public class BaseService { // wrapper for RestAssured
 	}
 
 	protected Response postRequestReversePennyDropWithAuth(Object tokenRequest, String endpoint, String token) {
-		logger.info("token in Base service:" + token);
+		//logger.info("token in Base service:" + token);
 		return rs.header("token", token).body(tokenRequest).post(endpoint);
 	}
 
@@ -142,7 +142,7 @@ public class BaseService { // wrapper for RestAssured
 
 	// With AUTH
 	protected Response postRequestEsignAuth(Object tokenRequest, String endpoint, String signature) {
-		logger.info("token in Base service:" + signature);
+		//logger.info("token in Base service:" + signature);
 		return rs.header("signature", signature).body(tokenRequest).post(endpoint);
 	}
 

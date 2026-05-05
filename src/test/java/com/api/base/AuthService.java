@@ -363,7 +363,7 @@ public class AuthService extends BaseService {
 	
 	public Response generateTokenMCA(GenerateTokenMCARequest request)
 	{
-		System.out.println("Base path is: "+BASE_PATH_MCA_GENERATE_TOKEN);
+		//System.out.println("Base path is: "+BASE_PATH_MCA_GENERATE_TOKEN);
 		return postRequestMCA(request,BASE_PATH_MCA_GENERATE_TOKEN);
 	}
 	
@@ -382,7 +382,7 @@ public class AuthService extends BaseService {
 	}
 
 	public Response addCredit(AddCreditCreditToolRequest request, String token) {
-		System.out.println("Token in AuthService: "+token);
+		//System.out.println("Token in AuthService: "+token);
 		return postRequestCreditToolWithAuth(request,BASE_PATH_CREDIT_TOOL_ADD_CREDIT,token);
 	}
 

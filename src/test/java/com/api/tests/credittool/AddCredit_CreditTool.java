@@ -57,7 +57,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 200);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Credits Added successfully");
 		softAssert.assertTrue(response.jsonPath().getBoolean("success"));
@@ -77,7 +77,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "credit is required");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -97,7 +97,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "product is required");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -118,7 +118,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "credit should be numeric");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -139,7 +139,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "credit should be greater than zero");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -160,7 +160,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "credit should be greater than zero");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -181,7 +181,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
 		softAssert.assertAll();
 	}
@@ -200,7 +200,7 @@ public class AddCredit_CreditTool extends BaseTest {
 
 		response = authService.addCredit(request, this.token);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "product not found ");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -220,7 +220,7 @@ public class AddCredit_CreditTool extends BaseTest {
 		response = rs.relaxedHTTPSValidation().baseUri(BASE_URI).contentType("application/json")
 				.header("Authorization", "Bearer " + this.token).body(body).when().post("/api/add_credit");
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Invalid JSON format");

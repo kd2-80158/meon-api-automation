@@ -58,7 +58,7 @@ public class GenerateToken_CreditTool extends BaseTest {
 				JSONUtility.getCreditTool().getEmail(), incorrectPass);
 		response = authService.generateAdminToken(request);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Login unsuccessful");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -73,7 +73,7 @@ public class GenerateToken_CreditTool extends BaseTest {
 				JSONUtility.getCreditTool().getPassword());
 		response = authService.generateAdminToken(request);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Login unsuccessful");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -87,7 +87,7 @@ public class GenerateToken_CreditTool extends BaseTest {
 		request.setPassword(JSONUtility.getCreditTool().getPassword());
 		response = authService.generateAdminToken(request);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "email is required");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -121,7 +121,7 @@ public class GenerateToken_CreditTool extends BaseTest {
 		request.setPassword("");
 		response = authService.generateAdminToken(request);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "email is required");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -136,7 +136,7 @@ public class GenerateToken_CreditTool extends BaseTest {
 		request.setPassword(JSONUtility.getCreditTool().getPassword());
 		response = authService.generateAdminToken(request);
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Invalid email format");
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"));
@@ -147,12 +147,12 @@ public class GenerateToken_CreditTool extends BaseTest {
 			"regression" })
 	public void verifyResponseWithMalformedJSON() {
 		String BASE_URI = "https://central-tool.meon.co.in";
-		String body = "{\"email\":\"saurabh.chhimwal@meon.co.in\", \"password\":\"saurabh@123\"";
+		String body = "{\"email\":\"saurabh.chhimwal123@meon.co.in\", \"password\":\"saurabh@123\"";
 		response = rs.relaxedHTTPSValidation().baseUri(BASE_URI).contentType("application/json").body(body).when()
 				.post("/api/get_token");
 
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Invalid JSON format");
@@ -164,12 +164,12 @@ public class GenerateToken_CreditTool extends BaseTest {
 			"regression" })
 	public void verifyResponseWithUnsupportedContentType() {
 		String BASE_URI = "https://central-tool.meon.co.in";
-		String body = "{\"email\":\"saurabh.chhimwal@meon.co.in\", \"password\":\"saurabh@123\"/}";
+		String body = "{\"email\":\"saurabh.chhimwal123@meon.co.in\", \"password\":\"saurabh@123\"/}";
 		response = rs.relaxedHTTPSValidation().baseUri(BASE_URI).contentType("text/plain").body(body).when()
 				.post("/api/get_token");
 
 		String responseBody = response.body().asPrettyString();
-		System.out.println("Response is: " + responseBody);
+		//System.out.println("Response is: " + responseBody);
 
 		softAssert.assertEquals(response.getStatusCode(), 400);
 		softAssert.assertEquals(response.jsonPath().getString("msg"), "Invalid JSON format");
