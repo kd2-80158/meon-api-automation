@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Listeners;
 
 import com.api.filters.LoggingFilter;
+import com.api.models.request.credittool.GenerateTokenCreditToolRequest;
 import com.api.models.request.esign.SetAutoReminderRequest;
 import com.api.pojos.BaseURL;
 import com.api.utility.JSONUtility;
@@ -111,6 +112,12 @@ public class BaseService { // wrapper for RestAssured
 		return rs.relaxedHTTPSValidation().body(tokenRequest).post(endpoint);
 	}
 
+	protected Response postRequestCreditTool(GenerateTokenCreditToolRequest request, String endpoint) {
+
+		return rs.relaxedHTTPSValidation().header("Content-Type", "application/json").body(request).post(endpoint);
+
+	}
+
 	protected Response postRequestReversePennyDrop(Object tokenRequest, String endpoint) {
 		return rs.body(tokenRequest).post(endpoint);
 	}
@@ -137,6 +144,11 @@ public class BaseService { // wrapper for RestAssured
 	protected Response postRequestEsignAuth(Object tokenRequest, String endpoint, String signature) {
 		logger.info("token in Base service:" + signature);
 		return rs.header("signature", signature).body(tokenRequest).post(endpoint);
+	}
+
+	public Response postRequestCreditToolWithAuth(Object tokenRequest, String endpoint, String token) {
+		return rs.relaxedHTTPSValidation().contentType("application/json").header("Authorization", "Bearer " + token)
+				.body(tokenRequest).post(endpoint);
 	}
 
 	// fixed: now actually performs GET (was calling post previously)

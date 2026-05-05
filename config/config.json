@@ -14,7 +14,7 @@
 			"everyValue": 1,
 			"everyUnit": "hour",
 			"time": "23:40",
-			"days_to_expire1":1,
+			"days_to_expire1": 1,
 			"enablePersonalizeMsg": false,
 			"personalMsg": "",
 			"reason": "Account Opening",
@@ -125,6 +125,15 @@
 			"url": "https://meon.space/mca",
 			"static_id": "jsdfjf4439348934ur93u349r394u9",
 			"cin": "U72900UP2020PTC134321"
+		},
+		"credittool": {
+			"url": "https://central-tool.meon.co.in",
+			"email": "saurabh.chhimwal@meon.co.in",
+			"password": "saurabh@123",
+			"company_id": "67117",
+			"credit": "1",
+			"product": "reversepennydrop",
+			"company": "Saurabh Chhimwal"
 		}
 	}
 }

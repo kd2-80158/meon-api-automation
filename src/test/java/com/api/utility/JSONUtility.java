@@ -62,4 +62,9 @@ public class JSONUtility {
     {
     	return getProduct("mca");
     }
+    
+    public static BaseURL getCreditTool()
+    {
+    	return getProduct("credittool");
+    }
 }

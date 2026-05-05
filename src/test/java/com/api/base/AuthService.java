@@ -16,6 +16,8 @@ import org.testng.asserts.SoftAssert;
 import com.api.models.request.aadhaar.GenerateClientTokenRequest;
 import com.api.models.request.aadhaar.GenerateDigilockerLinkRequest;
 import com.api.models.request.aadhaar.RetrieveAadhaarDataRequest;
+import com.api.models.request.credittool.AddCreditCreditToolRequest;
+import com.api.models.request.credittool.GenerateTokenCreditToolRequest;
 import com.api.models.request.esign.FetchDocumentEsignRequest;
 import com.api.models.request.esign.GenerateClientTokenEsignRequest;
 import com.api.models.request.esign.GenerateTokenEsignRequest;
@@ -82,6 +84,8 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_MCA_GENERATE_TOKEN = "/verify/token";
 	public static final String BASE_PATH_MCA_VERIFY_COMPANY = "/verify/company";
 	public static final String BASE_PATH_ESIGN_SET_AUTO_REMINDER = "/EsignServices/set_auto_reminder";
+	public static final String BASE_PATH_CREDIT_TOOL_GENERATE_TOKEN = "/api/get_token";
+	public static final String BASE_PATH_CREDIT_TOOL_ADD_CREDIT = "/api/add_credit";
 	
 	public AuthService(String product) {
 		super(product);
@@ -371,6 +375,15 @@ public class AuthService extends BaseService {
 
 	public Response setAutoReminderEsign(SetAutoReminderRequest request, String token) {
 		return postRequestAutoReminderEsignWithAuth(request,BASE_PATH_ESIGN_SET_AUTO_REMINDER,token);
+	}
+
+	public Response generateAdminToken(GenerateTokenCreditToolRequest request) {
+		return postRequestCreditTool(request,BASE_PATH_CREDIT_TOOL_GENERATE_TOKEN);
+	}
+
+	public Response addCredit(AddCreditCreditToolRequest request, String token) {
+		System.out.println("Token in AuthService: "+token);
+		return postRequestCreditToolWithAuth(request,BASE_PATH_CREDIT_TOOL_ADD_CREDIT,token);
 	}
 
 	

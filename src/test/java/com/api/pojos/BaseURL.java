@@ -90,6 +90,26 @@ public class BaseURL {
 	private boolean enablePersonalizeMsg;
 	private String personalMsg;
 	
+	//credittool
+	private String credit;
+	private String product;
+	
+
+	public String getCredit() {
+		return credit;
+	}
+
+	public void setCredit(String credit) {
+		this.credit = credit;
+	}
+
+	public String getProduct() {
+		return product;
+	}
+
+	public void setProduct(String product) {
+		this.product = product;
+	}
 
 	public String getDocument_id() {
 		return document_id;
