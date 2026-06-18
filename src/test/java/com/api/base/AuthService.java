@@ -18,6 +18,7 @@ import com.api.models.request.aadhaar.GenerateDigilockerLinkRequest;
 import com.api.models.request.aadhaar.RetrieveAadhaarDataRequest;
 import com.api.models.request.credittool.AddCreditCreditToolRequest;
 import com.api.models.request.credittool.GenerateTokenCreditToolRequest;
+import com.api.models.request.esign.FetchCreditSummaryEsignRequest;
 import com.api.models.request.esign.FetchDocumentEsignRequest;
 import com.api.models.request.esign.GenerateClientTokenEsignRequest;
 import com.api.models.request.esign.GenerateTokenEsignRequest;
@@ -86,6 +87,8 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_ESIGN_SET_AUTO_REMINDER = "/EsignServices/set_auto_reminder";
 	public static final String BASE_PATH_CREDIT_TOOL_GENERATE_TOKEN = "/api/get_token";
 	public static final String BASE_PATH_CREDIT_TOOL_ADD_CREDIT = "/api/add_credit";
+	public static final String BASE_PATH_ESIGN_FETCH_CREDIT_SUMMARY = "/EsignServices/GetCompanyEsignSummary";
+	public static final String BASE_PATH_OCR_MASK_AADHAAR = "/api/mask-aadhaar";
 	
 	public AuthService(String product) {
 		super(product);
@@ -384,6 +387,10 @@ public class AuthService extends BaseService {
 	public Response addCredit(AddCreditCreditToolRequest request, String token) {
 		//System.out.println("Token in AuthService: "+token);
 		return postRequestCreditToolWithAuth(request,BASE_PATH_CREDIT_TOOL_ADD_CREDIT,token);
+	}
+
+	public Response fetchCreditSummaryEsign(FetchCreditSummaryEsignRequest request, String token) {
+		return postRequestEsignWithAuth(request,BASE_PATH_ESIGN_FETCH_CREDIT_SUMMARY,token);
 	}
 
 	

@@ -107,7 +107,7 @@ public class GenerateToken_CreditTool extends BaseTest {
 		} else {
 			System.out.println("Response is: " + responseBody);
 			softAssert.assertEquals(response.getStatusCode(), 400);
-			softAssert.assertEquals(response.jsonPath().getString("msg"), "email is required");
+			softAssert.assertEquals(response.jsonPath().getString("msg"), "password is required");
 			softAssert.assertFalse(response.jsonPath().getBoolean("success"));
 			softAssert.assertAll();
 		}

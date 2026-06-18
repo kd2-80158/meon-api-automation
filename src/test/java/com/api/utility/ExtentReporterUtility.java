@@ -126,4 +126,18 @@ public final class ExtentReporterUtility {
 		return String.format("%s - Tests: total=%d, passed=%d, failed=%d, skipped=%d",
 				suiteName == null ? "Tests" : suiteName, total, passed, failed, skipped);
 	}
+
+	public static void addImageToReport(String title, String imagePath) {
+
+		try {
+
+			getTest().info(title);
+
+			getTest().addScreenCaptureFromPath(imagePath, title);
+
+		} catch (Exception e) {
+
+			getTest().warning("Unable to attach image : " + e.getMessage());
+		}
+	}
 }

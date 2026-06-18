@@ -68,7 +68,8 @@ public class ExtractDataPAN_OCR extends BaseTest {
 		panImage = new File(System.getProperty("user.dir") + "/src/test/resources/testdata/PANcardSaurabh.jpeg");
 
 		response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
-				.header("Authorization", "Bearer " + this.tokenOCR).multiPart("pan", JSONUtility.getOcr().getPan())
+				.header("Authorization", "Bearer " + this.tokenOCR)
+				.multiPart("pan", JSONUtility.getOcr().getPan())
 				.multiPart("name", JSONUtility.getOcr().getName())
 				.multiPart("fathername", JSONUtility.getOcr().getFathername())
 				.multiPart("dob", JSONUtility.getOcr().getDob()).multiPart("sources", JSONUtility.getOcr().getSources())

@@ -150,6 +150,12 @@ public class BaseService { // wrapper for RestAssured
 		return rs.relaxedHTTPSValidation().contentType("application/json").header("Authorization", "Bearer " + token)
 				.body(tokenRequest).post(endpoint);
 	}
+	
+	public Response postRequestEsignWithAuth(Object request,String endpoint,String token)
+	{
+		return rs.contentType(ContentType.JSON).header("Authorization", "Bearer "+ token)
+				.body(request).post(endpoint);
+	}
 
 	// fixed: now actually performs GET (was calling post previously)
 	protected Response getRequest(Object tokenRequest, String endpoint) {
