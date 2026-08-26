@@ -1,0 +1,57 @@
+{
+	"CRT1222618 - ADITYA KUMAR - FINAL REPORT - GREEN.pdf": {
+		"inputName": "Aditya Kumar",
+		"inputAddress": "Gram Rasalpur Chamarbigha Hilsa Nalanda Nalanda Bihar-801302",
+		"inputPan": "EMQPK7118K",
+		"inputAadhaar": "[Aadhaar Omitted]",
+		"expectedConfidenceThreshold": 75.0,
+		"expectedStatus": "success",
+		"expectedCibilScore": 690,
+		"expectedFinalDecision": "Verified",
+		"expectedMatchPercentage": 100
+	},
+	"Sagar_Dashverify_SBOSS_Final_Report.pdf": {
+		"inputName": "Sagar",
+		"inputAddress": "Permanent Address Verified",
+		"inputPan": "XXXXXX143L",
+		"inputAadhaar": "[Aadhaar Omitted]",
+		"expectedConfidenceThreshold": 75.0,
+		"expectedStatus": "success",
+		"expectedCibilScore": -1,
+		"expectedFinalDecision": "Green",
+		"expectedMatchPercentage": 100
+	},
+	"Md Shail -QOFPS0870P-BGV.pdf": {
+		"inputName": "md sahil",
+		"inputAddress": "2_3_12_B_95, , AMBERPET, HYDERABAD, TELANGANA, 500013",
+		"inputPan": "QOFPS0870P",
+		"inputAadhaar": "[Aadhaar Omitted]",
+		"expectedConfidenceThreshold": 75.0,
+		"expectedStatus": "success",
+		"expectedCibilScore": -1,
+		"expectedFinalDecision": "Verified Clear",
+		"expectedMatchPercentage": 100
+	},
+	"GBTPM8118M_BGV.pdf": {
+		"inputName": "Monika",
+		"inputAddress": "Arya Nagar (57), Hisar, Haryana - 125001",
+		"inputPan": "GBTPM8118M",
+		"inputAadhaar": "[Aadhaar Omitted]",
+		"expectedConfidenceThreshold": 75.0,
+		"expectedStatus": "success",
+		"expectedCibilScore": -1,
+		"expectedFinalDecision": "Green",
+		"expectedMatchPercentage": 100
+	},
+	"Abhijith_ K A_5527-003559.pdf": {
+		"inputName": "Abhijith K A",
+		"inputAddress": "Kavungal Parambil House, Chalakka, Ernakulam, Kerala - 683594",
+		"inputPan": "Not Applicable",
+		"inputAadhaar": "[Aadhaar Omitted]",
+		"expectedConfidenceThreshold": 75.0,
+		"expectedStatus": "success",
+		"expectedCibilScore": 725,
+		"expectedFinalDecision": "Clear",
+		"expectedMatchPercentage": 98
+	}
+}

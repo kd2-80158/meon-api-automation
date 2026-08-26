@@ -89,6 +89,8 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_CREDIT_TOOL_ADD_CREDIT = "/api/add_credit";
 	public static final String BASE_PATH_ESIGN_FETCH_CREDIT_SUMMARY = "/EsignServices/GetCompanyEsignSummary";
 	public static final String BASE_PATH_OCR_MASK_AADHAAR = "/api/mask-aadhaar";
+	public static final String BASE_PATH_OCR_BANK_STATEMENT = "/detect_date";
+	public static final String BASE_PATH_OCR_BGV = "/api/bgv/verify";
 	
 	public AuthService(String product) {
 		super(product);

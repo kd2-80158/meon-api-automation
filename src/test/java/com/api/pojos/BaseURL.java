@@ -94,6 +94,17 @@ public class BaseURL {
 	private String req_id;
 	private String address;
 	private String adhar;
+	private boolean Valid;
+	
+	
+	public boolean isValid() {
+		return Valid;
+	}
+
+	public void setValid(boolean valid) {
+		Valid = valid;
+	}
+
 	//facefinder
 	private String image_to_be_match;
 	//mca
@@ -111,6 +122,8 @@ public class BaseURL {
 	//credittool
 	private String credit;
 	private String product;
+	
+	//bankstatement
 	
 
 	public String getCredit() {
