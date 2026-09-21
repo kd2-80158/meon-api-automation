@@ -38,7 +38,7 @@ public class InitiateRequest_RPD extends BaseTest {
 	String authRPD;
 	Gson gson;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("rpd");
 		logger = LoggerUtility.getLogger(this.getClass());

@@ -41,7 +41,7 @@ public final class GenerateTokenEsign extends BaseTest {
 	protected String esignUrl;
 	protected String cancelUrl;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("eSign");
 		logger = LoggerUtility.getLogger(this.getClass());

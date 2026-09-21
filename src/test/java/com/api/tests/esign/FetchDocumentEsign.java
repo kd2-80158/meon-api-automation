@@ -30,7 +30,7 @@ public final class FetchDocumentEsign extends BaseTest {
 	FetchDocumentEsignResponse res;
 	String mobileNumber = "8810619472";
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("eSign");
 		logger = LoggerUtility.getLogger(this.getClass());

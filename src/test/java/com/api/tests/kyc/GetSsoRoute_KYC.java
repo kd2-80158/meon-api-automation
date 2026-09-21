@@ -24,7 +24,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 	RequestSpecification rs;
 	Response response;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("kyc");
 		logger = LoggerUtility.getLogger(this.getClass());

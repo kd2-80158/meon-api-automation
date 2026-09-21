@@ -11,6 +11,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -40,7 +41,7 @@ public final class GenerateClientSignatureEsign extends BaseTest {
 	protected String signature;
 	GenerateClientTokenEsignResponse res;
 
-	@BeforeTest
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("eSign");
 		logger = LoggerUtility.getLogger(this.getClass());

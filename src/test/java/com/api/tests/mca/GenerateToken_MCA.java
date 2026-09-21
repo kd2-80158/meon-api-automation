@@ -33,7 +33,7 @@ public class GenerateToken_MCA extends BaseTest {
 		RestAssured.useRelaxedHTTPSValidation();
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("mca");
 		logger = LoggerUtility.getLogger(this.getClass());

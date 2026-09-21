@@ -23,7 +23,7 @@ public class VerifyCompany_MCA extends BaseTest {
 	String token;
 	Logger logger;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup()
 	{
 		logger = LoggerUtility.getLogger(this.getClass());

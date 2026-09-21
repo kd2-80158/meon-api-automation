@@ -95,6 +95,12 @@ public class BaseURL {
 	private String address;
 	private String adhar;
 	private boolean Valid;
+	private String newLive_url;
+	
+	//facefinder
+	private String liveipvurl;
+	private String liveclient_id;
+	private String liveclient_secret;
 	
 	
 	public boolean isValid() {
@@ -557,4 +563,39 @@ public class BaseURL {
 	public void setLive_url(String live_url) {
 		this.live_url = live_url;
 	}
+
+	public String getNewLive_url() {
+		return newLive_url;
+	}
+
+	public void setNewLive_url(String newLive_url) {
+		this.newLive_url = newLive_url;
+	}
+
+	public String getLiveipvurl() {
+		return liveipvurl;
+	}
+
+	public void setLiveipvurl(String liveipvurl) {
+		this.liveipvurl = liveipvurl;
+	}
+
+	public String getLiveclient_id() {
+		return liveclient_id;
+	}
+
+	public void setLiveclient_id(String liveclient_id) {
+		this.liveclient_id = liveclient_id;
+	}
+
+	public String getLiveclient_secret() {
+		return liveclient_secret;
+	}
+
+	public void setLiveclient_secret(String liveclient_secret) {
+		this.liveclient_secret = liveclient_secret;
+	}
+	
+	
+	
 }

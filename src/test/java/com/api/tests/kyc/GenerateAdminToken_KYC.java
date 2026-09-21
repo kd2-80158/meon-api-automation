@@ -26,7 +26,7 @@ public class GenerateAdminToken_KYC extends BaseTest {
 	RequestSpecification rs;
 	GenerateAdminTokenKYCResponse res;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup()
 	{
 		authService = new AuthService("kyc");

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -32,7 +33,7 @@ public class RetrieveAadhaarData extends BaseTest {
 	GenerateClientToken generateClientToken;
 	RetrieveAadhaarDataResponse res;
 
-	@BeforeTest
+	@BeforeMethod(alwaysRun = true)
 	public void setup(ITestContext context) {
 		authService = new AuthService("aadhaar");
 		logger = LoggerUtility.getLogger(this.getClass());
