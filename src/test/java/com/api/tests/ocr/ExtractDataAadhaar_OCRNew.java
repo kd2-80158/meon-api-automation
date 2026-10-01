@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import com.api.base.BaseTest;
 import com.api.dataprovider.OCRFileDataProvider;
-import com.api.models.response.ocr.NewOCRExtractResponse;
+import com.api.models.response.ocr.NewOCRExtractResponseAadhaar;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.api.utility.Severity;
@@ -49,7 +49,7 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 					"Invalid Aadhaar file: " + (aadhaarImage == null ? "null" : aadhaarImage.getAbsolutePath()));
 		}
 
-		String baseUrl = JSONUtility.getOcr().getNewLive_url();
+		String baseUrl = JSONUtility.getOcr().getUrl();
 
 		logger.info("===== Running New Aadhaar OCR =====");
 		logger.info("Base URL: {}", baseUrl);
@@ -63,7 +63,7 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 
 				.multiPart("file", aadhaarImage)
 
-				.when().post("/newocr/extract");
+				.when().post("/extract_adhar_data");
 
 		String responseBody = response.asString();
 
@@ -78,7 +78,7 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 
 		softAssert.assertFalse(responseBody.trim().isEmpty(), "Response body is empty");
 
-		NewOCRExtractResponse res = gson.fromJson(responseBody, NewOCRExtractResponse.class);
+		NewOCRExtractResponseAadhaar res = gson.fromJson(responseBody, NewOCRExtractResponseAadhaar.class);
 
 		softAssert.assertNotNull(res, "Response model is null");
 
@@ -159,7 +159,7 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 
 		softAssert.assertFalse(responseBody.trim().isEmpty(), "Response body is empty");
 
-		NewOCRExtractResponse res = gson.fromJson(responseBody, NewOCRExtractResponse.class);
+		NewOCRExtractResponseAadhaar res = gson.fromJson(responseBody, NewOCRExtractResponseAadhaar.class);
 
 		softAssert.assertNotNull(res, "Response model is null");
 

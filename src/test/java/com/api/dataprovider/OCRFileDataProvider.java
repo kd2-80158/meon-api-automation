@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 
 import com.api.models.testdata.BankStatementExpectedMetadata;
 import com.api.models.testdata.BgvExpectedMetadata;
+import com.api.models.testdata.ChequeExpectedMetadata;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -31,6 +32,56 @@ public class OCRFileDataProvider {
 			data[i][0] = files[i];
 		}
 
+		return data;
+	}
+
+	@DataProvider(name = "cancelledChequeFiles")
+	public static Object[][] cancelledChequesOld() {
+		File folder = new File(System.getProperty("user.dir") + "/src/test/resources/testdata/cheque");
+		File[] files = folder
+				.listFiles(file -> file.isFile() && (file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg")
+						|| file.getName().endsWith(".pdf") || file.getName().endsWith(".png")));
+		Object[][] data = new Object[files.length][1];
+		for (int i = 0; i < files.length; i++) {
+			data[i][0] = files[i];
+		}
+		return data;
+	}
+
+	@DataProvider(name = "cancelledChequeFilesNewOCR")
+	public static Object[][] cancelledCheques() {
+		File folder = new File(System.getProperty("user.dir") + "/src/test/resources/testdata/cheque");
+		File[] files = folder.listFiles(file -> file.isFile() && isSupportedOcrFile(file));
+
+		if (files == null || files.length == 0) {
+			throw new RuntimeException("No cancelled cheque files found at: " + folder.getAbsolutePath());
+		}
+		Map<String, ChequeExpectedMetadata> metadataMap;
+		try {
+			Gson gson = new Gson();
+			File jsonFile = new File(System.getProperty("user.dir")
+					+ "/src/test/resources/testdata/expectedDataJSON/cheque_expected_data.json");
+			if (!jsonFile.exists() || jsonFile.length() == 0) {
+				throw new RuntimeException(
+						"Cheque expected data JSON not found or empty: " + jsonFile.getAbsolutePath());
+			}
+			Type mapType = new TypeToken<Map<String, ChequeExpectedMetadata>>() {
+			}.getType();
+			try (FileReader reader = new FileReader(jsonFile)) {
+				metadataMap = gson.fromJson(reader, mapType);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to load cheque expected data JSON: " + e.getMessage(), e);
+		}
+		Object[][] data = new Object[files.length][2];
+		for (int i = 0; i < files.length; i++) {
+			String fileName = files[i].getName();
+			if (!metadataMap.containsKey(fileName)) {
+				throw new RuntimeException("Missing expected cheque metadata for file: " + fileName);
+			}
+			data[i][0] = files[i];
+			data[i][1] = metadataMap.get(fileName);
+		}
 		return data;
 	}
 
@@ -88,12 +139,10 @@ public class OCRFileDataProvider {
 		});
 
 		if (files == null || files.length == 0) {
-
 			throw new RuntimeException("No Bank Statement files found in: " + folder.getAbsolutePath());
 		}
 
 		Map<String, BankStatementExpectedMetadata> metadataMap;
-
 		try {
 
 			Gson gson = new Gson();

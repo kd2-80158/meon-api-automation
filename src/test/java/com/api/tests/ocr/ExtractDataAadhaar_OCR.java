@@ -304,7 +304,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 		softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 		softAssert.assertNotNull(responseBody, "Response body is null");
-		softAssert.assertEquals(res.getMsg(), "adharno is required");
+		softAssert.assertEquals(res.getMsg(), "adharno field is required.");
 		softAssert.assertFalse(res.isSuccess());
 		softAssert.assertAll();
 	}
@@ -333,7 +333,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 		softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 		softAssert.assertNotNull(responseBody, "Response body is null");
-		softAssert.assertEquals(res.getMsg(), "adharno is required");
+		softAssert.assertEquals(res.getMsg(), "adharno field is required.");
 		softAssert.assertFalse(res.isSuccess());
 		softAssert.assertAll();
 	}
@@ -362,7 +362,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 		softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 		softAssert.assertNotNull(responseBody, "Response body is null");
-		softAssert.assertEquals(res.getMsg(), "name is required");
+		softAssert.assertEquals(res.getMsg(), "name field is required.");
 		softAssert.assertFalse(res.isSuccess());
 		softAssert.assertAll();
 	}
@@ -392,7 +392,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 		softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 		softAssert.assertNotNull(responseBody, "Response body is null");
-		softAssert.assertEquals(res.getMsg(), "name cannot be empty");
+		softAssert.assertEquals(res.getMsg(), "name field is required.");
 		softAssert.assertFalse(res.isSuccess());
 		softAssert.assertAll();
 	}
@@ -420,7 +420,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 		softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 		softAssert.assertNotNull(responseBody, "Response body is null");
-		softAssert.assertEquals(res.getMsg(), "fathername is required");
+		softAssert.assertEquals(res.getMsg(), "fathername field is required.");
 		softAssert.assertFalse(res.isSuccess());
 		softAssert.assertAll();
 	}
@@ -450,7 +450,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 		ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 		softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 		softAssert.assertNotNull(responseBody, "Response body is null");
-		softAssert.assertEquals(res.getMsg(), "fathername cannot be empty");
+		softAssert.assertEquals(res.getMsg(), "fathername field is required.");
 		softAssert.assertFalse(res.isSuccess());
 		softAssert.assertAll();
 	}
@@ -481,7 +481,7 @@ public class ExtractDataAadhaar_OCR extends BaseTest {
 			ExtractDataAadhaarOCRResponse res = gson.fromJson(responseBody, ExtractDataAadhaarOCRResponse.class);
 			softAssert.assertEquals(response.getStatusCode(), 400, Severity.CRITICAL, "");
 			softAssert.assertNotNull(responseBody, "Response body is null");
-			softAssert.assertEquals(res.getMsg(), "DOB is required");
+			softAssert.assertEquals(res.getMsg(), "dob field is required.");
 			softAssert.assertFalse(res.isSuccess());
 			softAssert.assertAll();
 		}

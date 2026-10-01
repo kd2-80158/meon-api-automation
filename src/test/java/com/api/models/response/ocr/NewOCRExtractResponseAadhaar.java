@@ -1,6 +1,6 @@
 package com.api.models.response.ocr;
 
-public class NewOCRExtractResponse {
+public class NewOCRExtractResponseAadhaar {
 
 	private Data data;
 	private String document_type;
