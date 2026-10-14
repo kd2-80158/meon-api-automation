@@ -91,6 +91,7 @@ public class AuthService extends BaseService {
 	public static final String BASE_PATH_OCR_MASK_AADHAAR = "/api/mask-aadhaar";
 	public static final String BASE_PATH_OCR_BANK_STATEMENT = "/detect_date";
 	public static final String BASE_PATH_OCR_BGV = "/api/bgv/verify";
+	public static final String BASE_PATH_OCR_PCC = "/verify_pcc";
 	
 	public AuthService(String product) {
 		super(product);

@@ -2,8 +2,11 @@ package com.api.dataprovider;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.Map;
 import java.lang.reflect.Type;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Map;
+
 import org.testng.annotations.DataProvider;
 
 import com.api.models.testdata.BankStatementExpectedMetadata;
@@ -253,6 +256,35 @@ public class OCRFileDataProvider {
 			}
 			data[i][1] = metadataMap.get(fileName);
 		}
+		return data;
+	}
+
+	@DataProvider(name = "pccDocuments")
+	public static Object[][] pccDocuments() {
+
+		File directory = new File(
+				System.getProperty("user.dir") + "/src/test/resources/testdata/PCC");
+
+		if (!directory.exists() || !directory.isDirectory()) {
+			throw new RuntimeException("PCC directory not found: " + directory.getAbsolutePath());
+		}
+
+		File[] files = directory.listFiles(file -> file.isFile() && (file.getName().toLowerCase().endsWith(".pdf")
+				|| file.getName().toLowerCase().endsWith(".jpg") || file.getName().toLowerCase().endsWith(".jpeg")
+				|| file.getName().toLowerCase().endsWith(".png")));
+
+		if (files == null || files.length == 0) {
+			throw new RuntimeException("No PCC documents found in: " + directory.getAbsolutePath());
+		}
+
+		Arrays.sort(files, Comparator.comparing(File::getName));
+
+		Object[][] data = new Object[files.length][1];
+
+		for (int i = 0; i < files.length; i++) {
+			data[i][0] = files[i];
+		}
+
 		return data;
 	}
 
