@@ -21,6 +21,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Listeners;
 
 import com.api.filters.LoggingFilter;
+import com.api.models.request.credittool.GenerateTokenCreditToolRequest;
+import com.api.models.request.esign.SetAutoReminderRequest;
 import com.api.pojos.BaseURL;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
@@ -97,35 +99,62 @@ public class BaseService { // wrapper for RestAssured
 	protected Response postRequestKYC(Object tokenRequest, String endpoint) {
 		return rs.body(tokenRequest).post(endpoint);
 	}
-	
+
 	protected Response postRequestFaceFinder(Object tokenRequest, String endpoint) {
 		return rs.body(tokenRequest).post(endpoint);
 	}
-	
+
 	protected Response postRequestOCR(Object tokenRequest, String endpoint) {
 		return rs.relaxedHTTPSValidation().body(tokenRequest).post(endpoint);
 	}
-	
-	protected Response postRequestReversePennyDrop(Object tokenRequest, String endpoint)
-	{
+
+	protected Response postRequestMCA(Object tokenRequest, String endpoint) {
+		return rs.relaxedHTTPSValidation().body(tokenRequest).post(endpoint);
+	}
+
+	protected Response postRequestCreditTool(GenerateTokenCreditToolRequest request, String endpoint) {
+
+		return rs.relaxedHTTPSValidation().header("Content-Type", "application/json").body(request).post(endpoint);
+
+	}
+
+	protected Response postRequestReversePennyDrop(Object tokenRequest, String endpoint) {
 		return rs.body(tokenRequest).post(endpoint);
 	}
-	
-	protected Response postRequestReversePennyDropWithAuth(Object tokenRequest, String endpoint, String token)
-	{
-		logger.info("token in Base service:" + token);
+
+	protected Response postRequestReversePennyDropWithAuth(Object tokenRequest, String endpoint, String token) {
+		//logger.info("token in Base service:" + token);
 		return rs.header("token", token).body(tokenRequest).post(endpoint);
 	}
-	
-    protected Response postRequestFaceFinderWithAuth(Object tokenRequest, String endpoint, String token)
-    {
-    	return rs.header("token",token).body(tokenRequest).post(endpoint);
-    }
+
+	protected Response postRequestFaceFinderWithAuth(Object tokenRequest, String endpoint, String token) {
+		return rs.header("token", token).body(tokenRequest).post(endpoint);
+	}
+
+	protected Response postRequestMCAWithAuth(Object requestPayload, String endpoint, String token) {
+		return rs.relaxedHTTPSValidation().contentType(ContentType.JSON).header("Authorization", "Bearer " + token)
+				.body(requestPayload).post(endpoint);
+	}
+
+	protected Response postRequestAutoReminderEsignWithAuth(Object request, String endpoint, String token) {
+		return rs.header("signature", token).body(request).post(endpoint);
+	}
 
 	// With AUTH
 	protected Response postRequestEsignAuth(Object tokenRequest, String endpoint, String signature) {
-		logger.info("token in Base service:" + signature);
+		//logger.info("token in Base service:" + signature);
 		return rs.header("signature", signature).body(tokenRequest).post(endpoint);
+	}
+
+	public Response postRequestCreditToolWithAuth(Object tokenRequest, String endpoint, String token) {
+		return rs.relaxedHTTPSValidation().contentType("application/json").header("Authorization", "Bearer " + token)
+				.body(tokenRequest).post(endpoint);
+	}
+	
+	public Response postRequestEsignWithAuth(Object request,String endpoint,String token)
+	{
+		return rs.contentType(ContentType.JSON).header("Authorization", "Bearer "+ token)
+				.body(request).post(endpoint);
 	}
 
 	// fixed: now actually performs GET (was calling post previously)
@@ -141,7 +170,6 @@ public class BaseService { // wrapper for RestAssured
 		return rs.contentType(ContentType.JSON).header("Authorization", "Bearer" + " " + bearerToken)
 				.body(requestPayload).post(endpoint);
 	}
-
 
 	protected Response postRequestWithAuthPD(Object requestPayload, String endpoint, String bearerToken) {
 		return rs.contentType(ContentType.JSON).header("Authorization", "Bearer" + " " + bearerToken)
@@ -159,4 +187,5 @@ public class BaseService { // wrapper for RestAssured
 	protected Response postRequestPennyDrop(Object tokenRequest, String endpoint) {
 		return rs.contentType(ContentType.JSON).body(tokenRequest).post(endpoint);
 	}
+
 }

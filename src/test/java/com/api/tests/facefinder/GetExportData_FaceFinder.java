@@ -35,7 +35,7 @@ public class GetExportData_FaceFinder extends BaseTest {
 	String exportToken;
 	RequestSpecification rs;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("facefinder");
 		gson = new Gson();

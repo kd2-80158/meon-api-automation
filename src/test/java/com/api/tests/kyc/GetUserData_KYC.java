@@ -31,7 +31,7 @@ public class GetUserData_KYC extends BaseTest {
 	GetUserDataKYCResponse res;
 	boolean status = false;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("kyc");
 		logger = LoggerUtility.getLogger(this.getClass());

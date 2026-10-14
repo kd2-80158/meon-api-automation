@@ -46,7 +46,7 @@ public class InitiateCaptureRequest_FaceFinder extends BaseTest {
 	WebDriver driver;
 	String transaction_id;
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		authService = new AuthService("facefinder");
 		logger = LoggerUtility.getLogger(this.getClass());
