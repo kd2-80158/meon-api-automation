@@ -3,7 +3,20 @@ name: CI - Run API tests & email report
 on:
   push:
     branches: [ main ]
+
   workflow_dispatch:
+    inputs:
+      testClass:
+        description: "Fully qualified test class (optional)."
+        required: false
+      testMethod:
+        description: "Test method name (optional)."
+        required: false
+      executionSource:
+        description: "Triggered from dashboard."
+        required: false
+        default: "dashboard"
+
 
 jobs:
   build-and-test:
@@ -55,20 +68,33 @@ jobs:
       # RUN MAVEN TESTS
       ##################################################################
       - name: Build & Run Tests
-        run: mvn -B -DskipTests=false test
+        run: |
+         echo "Triggered testClass: ${{ github.event.inputs.testClass }}"
+         echo "Triggered testMethod: ${{ github.event.inputs.testMethod }}"
+
+         if [ -n "${{ github.event.inputs.testClass }}" ]; then
+         if [ -n "${{ github.event.inputs.testMethod }}" ]; then
+         mvn -B test -Dtest=${{ github.event.inputs.testClass }}#${{ github.event.inputs.testMethod }}
+         else
+         mvn -B test -Dtest=${{ github.event.inputs.testClass }}
+         fi
+         else
+         mvn -B test
+         fi
+
 
       ##################################################################
       # CHECK FILES
       ##################################################################
       - name: Verify logs and reports
         run: |
-          echo "Contents of logs/"
+          echo "Contents of logs/."
           ls -la logs || true
 
-          echo "Checking report.html"
+          echo "Checking report.html."
           [ -f logs/report.html ] && echo "Report OK" || echo "Missing report.html"
 
-          echo "Checking automation.log"
+          echo "Checking automation.log."
           [ -f logs/automation.log ] && echo "Log OK" || echo "Missing automation.log"
 
       ##################################################################

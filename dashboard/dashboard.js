@@ -2,21 +2,27 @@ let allResults = [];
 
 /* ================= LOAD DASHBOARD ================= */
 function loadDashboard() {
-	fetch("/logs/dashboard-results.json")
-		.then(res => res.json())
-		.then(data => {
-			allResults = data || [];
-			renderSummary(allResults);
-			renderInsights(allResults);
-			renderModules(allResults);
-			renderTable(allResults);
-		})
-		.catch(err => {
-			console.error("Failed to load dashboard-results.json", err);
-			document.getElementById("summary").innerText =
-				"Unable to load dashboard-results.json";
-		});
+    fetch("dashboard-results.json")   // ✅ correct path
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+            return res.json();
+        })
+        .then(data => {
+            allResults = data || [];
+            renderSummary(allResults);
+            renderInsights(allResults);
+            renderModules(allResults);
+            renderTable(allResults);
+        })
+        .catch(err => {
+            console.error("Failed to load dashboard-results.json", err);
+            document.getElementById("summary").innerText =
+                "Unable to load dashboard-results.json";
+        });
 }
+
 
 /* ================= SUMMARY ================= */
 function renderSummary(data) {
@@ -95,33 +101,51 @@ function renderTable(data) {
 		tr.className = status;
 
 		tr.innerHTML = `
-            <td title="${tc.className || ""}">
-                ${tc.testCaseId || tc.testName || "-"}
-            </td>
-
-            <td>
-                <span class="badge ${status}">${status}</span>
-            </td>
-
-            <td>${tc.apiModule?.split(".").pop() || "-"}</td>
-
-            <td>${tc.httpStatus && tc.httpStatus !== 0 ? tc.httpStatus : "API"}</td>
-
-            <td>${execTime} ms</td>
-
-            <td><span class="perf ${perf}">${perf}</span></td>
-
-			<td>
-			    ${tc.error
-				? `<details>
-			              <summary>View Error</summary>
-			              <pre class="error-box">${escapeHtml(tc.error)}</pre>
-			           </details>`
-				: "—"}
+			<td title="${tc.testName || ""}">
+				${tc.testCaseId || tc.testName || "-"}
 			</td>
 
-            <td>${tc.timestamp ? new Date(tc.timestamp).toLocaleString() : "-"}</td>
-        `;
+			<td>
+				<span class="badge ${status}">${status}</span>
+			</td>
+
+			<td>${tc.apiModule?.split(".").pop() || "-"}</td>
+
+			<td>${tc.httpStatus && tc.httpStatus !== 0 ? tc.httpStatus : "API"}</td>
+
+			<td>${execTime} ms</td>
+
+			<td><span class="perf ${perf}">${perf}</span></td>
+
+			<!-- ✅ ERROR / REASON -->
+			<td>
+				${tc.error
+					? `<details>
+						<summary>View Error</summary>
+						<pre class="error-box">${escapeHtml(tc.error)}</pre>
+					  </details>`
+					: "—"}
+			</td>
+
+			<td>${tc.executionType || "-"}</td>
+
+			<td>${tc.executionSource || "-"}</td>
+
+			<td>${tc.environment || "-"}</td>
+
+			<td title="${tc.className || ""}">
+				${tc.className ? tc.className.split(".").pop() : "-"}
+			</td>
+			<td>
+			  <button onclick="runTest(
+			    '${tc.className}',
+			    '${tc.testName}'
+			  )">
+			    ▶ Run
+			  </button>
+			</td>
+
+		`;
 
 		tbody.appendChild(tr);
 	});
@@ -142,6 +166,36 @@ function escapeHtml(text) {
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
 }
+
+function runTest(className, testName) {
+	if (!confirm(`Run test?\n${className}#${testName}`)) return;
+
+	fetch(
+		"https://api.github.com/repos/kd2-80158/meon-api-automation/actions/workflows/ci.yml/dispatches",
+		{
+			method: "POST",
+			headers: {
+				"Accept": "application/vnd.github+json",
+				"Authorization": "Bearer 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",
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				ref: "main",
+				inputs: {
+					testClass: className,
+					testMethod: testName,
+					executionSource: "dashboard"
+				}
+			})
+		}
+	)
+	.then(() => alert("✅ Test triggered successfully"))
+	.catch(err => {
+		console.error(err);
+		alert("❌ Failed to trigger test");
+	});
+}
+
 
 /* ================= INIT ================= */
 window.onload = loadDashboard;
