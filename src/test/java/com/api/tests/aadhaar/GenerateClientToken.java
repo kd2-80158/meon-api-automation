@@ -36,7 +36,7 @@ public final class GenerateClientToken extends BaseTest {
 	Gson gson;
 	GenerateClientTokenResponse res;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		logger = LoggerUtility.getLogger(this.getClass());
 		authService = new AuthService("aadhaar");

@@ -30,7 +30,7 @@ public class GenerateTokenForExportData_FaceFinder extends BaseTest {
 	Response response;
 	Gson gson;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		authService = new AuthService("facefinder");
 		gson = new Gson();

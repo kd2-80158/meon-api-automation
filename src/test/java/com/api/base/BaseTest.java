@@ -27,10 +27,11 @@ public class BaseTest {
 //		System.out.println(" Runtime Renamed: API Test - " + formatted);
 //	}
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setupSoftAssert() {
-	    softAssert = new SeveritySoftAssert();
-	    gson = new Gson();
+		softAssert = new SeveritySoftAssert();
+		gson = new Gson();
+
 	}
 	
 	@AfterMethod(alwaysRun = true)

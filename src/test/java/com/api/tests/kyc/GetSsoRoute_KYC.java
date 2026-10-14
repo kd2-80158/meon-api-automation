@@ -16,7 +16,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-@Listeners({ com.api.listeners.TestListener.class })
+@Listeners
 public class GetSsoRoute_KYC extends BaseTest {
 
 	Logger logger;
@@ -24,7 +24,7 @@ public class GetSsoRoute_KYC extends BaseTest {
 	RequestSpecification rs;
 	Response response;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		authService = new AuthService("kyc");
 		logger = LoggerUtility.getLogger(this.getClass());

@@ -35,7 +35,7 @@ public class GetExportData_RPD extends BaseTest {
 	String token;
 	RequestSpecification rs;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		authService = new AuthService("rpd");
 		logger = LoggerUtility.getLogger(this.getClass());

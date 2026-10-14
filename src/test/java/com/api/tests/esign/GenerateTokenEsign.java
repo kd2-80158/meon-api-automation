@@ -41,7 +41,7 @@ public final class GenerateTokenEsign extends BaseTest {
 	protected String esignUrl;
 	protected String cancelUrl;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		authService = new AuthService("eSign");
 		logger = LoggerUtility.getLogger(this.getClass());
@@ -55,7 +55,7 @@ public final class GenerateTokenEsign extends BaseTest {
 
 	@Test(description = "tc_01 - Verify successful upload when all mandatory fields and valid headers are provided.", priority = 1, alwaysRun = true, groups = {
 			"e2e", "smoke", "sanity", "regression" })
-	public void verifyResponseWithValidCredentialsEsign_GenerateTokenEsign() {
+	public void verifyResponseWithValidCredentialsEsign() {
 		GenerateTokenEsignRequest generateTokenEsignRequest = new GenerateTokenEsignRequest(
 				JSONUtility.getEsign().getName(), JSONUtility.getEsign().getDocument_name(),
 				JSONUtility.getEsign().getEmail(), JSONUtility.getEsign().getMobile(),
@@ -212,12 +212,12 @@ public final class GenerateTokenEsign extends BaseTest {
 						+ "  \"document_data\": \"" + documentData + "\"\n" + "}")
 				.when().post(AuthService.BASE_PATH_TOKEN_ESIGN);
 		String responseBody = response.asString();
-		if (response.getStatusCode() >= 0) {
-			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
+		if (response.getStatusCode() >= 400) {
+			softAssert.assertEquals(response.getStatusCode(), 401, "HTTP status mismatch");
 		} else {
 			res = gson.fromJson(responseBody, GenerateTokenEsignResponse.class);
 			logger.info("Status code present: " + res.getCode());
-			softAssert.assertEquals(res.getCode(), 400);
+			softAssert.assertEquals(res.getCode(), 401);
 		}
 		softAssert.assertEquals(response.jsonPath().get("message"), "Header Missing", "Message mismatch");
 		softAssert.assertFalse(response.jsonPath().get("success"), "Expected success=false");
@@ -348,7 +348,7 @@ public final class GenerateTokenEsign extends BaseTest {
 			"regression" })
 	public void verifyResponseWithInvalidEmailFormatEsign() {
 
-		String invalidEmail = "saurabh.gmail@";
+		String invalidEmail = "saurabh.gmail.com";
 		GenerateTokenEsignRequest generateTokenEsignRequest = new GenerateTokenEsignRequest(
 				JSONUtility.getEsign().getName(), JSONUtility.getEsign().getDocument_name(), invalidEmail,
 				JSONUtility.getEsign().getMobile(), JSONUtility.getEsign().getReason(),
@@ -364,21 +364,20 @@ public final class GenerateTokenEsign extends BaseTest {
 
 		response = authService.generateTokenEsignWithAuth(generateTokenEsignRequest, signature);
 		String responseBody = response.asString();
-		System.out.println("Response is: "+responseBody);
-		if (response.getStatusCode() >= 0) {
-			softAssert.assertEquals(response.getStatusCode(), 200, "HTTP status mismatch");
+		if (response.getStatusCode() >= 400) {
+			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 		} else {
 			res = gson.fromJson(responseBody, GenerateTokenEsignResponse.class);
 			logger.info("Status code present: " + res.getCode());
-			softAssert.assertEquals(res.getCode(), 200);
+			softAssert.assertEquals(res.getCode(), 400);
 		}
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"), "Expected success=false");
-		softAssert.assertEquals(response.jsonPath().get("message"), "Invalid email", "Message mismatch");
+		softAssert.assertEquals(response.jsonPath().get("message"), "invalid email format", "Message mismatch");
 		softAssert.assertAll();
 	}
 
 	@Test(description = "tc_10 - Verify API validates mobile number format and returns error on invalid mobile.", priority = 9, groups = {
-			"regression" }, enabled = false)
+			"regression" })
 	public void verifyResponseWithInvalidMobileFormatEsign() {
 
 		String invalidPhone = "abcd";
@@ -500,7 +499,7 @@ public final class GenerateTokenEsign extends BaseTest {
 		esignUrl = response.jsonPath().getString("esign_url");
 		cancelUrl = JSONUtility.getEsign().getCancel_redirect_url();
 		String responseBody = response.asString();
-		if (response.getStatusCode() >= 0) {
+		if (response.getStatusCode() == 200) {
 			softAssert.assertEquals(response.getStatusCode(), 200, "HTTP status mismatch");
 		} else {
 			res = gson.fromJson(responseBody, GenerateTokenEsignResponse.class);
@@ -612,7 +611,6 @@ public final class GenerateTokenEsign extends BaseTest {
 		String documentData = JSONUtility.getEsign().getDocument_data();
 
 		Response response = rs.baseUri(JSONUtility.getEsign().getUrl()).header("signature", signature)
-				.contentType("application/json")
 				.body("{\n" + "  \"name\": \"" + name + "\",\n" + "  \"document_name\": \"" + documentName + "\",\n"
 						+ "  \"email\": \"" + email + "\",\n" + "  \"mobile\": \"" + mobile + "\",\n"
 						+ "  \"reason\": \"" + reason + "\",\n" + "  \"days_to_expire\": " + daysToExpire + ",\n"
@@ -628,7 +626,7 @@ public final class GenerateTokenEsign extends BaseTest {
 						+ "  \"document_data\": \"" + documentData + "\"\n" + "}")
 				.when().post(AuthService.BASE_PATH_TOKEN_ESIGN);
 		String responseBody = response.asString();
-		if (response.getStatusCode() >= 0) {
+		if (response.getStatusCode() >= 400) {
 			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 		} else {
 			res = gson.fromJson(responseBody, GenerateTokenEsignResponse.class);
@@ -660,7 +658,7 @@ public final class GenerateTokenEsign extends BaseTest {
 
 		response = authService.generateTokenEsignWithAuth(generateTokenEsignRequest, signature);
 		String responseBody = response.asString();
-		if (response.getStatusCode() >= 0) {
+		if (response.getStatusCode() >= 400) {
 			softAssert.assertEquals(response.getStatusCode(), 400, "HTTP status mismatch");
 		} else {
 			res = gson.fromJson(responseBody, GenerateTokenEsignResponse.class);
@@ -668,7 +666,7 @@ public final class GenerateTokenEsign extends BaseTest {
 			softAssert.assertEquals(res.getCode(), 400);
 		}
 		softAssert.assertFalse(response.jsonPath().getBoolean("success"), "Expected success=false");
-		softAssert.assertEquals(response.jsonPath().getString("message"), "invalid aadhaar format please use last 4 digit", "Message mismatch");
+		softAssert.assertEquals(response.jsonPath().getString("message"), "invalid aadhaar format", "Message mismatch");
 		softAssert.assertAll();
 	}
 

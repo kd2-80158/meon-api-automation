@@ -35,7 +35,7 @@ public class GenerateExportToken_RPD extends BaseTest {
 	Gson gson;
 	String authRPD;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		authService = new AuthService("rpd");
 		gson = new Gson();

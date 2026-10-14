@@ -47,24 +47,6 @@ public class BaseURL {
 	private UniqueKeys unique_keys;
 	private String company_sso;
 	private boolean email_notification;
-	private String from_date;
-	private String to_date;
-
-	public String getFrom_date() {
-		return from_date;
-	}
-
-	public void setFrom_date(String from_date) {
-		this.from_date = from_date;
-	}
-
-	public String getTo_date() {
-		return to_date;
-	}
-
-	public void setTo_date(String to_date) {
-		this.to_date = to_date;
-	}
 
 	// kyc
 	private String work_flow_key;
@@ -94,131 +76,8 @@ public class BaseURL {
 	private String req_id;
 	private String address;
 	private String adhar;
-	private boolean Valid;
-	private String newLive_url;
-	
-	//facefinder
-	private String liveipvurl;
-	private String liveclient_id;
-	private String liveclient_secret;
-	
-	
-	public boolean isValid() {
-		return Valid;
-	}
-
-	public void setValid(boolean valid) {
-		Valid = valid;
-	}
-
 	//facefinder
 	private String image_to_be_match;
-	//mca
-	private String static_id;
-	private String cin;
-	//set auto reminder
-	private String document_id;
-	private int days_to_expire1;
-	private int everyValue;
-	private String everyUnit;
-	private String time;
-	private boolean enablePersonalizeMsg;
-	private String personalMsg;
-	
-	//credittool
-	private String credit;
-	private String product;
-	
-	//bankstatement
-	
-
-	public String getCredit() {
-		return credit;
-	}
-
-	public void setCredit(String credit) {
-		this.credit = credit;
-	}
-
-	public String getProduct() {
-		return product;
-	}
-
-	public void setProduct(String product) {
-		this.product = product;
-	}
-
-	public String getDocument_id() {
-		return document_id;
-	}
-
-	public void setDocument_id(String document_id) {
-		this.document_id = document_id;
-	}
-	
-	public int getDays_to_expire1() {
-		return days_to_expire1;
-	}
-
-	public void setDays_to_expire1(int days_to_expire1) {
-		this.days_to_expire1 = days_to_expire1;
-	}
-
-	public int getEveryValue() {
-		return everyValue;
-	}
-
-	public void setEveryValue(int everyValue) {
-		this.everyValue = everyValue;
-	}
-
-	public String getEveryUnit() {
-		return everyUnit;
-	}
-
-	public void setEveryUnit(String everyUnit) {
-		this.everyUnit = everyUnit;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public boolean isEnablePersonalizeMsg() {
-		return enablePersonalizeMsg;
-	}
-
-	public void setEnablePersonalizeMsg(boolean enablePersonalizeMsg) {
-		this.enablePersonalizeMsg = enablePersonalizeMsg;
-	}
-
-	public String getPersonalMsg() {
-		return personalMsg;
-	}
-
-	public void setPersonalMsg(String personalMsg) {
-		this.personalMsg = personalMsg;
-	}
-
-	public String getCin() {
-		return cin;
-	}
-
-	public void setCin(String cin) {
-		this.cin = cin;
-	}
-
-	public String getStatic_id() {
-		return static_id;
-	}
-
-	public void setStatic_id(String static_id) {
-		this.static_id = static_id;
-	}
 
 	public String getPan() {
 		return pan;
@@ -563,39 +422,4 @@ public class BaseURL {
 	public void setLive_url(String live_url) {
 		this.live_url = live_url;
 	}
-
-	public String getNewLive_url() {
-		return newLive_url;
-	}
-
-	public void setNewLive_url(String newLive_url) {
-		this.newLive_url = newLive_url;
-	}
-
-	public String getLiveipvurl() {
-		return liveipvurl;
-	}
-
-	public void setLiveipvurl(String liveipvurl) {
-		this.liveipvurl = liveipvurl;
-	}
-
-	public String getLiveclient_id() {
-		return liveclient_id;
-	}
-
-	public void setLiveclient_id(String liveclient_id) {
-		this.liveclient_id = liveclient_id;
-	}
-
-	public String getLiveclient_secret() {
-		return liveclient_secret;
-	}
-
-	public void setLiveclient_secret(String liveclient_secret) {
-		this.liveclient_secret = liveclient_secret;
-	}
-	
-	
-	
 }

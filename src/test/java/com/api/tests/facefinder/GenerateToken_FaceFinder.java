@@ -31,7 +31,7 @@ public class GenerateToken_FaceFinder extends BaseTest {
 	Gson gson;
 	RequestSpecification rs;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void setup() {
 		authService = new AuthService("facefinder");
 		logger = LoggerUtility.getLogger(this.getClass());
