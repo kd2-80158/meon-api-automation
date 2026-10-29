@@ -11,8 +11,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.dataprovider.OCRFileDataProvider;
+import com.api.models.request.ocr.GenerateTokenOCRRequest;
+import com.api.models.response.ocr.GenerateTokenOCRResponse;
 import com.api.models.response.ocr.NewOCRExtractResponseCheque;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
@@ -33,20 +36,39 @@ public class ExtractDataCancelledCheque_OCRNew extends BaseTest {
 	private Logger logger;
 	private Gson gson;
 	private Response response;
+	AuthService authService;
+	String tokenOCR;
 
 	@BeforeMethod(alwaysRun = true)
 	public void setup() {
-
 		rs = RestAssured.given().relaxedHTTPSValidation();
-
 		logger = LoggerUtility.getLogger(this.getClass());
-
 		gson = new Gson();
+		authService = new AuthService("ocr");
+	}
+	
+	public String getToken() {
+		if (this.tokenOCR == null) {
+			String company_id = JSONUtility.getOcr().getCompany_id();
+			String email = JSONUtility.getOcr().getEmail();
+			String password = JSONUtility.getOcr().getPassword();
+			GenerateTokenOCRRequest request = new GenerateTokenOCRRequest(company_id, email, password);
+			response = authService.generateTokenOCR(request);
+			String responseBody = response.asString();
+			GenerateTokenOCRResponse res = gson.fromJson(responseBody, GenerateTokenOCRResponse.class);
+			this.tokenOCR = res.getToken();
+		}
+		return this.tokenOCR;
 	}
 
+	
 	@Test(description = "tc_01 - Verify OCR extraction of cancelled cheque against expected JSON.", groups = { "e2e",
 			"regression" }, dataProvider = "cancelledChequeFiles", dataProviderClass = OCRFileDataProvider.class)
 	public void verifyCancelledChequeResponse(File cheque) {
+		
+		if (this.tokenOCR == null) {
+			getToken();
+		}
 
 		softAssert.assertNotNull(cheque, Severity.CRITICAL, "Cancelled cheque file received from DataProvider is null");
 
@@ -156,8 +178,12 @@ public class ExtractDataCancelledCheque_OCRNew extends BaseTest {
 		logger.info("Expected values for {} => " + "Account Number: {}, " + "IFSC: {}, " + "MICR: {}, " + "Name: {}",
 				cheque.getName(), expectedAccountNumber, expectedIfsc, expectedMicr, expectedName);
 
-		response = rs.baseUri(JSONUtility.getOcr().getLive_url()).contentType(ContentType.MULTIPART)
-				.multiPart("document_type", "bank").multiPart("file", cheque).when().post("/newocr/extract");
+		response = rs.baseUri("https://ocr-live.meon.co.in").contentType(ContentType.MULTIPART)
+				.header("Authorization", "Bearer "+this.tokenOCR)   
+				.multiPart("document_type", "bank")
+				.multiPart("file", cheque)
+				.when()
+				.post("/newocr/extract");
 
 		softAssert.assertNotNull(response, Severity.CRITICAL,
 				"OCR API response object is null for file: " + cheque.getName());

@@ -1,0 +1,190 @@
+{
+  "arup-diagonal-lines.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "arup-diagonal-name-lines.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "arup-diagonal.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "arup-lines.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "arup-tilted.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "arup-too-much-scribbled.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "arup.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_1.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_1.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_10.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_10.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_12.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_13.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_2.jpeg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_2.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_3.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_3.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_4.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_4.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_5.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_5.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_6.jpeg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_6.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_7.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_7.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_8.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_8.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "pentad_9 2.jpg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_9.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "pentad_9.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "scribble-circle.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "scribble-rectangle.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "SIGNAtureSaurabh.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "SIGNAtureSaurabh_2026-10-28_07-13-41.jpeg": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_1.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "univest_1.png": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_10.png": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_2.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "univest_2.png": {
+    "is_signature": false,
+    "success": true
+  },
+  "univest_3.jpg": {
+    "is_signature": false,
+    "success": true
+  },
+  "univest_3.png": {
+    "is_signature": false,
+    "success": true
+  },
+  "univest_4.png": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_5.png": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_6.png": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_7.png": {
+    "is_signature": false,
+    "success": true
+  },
+  "univest_8.png": {
+    "is_signature": true,
+    "success": true
+  },
+  "univest_9.png": {
+    "is_signature": true,
+    "success": true
+  }
+}

@@ -84,7 +84,7 @@ public final class GenerateClientToken extends BaseTest {
 				softAssert.assertEquals(response.getStatusCode(), 400);
 			}
 			softAssert.assertFalse(res.isStatus(), "Expected status=false");
-			softAssert.assertEquals(res.getMsg(), "Missing company_name or secret_token");
+			softAssert.assertEquals(res.getMsg(), "secret_token key is missing in the request");
 			softAssert.assertAll();
 		}
 	}
