@@ -7,8 +7,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.dataprovider.OCRFileDataProvider;
+import com.api.models.request.ocr.GenerateTokenOCRRequest;
+import com.api.models.response.ocr.GenerateTokenOCRResponse;
 import com.api.models.response.ocr.NewOCRExtractResponseAadhaar;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
@@ -27,6 +30,8 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 	private Logger logger;
 	private RequestSpecification rs;
 	private Gson gson;
+	AuthService authService;
+	String tokenOCR;
 
 	@BeforeMethod(alwaysRun = true)
 	public void setup() {
@@ -36,12 +41,32 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 		gson = new Gson();
 
 		rs = RestAssured.given().relaxedHTTPSValidation();
+		authService = new AuthService("ocr");
 	}
+	
+	public String getToken() {
+		if (this.tokenOCR == null) {
+			String company_id = JSONUtility.getOcr().getCompany_id();
+			String email = JSONUtility.getOcr().getEmail();
+			String password = JSONUtility.getOcr().getPassword();
+			GenerateTokenOCRRequest request = new GenerateTokenOCRRequest(company_id, email, password);
+			response = authService.generateTokenOCR(request);
+			String responseBody = response.asString();
+			GenerateTokenOCRResponse res = gson.fromJson(responseBody, GenerateTokenOCRResponse.class);
+			this.tokenOCR = res.getToken();
+		}
+		return this.tokenOCR;
+	}
+
 
 	@Test(description = "tc_01 - Verify successful Aadhaar OCR extraction with valid Aadhaar file.", priority = 1, alwaysRun = true, groups = {
 			"e2e", "smoke", "sanity",
 			"regression" }, dataProvider = "aadhaarFiles", dataProviderClass = OCRFileDataProvider.class)
 	public void verifyResponseWithValidInputsAadhaarOCR(File aadhaarImage) {
+		
+		if (this.tokenOCR == null) {
+			getToken();
+		}
 
 		if (aadhaarImage == null || !aadhaarImage.exists() || aadhaarImage.length() == 0) {
 
@@ -123,6 +148,10 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 			"e2e", "smoke", "sanity",
 			"regression" }, dataProvider = "aadhaarMaskedFiles", dataProviderClass = OCRFileDataProvider.class)
 	public void verifyResponseWithValidInputsAadhaarOCRNew(File aadhaarImage) {
+		
+		if (this.tokenOCR == null) {
+			getToken();
+		}
 
 		if (aadhaarImage == null || !aadhaarImage.exists() || aadhaarImage.length() == 0) {
 
@@ -139,6 +168,7 @@ public class ExtractDataAadhaar_OCRNew extends BaseTest {
 		logger.info("File size: {} bytes", aadhaarImage.length());
 
 		response = rs.baseUri(baseUrl).contentType(ContentType.MULTIPART)
+				.header("Authorization","Bearer "+this.tokenOCR)
 
 				.multiPart("document_type", "aadhaar")
 

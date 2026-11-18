@@ -47,7 +47,7 @@ public class MaskAadhaar_OCR extends BaseTest {
 		
 		logger.info("===== Running OCR test for file: {} =====", imageFile.getName());
 		
-		response = rs.baseUri(JSONUtility.getOcr().getUrl())
+		response = rs.baseUri(JSONUtility.getOcr().getNewLive_url())
 				      .contentType(ContentType.MULTIPART)
 				      .multiPart("file",imageFile)
 				      .when()
@@ -69,15 +69,15 @@ public class MaskAadhaar_OCR extends BaseTest {
 	    
 	    logger.info("===== Running OCR test for file: {} =====", file.getName());
 	    
-	    response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
+	    response = rs.baseUri(JSONUtility.getOcr().getNewLive_url()).contentType(ContentType.MULTIPART)
 	    		     .multiPart("file",file)
 	    		     .when()
 	    		     .post(AuthService.BASE_PATH_OCR_MASK_AADHAAR);
 	    String responseBody = response.asPrettyString();
 	    
 	    MaskAadhaarOCRResponse maskAadhaarOCRResponse = gson.fromJson(responseBody, MaskAadhaarOCRResponse.class);
-	    softAssert.assertTrue(maskAadhaarOCRResponse.isSuccess());
-	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Not a valid aadhaar image.");
+	    softAssert.assertFalse(maskAadhaarOCRResponse.isSuccess());
+	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Unable to detect Aadhaar card. Please upload a clear Aadhaar card");
 	    softAssert.assertAll();
 	}
 	
@@ -85,41 +85,41 @@ public class MaskAadhaar_OCR extends BaseTest {
 	public void verifyResponseWithEmptyFile_MaskAadhaarOCR()
 	{
 		File file = new File(System.getProperty("user.dir")+"/src/test/resources/testdata/aadhaar/"+File.separator+"emptyfile.png");
-	    if(!file.exists() || file.length()==0)
+	    if(!file.exists())
 	    	throw new RuntimeException("Failed to located file "+file.getName());
 	    
 	    logger.info("===== Running OCR test for file: {} =====", file.getName());
 	    
-	    response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
+	    response = rs.baseUri(JSONUtility.getOcr().getNewLive_url()).contentType(ContentType.MULTIPART)
 	    		     .multiPart("file",file)
 	    		     .when()
 	    		     .post(AuthService.BASE_PATH_OCR_MASK_AADHAAR);
 	    String responseBody = response.asPrettyString();
 	    
 	    MaskAadhaarOCRResponse maskAadhaarOCRResponse = gson.fromJson(responseBody, MaskAadhaarOCRResponse.class);
-	    softAssert.assertTrue(maskAadhaarOCRResponse.isSuccess());
-	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Not a valid aadhaar image.");
+	    softAssert.assertFalse(maskAadhaarOCRResponse.isSuccess());
+	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Unable to detect Aadhaar card. Please upload a clear Aadhaar card");
 	    softAssert.assertAll();
 	}
 	
 	@Test(description="tc_maskaadhaar_11 - Verify upload of unsupported file format",priority=4,groups= {"e2e","sanity"})
 	public void verifyResponseWithUnsupportedFileFormat_MaskAadhaarOCR()
 	{
-		File file = new File(System.getProperty("user.dir")+"/src/test/resources/testdata/aadhaar/"+File.separator+"emptyfile.png");
+		File file = new File(System.getProperty("user.dir")+"/src/test/resources/testdata/aadhaar/"+File.separator+"aadhaar.txt");
 	    if(!file.exists() || file.length()==0)
 	    	throw new RuntimeException("Failed to located file "+file.getName());
 	    
 	    logger.info("===== Running OCR test for file: {} =====", file.getName());
 	    
-	    response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
+	    response = rs.baseUri(JSONUtility.getOcr().getNewLive_url()).contentType(ContentType.MULTIPART)
 	    		     .multiPart("file",file)
 	    		     .when()
 	    		     .post(AuthService.BASE_PATH_OCR_MASK_AADHAAR);
 	    String responseBody = response.asPrettyString();
 	    
 	    MaskAadhaarOCRResponse maskAadhaarOCRResponse = gson.fromJson(responseBody, MaskAadhaarOCRResponse.class);
-	    softAssert.assertTrue(maskAadhaarOCRResponse.isSuccess());
-	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Not a valid aadhaar image.");
+	    softAssert.assertFalse(maskAadhaarOCRResponse.isSuccess());
+	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Unable to detect Aadhaar card. Please upload a clear Aadhaar card");
 	    softAssert.assertAll();
 	}
 	
@@ -128,11 +128,11 @@ public class MaskAadhaar_OCR extends BaseTest {
 	{
 		File file = new File(System.getProperty("user.dir")+"/src/test/resources/testdata/aadhaar/"+File.separator+"aadhaarmask_neeraj.pdf");
 	    if(!file.exists() || file.length()==0)
-	    	throw new RuntimeException("Failed to located file "+file.getName());
+	    	throw new RuntimeException("Failed to locate file "+file.getName());
 	    
 	    logger.info("===== Running OCR test for file: {} =====", file.getName());
 	    
-	    response = rs.baseUri(JSONUtility.getOcr().getUrl()).contentType(ContentType.MULTIPART)
+	    response = rs.baseUri(JSONUtility.getOcr().getNewLive_url()).contentType(ContentType.MULTIPART)
 	    		     .multiPart("file",file)
 	    		     .when()
 	    		     .post(AuthService.BASE_PATH_OCR_MASK_AADHAAR);
@@ -140,7 +140,7 @@ public class MaskAadhaar_OCR extends BaseTest {
 	    
 	    MaskAadhaarOCRResponse maskAadhaarOCRResponse = gson.fromJson(responseBody, MaskAadhaarOCRResponse.class);
 	    softAssert.assertTrue(maskAadhaarOCRResponse.isSuccess());
-	    softAssert.assertEquals(maskAadhaarOCRResponse.getMsg(), "Not a valid aadhaar image.");
+	    softAssert.assertNotNull(maskAadhaarOCRResponse.getMasked_image_base64());
 	    softAssert.assertAll();
 	}
 
