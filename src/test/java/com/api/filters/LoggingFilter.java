@@ -10,31 +10,20 @@ import io.restassured.response.Response;
 import io.restassured.specification.FilterableRequestSpecification;
 import io.restassured.specification.FilterableResponseSpecification;
 
+/**
+ * Logs only non-sensitive request metadata. Request headers and bodies can
+ * contain OAuth state, access tokens, Aadhaar identifiers, OTPs, or PINs.
+ */
 public class LoggingFilter implements Filter {
-	
-	Logger logger = LoggerUtility.getLogger(this.getClass());
-	
-	public void logRequest(FilterableRequestSpecification requestSpec)
-	{
-		logger.info("BaseURL: "+requestSpec.getBaseUri());
-		logger.info("Request Headers: "+requestSpec.getHeaders());
-		logger.info("Request Body: "+requestSpec.getBody());
-	}
-	
-	public void logResponse(Response response)
-	{
-		logger.info("Status code: "+response.getStatusCode());
-//		logger.info("Response Headers: "+response.headers());
-//		logger.info("Response body: "+response.body().asPrettyString());
-	}
+
+	private final Logger logger = LoggerUtility.getLogger(getClass());
 
 	@Override
-	public Response filter(FilterableRequestSpecification requestSpec, FilterableResponseSpecification responseSpec,
-			FilterContext ctx) {
-		logRequest(requestSpec);
-		Response response = ctx.next(requestSpec, responseSpec);
-		logResponse(response);
+	public Response filter(FilterableRequestSpecification requestSpec,
+			FilterableResponseSpecification responseSpec, FilterContext context) {
+		logger.info("HTTP request sent; headers and body omitted for privacy.");
+		Response response = context.next(requestSpec, responseSpec);
+		logger.info("HTTP response status: {}", response.getStatusCode());
 		return response;
 	}
-
 }

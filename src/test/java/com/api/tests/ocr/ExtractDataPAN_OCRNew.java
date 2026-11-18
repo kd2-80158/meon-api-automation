@@ -7,8 +7,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.dataprovider.OCRFileDataProvider;
+import com.api.models.request.ocr.GenerateTokenOCRRequest;
+import com.api.models.response.ocr.GenerateTokenOCRResponse;
 import com.api.models.response.ocr.PANOCRExtractResponse;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
@@ -27,12 +30,29 @@ public class ExtractDataPAN_OCRNew extends BaseTest {
 	private Logger logger;
 	private RequestSpecification rs;
 	private Gson gson;
+	AuthService authService;
+	String tokenOCR;
 
 	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		logger = LoggerUtility.getLogger(this.getClass());
 		gson = new Gson();
 		rs = RestAssured.given().relaxedHTTPSValidation();
+		authService = new AuthService("ocr");
+	}
+	
+	public String getToken() {
+		if (this.tokenOCR == null) {
+			String company_id = JSONUtility.getOcr().getCompany_id();
+			String email = JSONUtility.getOcr().getEmail();
+			String password = JSONUtility.getOcr().getPassword();
+			GenerateTokenOCRRequest request = new GenerateTokenOCRRequest(company_id, email, password);
+			response = authService.generateTokenOCR(request);
+			String responseBody = response.asString();
+			GenerateTokenOCRResponse res = gson.fromJson(responseBody, GenerateTokenOCRResponse.class);
+			this.tokenOCR = res.getToken();
+		}
+		return this.tokenOCR;
 	}
 
 	@Test(description = "tc_01 - Verify successful PAN OCR extraction with valid PAN file.", priority = 1, alwaysRun = true, groups = {
@@ -41,6 +61,11 @@ public class ExtractDataPAN_OCRNew extends BaseTest {
 	public void verifyResponseWithValidInputsPANOCR(File panImage) {
 
 
+		if (this.tokenOCR == null) {
+			getToken();
+		}
+
+		
 		if (panImage == null || !panImage.exists() || panImage.length() == 0) {
 			throw new RuntimeException("Invalid PAN file: " + (panImage == null ? "null" : panImage.getAbsolutePath()));
 		}
@@ -54,6 +79,7 @@ public class ExtractDataPAN_OCRNew extends BaseTest {
 		logger.info("File size: {} bytes", panImage.length());
 
 		response = rs.baseUri(baseUrl).contentType(ContentType.MULTIPART)
+				.header("Authorization", "Bearer "+this.tokenOCR)  
 
 				.multiPart("document_type", "pan")
 
