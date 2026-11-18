@@ -15,10 +15,10 @@ public class JSONUtility {
         try {
             Gson gson = new Gson();
             File file = new File(CONFIG_PATH);
-            FileReader reader = new FileReader(file);
-
-            Config config = gson.fromJson(reader, Config.class);
-            return config.getBaseURL().get(productName);
+            try (FileReader reader = new FileReader(file)) {
+                Config config = gson.fromJson(reader, Config.class);
+                return config.getBaseURL().get(productName);
+            }
         } catch (Exception e) {
             throw new RuntimeException("Failed to load product config: " + productName, e);
         }

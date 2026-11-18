@@ -13,6 +13,11 @@ public class BaseURL {
 
 	private String company_name;
 	private String secret_token;
+	private String security_pin;
+	private String otp_endpoint;
+	private String otp_read_token;
+	private Integer otp_max_resends;
+	private boolean live_test_enabled;
 	private String client_token;
 	private String redirect_url;
 	private String[] documents;
@@ -435,6 +440,12 @@ public class BaseURL {
 	public String getAadhaar_number() {
 		return aadhaar_number;
 	}
+
+	public String getSecurity_pin() { return security_pin; }
+	public String getOtp_endpoint() { return otp_endpoint; }
+	public String getOtp_read_token() { return otp_read_token; }
+	public Integer getOtp_max_resends() { return otp_max_resends; }
+	public boolean isLive_test_enabled() { return live_test_enabled; }
 
 	public boolean isNeed_gender_match() {
 		return need_gender_match;

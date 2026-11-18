@@ -12,7 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public final class AadhaarOtpPage extends AadhaarPageSupport {
 
 	private static final By OTP_FIELDS = By.cssSelector(
-			"input[autocomplete='one-time-code'], input[id*='otp'], input[name*='otp']");
+			"input[autocomplete='one-time-code'], input[id*='otp'], input[name*='otp'], "
+					+ "input[type='tel'], input[type='number'], input[inputmode='numeric']");
 	private static final By OTP_REQUEST_BUTTON = By.id("otp_button");
 	private static final By RESEND_BUTTON = By.xpath(
 			"//button[contains(normalize-space(.), 'Resend')] | //a[contains(normalize-space(.), 'Resend')]");

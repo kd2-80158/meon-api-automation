@@ -1,21 +1,19 @@
-# DigiLocker Aadhaar E2E source overlay
+# DigiLocker Aadhaar E2E
 
-This overlay adds a guarded, end-to-end Aadhaar fetch flow to the existing Maven/TestNG project. Copy the `src/test/java` tree into the extracted `meonapiautomation` project, replacing `com/api/filters/LoggingFilter.java` with the safer version included here.
+The live TestNG flow uses the project's existing `JSONUtility.getAadhaar()` configuration path. Keep live-only values under `baseURL.aadhaar` in the local `config/config.json`:
 
-The flow is skipped unless `-Dmeon.aadhaar.live=true` is set. It reads credentials from environment variables and does not log Aadhaar numbers, OTPs, security PINs, OAuth URLs, API response bodies, or request headers.
+- `live_test_enabled`: set to `true` only when intentionally running the live flow.
+- `aadhaar_number`: 12 digit authorized test account number.
+- `security_pin`: six digit DigiLocker security PIN.
+- `otp_endpoint`: local phone OTP endpoint (currently `http://10.112.35.159:8080/api/latest-otp`).
+- `otp_max_resends`: optional integer from 0 through 6; defaults to 3.
 
-Before an intentional run, provide these values in the test process environment:
+The config file contains existing API secrets, so it is ignored by Git and should remain local. The E2E class does not contain the Aadhaar number or PIN and does not log OTPs, page content, OAuth URLs, API response bodies, or request headers.
 
-- `AADHAAR_NUMBER`: the 12 digit Aadhaar number for the authorized test account.
-- `DIGILOCKER_SECURITY_PIN`: the six digit DigiLocker security PIN.
-- `AADHAAR_OTP_MAX_RESENDS`: optional; defaults to `3` resend attempts (each OTP wait is two minutes).
-
-The OTP endpoint is intentionally fixed in the test to `http://10.112.35.159:8080/api/latest-otp`, as requested. Update the constant if the phone's IP address changes again.
-
-Run only the intended test from the extracted project with:
+Run only this test from the project root:
 
 ```sh
-mvn -Dtest=AadhaarFetchThroughDigiLockerE2E -Dmeon.aadhaar.live=true test
+mvn -Dtest=AadhaarFetchThroughDigiLockerE2E test
 ```
 
-It requests only the `aadhaar` document. The final assertions validate the API response structure, required Aadhaar fields, document URLs, and masked Aadhaar suffix without printing the returned identity data. The test has not been run.
+The live test runs only when `baseURL.aadhaar.live_test_enabled` is true. It requests only the Aadhaar document and validates the exported response structure, document URLs, and masked Aadhaar suffix.
