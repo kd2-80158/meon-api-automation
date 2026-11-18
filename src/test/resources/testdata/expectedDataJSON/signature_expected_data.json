@@ -84,7 +84,7 @@
     "success": true
   },
   "pentad_6.jpeg": {
-    "is_signature": false,
+    "is_signature": true,
     "success": true
   },
   "pentad_6.jpg": {
@@ -152,7 +152,7 @@
     "success": true
   },
   "univest_2.png": {
-    "is_signature": false,
+    "is_signature": true,
     "success": true
   },
   "univest_3.jpg": {
@@ -160,7 +160,7 @@
     "success": true
   },
   "univest_3.png": {
-    "is_signature": false,
+    "is_signature": true,
     "success": true
   },
   "univest_4.png": {
@@ -176,7 +176,7 @@
     "success": true
   },
   "univest_7.png": {
-    "is_signature": false,
+    "is_signature": true,
     "success": true
   },
   "univest_8.png": {
