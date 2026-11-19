@@ -13,7 +13,7 @@ import com.api.models.request.ocr.GenerateTokenOCRRequest;
 import com.api.models.response.ocr.DateDetectionFromBankStatementResponse;
 import com.api.models.response.ocr.ExtractBankDataOCRResponse;
 import com.api.models.response.ocr.GenerateTokenOCRResponse;
-import com.api.models.testdata.BankStatementExpectedMetadata;
+import com.api.models.ocr.BankStatementExpectedMetadata;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.google.gson.Gson;

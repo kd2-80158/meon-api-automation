@@ -25,7 +25,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
-import com.api.base.AuthService;
 import com.api.models.request.aadhaar.GenerateClientTokenRequest;
 import com.api.models.request.aadhaar.GenerateDigilockerLinkRequest;
 import com.api.models.request.aadhaar.RetrieveAadhaarDataRequest;
@@ -33,13 +32,15 @@ import com.api.pages.aadhaar.AadhaarConsentPage;
 import com.api.pages.aadhaar.AadhaarNumberPage;
 import com.api.pages.aadhaar.AadhaarOtpPage;
 import com.api.pages.aadhaar.AadhaarSecurityPinPage;
-import com.api.pojos.BaseURL;
 import com.api.utility.AadhaarEvidenceCapture;
-import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
+import com.api.utility.JSONUtility;
+import com.api.pojos.BaseURL;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public final class AadhaarFetchThroughDigiLockerE2E {
@@ -48,6 +49,8 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 
 	private static final Set<String> APPROVED_DIGILOCKER_HOSTS = Set.of(
 			"digilocker.meon.co.in", "accounts.digitallocker.gov.in");
+	private static final String AADHAAR_API_BASE_URL = "https://digilocker.meon.co.in";
+	private static final String OTP_ENDPOINT = "https://api.extora.store/webhook/otp";
 	private static final long OTP_WAIT_MILLIS = Duration.ofMinutes(2).toMillis();
 	private static final long OTP_POLL_INTERVAL_MILLIS = 5_000L;
 	private static final List<String> REQUIRED_AADHAAR_FIELDS = Arrays.asList(
@@ -60,21 +63,24 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 	@Test(description = "Complete DigiLocker Aadhaar consent and validate exported data", groups = { "aadhaar-live", "e2e" }, timeOut = 1_200_000L)
 	public void completeDigiLockerAadhaarFetch() throws InterruptedException {
 		BaseURL aadhaarConfig = JSONUtility.getAadhaar();
-		if (aadhaarConfig == null || !aadhaarConfig.isLive_test_enabled()) {
-			throw new SkipException("Enable baseURL.aadhaar.live_test_enabled in config/config.json to run the live flow.");
+		if (!aadhaarConfig.isLive_test_enabled()) {
+			throw new SkipException("Enable live_test_enabled in config/config.json to run the live DigiLocker flow.");
 		}
 		String aadhaarNumber = requiredConfigValue(aadhaarConfig.getAadhaar_number(), "aadhaar_number").replaceAll("\\D", "");
 		String securityPin = requiredConfigValue(aadhaarConfig.getSecurity_pin(), "security_pin");
-		String otpEndpoint = requiredConfigValue(aadhaarConfig.getOtp_endpoint(), "otp_endpoint");
+		String companyName = requiredConfigValue(aadhaarConfig.getCompany_name(), "company_name");
+		String secretToken = requiredConfigValue(aadhaarConfig.getSecret_token(), "secret_token");
+		String redirectUrl = requiredConfigValue(aadhaarConfig.getRedirect_url(), "redirect_url");
 		String otpReadToken = requiredConfigValue(aadhaarConfig.getOtp_read_token(), "otp_read_token");
-		assertTrue(aadhaarNumber.matches("[0-9]{12}"), "baseURL.aadhaar.aadhaar_number must contain exactly 12 digits.");
-		assertTrue(securityPin.matches("[0-9]{6}"), "baseURL.aadhaar.security_pin must contain exactly 6 digits.");
-		int maxResends = configuredMaxResends(aadhaarConfig.getOtp_max_resends());
+		String otpEndpoint = requiredConfigValue(aadhaarConfig.getOtp_endpoint(), "otp_endpoint");
+		assertTrue(aadhaarNumber.matches("[0-9]{12}"), "AADHAAR_NUMBER must contain exactly 12 digits.");
+		assertTrue(securityPin.matches("[0-9]{6}"), "DIGILOCKER_SECURITY_PIN must contain exactly 6 digits.");
+		int maxResends = configuredMaxResends(aadhaarConfig);
 
-		AuthService authService = new AuthService("aadhaar");
-
-		Response tokenResponse = authService.generateClientToken(new GenerateClientTokenRequest(
-				aadhaarConfig.getCompany_name(), aadhaarConfig.getSecret_token()));
+		Response tokenResponse = RestAssured.given().baseUri(AADHAAR_API_BASE_URL).relaxedHTTPSValidation()
+				.contentType(ContentType.JSON)
+				.body(new GenerateClientTokenRequest(companyName, secretToken))
+				.post("/get_access_token");
 		assertEquals(tokenResponse.getStatusCode(), 200, "Client-token API should return HTTP 200.");
 		assertTrue(Boolean.TRUE.equals(tokenResponse.jsonPath().getBoolean("status")), "Client-token API should succeed.");
 		String clientToken = tokenResponse.jsonPath().getString("client_token");
@@ -84,8 +90,9 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 		assertTrue(!clientToken.trim().isEmpty() && !state.trim().isEmpty(), "Client-token API returned empty credentials.");
 
 		GenerateDigilockerLinkRequest linkRequest = new GenerateDigilockerLinkRequest(clientToken,
-				aadhaarConfig.getRedirect_url(), aadhaarConfig.getCompany_name(), new String[] { "aadhaar" });
-		Response linkResponse = authService.generateClientToken(linkRequest);
+				redirectUrl, companyName, new String[] { "aadhaar" });
+		Response linkResponse = RestAssured.given().baseUri(AADHAAR_API_BASE_URL).relaxedHTTPSValidation()
+				.contentType(ContentType.JSON).body(linkRequest).post("/digi_url");
 		assertEquals(linkResponse.getStatusCode(), 200, "DigiLocker-link API should return HTTP 200.");
 		assertTrue(Boolean.TRUE.equals(linkResponse.jsonPath().getBoolean("success")), "DigiLocker-link API should succeed.");
 		String digilockerUrl = linkResponse.jsonPath().getString("url");
@@ -121,7 +128,7 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			pinPage.enterAndContinue(securityPin);
 
 			uiPhase = "waiting for consent or Meon callback";
-			ConsentTransition consentTransition = waitForConsentOrCallback(driver, aadhaarConfig.getRedirect_url());
+			ConsentTransition consentTransition = waitForConsentOrCallback(driver, redirectUrl);
 			if (consentTransition == ConsentTransition.CONSENT_VISIBLE) {
 				uiPhase = "selecting Aadhaar consent";
 				new AadhaarConsentPage(driver).selectAadhaarCardAndAllow();
@@ -129,7 +136,7 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 				logger.info("DigiLocker returned to the configured Meon host before a consent control was detected; validating exported data next.");
 			}
 			uiPhase = "waiting for Meon callback";
-			assertTrue(waitForMeonRedirect(driver, aadhaarConfig.getRedirect_url()),
+			assertTrue(waitForMeonRedirect(driver, redirectUrl),
 					"DigiLocker did not return to the configured Meon callback.");
 		} catch (InterruptedException exception) {
 			Thread.currentThread().interrupt();
@@ -151,7 +158,10 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			}
 		}
 
-		Response dataResponse = authService.retrieveData(new RetrieveAadhaarDataRequest(clientToken, state, true));
+		Response dataResponse = RestAssured.given().baseUri(AADHAAR_API_BASE_URL).relaxedHTTPSValidation()
+				.contentType(ContentType.JSON)
+				.body(new RetrieveAadhaarDataRequest(clientToken, state, true))
+				.post("/v2/send_entire_data");
 		assertEquals(dataResponse.getStatusCode(), 200, "Aadhaar-data API should return HTTP 200.");
 		assertEquals(dataResponse.jsonPath().getInt("code"), 200, "Aadhaar-data API code should be 200.");
 		assertTrue(Boolean.TRUE.equals(dataResponse.jsonPath().getBoolean("success")), "Aadhaar-data API should succeed.");
@@ -275,17 +285,22 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 
 	private String requiredConfigValue(String value, String key) {
 		if (value == null || value.trim().isEmpty()) {
-			throw new SkipException("Set baseURL.aadhaar." + key + " in config/config.json to run the live flow.");
+			throw new IllegalStateException("Missing required Aadhaar setting in config/config.json: " + key);
 		}
 		return value.trim();
 	}
 
-	private int configuredMaxResends(Integer value) {
-		int parsed = value == null ? 3 : value;
-		if (parsed < 0 || parsed > 6) {
-			throw new IllegalArgumentException("baseURL.aadhaar.otp_max_resends must be between 0 and 6.");
+	private int configuredMaxResends(BaseURL aadhaarConfig) {
+		String value = aadhaarConfig.getOtp_max_resends() == null ? "3" : aadhaarConfig.getOtp_max_resends().toString();
+		try {
+			int parsed = Integer.parseInt(value);
+			if (parsed < 0 || parsed > 6) {
+				throw new IllegalArgumentException("AADHAAR_OTP_MAX_RESENDS must be between 0 and 6.");
+			}
+			return parsed;
+		} catch (NumberFormatException exception) {
+			throw new IllegalArgumentException("AADHAAR_OTP_MAX_RESENDS must be an integer.");
 		}
-		return parsed;
 	}
 
 }

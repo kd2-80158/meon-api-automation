@@ -1,4 +1,4 @@
-package com.api.models.testdata;
+package com.api.models.ocr;
 
 public class BgvExpectedMetadata {
 	private String inputName;

@@ -11,7 +11,7 @@ import com.api.base.AuthService;
 import com.api.base.BaseTest;
 import com.api.dataprovider.OCRFileDataProvider;
 import com.api.models.response.ocr.BgvFileOCRResponse;
-import com.api.models.testdata.BgvExpectedMetadata;
+import com.api.models.ocr.BgvExpectedMetadata;
 import com.api.utility.JSONUtility;
 import com.api.utility.LoggerUtility;
 import com.google.gson.Gson;

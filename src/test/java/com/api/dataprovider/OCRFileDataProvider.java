@@ -9,9 +9,9 @@ import java.util.Map;
 
 import org.testng.annotations.DataProvider;
 
-import com.api.models.testdata.BankStatementExpectedMetadata;
-import com.api.models.testdata.BgvExpectedMetadata;
-import com.api.models.testdata.ChequeExpectedMetadata;
+import com.api.models.ocr.BankStatementExpectedMetadata;
+import com.api.models.ocr.BgvExpectedMetadata;
+import com.api.models.ocr.ChequeExpectedMetadata;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
