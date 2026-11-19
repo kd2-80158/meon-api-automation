@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
@@ -77,11 +78,17 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 		assertTrue(securityPin.matches("[0-9]{6}"), "DIGILOCKER_SECURITY_PIN must contain exactly 6 digits.");
 		int maxResends = configuredMaxResends(aadhaarConfig);
 
+		logger.info("[DigiLocker] Step 1/5: requesting client token; endpointHost={}, companyConfigured={}",
+				URI.create(AADHAAR_API_BASE_URL).getHost(), !companyName.isBlank());
+		long tokenStarted = System.nanoTime();
 		Response tokenResponse = RestAssured.given().baseUri(AADHAAR_API_BASE_URL).relaxedHTTPSValidation()
-				.contentType(ContentType.JSON)
-				.body(new GenerateClientTokenRequest(companyName, secretToken))
+				.contentType(ContentType.JSON).body(new GenerateClientTokenRequest(companyName, secretToken))
 				.post("/get_access_token");
-		assertEquals(tokenResponse.getStatusCode(), 200, "Client-token API should return HTTP 200.");
+		logger.info("[DigiLocker] Client-token response: status={}, elapsedMs={}, contentType={}, body={}",
+				tokenResponse.statusCode(), Duration.ofNanos(System.nanoTime()-tokenStarted).toMillis(),
+				tokenResponse.contentType(), redactedBody(tokenResponse.asString()));
+		assertEquals(tokenResponse.getStatusCode(), 200, "Client-token API should return HTTP 200; status="
+				+ tokenResponse.statusCode() + ", body=" + redactedBody(tokenResponse.asString()));
 		assertTrue(Boolean.TRUE.equals(tokenResponse.jsonPath().getBoolean("status")), "Client-token API should succeed.");
 		String clientToken = tokenResponse.jsonPath().getString("client_token");
 		String state = tokenResponse.jsonPath().getString("state");
@@ -89,6 +96,8 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 		assertNotNull(state, "Client-token API did not return state.");
 		assertTrue(!clientToken.trim().isEmpty() && !state.trim().isEmpty(), "Client-token API returned empty credentials.");
 
+		logger.info("[DigiLocker] Client-token API passed; state and token received (values redacted)");
+		logger.info("[DigiLocker] Step 2/5: requesting consent URL");
 		GenerateDigilockerLinkRequest linkRequest = new GenerateDigilockerLinkRequest(clientToken,
 				redirectUrl, companyName, new String[] { "aadhaar" });
 		Response linkResponse = RestAssured.given().baseUri(AADHAAR_API_BASE_URL).relaxedHTTPSValidation()
@@ -99,39 +108,58 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 		assertNotNull(digilockerUrl, "DigiLocker-link API did not return a URL.");
 		assertTrue(!digilockerUrl.trim().isEmpty(), "DigiLocker-link API returned an empty URL.");
 		assertApprovedDigiLockerUrl(digilockerUrl);
+		logger.info("[DigiLocker] Consent URL API passed; approved host={}", URI.create(digilockerUrl).getHost());
 
 		WebDriver driver = null;
 		String uiPhase = "starting Firefox";
 		try {
-			driver = new FirefoxDriver();
+			FirefoxOptions browserOptions = new FirefoxOptions();
+			boolean headless = "headless".equalsIgnoreCase(System.getProperty("digilocker.browser.mode", "headless"));
+			if (headless) browserOptions.addArguments("-headless");
+			logger.info("[DigiLocker] Browser mode: {}", headless ? "headless" : "headed");
+			driver = new FirefoxDriver(browserOptions);
 			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 			driver.manage().window().maximize();
 
 			uiPhase = "opening the generated DigiLocker link";
+			logger.info("[DigiLocker] Step 3/5: opening identity journey; host={}", URI.create(digilockerUrl).getHost());
 			AadhaarNumberPage aadhaarPage = new AadhaarNumberPage(driver);
 			aadhaarPage.open(digilockerUrl);
+			logBrowserCheckpoint(driver, "aadhaar-entry-page");
 			long initialOtpRequestAt = System.currentTimeMillis();
 			uiPhase = "submitting Aadhaar and waiting for OTP page";
 			aadhaarPage.enterNumberAndContinue(aadhaarNumber);
 
 			AadhaarOtpPage otpPage = new AadhaarOtpPage(driver);
 			otpPage.waitUntilLoaded();
+			logger.info("[DigiLocker] Aadhaar submitted; OTP page loaded; visibleOtpFields={}", otpPage.visibleOtpFieldCount());
+			logBrowserCheckpoint(driver, "otp-entry-page");
 			uiPhase = "waiting for a fresh OTP";
+			logger.info("[DigiLocker] Step 4/5: polling OTP relay; maxResends={}", maxResends);
 			String otp = waitForOtpAndResendIfNeeded(otpPage, otpEndpoint, otpReadToken, initialOtpRequestAt, maxResends);
 			uiPhase = "submitting OTP";
+			logger.info("[DigiLocker] OTP read successfully; entering into {} visible field(s); value redacted", otpPage.visibleOtpFieldCount());
 			otpPage.enterAndVerify(otp);
+			logger.info("[DigiLocker] OTP entered and verify control clicked");
 
 			uiPhase = "waiting for security PIN page";
 			AadhaarSecurityPinPage pinPage = new AadhaarSecurityPinPage(driver);
 			pinPage.waitUntilLoaded();
+			logger.info("[DigiLocker] Security PIN page loaded");
+			logBrowserCheckpoint(driver, "security-pin-page");
 			uiPhase = "submitting security PIN";
 			pinPage.enterAndContinue(securityPin);
 
 			uiPhase = "waiting for consent or Meon callback";
+			logger.info("[DigiLocker] OTP accepted and PIN submitted; awaiting consent/callback");
 			ConsentTransition consentTransition = waitForConsentOrCallback(driver, redirectUrl);
+			logger.info("[DigiLocker] Post-PIN transition detected: {}", consentTransition);
+			logBrowserCheckpoint(driver, consentTransition == ConsentTransition.CONSENT_VISIBLE ? "consent-page" : "callback-page");
 			if (consentTransition == ConsentTransition.CONSENT_VISIBLE) {
+				logger.info("[DigiLocker] Consent screen detected; selecting Aadhaar only");
 				uiPhase = "selecting Aadhaar consent";
 				new AadhaarConsentPage(driver).selectAadhaarCardAndAllow();
+				logger.info("[DigiLocker] Aadhaar consent selected and Allow clicked");
 			} else {
 				logger.info("DigiLocker returned to the configured Meon host before a consent control was detected; validating exported data next.");
 			}
@@ -147,8 +175,8 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 		} catch (RuntimeException exception) {
 			Path evidence = AadhaarEvidenceCapture.capture(driver, uiPhase);
 			String exceptionType = exception.getClass().getSimpleName();
-			logger.error("DigiLocker UI flow failed at {}; exceptionType={}; redacted evidence={}",
-					uiPhase, exceptionType, evidence);
+			logger.error("DigiLocker UI flow failed at {}; exceptionType={}; message={}; redacted evidence={}",
+					uiPhase, exceptionType, safeError(exception.getMessage()), evidence, exception);
 			throw new IllegalStateException("DigiLocker browser flow failed at " + uiPhase
 					+ "; exceptionType=" + exceptionType + "; redacted evidence=" + evidence
 					+ "; sensitive page details were suppressed.");
@@ -193,9 +221,12 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			long initialRequestedAtMillis, int maxResends)
 			throws InterruptedException {
 		for (int resendCount = 0; resendCount <= maxResends; resendCount++) {
+			logger.info("[DigiLocker] OTP wait cycle {}/{}", resendCount + 1, maxResends + 1);
 			long requestedAt = resendCount == 0 ? initialRequestedAtMillis : System.currentTimeMillis();
 			if (resendCount > 0) {
+				logger.warn("[DigiLocker] OTP timeout; clicking resend attempt {} of {}", resendCount, maxResends);
 				otpPage.resendOtp();
+				logger.info("[DigiLocker] Resend clicked; polling for OTP newer than request timestamp");
 			}
 			long deadline = System.nanoTime() + Duration.ofMillis(OTP_WAIT_MILLIS).toNanos();
 			while (System.nanoTime() < deadline) {
@@ -219,6 +250,7 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			connection.setConnectTimeout(3_000);
 			connection.setReadTimeout(3_000);
 			if (connection.getResponseCode() != 200) {
+				logger.warn("[DigiLocker] OTP relay returned HTTP {}; retrying poll", connection.getResponseCode());
 				return null;
 			}
 			String body;
@@ -233,14 +265,26 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			}
 			String otp = json.get("otp").getAsString();
 			long receivedAt = json.get("timestamp").getAsLong();
-			return receivedAt >= requestedAtMillis && otp.matches("[0-9]{6}") ? otp : null;
-		} catch (IOException | RuntimeException ignored) {
+			boolean fresh = receivedAt >= requestedAtMillis && otp.matches("[0-9]{6}");
+			if (fresh) logger.info("[DigiLocker] Fresh six-digit OTP received (value redacted); receivedAt={}, requestedAt={}", receivedAt, requestedAtMillis);
+			else logger.debug("[DigiLocker] OTP response not usable; success={}, hasOtp={}, fresh={}, sixDigits={}",
+					json.has("success") && json.get("success").getAsBoolean(), json.has("otp"), receivedAt >= requestedAtMillis, otp.matches("[0-9]{6}"));
+			return fresh ? otp : null;
+		} catch (IOException | RuntimeException exception) {
+			logger.warn("[DigiLocker] OTP poll failed: type={}, message={}", exception.getClass().getSimpleName(), safeError(exception.getMessage()));
 			return null;
 		} finally {
 			if (connection != null) {
 				connection.disconnect();
 			}
 		}
+	}
+
+	private void logBrowserCheckpoint(WebDriver driver, String phase) {
+		String host = "unavailable";
+		try { host = URI.create(driver.getCurrentUrl()).getHost(); } catch (RuntimeException ignored) { }
+		Path evidence = AadhaarEvidenceCapture.capture(driver, phase);
+		logger.info("[DigiLocker] Browser checkpoint: phase={}, host={}, redactedEvidence={}", phase, host, evidence);
 	}
 
 	private boolean waitForMeonRedirect(WebDriver driver, String configuredRedirectUrl) {
@@ -281,6 +325,19 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 	private void assertHttpsDocumentUrl(Map<String, Object> data, String field) {
 		String value = String.valueOf(data.get(field));
 		assertTrue(value.startsWith("https://"), "Document field must contain an HTTPS URL: " + field);
+	}
+
+	private String redactedBody(String body) {
+		if (body == null) return "[empty]";
+		String redacted = body.replaceAll("(?i)(\"(?:client_token|secret_token|token|state|otp|aadhaar_number|aadhaar|url)\"\\s*:\\s*\")[^\"]*", "$1[REDACTED]");
+		return redacted.substring(0, Math.min(redacted.length(), 1200));
+	}
+
+	private String safeError(String message) {
+		if (message == null) return "[no message]";
+		return message.replaceAll("\\b[0-9]{12}\\b", "[AADHAAR_REDACTED]")
+				.replaceAll("(?i)(otp|token|pin)[=: ]+\\S+", "$1=[REDACTED]")
+				.substring(0, Math.min(message.length(), 500));
 	}
 
 	private String requiredConfigValue(String value, String key) {
