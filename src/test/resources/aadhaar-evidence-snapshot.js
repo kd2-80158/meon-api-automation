@@ -12,8 +12,11 @@ const visible = e => {
   const r = e.getBoundingClientRect(), s = getComputedStyle(e);
   return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && s.display !== 'none';
 };
+const pageText = (document.body?.innerText || '').toLowerCase();
+const textSignals = ['consent', 'allow', 'aadhaar', 'document', 'verify', 'otp', 'pin', 'error', 'failed', 'success', 'redirect', 'expired', 'invalid', 'retry', 'transaction', 'authorization', 'loading', 'not found', '404'].filter(term => pageText.includes(term));
 return {
   readyState: document.readyState,
+  textSignals,
   headings: [...document.querySelectorAll('h1,h2,h3,[role=heading]')].filter(visible).slice(0, 12).map(label),
   buttons: [...document.querySelectorAll('button,input[type=submit],[role=button]')].filter(visible).slice(0, 30).map(e => ({label: label(e), enabled: !e.disabled})),
   inputs: [...document.querySelectorAll('input,textarea,select')].filter(visible).slice(0, 30).map(e => ({type: e.type || e.tagName.toLowerCase(), enabled: !e.disabled, valuePresent: !!e.value, valueLength: (e.value || '').length, checked: !!e.checked})),

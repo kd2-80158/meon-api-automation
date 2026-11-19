@@ -11,6 +11,16 @@ public final class AadhaarConsentPage extends AadhaarPageSupport {
 	private static final By OPTIONS = By.xpath("//*[self::label or self::button or @role='checkbox' or self::div or self::span or self::li][contains(translate(normalize-space(string(.)), '" + LOWER + "', '" + UPPER + "'), 'aadhaar card')]");
 	private static final By ALLOW = By.xpath("//*[self::button or self::input or @role='button'][translate(normalize-space(@value), '" + LOWER + "', '" + UPPER + "')='allow' or translate(normalize-space(string(.)), '" + LOWER + "', '" + UPPER + "')='allow']");
 	public AadhaarConsentPage(WebDriver driver) { super(driver); }
+	public boolean isAadhaarCardOptionVisible() {
+		for (WebElement candidate : driver.findElements(OPTIONS)) {
+			try {
+				if (candidate.isDisplayed() && candidate.isEnabled()) return true;
+			} catch (org.openqa.selenium.StaleElementReferenceException ignored) {
+				// The DigiLocker page is still transitioning; the caller will poll again.
+			}
+		}
+		return false;
+	}
 	public void selectAadhaarCardAndAllow() {
 		WebElement option = wait.until(d -> shortestVisible(d.findElements(OPTIONS)));
 		List<WebElement> boxes = option.findElements(By.xpath(".//input[@type='checkbox']"));

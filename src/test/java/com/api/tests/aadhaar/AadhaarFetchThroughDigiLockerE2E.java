@@ -44,6 +44,8 @@ import io.restassured.response.Response;
 
 public final class AadhaarFetchThroughDigiLockerE2E {
 
+	private enum ConsentTransition { CONSENT_VISIBLE, CALLBACK }
+
 	private static final Set<String> APPROVED_DIGILOCKER_HOSTS = Set.of(
 			"digilocker.meon.co.in", "accounts.digitallocker.gov.in");
 	private static final long OTP_WAIT_MILLIS = Duration.ofMinutes(2).toMillis();
@@ -118,8 +120,14 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			uiPhase = "submitting security PIN";
 			pinPage.enterAndContinue(securityPin);
 
-			uiPhase = "selecting Aadhaar consent";
-			new AadhaarConsentPage(driver).selectAadhaarCardAndAllow();
+			uiPhase = "waiting for consent or Meon callback";
+			ConsentTransition consentTransition = waitForConsentOrCallback(driver, aadhaarConfig.getRedirect_url());
+			if (consentTransition == ConsentTransition.CONSENT_VISIBLE) {
+				uiPhase = "selecting Aadhaar consent";
+				new AadhaarConsentPage(driver).selectAadhaarCardAndAllow();
+			} else {
+				logger.info("DigiLocker returned to the configured Meon host before a consent control was detected; validating exported data next.");
+			}
 			uiPhase = "waiting for Meon callback";
 			assertTrue(waitForMeonRedirect(driver, aadhaarConfig.getRedirect_url()),
 					"DigiLocker did not return to the configured Meon callback.");
@@ -236,6 +244,20 @@ public final class AadhaarFetchThroughDigiLockerE2E {
 			} catch (RuntimeException ignored) {
 				return false;
 			}
+		});
+	}
+
+	/** Wait for the consent option, or recognize an earlier callback as a terminal UI transition. */
+	private ConsentTransition waitForConsentOrCallback(WebDriver driver, String configuredRedirectUrl) {
+		String expectedHost = URI.create(configuredRedirectUrl).getHost();
+		return new org.openqa.selenium.support.ui.WebDriverWait(driver, Duration.ofSeconds(90)).until(d -> {
+			try {
+				if (expectedHost.equalsIgnoreCase(URI.create(d.getCurrentUrl()).getHost())) return ConsentTransition.CALLBACK;
+			} catch (RuntimeException ignored) {
+				// Keep polling while the browser changes URL.
+			}
+			if (new AadhaarConsentPage(d).isAadhaarCardOptionVisible()) return ConsentTransition.CONSENT_VISIBLE;
+			return null;
 		});
 	}
 
